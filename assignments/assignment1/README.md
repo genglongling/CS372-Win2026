@@ -13,12 +13,12 @@ There will be **20 groups** for this assignment. Each of the 10 BenchmarkT3-Buck
 | 1, 2 | BenchmarkT3-BucketLarge-1.tex | Daily Life & Psychology (D1) | 45 | 450 |
 | 3, 4 | BenchmarkT3-BucketLarge-2.tex | History & Geopolitics (D2) | 45 | 450 |
 | 5, 6 | BenchmarkT3-BucketLarge-3.tex | Markets & Weather (D3) | 45 | 450 |
-| 7, 8 | BenchmarkT3-BucketLarge-4.tex | Disease & Recovery / Medicine (D4) | 46 | 450 |
-| 9, 10 | BenchmarkT3-BucketLarge-5.tex | Economics & Technology (D5) | 46 | 450 |
+| 7, 8 | BenchmarkT3-BucketLarge-4.tex | Disease & Recovery / Medicine (D4) | 46 | 460 |
+| 9, 10 | BenchmarkT3-BucketLarge-5.tex | Economics & Technology (D5) | 46 | 460 |
 | 11, 12 | BenchmarkT3-BucketLarge-6.tex | Environment & Climate (D6) | 45 | 450 |
-| 13, 14 | BenchmarkT3-BucketLarge-7.tex | Law, Policy & Ethics (D7) | 46 | 450 |
+| 13, 14 | BenchmarkT3-BucketLarge-7.tex | Law, Policy & Ethics (D7) | 46 | 460 |
 | 15, 16 | BenchmarkT3-BucketLarge-8.tex | AI Safety & Alignment (D8) | 45 | 450 |
-| 17, 18 | BenchmarkT3-BucketLarge-9.tex | Performance, Evaluation & Luck (D9) | 46 | 450 |
+| 17, 18 | BenchmarkT3-BucketLarge-9.tex | Performance, Evaluation & Luck (D9) | 46 | 460 |
 | 19, 20 | BenchmarkT3-BucketLarge-10.tex | Social Science & Demographics (D10) | 45 | 450 |
 
 Note: Groups listed together (e.g., Groups 1 and 2) are cross-validation pairs that will swap datasets in Assignment 2.
