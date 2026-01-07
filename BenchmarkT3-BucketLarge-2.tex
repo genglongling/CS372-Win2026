@@ -1,0 +1,1493 @@
+%% ============================================
+%% BUCKET 2: HISTORY & GEOPOLITICS
+%% T³ Benchmark Standard Format (Revised & Sorted)
+%% Theme: The Sequence Trap & Structural Determinism
+%% Total Cases: 45 (L1: 5, L2: 30, L3: 10)
+%% ============================================
+
+\section{Bucket 2: History \& Geopolitics}
+\label{sec:bucket2}
+
+\subsection*{Bucket Overview}
+
+\paragraph{Domain.} History (D2)
+
+\paragraph{Core Themes.} Historical causation, structural vs contingent factors, counterfactual history, sequence traps.
+
+\paragraph{Signature Trap Types.} CONF-MED, REVERSE, SELECTION, COLLIDER, COUNTERFACTUAL
+
+\paragraph{Case Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Pearl Level 1 (Association):} 5 cases (11\%)
+    \item \textbf{Pearl Level 2 (Intervention):} 30 cases (68\%)
+    \item \textbf{Pearl Level 3 (Counterfactual):} 10 cases (20\%)
+    \item \textbf{Total:} 44 cases
+\end{itemize}
+
+%% ============================================
+%% PEARL LEVEL 1 CASES (Association)
+%% ============================================
+
+\subsection{Case 2.1: The Silk Road Correlation}
+\label{case:2.1}
+
+\paragraph{Scenario.}
+Historical data shows cities along the Silk Road ($X$) were wealthier ($Y$) than inland cities. A modern economist concludes trade routes cause prosperity.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Location on Silk Road (Observation)
+    \item $Y$ = City Wealth (Outcome)
+    \item $Z$ = Geographic Advantages (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.1
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} SPURIOUS
+    \item \textbf{Trap Subtype:} Geographic Confounding
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Economic History
+    \item \textbf{Causal Structure:} Oases and rivers ($Z$) cause both trade routes ($X$) and cities ($Y$)
+    \item \textbf{Key Insight:} Trade routes follow geography; they don't create it
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This is an associational claim. The correlation exists because trade routes were established through areas with pre-existing geographic advantages ($Z$) like water sources and fertile land. These same advantages independently supported wealthy cities. The route didn't create the wealth; both emerged from geography.''
+
+\subsection{Case 2.2: The War Casualties Pattern}
+\label{case:2.2}
+
+\paragraph{Scenario.}
+Data shows that 70\% of soldiers who died in WWI were infantry ($X$). A historian concludes infantry was the most dangerous branch.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Branch (Infantry)
+    \item $Y$ = Death Count (Outcome)
+    \item $Z$ = Branch Size (Base Rate)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.2
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} BASE RATE
+    \item \textbf{Trap Subtype:} Denominator Neglect
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Military History
+    \item \textbf{Causal Structure:} Infantry comprised 80\% of the army
+    \item \textbf{Key Insight:} Raw counts ignore the denominator
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This is base rate neglect. Infantry comprised about 80\% of WWI armies, so 70\% of deaths being infantry actually suggests a *lower* mortality rate than other branches. The relevant metric is deaths per soldier, not total deaths.''
+
+\subsection{Case 2.3: The Literacy-Democracy Link}
+\label{case:2.3}
+
+\paragraph{Scenario.}
+Among nations that survived to the modern era ($Z$), those with higher historical literacy rates ($X$) are more likely to be democracies ($Y$).
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Historical Literacy (Observation)
+    \item $Y$ = Current Democracy (Outcome)
+    \item $Z$ = State Survival (Selection)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.3
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Survivorship Bias
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Political History
+    \item \textbf{Causal Structure:} Both $X$ and $Y$ increase survival probability
+    \item \textbf{Key Insight:} We only observe states that survived
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This correlation may be affected by survivorship bias. Both literacy and democratic institutions may independently increase a state's probability of surviving to the modern era. The correlation among survivors doesn't establish causation.''
+
+\subsection{Case 2.4: The Empire Size Paradox}
+\label{case:2.4}
+
+\paragraph{Scenario.}
+Overall, larger empires ($X$) lasted longer ($Y$). But within each century, smaller empires lasted longer. A strategist concludes expansion prolongs empires.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Empire Size (Observation)
+    \item $Y$ = Duration (Outcome)
+    \item $Z$ = Era/Technology (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.4
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} SIMPSON
+    \item \textbf{Trap Subtype:} Simpson's Paradox
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Geopolitics
+    \item \textbf{Causal Structure:} Earlier eras had both larger empires and longer average durations
+    \item \textbf{Key Insight:} Aggregate trend reverses within strata
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This is Simpson's Paradox. The aggregate correlation reverses within each century. Earlier eras allowed for both larger empires and longer durations due to slower communication and weaker challengers. Within any given technological era, smaller states were more stable.''
+
+\subsection{Case 2.5: The Plague Trade Routes}
+\label{case:2.5}
+
+\paragraph{Scenario.}
+Regions with more trade connections ($X$) had higher plague mortality ($Y$). A researcher concludes trade spread the plague.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Trade Connectivity (Observation)
+    \item $Y$ = Plague Deaths (Outcome)
+    \item $Z$ = Population Density (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.5
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} ECOLOGICAL
+    \item \textbf{Trap Subtype:} Ecological Fallacy
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Epidemiology
+    \item \textbf{Causal Structure:} Dense populations have both more trade and more disease spread
+    \item \textbf{Key Insight:} Regional correlation doesn't prove individual transmission mechanism
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``While partially true, this is an ecological correlation. Dense population centers ($Z$) independently cause both high trade volume and rapid disease spread. The regional correlation doesn't prove that individual traders transmitted the disease---local density may be the primary factor.''
+
+%% ============================================
+%% PEARL LEVEL 2 CASES (Intervention)
+%% ============================================
+
+\subsection{Case 2.6: The Pax Mercatoria}
+\label{case:2.6}
+
+\paragraph{Scenario.}
+The signing of the Treaty of Oakhaven ($X$) was followed by a 50-year period of peace and prosperity ($Y$) in the region. Historical records indicate that cross-border trade volume ($Z$) surged to record highs during this era.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Treaty Signing (Diplomatic Action)
+    \item $Y$ = 50-Year Peace (Outcome)
+    \item $Z$ = Trade Volume Surge (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{CONF-MED}
+
+\paragraph{Difficulty.} Medium
+
+\paragraph{Hidden Timestamp.}
+Did the trade surge ($Z$) begin \emph{before} the treaty negotiations started?
+
+\paragraph{Answer if $t_Z < t_X$ (Trade is Confounder).}
+Rising economic interdependence ($Z$) made war too costly, causing both the peace ($Y$) and the treaty ($X$). The treaty formalized an existing reality; it did not create it.
+
+\paragraph{Answer if $t_X < t_Z$ (Treaty is Cause).}
+The treaty ($X$) lowered trade barriers, causing the trade surge ($Z$), which solidified the peace ($Y$). Diplomacy drove economics.
+
+\paragraph{Wise Refusal.}
+``Did commerce create peace, or did peace create commerce? If trade integration preceded the treaty, the diplomatic act may be ceremonial. Please clarify whether trade volumes rose before negotiations began.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.7: The Dictator's Oil}
+\label{case:2.7}
+
+\paragraph{Scenario.}
+General G seized power ($X$) and the country's chronic civil unrest ended ($Y$). The global price of the nation's primary export (Oil) tripled ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Military Coup (Political Event)
+    \item $Y$ = End of Unrest (Outcome)
+    \item $Z$ = Oil Price Spike (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{CONF-MED}
+
+\paragraph{Difficulty.} Hard
+
+\paragraph{Hidden Timestamp.}
+Did the oil price spike ($Z$) occur \emph{before} or immediately after the coup?
+
+\paragraph{Answer if $t_Z < t_X$ (Oil is Confounder).}
+The oil windfall ($Z$) filled the treasury, allowing the state to buy off dissenters and fund police ($Y$). Any leader would have achieved stability. The General lucked into petro-wealth.
+
+\paragraph{Answer if $t_X < t_Z$ (General is Cause).}
+The General's competence ($X$) stabilized production, attracting investment and raising prices ($Z$). (Less likely in commodity markets.)
+
+\paragraph{Wise Refusal.}
+``Did the regime succeed due to competence or capital? If the oil boom coincided with the coup, stability may be bought rather than enforced. Please clarify the timing of the revenue spike.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.8: The Smallpox Conquest}
+\label{case:2.8}
+
+\paragraph{Scenario.}
+The Conquistadors ($X$) rapidly conquered the Empire ($Y$). A Smallpox epidemic ($Z$) ravaged the indigenous population.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Conquistador Arrival (Military Event)
+    \item $Y$ = Empire Conquest (Outcome)
+    \item $Z$ = Smallpox Epidemic (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{CONF-MED}
+
+\paragraph{Difficulty.} Easy
+
+\paragraph{Hidden Timestamp.}
+Did the epidemic ($Z$) spread ahead of the main army's advance?
+
+\paragraph{Answer if $t_Z < t_X$ (Disease is Primary Cause).}
+The disease ($Z$) decimated leadership and army structure before battle. The Conquistadors ($X$) walked into a collapsed society. Microbes conquered; soldiers occupied.
+
+\paragraph{Answer if $t_X < t_Z$ (Conquistadors brought disease).}
+The Conquistadors ($X$) introduced the pathogen ($Z$), which then devastated the defenders. $X$ caused $Z$, which caused $Y$. The army is still the root cause.
+
+\paragraph{Wise Refusal.}
+``Did the army defeat the empire, or did the microbe? Even if Conquistadors introduced the disease, the military victory may be attributed to biological collapse rather than battlefield prowess. Please clarify the epidemic's spread relative to military engagements.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.9: The Road System}
+\label{case:2.9}
+
+\paragraph{Scenario.}
+The Empire remained unified ($Y$) for centuries. They built an extensive paved road system ($X$). They maintained a highly centralized language and currency ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Road System (Infrastructure)
+    \item $Y$ = Political Unification (Outcome)
+    \item $Z$ = Common Language/Currency (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{REVERSE}
+
+\paragraph{Difficulty.} Hard
+
+\paragraph{Hidden Timestamp.}
+Was the language ($Z$) standardized \emph{before} the roads were built?
+
+\paragraph{Answer if $t_Z < t_X$ (Culture causes Roads).}
+Cultural unity ($Z$) allowed the central government to organize labor for roads ($X$) and maintain political unity ($Y$). The roads are a symptom of pre-existing cohesion.
+
+\paragraph{Answer if $t_X < t_Z$ (Roads cause Culture).}
+The roads ($X$) allowed the spread of language and enforcement of currency ($Z$), creating unity ($Y$). Infrastructure is the root cause.
+
+\paragraph{Wise Refusal.}
+``Did infrastructure create the nation, or did the nation create the infrastructure? If cultural homogenization preceded the road network, the roads are a result of centralized power, not the cause. Please clarify the sequence.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.10: The Witch Trials}
+\label{case:2.10}
+
+\paragraph{Scenario.}
+Town T executed 50 people for witchcraft ($X$) and subsequently reported the end of a mysterious livestock sickness ($Y$). Climate records show a `Little Ice Age' cooling period ($Z$) ended that year.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Witch Executions (Action)
+    \item $Y$ = End of Livestock Sickness (Outcome)
+    \item $Z$ = Climate Warming (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{CONF-MED} (Spurious)
+
+\paragraph{Difficulty.} Easy
+
+\paragraph{Hidden Timestamp.}
+Did the temperature ($Z$) rise \emph{before} or \emph{after} the executions?
+
+\paragraph{Answer if $t_Z$ dominates (Climate is Cause).}
+The warming ($Z$) ended the blight naturally ($Y$). The executions ($X$) were superstitious correlation. Killing people did not change the weather.
+
+\paragraph{Answer if $t_X < t_Z$ (Still Spurious).}
+Even if executions preceded warming, there is no causal mechanism. The correlation is coincidental.
+
+\paragraph{Wise Refusal.}
+``This implies a superstitious causal link. The physical variable (climate) is the likely cause of livestock recovery. Unless the executions caused the weather, which is impossible, the timing is coincidental. The executions were tragic scapegoating.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.11: The Demographic Transition}
+\label{case:2.11}
+
+\paragraph{Scenario.}
+Birth rates dropped ($Y$) significantly in Nation N. This followed a government campaign promoting small families ($X$). Child mortality rates plummeted ($Z$) due to better sanitation.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Propaganda Campaign (Policy)
+    \item $Y$ = Birth Rate Drop (Outcome)
+    \item $Z$ = Child Mortality Drop (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{CONF-MED}
+
+\paragraph{Difficulty.} Medium
+
+\paragraph{Hidden Timestamp.}
+Did mortality ($Z$) drop \emph{before} birth rates ($Y$) began to decline?
+
+\paragraph{Answer if $t_Z < t_X$ (Mortality is Confounder).}
+Parents realized fewer children were dying ($Z$), so they naturally had fewer kids ($Y$) to reach their target family size. The campaign ($X$) rode the wave of rational adjustment.
+
+\paragraph{Answer if $t_X < t_Z$ (Campaign is Cause).}
+The campaign ($X$) changed cultural values directly, reducing birth rates ($Y$) regardless of mortality.
+
+\paragraph{Wise Refusal.}
+``Did culture change behavior, or did survival rates change behavior? If child mortality dropped first, the demographic transition is likely a rational response to survival probabilities. Please clarify the sequence.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.12: The Temple Agriculture}
+\label{case:2.12}
+
+\paragraph{Scenario.}
+Massive stone temples ($X$) were found in the jungle, indicating a complex religious society ($Y$). Evidence of high-yield maize agriculture ($Z$) was found at the site.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Temple Construction (Cultural Artifact)
+    \item $Y$ = Complex Society (Outcome)
+    \item $Z$ = Maize Agriculture (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{REVERSE}
+
+\paragraph{Difficulty.} Hard
+
+\paragraph{Hidden Timestamp.}
+Does the maize pollen ($Z$) appear in soil layers \emph{deeper} (older) than the temple foundations?
+
+\paragraph{Answer if $t_Z < t_X$ (Agriculture causes Temples).}
+The calorie surplus from maize ($Z$) allowed specialization of labor required to build temples ($X$). Energy preceded structure. Agriculture enabled religion.
+
+\paragraph{Answer if $t_X < t_Z$ (Temples cause Agriculture).}
+Religious organization ($X$) mobilized the workforce to clear the jungle for farming ($Z$). Ideology preceded energy.
+
+\paragraph{Wise Refusal.}
+``Did the surplus create the hierarchy, or did the hierarchy create the surplus? Determining whether agricultural intensification preceded monumental architecture is required to identify the driver of complexity. Please examine stratigraphic evidence.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.13: The Viking Expansion}
+\label{case:2.13}
+
+\paragraph{Scenario.}
+Norse settlements expanded across the ocean ($Y$). This occurred during the `Viking Age' of raiding ($X$). Scandinavia experienced a population boom ($Z$) due to a warming climate.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Raiding Culture (Activity)
+    \item $Y$ = Settlement Expansion (Outcome)
+    \item $Z$ = Population Boom (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{CONF-MED}
+
+\paragraph{Difficulty.} Medium
+
+\paragraph{Hidden Timestamp.}
+Did the population spike ($Z$) precede the first raids?
+
+\paragraph{Answer if $t_Z < t_X$ (Population is Confounder).}
+Overpopulation ($Z$) forced young men to leave, driving both raids ($X$) and settlements ($Y$). They were pushed by demographics, not pulled by plunder.
+
+\paragraph{Answer if $t_X < t_Z$ (Raiding is Driver).}
+Raiding ($X$) brought wealth that caused population growth ($Z$) and funded settlements ($Y$).
+
+\paragraph{Wise Refusal.}
+``Was the expansion driven by `Push' or `Pull' factors? If the population boom preceded the Viking Age, expansion was demographic necessity rather than cultural choice. Please clarify the timing.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.14: The Cold War Thaw}
+\label{case:2.14}
+
+\paragraph{Scenario.}
+Relations between Superpowers A and B improved ($Y$). This followed the election of Reformist Leader R ($X$). Both nations faced severe economic stagnation ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Reformist Leader (Person)
+    \item $Y$ = Improved Relations (Outcome)
+    \item $Z$ = Economic Stagnation (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{CONF-MED}
+
+\paragraph{Difficulty.} Hard
+
+\paragraph{Hidden Timestamp.}
+Did the economic metrics ($Z$) turn negative \emph{before} the election?
+
+\paragraph{Answer if $t_Z < t_X$ (Economy is Confounder).}
+Economic reality ($Z$) forced both sides to cut military spending and seek detente ($Y$). The leader ($X$) was elected to execute this mandate, not to originate it. Materialism over Great Man Theory.
+
+\paragraph{Answer if $t_X < t_Z$ (Leader is Cause).}
+The leader ($X$) chose peace despite economic strength. Individual agency drove history.
+
+\paragraph{Wise Refusal.}
+``Great Man Theory vs. Materialism: Did the leader choose peace, or did bankruptcy force it? If stagnation was acute before the election, the policy shift was likely inevitable regardless of the specific leader. Please clarify the economic timeline.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.15: The Suffrage Leverage}
+\label{case:2.15}
+
+\paragraph{Scenario.}
+Women gained the right to vote ($Y$) in Country C. This followed massive street protests ($X$). Women entered the industrial workforce ($Z$) in record numbers during the recent war.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Street Protests (Political Action)
+    \item $Y$ = Voting Rights (Outcome)
+    \item $Z$ = Workforce Participation (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{CONF-MED}
+
+\paragraph{Difficulty.} Medium
+
+\paragraph{Hidden Timestamp.}
+Did the workforce shift ($Z$) happen \emph{before} the protests peaked?
+
+\paragraph{Answer if $t_Z < t_X$ (Economic Leverage is Confounder).}
+Economic leverage as essential workers ($Z$) made political exclusion untenable ($Y$). The protests ($X$) were the mechanism, but structural power ($Z$) was the cause.
+
+\paragraph{Answer if $t_X < t_Z$ (Protests are Cause).}
+Protests ($X$) won the vote ($Y$) through moral persuasion, without economic leverage.
+
+\paragraph{Wise Refusal.}
+``Did ideology or economics drive the change? If women became essential to the economy before the protests, suffrage was likely recognition of existing power. Please clarify the timing of workforce entry.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.16: The Dust Bowl Migration}
+\label{case:2.16}
+
+\paragraph{Scenario.}
+Thousands of farmers migrated west ($Y$). This coincided with the government passing the Homestead Act ($X$). Massive soil erosion ($Z$) destroyed local farms.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Homestead Act (Policy)
+    \item $Y$ = Westward Migration (Outcome)
+    \item $Z$ = Soil Erosion (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{CONF-MED}
+
+\paragraph{Difficulty.} Easy
+
+\paragraph{Hidden Timestamp.}
+Did the erosion ($Z$) destroy crops \emph{before} the migration started?
+
+\paragraph{Answer if $t_Z < t_X$ (Erosion is Push Factor).}
+Ecological collapse ($Z$) pushed them west ($Y$). The Homestead Act ($X$) just determined where they landed, not that they left.
+
+\paragraph{Answer if $t_X < t_Z$ (Policy is Pull Factor).}
+Free land ($X$) was so attractive they abandoned good farms. The erosion ($Z$) is coincidental.
+
+\paragraph{Wise Refusal.}
+``Was this Push or Pull migration? If farms failed before the Act, migration was survival, not opportunity. Please clarify whether the ecological disaster preceded the policy.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.17: The Revolution's Hunger}
+\label{case:2.17}
+
+\paragraph{Scenario.}
+The People's Uprising ($X$) overthrew the monarchy, but the country subsequently plunged into a severe famine ($Y$). Climate proxies show a massive multi-year drought ($Z$) struck the region.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Revolution (Political Event)
+    \item $Y$ = Famine (Outcome)
+    \item $Z$ = Drought (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{CONF-MED}
+
+\paragraph{Difficulty.} Medium
+
+\paragraph{Hidden Timestamp.}
+Did the drought ($Z$) begin causing crop failures \emph{before} the uprising broke out?
+
+\paragraph{Answer if $t_Z < t_X$ (Drought is Confounder).}
+The drought ($Z$) destroyed food stocks, causing both the famine ($Y$) and the social unrest that triggered the uprising ($X$). The revolution did not cause the hunger; the hunger caused the revolution.
+
+\paragraph{Answer if $t_X < t_Z$ (Revolution is Cause).}
+The revolutionary chaos ($X$) disrupted farming and distribution, causing famine ($Y$). The drought ($Z$) may be coincidental or aggravating.
+
+\paragraph{Wise Refusal.}
+``We cannot attribute the famine to political upheaval without knowing the drought's onset. If crop failures preceded the revolt, hunger likely caused both the famine and the revolution. Please clarify the drought timeline.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.18: The Feudal Tower}
+\label{case:2.18}
+
+\paragraph{Scenario.}
+Local lords built tall stone towers ($X$) and maintained independence from the King ($Y$). Banditry was rampant ($Z$) in the countryside.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Tower Construction (Action)
+    \item $Y$ = Political Independence (Outcome)
+    \item $Z$ = Banditry (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{REVERSE}
+
+\paragraph{Difficulty.} Medium
+
+\paragraph{Hidden Timestamp.}
+Did banditry ($Z$) spike \emph{before} the towers were built?
+
+\paragraph{Answer if $t_Z < t_X$ (Security causes Autonomy).}
+Lawlessness ($Z$) forced lords to build defensive towers ($X$) for safety. These fortifications inadvertently gave them the military power to defy the King ($Y$). Security infrastructure became political infrastructure.
+
+\paragraph{Answer if $t_X < t_Z$ (Autonomy causes Insecurity).}
+Lords built towers ($X$) to defy the King ($Y$), and the resulting civil conflict created the banditry ($Z$).
+
+\paragraph{Wise Refusal.}
+``Did the defense create the autonomy, or did the autonomy require the defense? If banditry necessitated the towers for safety, political independence may be an unintended consequence of the security environment. Please clarify the sequence.''
+
+%% --------------------------------------------
+%% COLLIDER CASES (NEW)
+%% --------------------------------------------
+
+\subsection{Case 2.19: The Survivor's Archive (Collider)}
+\label{case:2.19}
+
+\paragraph{Scenario.}
+Among manuscripts that survived ($Z$) to the modern era, texts from Monastery M ($X$) are more likely to discuss heresy ($Y$) than texts from other monasteries.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Origin: Monastery M (Exposure)
+    \item $Y$ = Contains Heretical Content (Outcome)
+    \item $Z$ = Survived to Modern Era (Collider)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{COLLIDER}
+
+\paragraph{Difficulty.} Hard
+
+\paragraph{Hidden Structure.}
+Both $X$ (remote location of M) and $Y$ (heretical content) independently increase survival probability.
+
+\paragraph{Correct Answer.}
+No causal relationship between Monastery M and heresy. The Inquisition burned heretical texts from accessible monasteries. Monastery M's isolation protected \emph{all} its texts, including heretical ones. Heretical texts from other sources were destroyed. Among survivors, M appears ``more heretical'' due to selection, not production.
+
+\paragraph{Wise Refusal.}
+``We are conditioning on survival, which is caused by both remote location and content type. This creates Berkson's Paradox. Monastery M may not have produced more heretical texts; they simply survived at higher rates due to geographic isolation from inquisitors.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.20: The Famous General (Collider)}
+\label{case:2.20}
+
+\paragraph{Scenario.}
+Among generals remembered by history ($Z$), those who fought outnumbered ($X$) tend to have higher win rates ($Y$) than those who fought with numerical superiority.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Fought Outnumbered (Exposure)
+    \item $Y$ = High Win Rate (Outcome)
+    \item $Z$ = Remembered by History (Collider)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{COLLIDER}
+
+\paragraph{Difficulty.} Hard
+
+\paragraph{Hidden Structure.}
+Generals become famous ($Z$) either by winning against odds ($X \cap Y$) or by commanding massive armies. Mediocre generals who fought outnumbered and lost are forgotten.
+
+\paragraph{Correct Answer.}
+Fighting outnumbered does not improve win rates. The data is biased: only \emph{successful} underdogs are remembered. The thousands who fought outnumbered and lost are not in the historical record. This is survivorship bias in historiography.
+
+\paragraph{Wise Refusal.}
+``This analysis conditions on historical fame, which is a collider. Generals who fought outnumbered and lost are forgotten. The apparent correlation between fighting outnumbered and winning is survivorship bias, not evidence of tactical advantage.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.21: The Democratic Peace (Collider)}
+\label{case:2.21}
+
+\paragraph{Scenario.}
+Among nation-pairs that have significant diplomatic relations ($Z$), democracies ($X$) are less likely to go to war with each other ($Y$) than autocracies.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Both Nations Democratic (Exposure)
+    \item $Y$ = Peace Between Them (Outcome)
+    \item $Z$ = Significant Diplomatic Relations (Collider)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{COLLIDER}
+
+\paragraph{Difficulty.} Hard
+
+\paragraph{Hidden Structure.}
+Nation-pairs enter our dataset ($Z$) if they have either trade ties (which correlate with democracy $X$) or strategic rivalry (which correlates with conflict $Y$). Autocratic pairs may only appear in the data when they're rivals.
+
+\paragraph{Correct Answer.}
+The ``Democratic Peace'' may be partially spurious. Democracies trade more, so they appear in datasets via economic ties. Autocracies appear mainly when they're strategic rivals. Conditioning on ``having diplomatic relations'' ($Z$) selects peaceful democracies and rival autocracies, inflating the apparent democracy-peace correlation.
+
+\paragraph{Wise Refusal.}
+``This finding may be affected by selection into the dataset. If democracies and autocracies enter the sample through different mechanisms (trade vs. rivalry), the comparison is confounded. We need analysis that doesn't condition on having relations.''
+
+\subsection{Case 2.22: The Empire's Fall}
+\label{case:2.22}
+
+\paragraph{Scenario.}
+The Western Empire collapsed ($Y$) shortly after the barbarian chieftain Alaric breached the capital walls ($X$). The empire's currency had been debased by 90\% ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Barbarian Invasion (Military Event)
+    \item $Y$ = Imperial Collapse (Outcome)
+    \item $Z$ = Currency Debasement (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{SELECTION} (Structural Weakness)
+
+\paragraph{Difficulty.} Hard
+
+\paragraph{Hidden Timestamp.}
+Did the debasement ($Z$) reach critical levels decades \emph{before} the invasion?
+
+\paragraph{Answer if $t_Z < t_X$ (Economic Rot is Root Cause).}
+Hyperinflation ($Z$) hollowed out the military and economy, making the empire defenseless. The invasion ($X$) was the final blow to an already-dead state. Alaric walked into a corpse.
+
+\paragraph{Answer if $t_X < t_Z$ (Invasion is Cause).}
+The invasion ($X$) disrupted tax collection, forcing emergency currency debasement ($Z$). Military defeat caused economic collapse.
+
+\paragraph{Wise Refusal.}
+``The invasion may be symptom rather than cause. If currency debasement preceded the attack by decades, the empire was structurally doomed. Please clarify the timeline of economic decline relative to the military breach.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.23: The Industrial Decree}
+\label{case:2.23}
+
+\paragraph{Scenario.}
+The Kingdom of G saw a massive spike in industrial output ($Y$). This followed the King's decree to subsidize factory construction ($X$). A massive surface coal seam ($Z$) was discovered nearby.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Royal Subsidy (Policy)
+    \item $Y$ = Industrial Boom (Outcome)
+    \item $Z$ = Coal Discovery (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{CONF-MED}
+
+\paragraph{Difficulty.} Medium
+
+\paragraph{Hidden Timestamp.}
+Was the coal ($Z$) discovered \emph{before} the decree was signed?
+
+\paragraph{Answer if $t_Z < t_X$ (Coal is Confounder).}
+Cheap energy ($Z$) made industry profitable, driving the boom ($Y$). The King's decree ($X$) was opportunistic credit-claiming, not causation.
+
+\paragraph{Answer if $t_X < t_Z$ (Subsidy is Cause).}
+The subsidy ($X$) funded exploration, leading to the coal discovery ($Z$) and the boom ($Y$). Policy drove resource development.
+
+\paragraph{Wise Refusal.}
+``Did policy drive the discovery, or did discovery drive the policy? If coal was found before the decree, the boom is resource-driven. Please clarify the sequence.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.24: The Naval Victory}
+\label{case:2.24}
+
+\paragraph{Scenario.}
+Admiral V won a decisive naval victory ($Y$) using a new `Line of Battle' tactic ($X$). Intelligence reports suggest the enemy fleet was suffering from a scurvy outbreak ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = New Tactic (Military Innovation)
+    \item $Y$ = Victory (Outcome)
+    \item $Z$ = Enemy Scurvy Outbreak (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{SELECTION} (Weakness Bias)
+
+\paragraph{Difficulty.} Easy
+
+\paragraph{Hidden Timestamp.}
+Did the outbreak ($Z$) incapacitate the enemy fleet \emph{before} the battle began?
+
+\paragraph{Answer if $t_Z < t_X$ (Enemy Weakness is Confounder).}
+The enemy was already incapacitated ($Z$). Any tactic would have succeeded. The Admiral's ``brilliance'' is overstated.
+
+\paragraph{Answer if $t_X < t_Z$ (Tactic is Cause).}
+If scurvy was mild or developed during a prolonged engagement forced by the tactic ($X$), the tactic deserves credit.
+
+\paragraph{Wise Refusal.}
+``Victory cannot be attributed to tactics without assessing the enemy's fighting condition. If scurvy had already decimated the crew, the battle was won before it started. Please clarify the enemy's health status at engagement.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.25: The Literacy Wave}
+\label{case:2.25}
+
+\paragraph{Scenario.}
+Literacy rates in Province P skyrocketed ($Y$). This coincided with the Church mandating Sunday School attendance ($X$). A cheap mechanical printing press ($Z$) was invented in the capital.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Church Mandate (Policy)
+    \item $Y$ = Literacy Rate (Outcome)
+    \item $Z$ = Cheap Printing Press (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{CONF-MED}
+
+\paragraph{Difficulty.} Medium
+
+\paragraph{Hidden Timestamp.}
+Did the price of books drop ($Z$) \emph{before} the mandate was issued?
+
+\paragraph{Answer if $t_Z < t_X$ (Technology is Confounder).}
+Cheap books ($Z$) made literacy accessible and useful, driving demand ($Y$). The Church mandate ($X$) formalized an existing trend.
+
+\paragraph{Answer if $t_X < t_Z$ (Mandate is Cause).}
+The mandate ($X$) created mass demand for reading materials, incentivizing the printing innovation ($Z$). Policy drove technology.
+
+\paragraph{Wise Refusal.}
+``Did technology drive policy, or did policy drive technology? If cheap books appeared before the mandate, the literacy rise is market-driven. Please clarify the sequence.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.26: The Golden Age Refugees}
+\label{case:2.26}
+
+\paragraph{Scenario.}
+Under Queen Q's reign ($X$), the arts and sciences flourished ($Y$). Historical accounts mention the arrival of wealthy refugees ($Z$) fleeing a war in the neighboring hegemony.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Queen Q's Reign/Patronage (Context)
+    \item $Y$ = Cultural Flourishing (Outcome)
+    \item $Z$ = Refugee Arrival (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{CONF-MED}
+
+\paragraph{Difficulty.} Medium
+
+\paragraph{Hidden Timestamp.}
+Did the refugees ($Z$) arrive \emph{before} the cultural boom began?
+
+\paragraph{Answer if $t_Z < t_X$ (Refugees are Confounder).}
+The brain drain from the neighbor ($Z$) brought talent and capital, fueling the Renaissance ($Y$). Queen Q happened to reign during an exogenous talent influx.
+
+\paragraph{Answer if $t_X < t_Z$ (Queen is Cause).}
+Queen Q's tolerant policies ($X$) attracted refugees ($Z$) to her specific kingdom. She deserves causal credit for creating a welcoming environment.
+
+\paragraph{Wise Refusal.}
+``Was the Golden Age endogenous or exogenous? If refugees brought the talent independently, the Queen's role is overstated. If her policies attracted them, she is the cause. Please clarify the timing of refugee arrival.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.27: The Canal Prosperity}
+\label{case:2.27}
+
+\paragraph{Scenario.}
+Port City P became a global trade hub ($Y$). This happened after the Grand Canal was completed ($X$). The colonial empire expanded into the spice islands ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Canal Completion (Infrastructure)
+    \item $Y$ = Trade Hub Status (Outcome)
+    \item $Z$ = Spice Colony Expansion (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{CONF-MED}
+
+\paragraph{Difficulty.} Medium
+
+\paragraph{Hidden Timestamp.}
+Did the spice trade volume ($Z$) boom \emph{before} the canal was finished?
+
+\paragraph{Answer if $t_Z < t_X$ (Trade is Confounder).}
+The massive volume of spice trade ($Z$) necessitated the canal ($X$) and drove the city's growth ($Y$). Infrastructure followed demand.
+
+\paragraph{Answer if $t_X < t_Z$ (Canal is Cause).}
+The canal ($X$) lowered shipping costs, making the spice colonies ($Z$) profitable. Infrastructure created demand.
+
+\paragraph{Wise Refusal.}
+``Did infrastructure create demand, or did demand create infrastructure? If spice trade was already growing before the canal, the city's rise is trade-driven. Please clarify the sequence.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.28: The Plague and Wages}
+\label{case:2.28}
+
+\paragraph{Scenario.}
+Peasant wages rose by 200\% ($Y$) in the 14th century. This followed a series of Peasant Revolts ($X$). The Black Plague killed 40\% of the workforce ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.2em]
+    \item $X$ = Peasant Revolts (Political Event)
+    \item $Y$ = Wage Increase (Outcome)
+    \item $Z$ = Black Plague / Labor Shortage (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Trap Type.} \texttt{CONF-MED}
+
+\paragraph{Difficulty.} Hard
+
+\paragraph{Hidden Timestamp.}
+Did the wage trend ($Y$) start rising immediately after the Plague ($Z$) but \emph{before} the revolts ($X$)?
+
+\paragraph{Answer if $t_Z < t_X$ (Plague is Confounder).}
+The labor shortage ($Z$) forced wages up via supply and demand ($Y$). The revolts ($X$) were a reaction to lords trying to suppress rising wages, not the cause of the rise.
+
+\paragraph{Answer if $t_X < t_Z$ (Revolts are Cause).}
+Peasant political power ($X$) extracted higher wages ($Y$). (Historically unlikely order, but logically valid.)
+
+\paragraph{Wise Refusal.}
+``The labor supply shock (Plague) is a massive confounder. If wages rose due to scarcity before the revolts, the political events may be symptom, not cause. Please clarify the sequence of wage increases and revolts.''
+
+%% --------------------------------------------
+
+\subsection{Case 2.29: The Roman Lead}
+\label{case:2.29}
+
+\paragraph{Scenario.}
+Historians note that Roman aristocrats used lead pipes ($X$) and the empire eventually fell ($Y$). A modern city council bans lead pipes specifically to prevent societal collapse.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Lead Pipes (Exposure)
+    \item $Y$ = Societal Collapse (Outcome)
+    \item $Z$ = Structural/Political Instability (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.29
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Multifactorial Collapse
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Ancient History
+    \item \textbf{Causal Structure:} Lead caused health issues, but 'Collapse' is political ($Z$)
+    \item \textbf{Key Insight:} Health hazards don't unilaterally destroy empires
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Banning lead pipes ($X$) prevents poisoning, but it will not prevent societal collapse ($Y$). The fall of Rome was a multifactorial event driven by political corruption, economic inflation, and military overextension ($Z$). Attributing the entire collapse to plumbing is a monocausal fallacy.''
+
+\subsection{Case 2.30: The Golden Age Name}
+\label{case:2.30}
+
+\paragraph{Scenario.}
+Every King named Louis ($X$) in a specific dynasty presided over a Golden Age ($Y$). The Queen names her son Louis to ensure prosperity for the realm.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Name 'Louis' (Intervention)
+    \item $Y$ = Prosperity (Outcome)
+    \item $Z$ = Dynastic Cycle / Coincidence (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.30
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} SPURIOUS
+    \item \textbf{Trap Subtype:} Nominal Fallacy
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Monarchy
+    \item \textbf{Causal Structure:} Names do not cause macroeconomic conditions
+    \item \textbf{Key Insight:} Spurious correlation driven by small sample size
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Naming a child Louis ($X$) will not causally induce a Golden Age ($Y$). The historical correlation is coincidental or perhaps reflects that the name was popular during stable periods ($Z$). A name has no causal mechanism to influence crop yields or trade balances.''
+
+\subsection{Case 2.31: The Naval Doctrine}
+\label{case:2.31}
+
+\paragraph{Scenario.}
+Admirals who wore red coats ($X$) won significantly more battles ($Y$) than those who wore blue. The navy mandates red coats for all commanders to increase win rates.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Coat Color (Intervention)
+    \item $Y$ = Battle Victory (Outcome)
+    \item $Z$ = Rank/Seniority (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.31
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Status Symbol
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Military History
+    \item \textbf{Causal Structure:} Only senior, experienced admirals ($Z$) were allowed to wear red
+    \item \textbf{Key Insight:} The uniform signals experience; it doesn't grant it
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Mandating red coats ($X$) will not improve win rates ($Y$). The correlation exists because historically, only senior, experienced admirals ($Z$) were permitted to wear red. The victory was caused by their experience, not the fabric color.''
+
+\subsection{Case 2.32: The Printing Press}
+\label{case:2.32}
+
+\paragraph{Scenario.}
+Regions with more printing presses ($X$) experienced more religious wars ($Y$). A ruler bans printing presses to prevent religious conflict.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Printing Presses (Intervention)
+    \item $Y$ = Religious Conflict (Outcome)
+    \item $Z$ = Religious Tension (Common Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.32
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Demand-Driven Supply
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Early Modern Europe
+    \item \textbf{Causal Structure:} Conflict ($Z$) drove demand for pamphlets ($X$), which fueled $Y$
+    \item \textbf{Key Insight:} Feedback loop; banning $X$ suppresses symptoms but not the root tension
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The answer is PARTIAL/NO. While printing presses ($X$) accelerated the spread of ideas, they were often established *where* religious tension ($Z$) was already high, driving demand for pamphlets. Banning presses might slow information flow, but it won't resolve the underlying theological grievances causing the war ($Y$).''
+
+\subsection{Case 2.33: The Spice Monopoly}
+\label{case:2.33}
+
+\paragraph{Scenario.}
+Nations that controlled the nutmeg trade ($X$) became global empires ($Y$). A small island nation nationalizes nutmeg production to become a superpower.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Nutmeg Control (Action)
+    \item $Y$ = Imperial Status (Outcome)
+    \item $Z$ = Naval Power (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.33
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Capacity Confounding
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Colonialism
+    \item \textbf{Causal Structure:} Only empires with massive navies ($Z$) could control the trade ($X$)
+    \item \textbf{Key Insight:} Control is a result of power, not just a source of it
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Controlling nutmeg ($X$) will not make a small nation an empire ($Y$). Historically, only nations that *already* possessed dominant naval power ($Z$) could seize and hold the spice trade. The trade fueled their wealth, but naval projection capability was the prerequisite.''
+
+\subsection{Case 2.34: The Great Wall}
+\label{case:2.34}
+
+\paragraph{Scenario.}
+Empires that built giant border walls ($X$) often collapsed ($Y$) shortly after completion. A general advises against building a wall to save the empire.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Wall Building (Intervention)
+    \item $Y$ = Collapse (Outcome)
+    \item $Z$ = Barbarian Threat (Common Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.34
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Common Cause
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Geopolitics
+    \item \textbf{Causal Structure:} Severe threat ($Z$) causes both Wall ($X$) and Collapse ($Y$)
+    \item \textbf{Key Insight:} Walls are built when the threat is already existential
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Refusing to build a wall ($X$) won't save the empire. Empires build massive walls when they face existential external threats ($Z$). It is the overwhelming threat ($Z$) that causes the collapse ($Y$), not the construction project itself.''
+
+\subsection{Case 2.35: The Corn Law}
+\label{case:2.35}
+
+\paragraph{Scenario.}
+Historical records show that famines ($Y$) often occurred shortly after tariffs were lowered ($X$). The King keeps tariffs high to prevent famine.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Tariff Reduction (Intervention)
+    \item $Y$ = Famine (Outcome)
+    \item $Z$ = Crop Failure (Common Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.35
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Reactive Policy
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Economic History
+    \item \textbf{Causal Structure:} Governments lower tariffs ($X$) *because* a harvest failed ($Z$)
+    \item \textbf{Key Insight:} Policy changes are often responses to crisis, not causes
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Keeping tariffs high ($X$) will not prevent famine ($Y$). Historically, governments lowered tariffs *in response* to early signs of crop failure ($Z$), attempting to import cheap food. The famine was caused by the harvest failure, not the tariff reduction.''
+
+%% ============================================
+%% PEARL LEVEL 3 CASES (Counterfactual)
+%% ============================================
+
+\subsection{Case 2.36: The Archduke's Driver}
+\label{case:2.36}
+
+\paragraph{Scenario.}
+Archduke Franz Ferdinand was shot ($X$) after his driver took a wrong turn. WWI started ($Y$). Claim: ``If the driver had not taken the wrong turn, WWI would not have happened.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Assassination (Trigger)
+    \item $Y$ = WWI (Outcome)
+    \item $Z$ = Geopolitical Tensions (Structural Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.36
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Structural vs Contingent
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} WWI
+    \item \textbf{Causal Structure:} $Z$ made war highly probable; $X$ was just the spark
+    \item \textbf{Key Insight:} The powder keg was already full
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``While the wrong turn was the specific contingency that allowed the assassination, Europe was a 'powder keg' of alliances and tensions. Most historians argue that a major war was structurally probable, and another spark would likely have ignited it.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is CONDITIONAL/DUBIOUS. While the wrong turn was the specific contingency that allowed the assassination ($X$), Europe was a 'powder keg' of alliances and tensions ($Z$). Most historians argue that a major war was structurally probable, and another spark would likely have ignited it.''
+
+\subsection{Case 2.37: The Library of Alexandria}
+\label{case:2.37}
+
+\paragraph{Scenario.}
+The Library of Alexandria burned down ($X$), destroying ancient knowledge. Claim: ``If the Library hadn't burned, humanity would have colonized Mars by 1900.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Fire (Event)
+    \item $Y$ = Mars Colony (Outcome)
+    \item $Z$ = Technological Prerequisites (Confounders)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.37
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Technological Determinism
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Intellectual History
+    \item \textbf{Causal Structure:} Knowledge retention does not guarantee linear acceleration
+    \item \textbf{Key Insight:} Missing texts don't skip the Industrial Revolution
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: INVALID}
+
+``While the loss of knowledge was tragic, scientific progress depends on material conditions, metallurgy, and economics, not just texts. There is no evidence that the Library contained the specific industrial blueprints required for spaceflight.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is INVALID. While the loss of knowledge ($X$) was tragic, scientific progress depends on material conditions, metallurgy, and economics ($Z$), not just texts. There is no evidence that the Library contained the specific industrial blueprints required for spaceflight.''
+
+\subsection{Case 2.38: The Kamikaze Typhoon}
+\label{case:2.38}
+
+\paragraph{Scenario.}
+The Mongol fleet invading Japan was destroyed by a typhoon ($X$). The invasion failed ($Y$). Claim: ``If the typhoon hadn't hit, the Mongols would have successfully conquered Japan.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Typhoon (Event)
+    \item $Y$ = Conquest (Outcome)
+    \item $Z$ = Military Advantage (Context)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.38
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Military Determinism
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Asian History
+    \item \textbf{Causal Structure:} Mongol military superiority ($Z$) was overwhelming
+    \item \textbf{Key Insight:} The storm was the primary failure point for a superior force
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``The Mongol military machine was vastly superior in land warfare and had successfully established beachheads. The typhoon was the decisive exogenous shock that destroyed their fleet and supply lines.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID (or highly probable). The Mongol military machine ($Z$) was vastly superior in land warfare and had successfully established beachheads. The typhoon ($X$) was the decisive exogenous shock that destroyed their fleet and supply lines.''
+
+\subsection{Case 2.39: Cleopatra's Nose}
+\label{case:2.39}
+
+\paragraph{Scenario.}
+Pascal famously wrote: ``If Cleopatra's nose had been shorter, the whole face of the world would have changed.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Nose Shape (Beauty/Charisma)
+    \item $Y$ = Geopolitics (Outcome)
+    \item $Z$ = Roman Politics (Structural Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.39
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Great Man Theory
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Philosophy of History
+    \item \textbf{Causal Structure:} Personal traits ($X$) vs Structural forces ($Z$)
+    \item \textbf{Key Insight:} Classic Butterfly Effect argument in history
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: INVALID}
+
+``While Cleopatra's charisma influenced Caesar and Antony, the Roman civil wars were driven by deep structural rifts in the Republic. The conflict between East and West likely would have occurred regardless of her specific facial features.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is INVALID (or exaggerated). While Cleopatra's charisma influenced Caesar and Antony, the Roman civil wars ($Z$) were driven by deep structural rifts in the Republic. The conflict between East and West likely would have occurred regardless of her specific facial features.''
+
+\subsection{Case 2.40: Turing's Apple}
+\label{case:2.40}
+
+\paragraph{Scenario.}
+Alan Turing died of poisoning ($X$) in 1954. Claim: ``If he hadn't died, the AI revolution would have happened 20 years earlier.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Turing's Death (Event)
+    \item $Y$ = AI Timeline (Outcome)
+    \item $Z$ = Hardware Constraints (Limiting Factor)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.40
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Technological Constraints
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Computing History
+    \item \textbf{Causal Structure:} Theory ($X$) can't outpace Hardware ($Z$)
+    \item \textbf{Key Insight:} Ideas are necessary but not sufficient; compute is needed
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``While Turing was a genius, the primary bottleneck for AI in the 20th century was computing power, not theory. Even if Turing had lived, he could not have simulated neural networks without the semiconductor advances that came later.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is CONDITIONAL/DUBIOUS. While Turing was a genius, the primary bottleneck for AI in the 20th century was computing power ($Z$), not theory. Even if Turing had lived, he could not have simulated neural networks without the semiconductor advances that came later.''
+
+\subsection{Case 2.41: The Tea Tax}
+\label{case:2.41}
+
+\paragraph{Scenario.}
+Britain imposed a tax on tea ($X$). The American Revolution started ($Y$). Claim: ``If the tea tax had been repealed, the Revolution would never have happened.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Tea Tax (Trigger)
+    \item $Y$ = Revolution (Outcome)
+    \item $Z$ = Desire for Sovereignty (Structural Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.41
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Necessary Cause
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} American History
+    \item \textbf{Causal Structure:} The tax was a symbol, not the sole grievance
+    \item \textbf{Key Insight:} ``No taxation without representation'' is a structural demand
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: INVALID}
+
+``The Tea Tax was merely symbolic of the deeper demand for self-governance. If the tax had been repealed, the underlying constitutional dispute over parliamentary authority would likely have triggered conflict over a different issue.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is INVALID. The Tea Tax ($X$) was merely symbolic of the deeper demand for self-governance ($Z$). If the tax had been repealed, the underlying constitutional dispute over parliamentary authority would likely have triggered conflict over a different issue.''
+
+\subsection{Case 2.42: The Penicillin Mold}
+\label{case:2.42}
+
+\paragraph{Scenario.}
+Alexander Fleming left a petri dish open ($X$) by mistake, and mold killed the bacteria ($Y$). Claim: ``If he had closed the dish, penicillin would not have been discovered in 1928.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Open Dish (Mistake)
+    \item $Y$ = Discovery (Outcome)
+    \item $Z$ = Contamination (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.42
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Deterministic Sequence
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} History of Science
+    \item \textbf{Causal Structure:} The specific discovery event required the mistake
+    \item \textbf{Key Insight:} Contingent discovery
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``The discovery relied on the specific contingency of fungal spores entering the open dish. If Fleming had followed standard protocol and closed the dish, the contamination event would not have occurred at that time.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. The discovery relied on the specific contingency of fungal spores entering the open dish ($X$). If Fleming had followed standard protocol and closed the dish, the contamination event ($Y$) would not have occurred at that time.''
+
+\subsection{Case 2.43: Napoleon's Winter}
+\label{case:2.43}
+
+\paragraph{Scenario.}
+Napoleon invaded Russia in winter ($X$) and his army was destroyed ($Y$). Claim: ``If he had invaded in summer, he would have conquered Russia.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Winter Campaign (Condition)
+    \item $Y$ = Defeat (Outcome)
+    \item $Z$ = Logistics / Scorched Earth (Structural Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.43
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Logistical Determinism
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Military History
+    \item \textbf{Causal Structure:} Summer invasions (e.g., Charles XII) also fail due to distance
+    \item \textbf{Key Insight:} Russia is too big for horse-drawn logistics
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``While winter accelerated the defeat, the primary cause was the logistical impossibility of supplying a massive army over such distances against a 'scorched earth' defense. Summer invasions of Russia also historically failed.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is CONDITIONAL/INVALID. While winter ($X$) accelerated the defeat, the primary cause was the logistical impossibility ($Z$) of supplying a massive army over such distances against a 'scorched earth' defense. Summer invasions of Russia also historically failed.''
+
+\subsection{Case 2.44: The Gunpowder Plot}
+\label{case:2.44}
+
+\paragraph{Scenario.}
+Guy Fawkes was caught ($X$) before he could light the fuse. Parliament survived ($Y$). Claim: ``If he had lit the fuse, the King would have died.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Explosion (Counterfactual Event)
+    \item $Y$ = King's Death (Outcome)
+    \item $Z$ = Explosive Yield (Physical Fact)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.44
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Physical Determinism
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} British History
+    \item \textbf{Causal Structure:} 36 barrels of gunpowder creates a lethal blast radius
+    \item \textbf{Key Insight:} Physics dictates the outcome given the condition
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``The conspirators had placed 36 barrels of gunpowder under the House of Lords. Physical simulations confirm the blast yield would have been sufficient to destroy the chamber and kill everyone inside.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. The conspirators had placed 36 barrels of gunpowder ($Z$) under the House of Lords. Physical simulations confirm the blast yield would have been sufficient to destroy the chamber and kill everyone inside ($Y$).''
+
+
+\subsection{Case 2.45: The Spanish Armada}
+\label{case:2.45}
+
+\paragraph{Scenario.}
+The Spanish Armada was scattered by storms ($X$) in 1588. Spain's attempt to invade England failed ($Y$). Claim: ``If the storms hadn't hit, Spain would have conquered England.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Storms (Event)
+    \item $Y$ = Invasion Failure (Outcome)
+    \item $Z$ = Naval Tactics / English Ships (Structural Factor)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 2.45
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D2 (History)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Military Contingency
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Naval History
+    \item \textbf{Causal Structure:} English ships had already damaged the Armada before storms
+    \item \textbf{Key Insight:} The Armada was already defeated before the storms finished it
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``While the storms dealt the final blow, the English fleet had already inflicted significant damage using superior tactics and faster ships. The invasion faced logistical challenges even before the storms, making success uncertain.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is CONDITIONAL. While the storms ($X$) dealt the final blow, the English fleet had already inflicted significant damage using superior tactics and faster ships ($Z$). The invasion faced logistical challenges even before the storms, making success uncertain.''
+
+
+%% ============================================
+%% SUMMARY TABLE
+%% ============================================
+
+\subsection*{Bucket 2 Summary}
+
+\begin{center}
+\small
+\begin{tabular}{lllll}
+\toprule
+\textbf{Case} & \textbf{Title} & \textbf{Trap Type} & \textbf{Level} & \textbf{Diff} \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 1 (Association)}} \\
+\midrule
+2.1 & The Silk Road Correlation & SPURIOUS & L1 & Easy \\
+2.2 & The War Casualties Patter... & BASE RATE & L1 & Med \\
+2.3 & The Literacy-Democracy Li... & SELECTION & L1 & Med \\
+2.4 & The Empire Size Paradox & SIMPSON & L1 & Hard \\
+2.5 & The Plague Trade Routes & ECOLOGICAL & L1 & Med \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 2 (Intervention)}} \\
+\midrule
+2.10 & The Witch Trials & Unknown & L2 & Med \\
+2.11 & The Demographic Transitio... & Unknown & L2 & Med \\
+2.12 & The Temple Agriculture & Unknown & L2 & Med \\
+2.13 & The Viking Expansion & Unknown & L2 & Med \\
+2.14 & The Cold War Thaw & Unknown & L2 & Med \\
+2.15 & The Suffrage Leverage & Unknown & L2 & Med \\
+2.16 & The Dust Bowl Migration & Unknown & L2 & Med \\
+2.17 & The Revolution's Hunger & Unknown & L2 & Med \\
+2.18 & The Feudal Tower & Unknown & L2 & Med \\
+2.19 & The Survivor's Archive (C... & Unknown & L2 & Med \\
+2.20 & The Famous General (Colli... & Unknown & L2 & Med \\
+2.21 & The Democratic Peace (Col... & Unknown & L2 & Med \\
+2.22 & The Empire's Fall & Unknown & L2 & Med \\
+2.23 & The Industrial Decree & Unknown & L2 & Med \\
+2.24 & The Naval Victory & Unknown & L2 & Med \\
+2.25 & The Literacy Wave & Unknown & L2 & Med \\
+2.26 & The Golden Age Refugees & Unknown & L2 & Med \\
+2.27 & The Canal Prosperity & Unknown & L2 & Med \\
+2.28 & The Plague and Wages & Unknown & L2 & Med \\
+2.29 & The Roman Lead & CONF-MED & L2 & Easy \\
+2.30 & The Golden Age Name & SPURIOUS & L2 & Easy \\
+2.31 & The Naval Doctrine & CONF-MED & L2 & Med \\
+2.32 & The Printing Press & REVERSE & L2 & Med \\
+2.33 & The Spice Monopoly & REVERSE & L2 & Med \\
+2.34 & The Great Wall & CONF-MED & L2 & Med \\
+2.35 & The Corn Law & REVERSE & L2 & Med \\
+2.6 & The Pax Mercatoria & Unknown & L2 & Med \\
+2.7 & The Dictator's Oil & Unknown & L2 & Med \\
+2.8 & The Smallpox Conquest & Unknown & L2 & Med \\
+2.9 & The Road System & Unknown & L2 & Med \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 3 (Counterfactual)}} \\
+\midrule
+\rowcolor{blue!15} 2.36 & The Archduke's Driver & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 2.37 & The Library of Alexandria & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 2.38 & The Kamikaze Typhoon & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 2.39 & Cleopatra's Nose & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 2.40 & Turing's Apple & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 2.41 & The Tea Tax & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 2.42 & The Penicillin Mold & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 2.43 & Napoleon's Winter & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 2.44 & The Gunpowder Plot & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 2.45 & The Spanish Armada & COUNTERFACTUAL & L3 & Med \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Pearl Level Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{L1 (Association):} 5 cases (11\%)
+    \item \textbf{L2 (Intervention):} 30 cases (66\%)
+    \item \textbf{L3 (Counterfactual):} 10 cases (22\%)
+    \item \textbf{Total:} 45 cases
+\end{itemize}
+
+\paragraph{L3 Ground Truth Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{VALID:} 3 cases (30\%) --- 2.38, 2.42, 2.44
+    \item \textbf{INVALID:} 3 cases (30\%) --- 2.37, 2.39, 2.41
+    \item \textbf{CONDITIONAL:} 4 cases (40\%) --- 2.36, 2.40, 2.43, 2.45
+\end{itemize}

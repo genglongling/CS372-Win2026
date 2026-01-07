@@ -1,0 +1,1838 @@
+%% ============================================
+%% BUCKET 1: DAILY LIFE & PSYCHOLOGY
+%% T³ Benchmark Standard Format (Revised & Sorted)
+%% Theme: Reverse Causation, Selection, Colliders & Instruments
+%% Total Cases: 45 (L1: 5, L2: 30, L3: 10)
+%% ============================================
+
+\section{Bucket 1: Daily Life \& Psychology}
+\label{sec:bucket1}
+
+\subsection*{Bucket Overview}
+
+\paragraph{Domain.} Daily Life \& Psychology (D1)
+
+\paragraph{Core Themes.} Personal decisions, folk causation, lifestyle choices, behavioral economics.
+
+\paragraph{Signature Trap Types.} CONF-MED, REVERSE, SELECTION, COLLIDER, INSTRUMENT, REGRESSION
+
+\paragraph{Case Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Pearl Level 1 (Association):} 5 cases (11\%)
+    \item \textbf{Pearl Level 2 (Intervention):} 30 cases (67\%)
+    \item \textbf{Pearl Level 3 (Counterfactual):} 10 cases (22\%)
+    \item \textbf{Total:} 46 cases
+\end{itemize}
+
+%% ============================================
+%% PEARL LEVEL 1 CASES (Association)
+%% ============================================
+
+%% ============================================
+%% CASE 1.22
+%% ============================================
+
+\subsection{Case 1.22: The Diet Plateau}
+\label{case:1.22}
+
+\paragraph{Scenario.}
+A person starts a new diet and loses 8 pounds in the first week. Excited, they continue 
+strictly, but lose only 1 pound in week two and nothing in week three. They conclude 
+the diet ``stopped working'' and switch to a different program.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Diet program
+    \item $Y$ = Weight loss rate
+    \item $Z$ = Initial water weight / metabolic adjustment
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.22
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} REGRESSION TO MEAN
+    \item \textbf{Trap Subtype:} Initial Spike Regression
+    \item \textbf{Difficulty:} Easy
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+Initial weight loss includes water weight and glycogen depletion---an unsustainable rate.
+The ``plateau'' is regression to the true fat-loss rate ($\sim$1--2 lbs/week). The diet didn't
+stop working; expectations were set by an outlier week.
+
+\paragraph{Correct Reasoning.}
+The first week's loss was an extreme value (water + fat). Subsequent weeks show the true
+sustainable rate. Switching diets restarts the water-loss cycle, creating the illusion
+that new diets work better.
+
+\paragraph{Wise Refusal.}
+``This is regression to the mean. The 8-pound first week was an outlier driven by water 
+loss. The `plateau' is the true rate. Switching diets will restart the water-loss illusion 
+but won't change the underlying fat-loss rate.''
+
+%% ============================================
+%% CASE 1.23
+%% ============================================
+
+\subsection{Case 1.23: The Customer Service Strategy}
+\label{case:1.23}
+
+\paragraph{Scenario.}
+A store manager notices that customers who receive aggressive follow-up calls after 
+complaints give higher satisfaction ratings than those who receive standard responses.
+She mandates aggressive follow-up for all complaints, but overall satisfaction drops.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Aggressive follow-up
+    \item $Y$ = Satisfaction rating
+    \item $Z$ = Initial complaint severity
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.23
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} REGRESSION TO MEAN
+    \item \textbf{Trap Subtype:} Intervention at Extremes
+    \item \textbf{Difficulty:} Medium
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+Aggressive follow-up was selectively applied to the worst complaints (extreme negative).
+These naturally regress toward mean satisfaction. When applied universally, the intervention
+annoys customers with minor issues, lowering overall satisfaction.
+
+\paragraph{Correct Reasoning.}
+The apparent success of aggressive follow-up was confounded by selection at the extreme.
+Regression to mean, not the intervention, drove improvement in severe cases.
+
+\paragraph{Wise Refusal.}
+``This is regression to the mean combined with selection bias. The worst complaints 
+naturally improve regardless of intervention. Applying aggressive follow-up universally 
+removes the selection effect and reveals the true (negative) impact on minor complaints.''
+
+%% ============================================
+%% CASE 1.25
+%% ============================================
+
+\subsection{Case 1.25: The Monday Accident Spike}
+\label{case:1.25}
+
+\paragraph{Scenario.}
+Traffic data shows 23\% more accidents occur on Mondays than the weekly average. A safety
+advocate concludes: ``People are tired and distracted after weekends. We need Monday-specific
+safety campaigns.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Day of week (Monday)
+    \item $Y$ = Accident count
+    \item $Z$ = Traffic volume
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.25
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} BASE RATE NEGLECT
+    \item \textbf{Trap Subtype:} Denominator Blindness
+    \item \textbf{Difficulty:} Easy
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+Monday has 25\% more traffic than average (commuters returning). The accident \emph{rate}
+(per vehicle-mile) may be unchanged or even lower. Raw counts ignore the base rate.
+
+\paragraph{Correct Reasoning.}
+Compare accidents per vehicle-mile, not raw counts. The ``Monday spike'' may simply reflect
+more driving, not more dangerous driving.
+
+\paragraph{Wise Refusal.}
+``This is base rate neglect. Monday has more traffic than average. The relevant metric 
+is accidents per vehicle-mile, not raw accident count. The `spike' may simply reflect 
+more exposure, not more danger.''
+
+%% ============================================
+%% CASE 1.46 (L1)
+%% ============================================
+
+\subsection{Case 1.46: The Hot Hand Fallacy}
+\label{case:1.46}
+
+\paragraph{Scenario.}
+A basketball player made 5 shots in a row ($X$). The announcer declares they are ``on fire'' and will likely make the next shot ($Y$). Statistical analysis shows each shot is independent.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Recent Streak (Pattern)
+    \item $Y$ = Next Shot Probability (Prediction)
+    \item $Z$ = Base Rate / Independence (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.46
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} INDEPENDENCE
+    \item \textbf{Trap Subtype:} Gambler's Fallacy Variant
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Sports/Probability
+    \item \textbf{Causal Structure:} Past shots do not cause future shots
+    \item \textbf{Key Insight:} Humans see patterns in randomness
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This is the Hot Hand Fallacy. While intuitively compelling, statistical analysis shows that basketball shots are largely independent events. A streak of 5 made shots ($X$) does not causally increase the probability of the next shot ($Y$). The correlation is illusory pattern-matching.''
+
+
+%% ============================================
+%% CASE 1.47 (L1)
+%% ============================================
+
+\subsection{Case 1.47: The Astrology Match}
+\label{case:1.47}
+
+\paragraph{Scenario.}
+People born under the same zodiac sign ($X$) report feeling more compatible with each other ($Y$). An astrology website claims the stars determine relationship success.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Same Zodiac Sign (Observation)
+    \item $Y$ = Perceived Compatibility (Outcome)
+    \item $Z$ = Confirmation Bias (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.47
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} SPURIOUS
+    \item \textbf{Trap Subtype:} Confirmation Bias
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Psychology
+    \item \textbf{Causal Structure:} Belief ($Z$) drives both attention to ($X$) and perception of ($Y$)
+    \item \textbf{Key Insight:} People remember hits and forget misses
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This is an associational claim driven by confirmation bias ($Z$). People who believe in astrology remember cases where zodiac compatibility 'worked' and forget cases where it didn't. The birth month has no causal mechanism to affect personality or compatibility.''
+
+
+%% ============================================
+%% PEARL LEVEL 2 CASES (Intervention)
+%% ============================================
+
+%% ============================================
+%% CASE 1.10
+%% ============================================
+
+\subsection{Case 1.10: The Bad Food in Good Spots}
+\label{case:1.10}
+
+\paragraph{Scenario.}
+A food critic notices that restaurants with excellent views ($X$) tend to serve mediocre food ($Y$). They conclude that ``focusing on the view ruins the kitchen.'' However, their dataset only includes restaurants that are still in business ($Z$) after 5 years.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Great View (Location)
+    \item $Y$ = Food Quality (Product)
+    \item $Z$ = Survival in Market (Collider)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.10
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} COLLIDER
+    \item \textbf{Trap Subtype:} Survivorship / Berkson's Paradox
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Causal Structure:} $X \to Z \leftarrow Y$ (conditioning on survival)
+    \item \textbf{Key Insight:} Failed restaurants (bad view + bad food) are invisible
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Are we including failed restaurants in the dataset?
+
+\paragraph{Answer if Conditioned on $Z$ (Survival).}
+To survive ($Z$), a restaurant needs \emph{either} good food \emph{or} a good view. If it has a great view ($High X$), it can survive with mediocre food ($Low Y$). The ``Bad View + Bad Food'' restaurants went bankrupt and are missing, creating a spurious negative correlation.
+
+\paragraph{Wise Refusal.}
+``The negative correlation is likely spurious (Collider Bias). We are conditioning on business survival ($Z$). Restaurants with both bad views and bad food fail. We are left comparing `View-reliant' vs. `Food-reliant' survivors, creating the illusion of a tradeoff.''
+
+%% ============================================
+%% CASE 1.11
+%% ============================================
+
+\subsection{Case 1.11: The Pet Ownership Effect}
+\label{case:1.11}
+
+\paragraph{Scenario.}
+Families who adopted a dog ($X$) report walking 30\% more miles ($Y$). These families also moved to the suburbs ($Z$) recently.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Dog Adoption (Action)
+    \item $Y$ = Walking Miles (Outcome)
+    \item $Z$ = Move to Suburbs (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.11
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Environmental Confounding
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Causal Structure:} $Z \to X$ and $Z \to Y$ (suburbs enable both)
+    \item \textbf{Key Insight:} Suburban move provides space for dog and walking infrastructure
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the walking increase ($Y$) start immediately after the move ($Z$) but \emph{before} the dog arrived?
+
+\paragraph{Answer if $t_Z < t_X$ (Suburbs are Confounder).}
+The move ($Z$) provided sidewalks/nature, encouraging walking ($Y$) and providing space for a dog ($X$). The environment is the driver.
+
+\paragraph{Answer if $t_X < t_Z$ (Dog is Cause).}
+They wouldn't walk without the dog ($X$), even in the suburbs.
+
+\paragraph{Wise Refusal.}
+``Did the environment change behavior, or did the pet? If walking increased immediately after the move ($Z$) prior to the adoption, the dog is not the primary cause of the exercise.''
+
+%% ============================================
+%% CASE 1.12
+%% ============================================
+
+\subsection{Case 1.12: The Dating App Fatigue}
+\label{case:1.12}
+
+\paragraph{Scenario.}
+Users of Dating App D ($X$) report lower relationship satisfaction ($Y$) than non-users. These users also report high levels of `Fear of Missing Out' (FOMO) ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = App Usage (Activity)
+    \item $Y$ = Low Satisfaction (Outcome)
+    \item $Z$ = FOMO (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.12
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Personality Trait as Confounder
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Causal Structure:} Either $Z \to X, Y$ or $X \to Z \to Y$
+    \item \textbf{Key Insight:} FOMO personality may drive both app use and dissatisfaction
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did they have FOMO ($Z$) \emph{before} downloading the app?
+
+\paragraph{Answer if $t_Z < t_X$ (FOMO causes Usage).}
+People with high FOMO ($Z$) are chronically unsatisfied ($Y$) and use apps ($X$) constantly to check for better options. The personality trait is the cause.
+
+\paragraph{Answer if $t_X < t_Z$ (App causes FOMO).}
+The app's infinite scroll ($X$) creates FOMO ($Z$) and dissatisfaction ($Y$).
+
+\paragraph{Wise Refusal.}
+``Does the app create the mindset, or attract the mindset? If high FOMO ($Z$) scores predated the download, the user's personality is the confounder.''
+
+%% ============================================
+%% CASE 1.13
+%% ============================================
+
+\subsection{Case 1.13: The Organic Shopper}
+\label{case:1.13}
+
+\paragraph{Scenario.}
+Shoppers who buy organic food ($X$) have lower cancer rates ($Y$). We also know these shoppers have gym memberships ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Organic Food (Diet)
+    \item $Y$ = Cancer Rate (Outcome)
+    \item $Z$ = Gym Membership (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.13
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Healthy User Effect
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Causal Structure:} Health Consciousness $\to X, Z, Y$
+    \item \textbf{Key Insight:} Health-conscious people adopt multiple healthy behaviors
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did they start the gym ($Z$) \emph{before} switching to organic food?
+
+\paragraph{Answer if $t_Z < t_X$ (Lifestyle is Confounder).}
+Health-conscious people ($Z$) do everything right (exercise, sleep, diet). The organic food ($X$) is just one part of a bundle. The bundle causes ($Y$).
+
+\paragraph{Answer if $t_X < t_Z$ (Organic is Cause).}
+The pesticide reduction ($X$) is the specific biological mechanism.
+
+\paragraph{Wise Refusal.}
+``We cannot isolate the food's effect from the lifestyle. The gym membership ($Z$) indicates a `Healthy User' bias. Without controlling for overall health consciousness, the diet's impact is overstated.''
+
+%% ============================================
+%% CASE 1.14
+%% ============================================
+
+\subsection{Case 1.14: The Home Renovation}
+\label{case:1.14}
+
+\paragraph{Scenario.}
+Couples who renovated their kitchen ($X$) reported a higher divorce rate ($Y$) within two years. We also know these couples reported financial arguments ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Renovation (Event)
+    \item $Y$ = Divorce (Outcome)
+    \item $Z$ = Financial Arguments (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.14
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Pre-existing Marital Problems
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Causal Structure:} Either $Z \to X$ (desperate fix) or $X \to Z \to Y$
+    \item \textbf{Key Insight:} Renovation may be symptom of troubled marriage
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the financial arguments ($Z$) precede the renovation decision?
+
+\paragraph{Answer if $t_Z < t_X$ (Arguments are Confounder).}
+The marriage was already failing ($Z$). The renovation ($X$) was a desperate attempt to fix the home/relationship, which failed ($Y$).
+
+\paragraph{Answer if $t_X < t_Z$ (Renovation is Cause).}
+The stress/cost of the renovation ($X$) caused the arguments ($Z$) and the divorce ($Y$).
+
+\paragraph{Wise Refusal.}
+``Did the project break the marriage, or was the marriage already broken? If financial discord ($Z$) existed prior to the renovation, the project ($X$) was likely a symptom of a troubled relationship, not the cause of its end.''
+
+%% ============================================
+%% CASE 1.15
+%% ============================================
+
+\subsection{Case 1.15: The Reading Habit}
+\label{case:1.15}
+
+\paragraph{Scenario.}
+Children who read fiction ($X$) score higher on empathy tests ($Y$). Parent surveys show these households have strict `No TV' rules ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Reading Fiction (Activity)
+    \item $Y$ = Empathy Score (Outcome)
+    \item $Z$ = No TV Rule (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.15
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Parenting Style Confounding
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Causal Structure:} Parenting $\to X, Z, Y$
+    \item \textbf{Key Insight:} Engaged parenting drives both reading and empathy
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Was the `No TV' rule ($Z$) implemented \emph{before} the child started reading voluntarily?
+
+\paragraph{Answer if $t_Z < t_X$ (Parenting is Confounder).}
+Engaged parents ($Z$) foster empathy ($Y$) through interaction and also force reading ($X$). The parenting style is the cause.
+
+\paragraph{Answer if $t_X < t_Z$ (Reading is Cause).}
+The stories ($X$) train the brain in empathy ($Y$) regardless of rules.
+
+\paragraph{Wise Refusal.}
+``Is it the book or the parent? If the `No TV' rule ($Z$) signifies a high-engagement parenting style, that environment likely fosters empathy ($Y$) independently of the specific medium ($X$).''
+
+%% ============================================
+%% CASE 1.16
+%% ============================================
+
+\subsection{Case 1.16: The Telecommuting Happiness}
+\label{case:1.16}
+
+\paragraph{Scenario.}
+Employees allowed to work from home ($X$) report higher job satisfaction ($Y$). We also observe that these employees have seniority/tenure ($Z$) at the company.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = WFH (Policy)
+    \item $Y$ = Satisfaction (Outcome)
+    \item $Z$ = Seniority (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.16
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Tenure-Based Selection
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Causal Structure:} $Z \to X$ and $Z \to Y$ (seniority grants WFH and satisfaction)
+    \item \textbf{Key Insight:} WFH is a perk for already-satisfied senior employees
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did satisfaction ($Y$) rise \emph{after} WFH started, or was it high due to tenure ($Z$)?
+
+\paragraph{Answer if $t_Z < t_X$ (Tenure is Confounder).}
+Senior employees ($Z$) are generally happier/paid more ($Y$). They are also the only ones trusted with WFH ($X$).
+
+\paragraph{Answer if $t_X < t_Z$ (WFH is Cause).}
+WFH ($X$) increased satisfaction ($Y$) relative to their previous baseline.
+
+\paragraph{Wise Refusal.}
+``Is WFH a perk for happy employees, or the cause of happiness? If only senior staff ($Z$) get WFH, and senior staff are naturally more satisfied, we are observing a selection bias.''
+
+%% ============================================
+%% CASE 1.17
+%% ============================================
+
+\subsection{Case 1.17: The School Lottery}
+\label{case:1.17}
+
+\paragraph{Scenario.}
+Students who attend Charter School C ($X$) have higher future incomes ($Y$) than public school students. Critics argue this is selection bias (smart kids apply). However, admission to School C is determined solely by a random Lottery Number ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Attending School C (Treatment)
+    \item $Y$ = Future Income (Outcome)
+    \item $Z$ = Random Lottery Number (Instrument)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.17
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} INSTRUMENT
+    \item \textbf{Trap Subtype:} Natural Experiment / IV
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Causal Structure:} $Z \to X \to Y$ (lottery provides exogenous variation)
+    \item \textbf{Key Insight:} Randomization breaks confounding; allows causal inference
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Does the Lottery Number ($Z$) affect Income ($Y$) through any path other than School Admission ($X$)?
+
+\paragraph{Answer if $Z$ is Valid Instrument.}
+Since $Z$ is random, it is not correlated with student ability. If $Z$ correlates with $Y$, it \emph{must} be because $Z$ caused $X$, and $X$ caused $Y$. Therefore, we can confirm the school ($X$) actually causes higher income ($Y$).
+
+\paragraph{Wise Refusal.}
+``We do not need to control for student ability here. The Lottery Number ($Z$) acts as an Instrumental Variable. Since it is randomized, it allows us to isolate the causal effect of the school ($X$) free from selection bias.''
+
+%% ============================================
+%% CASE 1.18
+%% ============================================
+
+\subsection{Case 1.18: The Retirement Decline}
+\label{case:1.18}
+
+\paragraph{Scenario.}
+Individuals who retired early ($X$) showed a rapid cognitive decline ($Y$). Medical records show a diagnosis of minor strokes ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Early Retirement (Event)
+    \item $Y$ = Cognitive Decline (Outcome)
+    \item $Z$ = Minor Strokes (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.18
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Protopathic Bias
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Causal Structure:} $Z \to Y \to X$ (illness causes retirement, not reverse)
+    \item \textbf{Key Insight:} Early symptoms may cause the ``treatment'' (retirement)
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the strokes ($Z$) occur \emph{before} the retirement date?
+
+\paragraph{Answer if $t_Z < t_X$ (Illness causes Retirement).}
+The strokes ($Z$) caused early cognitive issues ($Y$) and forced the retirement ($X$). Retirement didn't cause the decline; the decline caused the retirement.
+
+\paragraph{Answer if $t_X < t_Z$ (Retirement causes Decline).}
+Lack of mental stimulation ($X$) caused the brain to rot ($Y$).
+
+\paragraph{Wise Refusal.}
+``Did they retire because they were declining, or decline because they retired? If health events ($Z$) preceded the retirement, the causal arrow is reversed.''
+
+%% ============================================
+%% CASE 1.19
+%% ============================================
+
+\subsection{Case 1.19: The Yoga Healer}
+\label{case:1.19}
+
+\paragraph{Scenario.}
+People attending Yoga classes ($X$) report chronic back pain ($Y$). They also visit chiropractors ($Z$) weekly.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Yoga (Activity)
+    \item $Y$ = Back Pain (Outcome)
+    \item $Z$ = Chiropractor (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.19
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Treatment-Seeking Bias
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Causal Structure:} $Y \to X$ (pain causes yoga attendance)
+    \item \textbf{Key Insight:} People with pain seek treatment, not treatment causes pain
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the back pain ($Y$) start \emph{before} the first yoga class?
+
+\paragraph{Answer if $t_Z < t_X$ (Selection Bias).}
+People with bad backs ($Y$) seek out Yoga ($X$) for relief. Yoga doesn't cause pain; pain causes Yoga attendance.
+
+\paragraph{Answer if $t_X < t_Z$ (Yoga causes Injury).}
+Improper Yoga ($X$) injured them ($Y$).
+
+\paragraph{Wise Refusal.}
+``Do healthy people do yoga, or do injured people do yoga? If the chiropractic visits ($Z$) predate the yoga habit, the correlation is due to people seeking relief, not yoga causing injury.''
+
+%% ============================================
+%% CASE 1.2
+%% ============================================
+
+\subsection{Case 1.2: The Social Media Depression}
+\label{case:1.2}
+
+\paragraph{Scenario.}
+Teenagers who spend 4+ hours on social media ($X$) score significantly higher on depression indices ($Y$). Clinical interviews reveal these users also report feelings of social isolation ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Heavy App Usage (Exposure)
+    \item $Y$ = Depression Score (Outcome)
+    \item $Z$ = Social Isolation (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.2
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Reverse Causation
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Causal Structure:} Either $X \to Z \to Y$ or $Z \to X$ and $Z \to Y$
+    \item \textbf{Key Insight:} Does the app cause isolation, or do isolated people seek the app?
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the feelings of isolation ($Z$) precede the heavy app usage?
+
+\paragraph{Answer if $t_Z < t_X$ (Isolation causes Usage).}
+Isolated teens ($Z$) retreat to social media ($X$) as a coping mechanism. The isolation causes the depression ($Y$). Banning the app won't fix the isolation.
+
+\paragraph{Answer if $t_X < t_Z$ (Usage causes Isolation).}
+The app ($X$) replaces real interaction, causing isolation ($Z$) and depression ($Y$). Banning the app would help.
+
+\paragraph{Wise Refusal.}
+``Does the app cause isolation, or do isolated people seek the app? We must know if the feelings of loneliness ($Z$) existed prior to the heavy usage ($X$) to determine the direction of causality.''
+
+%% ============================================
+%% CASE 1.20
+%% ============================================
+
+\subsection{Case 1.20: The Expensive Wedding}
+\label{case:1.20}
+
+\paragraph{Scenario.}
+Couples who spent >\$50k on their wedding ($X$) have shorter marriage durations ($Y$). We also know these couples took out large loans ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Wedding Cost (Action)
+    \item $Y$ = Short Marriage (Outcome)
+    \item $Z$ = Debt (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.20
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Debt as Mediator
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Causal Structure:} $X \to Z \to Y$ (cost creates debt stress)
+    \item \textbf{Key Insight:} The mechanism (debt) matters more than the event (wedding)
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the debt stress ($Z$) start immediately \emph{after} the wedding?
+
+\paragraph{Answer if $t_X < t_Z$ (Debt is Mediator).}
+The expensive wedding ($X$) caused debt ($Z$), and the financial stress ($Z$) killed the marriage ($Y$). The cost is the root cause.
+
+\paragraph{Answer if $t_Z < t_X$ (Debt is Confounder - Unlikely).}
+Unlikely order. More likely: Wealthy people spend \$50k without debt. Poor people take debt.
+
+\paragraph{Wise Refusal.}
+``Is it the party or the price tag? If the expense ($X$) generated unmanageable debt ($Z$), the debt is the mechanism of failure. If the couple was wealthy and had no debt, the cause lies elsewhere.''
+
+%% ============================================
+%% CASE 1.24
+%% ============================================
+
+\subsection{Case 1.24: The Productivity App Paradox}
+\label{case:1.24}
+
+\paragraph{Scenario.}
+Users who download a productivity app report 40\% higher task completion rates than
+non-users. The app company advertises: ``Our app makes you 40\% more productive!''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = App usage
+    \item $Y$ = Task completion rate
+    \item $Z$ = Pre-existing motivation/organization tendency
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.24
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} SELECTION BIAS
+    \item \textbf{Trap Subtype:} Motivated User Effect
+    \item \textbf{Difficulty:} Easy
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+People who download productivity apps are already more motivated ($Z$) than average.
+$Z$ causes both $X$ (app download) and $Y$ (high completion). The app may add nothing.
+
+\paragraph{Correct Reasoning.}
+This is self-selection bias. Comparing app users to non-users conflates the app's effect
+with pre-existing differences in motivation. A randomized trial would be needed.
+
+\paragraph{Wise Refusal.}
+``This is selection bias. People who download productivity apps are already more 
+motivated than average. The 40\% difference likely reflects pre-existing traits, 
+not app effectiveness. A randomized trial would be needed to isolate the app's effect.''
+
+%% ============================================
+%% CASE 1.27
+%% ============================================
+
+\subsection{Case 1.27: The Gym Membership Paradox}
+\label{case:1.27}
+
+\paragraph{Scenario.}
+Data shows people with premium gym memberships ($X$) have worse cardiovascular health ($Y$) than those with basic memberships. A strategy is proposed to improve population health by banning premium memberships.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Membership Tier (Premium)
+    \item $Y$ = Heart Health (Outcome)
+    \item $Z$ = Pre-existing Conditions (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.27
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Indication Bias / Rehab
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Health
+    \item \textbf{Causal Structure:} Sick people buy premium for rehab features ($Z \to X$)
+    \item \textbf{Key Insight:} Membership type is a proxy for illness severity
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Banning premium memberships ($X$) would not improve health ($Y$). The correlation is driven by selection bias ($Z$): people with pre-existing conditions often buy premium memberships for access to rehabilitation services (pools, saunas). They are sicker *before* they join.''
+
+%% ============================================
+%% CASE 1.28
+%% ============================================
+
+\subsection{Case 1.28: The Dating App Filter}
+\label{case:1.28}
+
+\paragraph{Scenario.}
+Users who set strict height filters ($X$) on dating apps report lower relationship satisfaction ($Y$). The app developer suggests removing the filter feature to boost satisfaction.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Strict Filter (Behavior)
+    \item $Y$ = Satisfaction (Outcome)
+    \item $Z$ = User Neuroticism / Pickiness (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.28
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Personality Confounding
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Psychology
+    \item \textbf{Causal Structure:} $Z \to X$ and $Z \to Y$ (Negative)
+    \item \textbf{Key Insight:} The filter doesn't cause unhappiness; the user's mindset does
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Removing the filter ($X$) is unlikely to improve satisfaction ($Y$). Users who set strict filters often have higher neuroticism or unrealistic expectations ($Z$), which causes both the filtering behavior and the subsequent dissatisfaction with matches.''
+
+%% ============================================
+%% CASE 1.29
+%% ============================================
+
+\subsection{Case 1.29: The Vitamin Surge}
+\label{case:1.29}
+
+\paragraph{Scenario.}
+People who take Vitamin D supplements ($X$) report higher rates of fatigue ($Y$) than non-users. A doctor recommends banning Vitamin D to reduce fatigue.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Supplement Use (Exposure)
+    \item $Y$ = Fatigue (Outcome)
+    \item $Z$ = Deficiency (Confounder/Reverse Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.29
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Therapeutic Use
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Nutrition
+    \item \textbf{Causal Structure:} Fatigue causes intake ($Y \to X$)
+    \item \textbf{Key Insight:} People take medicine because they are sick
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This is Reverse Causation ($Y \to X$). People take Vitamin D ($X$) *because* they feel fatigued ($Y$) or have been diagnosed with a deficiency ($Z$). Banning the supplement would remove the treatment, potentially worsening the fatigue.''
+
+%% ============================================
+%% CASE 1.3
+%% ============================================
+
+\subsection{Case 1.3: The Vitamin User Paradox}
+\label{case:1.3}
+
+\paragraph{Scenario.}
+People who take daily Multi-Vitamins ($X$) report more frequent minor health complaints ($Y$) than non-users. These users also visit doctors ($Z$) more frequently.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Vitamin Consumption (Treatment)
+    \item $Y$ = Health Complaints (Outcome)
+    \item $Z$ = Doctor Visits / Health Anxiety (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.3
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Self-Selection Bias
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Causal Structure:} $Z \to X$ and $Z \to Y$ (health anxiety confounds)
+    \item \textbf{Key Insight:} Health-anxious people self-select into vitamin use
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the frequency of doctor visits ($Z$) start \emph{before} the vitamin regimen?
+
+\paragraph{Answer if $t_Z < t_X$ (Anxiety is Confounder).}
+People with high health anxiety ($Z$) self-select into taking vitamins ($X$) and reporting symptoms ($Y$). The vitamins are likely harmless; the users are hyper-aware.
+
+\paragraph{Answer if $t_X < t_Z$ (Side Effects).}
+The vitamins ($X$) are causing side effects ($Y$) which force people to see the doctor ($Z$).
+
+\paragraph{Wise Refusal.}
+``Are vitamins causing sickness, or do sick people take vitamins? If high frequency of doctor visits ($Z$) preceded the vitamin intake, this is a selection effect, not a drug effect.''
+
+%% ============================================
+%% CASE 1.30
+%% ============================================
+
+\subsection{Case 1.30: The Early Riser CEO}
+\label{case:1.30}
+
+\paragraph{Scenario.}
+CEOs who wake up at 4 AM ($X$) run more profitable companies ($Y$). An aspiring entrepreneur decides to wake up at 4 AM to make their startup profitable.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Wake Time (Behavior)
+    \item $Y$ = Profit (Outcome)
+    \item $Z$ = Conscientiousness / Discipline (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.30
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Trait Confounding
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Productivity
+    \item \textbf{Causal Structure:} Trait $Z$ drives both discipline ($X$) and business success ($Y$)
+    \item \textbf{Key Insight:} Mimicking the habit doesn't transfer the underlying trait
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Forcing yourself to wake up at 4 AM ($X$) will not causally increase profit ($Y$). The correlation is driven by the trait of extreme conscientiousness ($Z$), which causes both early rising and business diligence. Without the underlying discipline, sleep deprivation may actually hurt performance.''
+
+%% ============================================
+%% CASE 1.31
+%% ============================================
+
+\subsection{Case 1.31: The Noise Cancelling Headphones}
+\label{case:1.31}
+
+\paragraph{Scenario.}
+Offices where employees wear noise-canceling headphones ($X$) have lower productivity ($Y$) than quiet offices. The manager bans the headphones to boost output.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Headphones (Indicator)
+    \item $Y$ = Productivity (Outcome)
+    \item $Z$ = Environmental Noise (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.31
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} CAUSAL ORDER
+    \item \textbf{Trap Subtype:} Coping Mechanism
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Workplace
+    \item \textbf{Causal Structure:} Noise ($Z$) causes Headphones ($X$) and Low Productivity ($Y$)
+    \item \textbf{Key Insight:} Headphones are a response to a bad environment
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Banning headphones ($X$) will likely lower productivity further. Employees wear them to cope with a noisy, distracting environment ($Z$). The noise is the root cause of the low productivity ($Y$). Removing the coping mechanism exposes them to the full distraction.''
+
+%% ============================================
+%% CASE 1.32
+%% ============================================
+
+\subsection{Case 1.32: The Expensive Wedding}
+\label{case:1.32}
+
+\paragraph{Scenario.}
+Couples who spend $>\$50k$ on weddings ($X$) have higher divorce rates ($Y$). A couple decides to spend less to save their marriage.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Wedding Cost (Variable)
+    \item $Y$ = Divorce Risk (Outcome)
+    \item $Z$ = Financial Stress / Materialism (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.32
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} PROXY
+    \item \textbf{Trap Subtype:} Value Misalignment
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Relationships
+    \item \textbf{Causal Structure:} High spending correlates with debt/materialism ($Z$), which causes divorce
+    \item \textbf{Key Insight:} The bill doesn't cause the breakup; the values do
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Artificially capping the budget ($X$) is unlikely to prevent divorce ($Y$). High spending correlates with divorce because it often indicates financial irresponsibility or prioritizing materialism ($Z$). Changing the price tag doesn't change the couple's underlying values or debt load.''
+
+%% ============================================
+%% CASE 1.33
+%% ============================================
+
+\subsection{Case 1.33: The Tutoring Trap}
+\label{case:1.33}
+
+\paragraph{Scenario.}
+Students who receive private tutoring ($X$) have lower test scores ($Y$) than those who don't. The school advises parents to stop tutoring to raise grades.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Tutoring (Intervention)
+    \item $Y$ = Scores (Outcome)
+    \item $Z$ = Academic Struggle (Indication)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.33
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Indication Bias
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Education
+    \item \textbf{Causal Structure:} Low scores ($Z$) trigger the hiring of tutors ($X$)
+    \item \textbf{Key Insight:} Tutors are hired for struggling students
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This is Indication Bias. Parents hire tutors ($X$) *because* their children are struggling ($Z$). The lower scores are the cause of the tutoring, not the result. Stopping tutoring would likely cause grades ($Y$) to fall even further.''
+
+%% ============================================
+%% CASE 1.34
+%% ============================================
+
+\subsection{Case 1.34: The Sleep Tracker}
+\label{case:1.34}
+
+\paragraph{Scenario.}
+Users of sleep tracking apps ($X$) report poorer sleep quality ($Y$) than non-users. You delete the app to sleep better.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = App Usage (Behavior)
+    \item $Y$ = Sleep Quality (Outcome)
+    \item $Z$ = Orthosomnia / Anxiety (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.34
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} FEEDBACK
+    \item \textbf{Trap Subtype:} Nocebo / Orthosomnia
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Health Tech
+    \item \textbf{Causal Structure:} Anxiety ($Z$) causes Usage ($X$); Usage ($X$) causes Anxiety ($Z$)
+    \item \textbf{Key Insight:} Obsessing over sleep metrics can ruin sleep
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The answer is PARTIAL/YES. While people with bad sleep ($Z$) download the app ($X$), the app itself can cause 'orthosomnia'---anxiety about the metrics that further degrades sleep ($Y$). Deleting the app breaks this feedback loop and may improve rest.''
+
+%% ============================================
+%% CASE 1.35
+%% ============================================
+
+\subsection{Case 1.35: The Luxury Car}
+\label{case:1.35}
+
+\paragraph{Scenario.}
+Drivers of luxury sports cars ($X$) get fewer speeding tickets ($Y$) than drivers of cheap sedans in a specific dataset. You buy a sports car to avoid tickets.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Car Type (Sports)
+    \item $Y$ = Ticket Rate (Outcome)
+    \item $Z$ = Countermeasures (Radar Detectors / Waze)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.35
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} OMITTED VARIABLE
+    \item \textbf{Trap Subtype:} Compensatory Behavior
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Driving
+    \item \textbf{Causal Structure:} $X$ owners buy $Z$, which prevents $Y$
+    \item \textbf{Key Insight:} The car doesn't repel tickets; the radar detector does
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Buying a sports car ($X$) is unlikely to reduce tickets ($Y$). The correlation is driven by the fact that owners of expensive cars often invest in radar detectors and countermeasures ($Z$). Without those specific tools, a fast car likely increases the risk of speeding tickets.''
+
+%% ============================================
+%% CASE 1.36
+%% ============================================
+
+\subsection{Case 1.36: The Meditation Retreat}
+\label{case:1.36}
+
+\paragraph{Scenario.}
+People returning from silent retreats ($X$) report higher anxiety ($Y$) than the general population. You cancel your retreat to stay calm.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Retreat Attendance (Event)
+    \item $Y$ = Anxiety Level (Outcome)
+    \item $Z$ = Life Crisis (Selection)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.36
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Crisis Selection
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Mental Health
+    \item \textbf{Causal Structure:} Crisis ($Z$) drives people to retreats ($X$)
+    \item \textbf{Key Insight:} Happy people rarely book silent retreats
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``People typically book silent retreats ($X$) when they are already experiencing high stress or a life crisis ($Z$). The high anxiety ($Y$) observed in attendees is a pre-existing condition, not an effect of the meditation. Canceling may deprive you of a coping mechanism.''
+
+%% ============================================
+%% CASE 1.4
+%% ============================================
+
+\subsection{Case 1.4: The ``Mean Date'' Paradox}
+\label{case:1.4}
+
+\paragraph{Scenario.}
+A user on a dating app observes that the most attractive people they match with ($X$) tend to have unpleasant personalities ($Y$). They conclude that ``beauty causes arrogance.'' However, the user only observes people who ``swiped right'' on them ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Attractiveness (Trait)
+    \item $Y$ = Kindness/Personality (Trait)
+    \item $Z$ = Successful Match (Collider)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.4
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} COLLIDER
+    \item \textbf{Trap Subtype:} Berkson's Paradox
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Causal Structure:} $X \to Z \leftarrow Y$ (conditioning on $Z$ creates spurious $X$-$Y$ correlation)
+    \item \textbf{Key Insight:} Selection on a common effect induces negative correlation between causes
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Are we observing the whole population, or conditioning on $Z=1$ (Match)?
+
+\paragraph{Answer if Unconditioned (Population).}
+In the general population, beauty ($X$) and kindness ($Y$) are likely independent.
+
+\paragraph{Answer if Conditioned on $Z$ (Matches).}
+By only looking at Matches ($Z$), a negative correlation is forced. If a person is unattractive ($Low X$), they \emph{must} be very nice ($High Y$) to match. If they are beautiful ($High X$), they don't \emph{need} to be nice. The ``Ugly + Mean'' quadrant is invisible (censored).
+
+\paragraph{Wise Refusal.}
+``This is Berkson's Paradox. Conditioning on `Matches' ($Z$) excludes the `Unattractive \& Unkind' population, creating a spurious negative correlation between beauty and personality.''
+
+%% ============================================
+%% CASE 1.5
+%% ============================================
+
+\subsection{Case 1.5: The Gym and the Wardrobe}
+\label{case:1.5}
+
+\paragraph{Scenario.}
+New gym members ($X$) report a sharp increase in self-esteem ($Y$). Credit card data shows these members also spent significantly on new clothing ($Z$) this month.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Gym Membership (Action)
+    \item $Y$ = Self-Esteem (Outcome)
+    \item $Z$ = Clothing Spend (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.5
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Common Cause (Life Event)
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Causal Structure:} Either $Z \to X, Z \to Y$ or $X \to Y \to Z$
+    \item \textbf{Key Insight:} Both behaviors may stem from a life event (breakup, new job)
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the clothing purchase ($Z$) happen \emph{before} the gym results became visible?
+
+\paragraph{Answer if $t_Z < t_X$ (Life Event is Confounder).}
+A major life change (e.g., breakup) prompted a `reinvention' spanning both wardrobe ($Z$) and gym ($X$). The esteem ($Y$) comes from the fresh start.
+
+\paragraph{Answer if $t_X < t_Z$ (Gym is Cause).}
+The gym ($X$) improved their body image, causing them to buy clothes ($Z$) to show it off.
+
+\paragraph{Wise Refusal.}
+``Is the wardrobe a result or a parallel symptom? If the shopping spree ($Z$) coincided with signing up ($X$), both are likely driven by a third factor (lifestyle reset).''
+
+%% ============================================
+%% CASE 1.6
+%% ============================================
+
+\subsection{Case 1.6: The Marriage Weight}
+\label{case:1.6}
+
+\paragraph{Scenario.}
+Men who entered a new marriage ($X$) showed a BMI increase ($Y$). We also observe they stopped playing competitive sports ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Marriage (Event)
+    \item $Y$ = BMI Increase (Outcome)
+    \item $Z$ = Quitting Sports (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.6
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Age/Lifestyle Confounding
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Causal Structure:} Either Age $\to Z, X, Y$ or $X \to Z \to Y$
+    \item \textbf{Key Insight:} Marriage and quitting sports may both be age-related
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did they quit sports ($Z$) \emph{before} the wedding date?
+
+\paragraph{Answer if $t_Z < t_X$ (Aging is Confounder).}
+They quit sports ($Z$) due to age/injury, which caused weight gain ($Y$). They also got married ($X$) around the same age. $X$ is coincidental.
+
+\paragraph{Answer if $t_X < t_Z$ (Marriage is Cause).}
+Marriage ($X$) changed their time priorities, forcing them to quit sports ($Z$). The marriage caused the weight gain via the mechanism of quitting sports.
+
+\paragraph{Wise Refusal.}
+``Did marriage force the lifestyle change, or did it just coincide with it? If the cessation of sports ($Z$) preceded the relationship ($X$), the marriage is not the cause.''
+
+%% ============================================
+%% CASE 1.7
+%% ============================================
+
+\subsection{Case 1.7: The Vacation Effect}
+\label{case:1.7}
+
+\paragraph{Scenario.}
+Users of the `CalmMind' app ($X$) report lower anxiety levels ($Y$). These users also recently returned from a vacation ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = App Usage (Treatment)
+    \item $Y$ = Lower Anxiety (Outcome)
+    \item $Z$ = Vacation (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.7
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Temporal Confounding
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Causal Structure:} $Z \to X$ and $Z \to Y$ (vacation drives both)
+    \item \textbf{Key Insight:} Vacation provides both free time (for app) and relaxation
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the anxiety drop ($Y$) start \emph{during} the vacation ($Z$) regardless of app usage?
+
+\paragraph{Answer if $t_Z < t_X$ (Vacation is Cause).}
+The vacation ($Z$) lowered anxiety ($Y$). They downloaded the app ($X$) during the vacation because they had free time. The app is irrelevant.
+
+\paragraph{Answer if $t_X < t_Z$ (App is Cause).}
+They used the app ($X$) before the vacation and felt better.
+
+\paragraph{Wise Refusal.}
+``Attributing relief to the app ($X$) is confounded by the vacation ($Z$). If the anxiety reduction coincided with the trip, the environment likely played a larger role than the software.''
+
+%% ============================================
+%% CASE 1.8
+%% ============================================
+
+\subsection{Case 1.8: The Early Riser}
+\label{case:1.8}
+
+\paragraph{Scenario.}
+People who wake up at 5:00 AM ($X$) have higher salaries ($Y$). Survey data shows these individuals also work in the Finance/Stock sector ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Waking at 5 AM (Habit)
+    \item $Y$ = High Salary (Outcome)
+    \item $Z$ = Finance Job (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.8
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Reverse Causation (Job $\to$ Habit)
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Causal Structure:} $Z \to X$ and $Z \to Y$ (job causes both)
+    \item \textbf{Key Insight:} The job requires early hours; the habit doesn't cause success
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did they wake up at 5 AM \emph{before} they got the Finance job?
+
+\paragraph{Answer if $t_Z < t_X$ (Job causes Habit).}
+The Finance job ($Z$) pays well ($Y$) but requires early hours ($X$). Waking up early doesn't cause wealth; the job causes both.
+
+\paragraph{Answer if $t_X < t_Z$ (Habit causes Success).}
+Discipline ($X$) led to getting a high-performance job ($Z$).
+
+\paragraph{Wise Refusal.}
+``Does the habit create the job, or does the job require the habit? If the early schedule ($X$) started only after accepting the Finance role ($Z$), the correlation is reverse-causal.''
+
+%% ============================================
+%% CASE 1.9
+%% ============================================
+
+\subsection{Case 1.9: The Gaming Aggression}
+\label{case:1.9}
+
+\paragraph{Scenario.}
+Children playing FPS video games ($X$) show higher aggression scores ($Y$) at school. School logs indicate these children are frequently involved in bullying incidents ($Z$) as victims.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Video Games (Activity)
+    \item $Y$ = Aggression (Outcome)
+    \item $Z$ = Bullying Victimization (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.9
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Victimization as Confounder
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Causal Structure:} Either $Z \to X, Y$ or $X \to Y \to Z$
+    \item \textbf{Key Insight:} Bullying victims may seek violent games as outlet
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the bullying incidents ($Z$) start \emph{before} the gaming habit?
+
+\paragraph{Answer if $t_Z < t_X$ (Bullying is Confounder).}
+Victims of bullying ($Z$) develop aggression ($Y$) and seek violent games ($X$) as an outlet. The games are a symptom.
+
+\paragraph{Answer if $t_X < t_Z$ (Games are Cause).}
+Games ($X$) cause aggression ($Y$), which leads to conflicts/bullying ($Z$).
+
+\paragraph{Wise Refusal.}
+``Are games the seed or the symptom? If the child was bullied ($Z$) prior to playing, the aggression ($Y$) likely stems from the victimization, not the software.''
+
+%% ============================================
+%% PEARL LEVEL 3 CASES (Counterfactual)
+%% ============================================
+
+%% ============================================
+%% CASE 1.37
+%% ============================================
+
+\subsection{Case 1.37: The Missed Flight}
+\label{case:1.37}
+
+\paragraph{Scenario.}
+Alice missed her flight ($X$) by 5 minutes. The plane later crashed ($Y$). She claims: ``If I had arrived on time, I would have died.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Arrival Time (Event)
+    \item $Y$ = Survival (Outcome)
+    \item $Z$ = Boarding Logic (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.37
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Deterministic Fate
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Probability
+    \item \textbf{Causal Structure:} Boarding is a necessary condition for being in the crash
+    \item \textbf{Key Insight:} Simple physical causality
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``Arriving on time would have resulted in Alice boarding the plane. Since the plane crashed with all souls lost, boarding was a sufficient condition for death in this scenario.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. Arriving on time ($X'$) would have resulted in Alice boarding the plane ($Z$). Since the plane crashed with all souls lost, boarding is a sufficient condition for death ($Y$) in this scenario.''
+
+%% ============================================
+%% CASE 1.38
+%% ============================================
+
+\subsection{Case 1.38: The Lottery Ticket}
+\label{case:1.38}
+
+\paragraph{Scenario.}
+Bob chose numbers 1-2-3-4-5-6 ($X$) and lost ($Y$). The winning numbers were 7-8-9-10-11-12. He claims: ``If I had chosen 7-8-9-10-11-12, I would have won.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Number Choice (Action)
+    \item $Y$ = Win/Loss (Outcome)
+    \item $W$ = Winning Numbers (Fixed State)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.38
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Rule-Based
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Gambling
+    \item \textbf{Causal Structure:} Win = ($X == W$)
+    \item \textbf{Key Insight:} Tautological counterfactual
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``The winning numbers were fixed by the draw. If Bob's choice had matched the winning numbers, the definition of the game dictates that he would have won.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. The winning numbers ($W$) were fixed by the draw. If Bob's choice ($X$) had matched $W$, the definition of the game dictates that he would have won ($Y$).''
+
+%% ============================================
+%% CASE 1.39
+%% ============================================
+
+\subsection{Case 1.39: The Rain Dance}
+\label{case:1.39}
+
+\paragraph{Scenario.}
+A tribe performed a rain dance ($X$) and it rained ($Y$). Critics say: ``If they hadn't danced, it would have rained anyway.'' Meteorology confirms a massive low-pressure front was present ($Z$).
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Rain Dance (Action)
+    \item $Y$ = Rain (Outcome)
+    \item $Z$ = Weather System (Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.39
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Overdetermination
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Superstition
+    \item \textbf{Causal Structure:} $Z \to Y$; $X \not\to Y$
+    \item \textbf{Key Insight:} Physical causes supersede ritual correlations
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``Rain is driven by atmospheric physics, not rituals. Since a low-pressure system was already present, the rain was physically determined regardless of whether the dance occurred.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. Rain is driven by atmospheric physics ($Z$), not rituals ($X$). Since a low-pressure system was already present, the rain ($Y$) was physically determined regardless of whether the dance occurred.''
+
+%% ============================================
+%% CASE 1.40
+%% ============================================
+
+\subsection{Case 1.40: The Job Offer}
+\label{case:1.40}
+
+\paragraph{Scenario.}
+Sarah rejected Job A ($X=0$) to take Job B. Job A's company went bankrupt ($Y$) a month later. She says: ``If I had taken Job A, the company would not have gone bankrupt.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Sarah's Employment (Intervention)
+    \item $Y$ = Bankruptcy (Outcome)
+    \item $Z$ = Financial Solvency (Structural Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.40
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Magnitude of Effect
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Business
+    \item \textbf{Causal Structure:} Single junior employee cannot reverse insolvency
+    \item \textbf{Key Insight:} Lack of causal power
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: INVALID}
+
+``A company's bankruptcy is driven by systemic financial issues. Unless Sarah was the CEO or a major investor, her acceptance of a standard role would not have provided the capital or leadership necessary to prevent the collapse.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is INVALID. A company's bankruptcy ($Y$) is driven by systemic financial issues ($Z$). Unless Sarah was the CEO or a major investor, her acceptance of a standard role ($X$) would not have provided the capital or leadership necessary to prevent the collapse.''
+
+%% ============================================
+%% CASE 1.41
+%% ============================================
+
+\subsection{Case 1.41: The Traffic Jam}
+\label{case:1.41}
+
+\paragraph{Scenario.}
+John took Route A ($X$) and hit traffic ($Y$). Route B was clear. He says: ``If I had taken Route B, I would have arrived earlier.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Route Choice (Action)
+    \item $Y$ = Arrival Time (Outcome)
+    \item $Z$ = Traffic Conditions (Observed State)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.41
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Observation-Based
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Navigation
+    \item \textbf{Causal Structure:} Route choice determines which traffic flow is experienced
+    \item \textbf{Key Insight:} Valid comparison of known states
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``Since it was observed that Route B was clear, taking that route would have causally resulted in a faster arrival time compared to the congested Route A.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. Since it was observed that Route B was clear ($Z$), taking that route ($X'$) would have causally resulted in a faster arrival time ($Y$) compared to the congested Route A.''
+
+%% ============================================
+%% CASE 1.42
+%% ============================================
+
+\subsection{Case 1.42: The Lucky Shirt}
+\label{case:1.42}
+
+\paragraph{Scenario.}
+A fan wore a red shirt ($X$) and their team won ($Y$). They claim: ``If I hadn't worn this shirt, they would have lost.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Shirt Color (Action)
+    \item $Y$ = Game Result (Outcome)
+    \item $Z$ = Player Performance (Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.42
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Spurious Link
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Sports
+    \item \textbf{Causal Structure:} $X$ and $Y$ are causally independent
+    \item \textbf{Key Insight:} Superstition is not causation
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: INVALID}
+
+``The outcome of a professional sports game is determined by the players' performance, which is causally independent of a fan's clothing choice.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is INVALID. The outcome of a professional sports game ($Y$) is determined by the players' performance ($Z$), which is causally independent of a fan's clothing choice ($X$).''
+
+%% ============================================
+%% CASE 1.43
+%% ============================================
+
+\subsection{Case 1.43: The Bitcoin Investment}
+\label{case:1.43}
+
+\paragraph{Scenario.}
+You didn't buy Bitcoin in 2010 ($X=0$). You claim: ``If I had bought \$100 of Bitcoin, I would be a millionaire today.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Purchase (Action)
+    \item $Y$ = Wealth (Outcome)
+    \item $Z$ = Selling Decision (Unobserved Mediator)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.43
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Path Dependency / Holding Power
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Finance
+    \item \textbf{Causal Structure:} Wealth depends on NOT selling during 2013, 2017, 2021
+    \item \textbf{Key Insight:} Buying is easy; holding is the hard counterfactual
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``While mathematically true if you held to the present, it assumes you would not have sold during the massive crashes of 2013, 2017, or 2021. Most early adopters sold early; assuming perfect holding power is a strong assumption.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is CONDITIONAL. While mathematically true if you held to the present, it assumes you would not have sold ($Z$) during the massive crashes of 2013, 2017, or 2021. Most early adopters sold early; assuming perfect holding power is a strong assumption.''
+
+%% ============================================
+%% CASE 1.44
+%% ============================================
+
+\subsection{Case 1.44: The Failed Cake}
+\label{case:1.44}
+
+\paragraph{Scenario.}
+You forgot baking powder ($X=0$) and the cake didn't rise ($Y$). You claim: ``If I had added baking powder, it would have risen.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Baking Powder (Ingredient)
+    \item $Y$ = Rising (Outcome)
+    \item $Z$ = Chemical Reaction (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.44
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Necessary Condition
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Chemistry/Cooking
+    \item \textbf{Causal Structure:} Powder is chemically necessary for rising
+    \item \textbf{Key Insight:} Valid mechanistic counterfactual
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``Baking powder releases carbon dioxide, which is the chemical mechanism responsible for leavening. Without it, the cake cannot rise. Adding it restores the necessary chemical reaction.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. Baking powder releases carbon dioxide ($Z$), which is the chemical mechanism responsible for leavening. Without it ($X=0$), the cake cannot rise. Adding it ($X=1$) restores the necessary chemical reaction.''
+
+%% ============================================
+%% CASE 1.45
+%% ============================================
+
+\subsection{Case 1.45: The Butterfly Effect}
+\label{case:1.45}
+
+\paragraph{Scenario.}
+A butterfly flapped its wings in Brazil ($X$). A tornado hit Texas ($Y$). Claim: ``If the butterfly hadn't flapped, the tornado would not have happened.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Flap (Micro-Event)
+    \item $Y$ = Tornado (Macro-Event)
+    \item $Z$ = Chaos / Sensitivity (Theory)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.45
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Chaos Theory
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Physics
+    \item \textbf{Causal Structure:} Sensitivity to initial conditions makes tracing impossible
+    \item \textbf{Key Insight:} Cannot verify specific causality in chaotic systems
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: INVALID}
+
+``While chaos theory suggests sensitivity to initial conditions, it is impossible to trace a specific tornado back to a specific butterfly amidst infinite other perturbations. The causal link is theoretical, not demonstrable.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is INVALID (or unverifiable). While chaos theory suggests sensitivity to initial conditions, it is impossible to trace a specific tornado ($Y$) back to a specific butterfly ($X$) amidst infinite other perturbations. The causal link is theoretical, not demonstrable.''
+
+
+%% ============================================
+%% CASE 1.48 (L3)
+%% ============================================
+
+\subsection{Case 1.48: The Password Change}
+\label{case:1.48}
+
+\paragraph{Scenario.}
+Your account was hacked ($Y$) last month. You had been using the same password for 5 years ($X$). You claim: ``If I had changed my password regularly, I would not have been hacked.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Password Age (Practice)
+    \item $Y$ = Account Breach (Outcome)
+    \item $Z$ = Data Breach Source (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 1.48
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D1 (Daily Life)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Mechanism Dependency
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Technology
+    \item \textbf{Causal Structure:} Depends on HOW the breach occurred
+    \item \textbf{Key Insight:} Phishing attacks work regardless of password age
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``The counterfactual depends on the attack vector. If the breach came from a database leak of your old password, regular changes would have helped. If it came from phishing or malware, password age is irrelevant---the new password would have been stolen too.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is CONDITIONAL. If the breach occurred because your password appeared in a leaked database ($Z$), regular rotation would have mitigated the risk. However, if you were phished or had malware, the attacker would have captured your new password just as easily.''
+
+
+%% ============================================
+%% SUMMARY TABLE
+%% ============================================
+
+\subsection*{Bucket 1 Summary}
+
+\begin{center}
+\small
+\begin{tabular}{lllll}
+\toprule
+\textbf{Case} & \textbf{Title} & \textbf{Trap Type} & \textbf{Level} & \textbf{Diff} \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 1 (Association)}} \\
+\midrule
+1.22 & The Diet Plateau & REGRESSION TO M & L1 & Easy \\
+1.23 & The Customer Service Stra... & REGRESSION TO M & L1 & Med \\
+1.25 & The Monday Accident Spike & BASE RATE NEGLE & L1 & Easy \\
+1.46 & The Hot Hand Fallacy & INDEPENDENCE & L1 & Med \\
+1.47 & The Astrology Match & SPURIOUS & L1 & Easy \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 2 (Intervention)}} \\
+\midrule
+1.10 & The Bad Food in Good Spot... & COLLIDER & L2 & Hard \\
+1.11 & The Pet Ownership Effect & CONF-MED & L2 & Med \\
+1.12 & The Dating App Fatigue & REVERSE & L2 & Med \\
+1.13 & The Organic Shopper & SELECTION & L2 & Easy \\
+1.14 & The Home Renovation & CONF-MED & L2 & Med \\
+1.15 & The Reading Habit & CONF-MED & L2 & Med \\
+1.16 & The Telecommuting Happine... & SELECTION & L2 & Easy \\
+1.17 & The School Lottery & INSTRUMENT & L2 & Hard \\
+1.18 & The Retirement Decline & REVERSE & L2 & Hard \\
+1.19 & The Yoga Healer & SELECTION & L2 & Easy \\
+1.2 & The Social Media Depressi... & REVERSE & L2 & Med \\
+1.20 & The Expensive Wedding & CONF-MED & L2 & Med \\
+1.24 & The Productivity App Para... & SELECTION BIAS & L2 & Easy \\
+1.27 & The Gym Membership Parado... & SELECTION & L2 & Med \\
+1.28 & The Dating App Filter & CONF-MED & L2 & Easy \\
+1.29 & The Vitamin Surge & REVERSE & L2 & Easy \\
+1.3 & The Vitamin User Paradox & SELECTION & L2 & Easy \\
+1.30 & The Early Riser CEO & CONF-MED & L2 & Med \\
+1.31 & The Noise Cancelling Head... & CAUSAL ORDER & L2 & Easy \\
+1.32 & The Expensive Wedding & PROXY & L2 & Med \\
+1.33 & The Tutoring Trap & SELECTION & L2 & Easy \\
+1.34 & The Sleep Tracker & FEEDBACK & L2 & Med \\
+1.35 & The Luxury Car & OMITTED VARIABL & L2 & Med \\
+1.36 & The Meditation Retreat & SELECTION & L2 & Easy \\
+1.4 & The ``Mean Date'' Paradox & COLLIDER & L2 & Hard \\
+1.5 & The Gym and the Wardrobe & CONF-MED & L2 & Med \\
+1.6 & The Marriage Weight & CONF-MED & L2 & Med \\
+1.7 & The Vacation Effect & CONF-MED & L2 & Easy \\
+1.8 & The Early Riser & REVERSE & L2 & Easy \\
+1.9 & The Gaming Aggression & CONF-MED & L2 & Med \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 3 (Counterfactual)}} \\
+\midrule
+\rowcolor{blue!15} 1.37 & The Missed Flight & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 1.38 & The Lottery Ticket & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 1.39 & The Rain Dance & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 1.40 & The Job Offer & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 1.41 & The Traffic Jam & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 1.42 & The Lucky Shirt & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 1.43 & The Bitcoin Investment & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 1.44 & The Failed Cake & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 1.45 & The Butterfly Effect & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 1.48 & The Password Change & COUNTERFACTUAL & L3 & Med \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Pearl Level Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{L1 (Association):} 5 cases (11\%)
+    \item \textbf{L2 (Intervention):} 30 cases (66\%)
+    \item \textbf{L3 (Counterfactual):} 10 cases (22\%)
+    \item \textbf{Total:} 45 cases
+\end{itemize}
+
+\paragraph{L3 Ground Truth Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{VALID:} 6 cases (60\%) --- 1.26, 1.37, 1.38, 1.39, 1.41, 1.44
+    \item \textbf{INVALID:} 3 cases (30\%) --- 1.40, 1.42, 1.45
+    \item \textbf{CONDITIONAL:} 2 cases (20\%) --- 1.43, 1.48
+\end{itemize}
+
+\paragraph{Trap Type Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \texttt{CONF-MED}: 11 cases (24\%)
+    \item \texttt{COUNTERFACTUAL}: 10 cases (22\%)
+    \item \texttt{SELECTION}: 7 cases (16\%)
+    \item \texttt{REVERSE}: 5 cases (11\%)
+    \item Other: 12 cases (27\%)
+\end{itemize}
+
+\paragraph{Difficulty Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item Easy: 18 cases (40\%)
+    \item Medium: 20 cases (44\%)
+    \item Hard: 7 cases (16\%)
+\end{itemize}

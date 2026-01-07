@@ -1,0 +1,1868 @@
+%% ============================================
+%% BUCKET 4: DISEASE & RECOVERY
+%% T³ Benchmark Standard Format (Revised & Sorted)
+%% Theme: Indication Bias, Immortal Time, Colliders & Regression to Mean
+%% Total Cases: 45 (L1: 5, L2: 30, L3: 10)
+%% ============================================
+
+\section{Bucket 4: Disease \& Recovery}
+\label{sec:bucket4}
+
+\subsection*{Bucket Overview}
+
+\paragraph{Domain.} Medicine (D4)
+
+\paragraph{Core Themes.} Clinical reasoning, epidemiology, RCTs, confounding by indication, lead-time bias, immortal time bias, placebo effects.
+
+\paragraph{Signature Trap Types.} SELECTION (Indication Bias), CONF-MED, COLLIDER, REVERSE (Protopathic Bias)
+
+\paragraph{Case Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Pearl Level 1 (Association):} 5 cases (11\%)
+    \item \textbf{Pearl Level 2 (Intervention):} 30 cases (66\%)
+    \item \textbf{Pearl Level 3 (Counterfactual):} 10 cases (22\%)
+    \item \textbf{Total:} 45 cases
+\end{itemize}
+
+%% ============================================
+%% PEARL LEVEL 1 CASES (Association)
+%% ============================================
+
+\subsection{Case 4.21: The Screening Paradox}
+\label{case:4.21}
+
+\paragraph{Scenario.}
+A cancer screening test detects tumors earlier. Patients diagnosed via screening live
+5 years longer after diagnosis than those diagnosed by symptoms. Hospital promotes
+screening as ``adding 5 years to life.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Screening detection
+    \item $Y$ = Post-diagnosis survival time
+    \item $Z$ = Lead time / length bias
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.21
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} LEAD TIME BIAS
+    \item \textbf{Trap Subtype:} Survival Measurement Artifact
+    \item \textbf{Difficulty:} Medium
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+Screening moves the diagnosis date earlier without necessarily changing the death date.
+If someone would die at 70 regardless, diagnosing at 60 vs. 65 adds 5 years of ``survival''
+without extending life. This is lead time bias.
+
+\paragraph{Correct Reasoning.}
+Compare total lifespan (birth to death), not post-diagnosis survival. The 5-year difference
+may be entirely lead time, with no actual life extension.
+
+%% --------------------------------------------
+
+\subsection{Case 4.22: The Supplement Study}
+\label{case:4.22}
+
+\paragraph{Scenario.}
+People who take vitamin D supplements have 30\% lower rates of depression. A wellness
+company markets vitamin D as ``nature's antidepressant.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Vitamin D supplementation
+    \item $Y$ = Depression rate
+    \item $Z$ = Outdoor activity, health consciousness, SES
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.22
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} CONFOUNDING
+    \item \textbf{Trap Subtype:} Healthy User Correlation
+    \item \textbf{Difficulty:} Easy
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+People who take supplements are more health-conscious ($Z$). They exercise more, eat
+better, and have higher socioeconomic status—all protective against depression. The
+supplement may be a marker, not a cause.
+
+\paragraph{Correct Reasoning.}
+Observational supplement studies are confounded by healthy user bias. Randomized trials
+of vitamin D for depression have shown mixed or null results.
+
+%% --------------------------------------------
+
+\subsection{Case 4.23: The Hospital Ranking}
+\label{case:4.23}
+
+\paragraph{Scenario.}
+Hospital A has a 95\% surgery survival rate while Hospital B has 90\%. A patient chooses
+Hospital A as ``clearly better.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Hospital choice
+    \item $Y$ = Survival rate
+    \item $Z$ = Patient case mix / severity
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.23
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} SIMPSON'S PARADOX
+    \item \textbf{Trap Subtype:} Case Mix Confounding
+    \item \textbf{Difficulty:} Medium
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+Hospital B may be a referral center for difficult cases. Within each severity category,
+Hospital B might have better outcomes. The aggregate rate penalizes hospitals that accept
+sicker patients. This is Simpson's Paradox.
+
+\paragraph{Correct Reasoning.}
+Compare risk-adjusted outcomes, not raw survival rates. The ``better'' hospital by
+aggregate rates may be worse for each patient type.
+
+%% --------------------------------------------
+
+\subsection{Case 4.24: The Birth Month Effect}
+\label{case:4.24}
+
+\paragraph{Scenario.}
+Children born in winter months have slightly higher rates of schizophrenia. A researcher
+proposes: ``Seasonal infections during pregnancy cause schizophrenia.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Birth month (winter)
+    \item $Y$ = Schizophrenia rate
+    \item $Z$ = Multiple confounders (SES, conception timing, reporting)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.24
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} ECOLOGICAL FALLACY
+    \item \textbf{Trap Subtype:} Aggregate Pattern Overinterpretation
+    \item \textbf{Difficulty:} Hard
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+The effect is tiny (5-10\% relative increase) and could reflect many factors: conception
+timing varies by SES, diagnostic practices vary seasonally, age-at-school-entry effects.
+Jumping to viral causation from a small aggregate correlation is ecological fallacy.
+
+\paragraph{Correct Reasoning.}
+The correlation is real but weak and multiply confounded. It doesn't support specific
+causal mechanisms like prenatal infection without additional evidence.
+
+%% --------------------------------------------
+
+\subsection{Case 4.25: The Treatment Responder}
+\label{case:4.25}
+
+\paragraph{Scenario.}
+A patient's chronic pain improved after trying the 5th treatment. Their doctor notes:
+``You're a responder to Treatment E. We should have tried it first.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Treatment E administration
+    \item $Y$ = Pain improvement
+    \item $Z$ = Natural fluctuation / regression to mean
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.25
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} REGRESSION TO MEAN
+    \item \textbf{Trap Subtype:} Sequential Trial Artifact
+    \item \textbf{Difficulty:} Medium
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+Chronic pain fluctuates naturally. After multiple failed treatments, eventual improvement
+is likely regression to mean, not treatment effect. The improvement would have occurred
+regardless of which treatment was tried 5th.
+
+\paragraph{Correct Reasoning.}
+To claim the patient is a ``responder,'' you'd need to show repeated improvement with
+Treatment E specifically. Single observations after multiple trials are unreliable.
+
+%% ============================================
+%% PEARL LEVEL 2 CASES (Intervention)
+%% ============================================
+
+\subsection{Case 4.1: The Immune Spike}
+\label{case:4.1}
+
+\paragraph{Scenario.}
+Patients treated with Antiviral A ($X$) showed a rapid decrease in viral load ($Y$). Blood panels reveal these patients also experienced a massive spike in Cytokine T-cells ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Antiviral Treatment (Treatment)
+    \item $Y$ = Viral Load Decrease (Outcome)
+    \item $Z$ = T-Cell Spike (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.1
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Spontaneous Remission Confounding
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Infectious Disease
+    \item \textbf{Causal Structure:} $Z \to Y$ with $X$ coincidental, or $X \to Z \to Y$
+    \item \textbf{Key Insight:} Natural immune response may precede and confound treatment
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the T-cell count ($Z$) begin rising \emph{before} the first dose was administered?
+
+\paragraph{Answer if $t_Z < t_X$ (Immune Response is Confounder).}
+The natural immune response ($Z$) was already clearing the virus ($Y$). The drug ($X$) was given during spontaneous recovery and receives false credit.
+
+\paragraph{Answer if $t_X < t_Z$ (Drug activates immune response).}
+The drug ($X$) triggered the immune response ($Z$), which cleared the virus ($Y$). The drug works via immune activation.
+
+\paragraph{Wise Refusal.}
+``We cannot attribute recovery to the drug without knowing if the immune response preceded treatment. If T-cells were rising before the first dose, this may be spontaneous remission. Please clarify the timing of the immune spike relative to treatment initiation.''
+
+%% ============================================
+%% CASE 4.2
+%% ============================================
+
+\subsection{Case 4.10: The Screening Lead-Time Trap}
+\label{case:4.10}
+
+\paragraph{Scenario.}
+Patients screened with New Test T ($X$) survived 5 years longer ($Y$) after diagnosis than those screened with the Old Test. Test T detects tumors at Stage 1 ($Z$), while Old Test detects at Stage 3.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = New Screening Test (Intervention)
+    \item $Y$ = Survival Time Post-Diagnosis (Outcome)
+    \item $Z$ = Earlier Detection Stage (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.10
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Lead-Time Bias
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Oncology
+    \item \textbf{Causal Structure:} Earlier clock start, not longer life
+    \item \textbf{Key Insight:} Longer survival ≠ later death
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the age at death change, or only the duration of known illness ($Y$)?
+
+\paragraph{Answer if Lead-Time Only.}
+The test ($X$) detects disease earlier ($Z$), starting the survival clock sooner. The patient dies at the same age but ``survives'' longer post-diagnosis. This is an illusion.
+
+\paragraph{Answer if True Benefit.}
+If the age at death is delayed (patients live to 75 vs. 70), the earlier detection ($Z$) enabled curative treatment.
+
+\paragraph{Wise Refusal.}
+``Longer post-diagnosis survival does not prove benefit. If patients die at the same age regardless of test, the `survival' improvement is lead-time bias. We need data on age at death, not survival post-diagnosis.''
+
+%% ============================================
+%% CASE 4.11
+%% ============================================
+
+\subsection{Case 4.11: The Transplant Waiting List}
+\label{case:4.11}
+
+\paragraph{Scenario.}
+Patients who received a Heart Transplant ($X$) lived significantly longer ($Y$) than patients who were placed on the waiting list but did not receive a heart.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Transplant (Treatment)
+    \item $Y$ = Survival (Outcome)
+    \item $Z$ = Time on Waiting List (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.11
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Immortal Time Bias
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Surgery
+    \item \textbf{Causal Structure:} Must survive wait to receive treatment
+    \item \textbf{Key Insight:} Treatment receipt requires survival during waiting period
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+How do we account for patients who died \emph{while waiting} for the transplant?
+
+\paragraph{Answer if Bias Present.}
+To receive a transplant ($X$), a patient \emph{must} survive the waiting period ($Z$). They are "immortal" during the wait. Patients who die early are classified as "No Transplant," artificially lowering the survival of the control group.
+
+\paragraph{Wise Refusal.}
+``This comparison suffers from Immortal Time Bias. Transplant recipients had to survive the waiting list to get the treatment. We must treat transplant status as a time-dependent covariate to avoid guaranteeing survival for the treated group during the wait.''
+
+%% ============================================
+%% CASE 4.12
+%% ============================================
+
+\subsection{Case 4.12: The Superbug Severity Trap}
+\label{case:4.12}
+
+\paragraph{Scenario.}
+Patients treated with Antibiotic Z ($X$) have a higher death rate ($Y$) than those on Antibiotic A. Antibiotic Z is reserved for Multi-Drug Resistant (MDR) infections ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Antibiotic Z (Treatment)
+    \item $Y$ = Mortality (Outcome)
+    \item $Z$ = MDR Infection Status (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.12
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Confounding by Indication
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Infectious Disease
+    \item \textbf{Causal Structure:} $Z \to X$ and $Z \to Y$
+    \item \textbf{Key Insight:} Last-resort drugs treat last-resort cases
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Was the resistance profile ($Z$) confirmed \emph{before} Drug Z was selected?
+
+\paragraph{Answer if $t_Z < t_X$ (Indication Bias).}
+MDR infections ($Z$) are inherently more deadly. Antibiotic Z is reserved for these cases. Higher mortality reflects the infection type, not drug toxicity.
+
+\paragraph{Answer if Drug is Toxic.}
+If Drug Z shows higher mortality even in non-MDR cases, the drug may have toxicity issues.
+
+\paragraph{Wise Refusal.}
+``Last-resort antibiotics are given to the sickest patients with resistant organisms. Higher mortality reflects patient selection, not drug failure. We need resistance-stratified analysis.''
+
+%% ============================================
+%% CASE 4.13
+%% ============================================
+
+\subsection{Case 4.13: The Runner's Mileage}
+\label{case:4.13}
+
+\paragraph{Scenario.}
+Runners wearing Shoe Brand H ($X$) reported higher rates of knee injury ($Y$). These runners log significantly higher weekly mileage ($Z$) than average.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Shoe Brand H (Exposure)
+    \item $Y$ = Knee Injury (Outcome)
+    \item $Z$ = Weekly Mileage (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.13
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Training Volume Confounding
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Sports Medicine
+    \item \textbf{Causal Structure:} $Z \to X, Y$ (serious runners choose specific gear)
+    \item \textbf{Key Insight:} Shoes are markers of training intensity
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the injury rate ($Y$) increase \emph{after} switching to Brand H, controlling for mileage?
+
+\paragraph{Answer if $t_Z$ dominates (Mileage is Confounder).}
+Serious runners ($Z$) choose Brand H ($X$) and also get injured ($Y$) due to volume. The shoe is a marker of training intensity.
+
+\paragraph{Answer if Shoe is Causal.}
+If injury rates rose after switching brands, controlling for mileage, the shoe may be problematic.
+
+\paragraph{Wise Refusal.}
+``High-mileage runners self-select into specific brands. Without controlling for training volume, we cannot attribute injuries to the shoe. Please provide mileage-adjusted injury rates.''
+
+%% ============================================
+%% CASE 4.14
+%% ============================================
+
+\subsection{Case 4.14: The Chocolate Prodrome}
+\label{case:4.14}
+
+\paragraph{Scenario.}
+Patients reporting severe migraines ($Y$) were found to have consumed chocolate ($X$) recently. These patients were in the `Prodrome' phase ($Z$) of a migraine attack.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Chocolate Consumption (Exposure)
+    \item $Y$ = Migraine (Outcome)
+    \item $Z$ = Prodrome Phase (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.14
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Protopathic Bias
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Neurology
+    \item \textbf{Causal Structure:} $Z \to X$ (prodrome causes craving)
+    \item \textbf{Key Insight:} Cravings are symptoms, not triggers
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the craving ($X$) start \emph{after} the biological onset of the attack ($Z$)?
+
+\paragraph{Answer if $t_Z < t_X$ (Prodrome causes craving).}
+The migraine's prodrome phase ($Z$) causes cravings for sweet/fatty foods ($X$). Chocolate is a \emph{symptom} of the impending migraine, not a cause.
+
+\paragraph{Answer if $t_X < t_Z$ (Chocolate triggers migraine).}
+If chocolate was consumed days before prodrome onset, it may be a trigger.
+
+\paragraph{Wise Refusal.}
+``This is classic protopathic bias. The prodrome phase causes food cravings before pain onset. Chocolate consumption may be a symptom of the impending attack, not a trigger. Please clarify the timing of consumption relative to prodrome onset.''
+
+%% ============================================
+%% CASE 4.15
+%% ============================================
+
+\subsection{Case 4.15: The Conscientiousness Marker}
+\label{case:4.15}
+
+\paragraph{Scenario.}
+People who floss daily ($X$) live 3 years longer ($Y$). These people also exercise regularly and don't smoke ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Daily Flossing (Behavior)
+    \item $Y$ = Longevity (Outcome)
+    \item $Z$ = Other Healthy Behaviors (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.15
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Conscientiousness Confounding
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Preventive
+    \item \textbf{Causal Structure:} Personality $\to X, Z, Y$
+    \item \textbf{Key Insight:} Flossing is a marker of conscientious personality
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Does the correlation hold for smokers who floss?
+
+\paragraph{Answer if Conscientiousness Confounds.}
+Flossing ($X$) is a marker for conscientiousness personality trait ($Z$). Conscientious people do everything right (exercise, diet, don't smoke), extending life ($Y$). Flossing itself may add nothing.
+
+\paragraph{Answer if Flossing is Causal.}
+Flossing reduces oral bacteria linked to cardiovascular disease. The biological pathway is direct.
+
+\paragraph{Wise Refusal.}
+``Flossing is bundled with other healthy behaviors. Without controlling for exercise and smoking, we cannot isolate flossing's effect. Please provide data on flossers who smoke.''
+
+%% ============================================
+%% CASE 4.16
+%% ============================================
+
+\subsection{Case 4.16: The Acne Maturation}
+\label{case:4.16}
+
+\paragraph{Scenario.}
+Teenagers using Cream C ($X$) saw their acne clear up ($Y$). These patients also passed the age of 19 ($Z$) during treatment.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Acne Cream (Treatment)
+    \item $Y$ = Acne Clearance (Outcome)
+    \item $Z$ = Age / Maturation (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.16
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Maturation Threat
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Dermatology
+    \item \textbf{Causal Structure:} $Z \to Y$ (natural hormonal resolution)
+    \item \textbf{Key Insight:} Acne resolves naturally with age
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the clearing ($Y$) coincide with the birthday ($Z$) or the treatment start date?
+
+\paragraph{Answer if $t_Z$ dominates (Maturation).}
+The hormonal phase ended naturally ($Z$), clearing acne ($Y$). The cream ($X$) was applied during natural remission.
+
+\paragraph{Answer if $t_X$ works.}
+If clearing began immediately after cream application, before age milestones, the cream has effect.
+
+\paragraph{Wise Refusal.}
+``Acne naturally resolves with hormonal maturation. Attributing clearance to the cream requires showing the cream works faster than natural resolution. Please compare treatment timing to age-related remission curves.''
+
+%% ============================================
+%% CASE 4.17
+%% ============================================
+
+\subsection{Case 4.17: The Frailty Flu Shot Paradox}
+\label{case:4.17}
+
+\paragraph{Scenario.}
+Seniors who got the Flu Shot ($X$) had lower all-cause mortality ($Y$) during winter. These seniors were mobile enough to travel to the clinic ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Flu Vaccination (Treatment)
+    \item $Y$ = Winter Mortality (Outcome)
+    \item $Z$ = Mobility / Clinic Access (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.17
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Frailty Bias
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Geriatrics
+    \item \textbf{Causal Structure:} $Z \to X, Y$ (baseline health determines both)
+    \item \textbf{Key Insight:} Vaccine recipients are healthier at baseline
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the mortality difference exist \emph{before} flu season started?
+
+\paragraph{Answer if Frailty Confounds.}
+Those who skipped the shot were too frail ($Z$) to leave home and more likely to die ($Y$) regardless of flu. The shot ($X$) is a marker of baseline health.
+
+\paragraph{Answer if Shot is Protective.}
+If the mortality gap appears only during flu season and disappears in summer, the shot has specific protective effect.
+
+\paragraph{Wise Refusal.}
+``Frailty bias inflates vaccine effectiveness. Seniors who get vaccinated are healthier at baseline. We need pre-season mortality data to separate frailty selection from vaccine effect.''
+
+%% ============================================
+%% CASE 4.18
+%% ============================================
+
+\subsection{Case 4.18: The Protein Recovery}
+\label{case:4.18}
+
+\paragraph{Scenario.}
+Athletes drinking Shake S ($X$) recovered faster ($Y$) from injury. They also increased their protein intake ($Z$) from whole foods.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Protein Shake (Treatment)
+    \item $Y$ = Recovery Speed (Outcome)
+    \item $Z$ = Total Protein Intake (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.18
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Total Intake vs.\ Specific Product
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Sports Medicine
+    \item \textbf{Causal Structure:} $Z \to Y$ (total protein matters, not source)
+    \item \textbf{Key Insight:} Protein is fungible across sources
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did recovery speed ($Y$) improve only when the shake ($X$) was added, or when total protein ($Z$) increased?
+
+\paragraph{Answer if Total Protein Matters.}
+Recovery ($Y$) depends on total protein ($Z$). The shake ($X$) is one source. Whole foods would work equally well.
+
+\paragraph{Answer if Shake has Specific Benefit.}
+If the shake contains compounds beyond protein (BCAAs, timing advantages), it may have independent effect.
+
+\paragraph{Wise Refusal.}
+``Protein shakes are often added alongside dietary improvements. Without controlling for total protein intake, we cannot attribute recovery to the shake specifically.''
+
+%% ============================================
+%% CASE 4.19
+%% ============================================
+
+\subsection{Case 4.19: The Hypotension Overtreatment}
+\label{case:4.19}
+
+\paragraph{Scenario.}
+Patients on Med M ($X$) saw their blood pressure stabilize ($Y$). However, they also reported frequent dizziness ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Medication M (Treatment)
+    \item $Y$ = BP Stabilization (Outcome)
+    \item $Z$ = Dizziness (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.19
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Overtreatment / Surrogate Outcome
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Cardiology
+    \item \textbf{Causal Structure:} $X \to$ overcorrection $\to Z$
+    \item \textbf{Key Insight:} ``Stable'' may mean dangerously low
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the dizziness ($Z$) correlate with pressure dips below normal range?
+
+\paragraph{Answer if Overtreatment.}
+The ``stability'' ($Y$) is actually dangerous hypotension. Dizziness ($Z$) signals the drug ($X$) is overcorrecting. The outcome is harm, not benefit.
+
+\paragraph{Answer if Side Effect.}
+Dizziness ($Z$) is an independent side effect, unrelated to the BP mechanism.
+
+\paragraph{Wise Refusal.}
+``Dizziness during BP treatment may signal overtreatment. If `stable' readings are below safe thresholds, the drug is causing hypotension, not health. Please clarify absolute BP values.''
+
+%% ============================================
+%% CASE 4.20
+%% ============================================
+
+\subsection{Case 4.2: The Surgery vs. PT}
+\label{case:4.2}
+
+\paragraph{Scenario.}
+Patients undergoing Knee Replacement ($X$) reported a 50\% reduction in pain ($Y$). These patients also adhered to a strict Physical Therapy regimen ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Knee Surgery (Treatment)
+    \item $Y$ = Pain Reduction (Outcome)
+    \item $Z$ = Physical Therapy (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.2
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Co-Intervention Confounding
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Orthopedics
+    \item \textbf{Causal Structure:} $X \to Z \to Y$ (PT as mediator) or $Z \to Y$ independently
+    \item \textbf{Key Insight:} PT may work without surgery
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the patient start the PT regimen ($Z$) \emph{before} the surgery date?
+
+\paragraph{Answer if $t_Z < t_X$ (PT is Confounder).}
+PT ($Z$) may have reduced pain ($Y$) independently. Surgery ($X$) may be unnecessary if PT alone works.
+
+\paragraph{Answer if $t_X < t_Z$ (PT is Mediator).}
+Surgery ($X$) requires PT ($Z$) for recovery. The surgery is the root cause; PT is the mechanism of benefit.
+
+\paragraph{Wise Refusal.}
+``Co-interventions confound surgical outcomes. If PT began before surgery, PT may deserve credit. If PT is mandatory post-surgery, it is a mediator. Please clarify whether PT preceded or followed the operation.''
+
+%% ============================================
+%% CASE 4.3
+%% ============================================
+
+\subsection{Case 4.20: The Unblinded Placebo}
+\label{case:4.20}
+
+\paragraph{Scenario.}
+Participants taking the experimental painkiller ($X$) reported 30\% less pain ($Y$). The trial was not double-blind, and the doctor told them it was `very strong' ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Experimental Drug (Treatment)
+    \item $Y$ = Pain Reduction (Outcome)
+    \item $Z$ = Doctor's Suggestion / Expectation (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.20
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Expectation Bias / Placebo
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Clinical Trials
+    \item \textbf{Causal Structure:} $Z \to Y$ (expectation drives subjective outcome)
+    \item \textbf{Key Insight:} Unblinded trials confound pharmacology with psychology
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the pain relief ($Y$) start \emph{before} the drug could biologically be absorbed?
+
+\paragraph{Answer if Placebo.}
+The doctor's suggestion ($Z$) created expectation of relief. If pain dropped before pharmacokinetics allow (instant relief), it is purely placebo.
+
+\paragraph{Answer if Drug Works.}
+If relief coincides with expected drug absorption timing, the chemical has effect.
+
+\paragraph{Wise Refusal.}
+``Unblinded trials confound drug effects with placebo effects. The doctor's suggestion biases patient reporting. Without a blinded control group, we cannot separate pharmacology from expectation.''
+
+%% ============================================
+%% CASE 4.21
+%% ============================================
+
+\subsection{Case 4.21: The Clinical Trial Survivor}
+\label{case:4.21}
+
+\paragraph{Scenario.}
+Among patients who completed ($Z$) a 12-month clinical trial, those on the experimental drug ($X$) had better outcomes ($Y$) than those on placebo.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Experimental Drug (Treatment)
+    \item $Y$ = Health Outcome (Outcome)
+    \item $Z$ = Trial Completion (Collider)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.21
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} COLLIDER
+    \item \textbf{Trap Subtype:} Per-Protocol vs.\ Intention-to-Treat
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Clinical Trials
+    \item \textbf{Causal Structure:} $X \to Z \leftarrow Y$ (dropout reasons differ by arm)
+    \item \textbf{Key Insight:} Completers are a biased sample
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Are we conditioning on trial completion ($Z$)?
+
+\paragraph{Correct Answer.}
+Patients drop out of trials due to side effects (drug arm) or lack of efficacy (placebo arm). Conditioning on completion ($Z$) excludes drug patients who had bad reactions and placebo patients who deteriorated. The ``completers'' are a biased sample. The drug may look better because its failures dropped out.
+
+\paragraph{Wise Refusal.}
+``Per-protocol analysis conditions on completion, which is a collider. Patients drop out for different reasons in each arm. Intention-to-treat analysis (including dropouts) is required for valid comparison.''
+
+%% ============================================
+%% CASE 4.22
+%% ============================================
+
+\subsection{Case 4.22: The Hospital Admission Paradox}
+\label{case:4.22}
+
+\paragraph{Scenario.}
+Among hospitalized patients ($Z$), those with Disease A ($X$) have lower rates of Disease B ($Y$) than expected from population data.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Has Disease A (Exposure)
+    \item $Y$ = Has Disease B (Outcome)
+    \item $Z$ = Hospitalized (Collider)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.22
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} COLLIDER
+    \item \textbf{Trap Subtype:} Berkson's Paradox
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Epidemiology
+    \item \textbf{Causal Structure:} $X \to Z \leftarrow Y$ (both diseases cause hospitalization)
+    \item \textbf{Key Insight:} Hospital-based studies create spurious correlations
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Are A and B independent causes of hospitalization?
+
+\paragraph{Correct Answer.}
+Both Disease A and Disease B independently cause hospitalization ($Z$). Among hospitalized patients, having A ``explains away'' why they are hospitalized, making B less likely conditional on $Z$. This is spurious negative correlation. In the general population, A and B may be independent or even positively correlated.
+
+\paragraph{Wise Refusal.}
+``Hospital-based studies condition on admission, which is a collider when multiple diseases cause admission. The apparent negative association between diseases A and B is Berkson's Paradox, not a biological relationship.''
+
+%% ============================================
+%% CASE 4.23
+%% ============================================
+
+\subsection{Case 4.23: The Published Treatment Effect}
+\label{case:4.23}
+
+\paragraph{Scenario.}
+Among published studies ($Z$), Drug D ($X$) shows a 40\% improvement over placebo ($Y$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Drug D Studies (Exposure)
+    \item $Y$ = Effect Size (Outcome)
+    \item $Z$ = Published (Collider)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.23
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} COLLIDER
+    \item \textbf{Trap Subtype:} Publication Bias
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Meta-Analysis
+    \item \textbf{Causal Structure:} $Y \to Z$ (positive results get published)
+    \item \textbf{Key Insight:} The file drawer contains null results
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Are we only seeing studies that reached publication?
+
+\paragraph{Correct Answer.}
+Studies are published ($Z$) if they show positive results ($Y$) or are methodologically important. Null results go in the file drawer. The 40\% effect is inflated by publication bias. The true effect, including unpublished trials, is likely smaller.
+
+\paragraph{Wise Refusal.}
+``Published literature conditions on publication, which selects for positive results. Meta-analyses of published studies overestimate treatment effects. We need data from trial registries to include unpublished null results.''
+
+%% ============================================
+%% CASE 4.24 (NEW - L3, from Bucket 11.1)
+%% ============================================
+
+\subsection{Case 4.28: The Grey Hair Cure}
+\label{case:4.28}
+
+\paragraph{Scenario.}
+Data shows that people with grey hair ($X$) have significantly higher heart attack rates ($Y$) than those with black hair. To prevent a heart attack, a man dyes his hair black ($X'$).
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Hair Color (Feature)
+    \item $Y$ = Heart Attack Risk (Outcome)
+    \item $Z$ = Age (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.28
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Spurious Correlation
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Epidemiology
+    \item \textbf{Causal Structure:} Age ($Z$) causes both Grey Hair ($X$) and Heart Risk ($Y$)
+    \item \textbf{Key Insight:} Treating the symptom does not cure the aging process
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Dyeing hair ($X$) will not reduce heart attack risk ($Y$). The correlation is spurious, driven entirely by Age ($Z$). Older people tend to have both grey hair and higher cardiovascular risk. Intervening on the cosmetic marker does not affect the biological cause.''
+
+\subsection{Case 4.29: The Hospital Bed}
+\label{case:4.29}
+
+\paragraph{Scenario.}
+Hospital records show that patients assigned to ICU beds ($X$) have a much higher mortality rate ($Y$) than patients in general ward beds. An administrator suggests reducing ICU beds to save lives.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = ICU Assignment (Intervention)
+    \item $Y$ = Mortality (Outcome)
+    \item $Z$ = Illness Severity (Indication)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.29
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Confounding by Indication
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Health Policy
+    \item \textbf{Causal Structure:} Severity ($Z$) causes Assignment ($X$) and Death ($Y$)
+    \item \textbf{Key Insight:} The bed doesn't kill; the patient is already critical
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Reducing ICU beds ($X$) would likely increase mortality, not decrease it. The high mortality rate in the ICU is due to Confounding by Indication ($Z$): only the most critically ill patients are sent there. The correlation reflects patient severity, not the danger of the bed.''
+
+\subsection{Case 4.3: The Seasonal Mood}
+\label{case:4.3}
+
+\paragraph{Scenario.}
+Patients prescribed Antidepressant D ($X$) in March showed significant mood improvement ($Y$) by May. Daily hours of sunlight ($Z$) increased by 3 hours during this period.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Antidepressant (Treatment)
+    \item $Y$ = Mood Improvement (Outcome)
+    \item $Z$ = Increased Sunlight (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.3
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Seasonal Confounding
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Psychiatry
+    \item \textbf{Causal Structure:} $Z \to Y$ (seasonal remission)
+    \item \textbf{Key Insight:} Spring cures SAD regardless of medication
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Does the improvement curve ($Y$) match the sunlight curve ($Z$) regardless of drug start date?
+
+\paragraph{Answer if $t_Z$ dominates (Seasonal Confounding).}
+Spring sunlight ($Z$) cures Seasonal Affective Disorder ($Y$). The drug ($X$) is riding the seasonal wave.
+
+\paragraph{Answer if $t_X$ dominates (Drug Works).}
+If patients starting in October also improve by December (when sunlight is decreasing), the drug ($X$) has independent effect.
+
+\paragraph{Wise Refusal.}
+``Prescribing antidepressants in March confounds drug effect with seasonal recovery. To isolate the drug's effect, we need data on patients starting treatment in autumn when sunlight is decreasing.''
+
+%% ============================================
+%% CASE 4.4
+%% ============================================
+
+\subsection{Case 4.30: The Cholesterol Paradox}
+\label{case:4.30}
+
+\paragraph{Scenario.}
+In a nursing home population, patients with higher cholesterol ($X$) are observed to live longer ($Y$) than those with low cholesterol. A doctor prescribes a high-fat diet to extend life.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Cholesterol Level (Biomarker)
+    \item $Y$ = Longevity (Outcome)
+    \item $Z$ = Frailty/Terminal Illness (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.30
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Survival Bias / Frailty
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Geriatrics
+    \item \textbf{Causal Structure:} Terminal illness ($Z$) causes weight loss and low cholesterol ($X$)
+    \item \textbf{Key Insight:} Low cholesterol in the elderly is often a marker of dying
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Prescribing a high-fat diet ($X$) is misguided. This 'Reverse Epidemiology' paradox occurs because terminal illness and frailty ($Z$) often cause weight loss and plummeting cholesterol levels before death. High cholesterol is a marker of relative robustness in this specific population, not a cause of longevity.''
+
+\subsection{Case 4.31: The Sleeping Pill}
+\label{case:4.31}
+
+\paragraph{Scenario.}
+Studies show people who take sleeping pills ($X$) die younger ($Y$) than those who don't. You decide to stop taking prescribed pills to extend your life.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Pill Usage (Intervention)
+    \item $Y$ = Mortality (Outcome)
+    \item $Z$ = Sleep Apnea / Chronic Stress (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.31
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Comorbidity
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Pharmacology
+    \item \textbf{Causal Structure:} Underlying conditions ($Z$) cause both Insomnia ($X$) and Death ($Y$)
+    \item \textbf{Key Insight:} Insomnia is often a symptom of fatal diseases
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The answer is PARTIAL/NO. While sleeping pills have risks, the correlation with mortality ($Y$) is heavily confounded by underlying conditions ($Z$) like sleep apnea, depression, or chronic pain that cause the insomnia. Stopping medication without treating the root cause may not improve survival.''
+
+\subsection{Case 4.32: The Wine Drinker}
+\label{case:4.32}
+
+\paragraph{Scenario.}
+Observational studies show moderate wine drinkers ($X$) have better heart health ($Y$) than teetotalers. A non-drinker starts drinking wine to improve their heart.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Wine Consumption (Intervention)
+    \item $Y$ = Heart Health (Outcome)
+    \item $Z$ = Sick Quitters (Selection)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.32
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Sick Quitter Effect
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Lifestyle
+    \item \textbf{Causal Structure:} The 'Non-Drinker' group includes recovered alcoholics and the chronically ill
+    \item \textbf{Key Insight:} The reference group is contaminated
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Starting to drink ($X$) is not recommended based on this data. The 'teetotaler' group often includes 'sick quitters' ($Z$)---people who stopped drinking due to illness or alcoholism. Compared to healthy moderate drinkers, this makes abstinence look artificially risky.''
+
+\subsection{Case 4.33: The Oxygen Tank}
+\label{case:4.33}
+
+\paragraph{Scenario.}
+People observed carrying portable oxygen tanks ($X$) display very poor physical endurance ($Y$). A gym bans oxygen tanks to improve member fitness.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Oxygen Tank (Indicator)
+    \item $Y$ = Endurance (Outcome)
+    \item $Z$ = COPD / Lung Failure (Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.33
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Reverse Causation
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Pulmonology
+    \item \textbf{Causal Structure:} Lung disease ($Z$) causes need for tank ($X$) and low endurance ($Y$)
+    \item \textbf{Key Insight:} The tank helps them breathe; removing it kills them
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Banning oxygen tanks ($X$) will not improve fitness; it will likely cause medical emergencies. People carry tanks *because* they have severe lung disease ($Z$), which causes the poor endurance ($Y$). The tank is a treatment, not the cause of the disability.''
+
+\subsection{Case 4.34: The Diet Soda}
+\label{case:4.34}
+
+\paragraph{Scenario.}
+Data shows that diet soda drinkers ($X$) are more likely to be overweight ($Y$) than regular soda drinkers. A person switches to sugary soda to lose weight.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Diet Soda (Intervention)
+    \item $Y$ = Weight (Outcome)
+    \item $Z$ = Weight Concern (Reverse Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.34
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Reverse Causation
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Nutrition
+    \item \textbf{Causal Structure:} Gaining weight ($Z$) causes people to switch to diet soda ($X$)
+    \item \textbf{Key Insight:} Switching to sugar adds calories, worsening the outcome
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Switching to sugary soda will likely cause weight gain, not loss. The correlation exists because people often switch to diet soda ($X$) *after* gaining weight ($Z$) in an attempt to control it. Reintroducing liquid sugar adds calories, mechanically increasing weight ($Y$).''
+
+\subsection{Case 4.4: The Supplement Survival}
+\label{case:4.4}
+
+\paragraph{Scenario.}
+Cancer patients taking Supplement S ($X$) had longer survival rates ($Y$). These patients also had higher socioeconomic status ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Supplement Use (Treatment)
+    \item $Y$ = Survival (Outcome)
+    \item $Z$ = Socioeconomic Status (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.4
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Healthy User Effect / SES Confounding
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Oncology
+    \item \textbf{Causal Structure:} $Z \to X, Y$ (wealth drives both)
+    \item \textbf{Key Insight:} Supplements are markers of resources, not causes of survival
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Is survival ($Y$) correlated with wealth ($Z$) in the non-supplement group?
+
+\paragraph{Answer if Wealth Confounds.}
+Wealthy patients ($Z$) afford better standard care, nutrition, and the supplement ($X$). The supplement is a marker of resources, not a cause of survival.
+
+\paragraph{Answer if Supplement Independent.}
+If survival improves even in low-SES supplement users, the supplement may have biological effect.
+
+\paragraph{Wise Refusal.}
+``Socioeconomic status confounds supplement studies. Wealthy patients have better baseline care. Unless the supplement shows benefit after stratifying by income, we cannot attribute survival to the supplement.''
+
+%% ============================================
+%% CASE 4.5
+%% ============================================
+
+\subsection{Case 4.5: The Appetite Suppressor}
+\label{case:4.5}
+
+\paragraph{Scenario.}
+Users of Drug W ($X$) lost 15 lbs on average ($Y$). These users also reported a significant reduction in daily caloric intake ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Drug W (Treatment)
+    \item $Y$ = Weight Loss (Outcome)
+    \item $Z$ = Caloric Reduction (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.5
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Mechanism vs.\ Confounder
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Obesity
+    \item \textbf{Causal Structure:} $X \to Z \to Y$ (valid mediator) or $Z \to X, Y$
+    \item \textbf{Key Insight:} Appetite suppression is the mechanism, not a confounder
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the calorie drop ($Z$) occur only \emph{after} starting the drug ($X$)?
+
+\paragraph{Answer if $t_X < t_Z$ (Drug causes appetite suppression).}
+The drug ($X$) suppresses appetite, causing calorie deficit ($Z$), causing weight loss ($Y$). The drug works via the mechanism of appetite. This is a valid mediator.
+
+\paragraph{Answer if $t_Z < t_X$ (Diet is Confounder).}
+The user started dieting ($Z$) independently, then added the drug ($X$). The drug may be a placebo.
+
+\paragraph{Wise Refusal.}
+``If the caloric reduction preceded the drug, the weight loss is diet-driven. If the drug caused the appetite change, it works via appetite suppression. Please clarify whether the dietary change followed drug initiation.''
+
+%% ============================================
+%% CASE 4.6
+%% ============================================
+
+\subsection{Case 4.6: The ICU Mortality Paradox}
+\label{case:4.6}
+
+\paragraph{Scenario.}
+Patients admitted to the ICU who received aggressive Procedure P ($X$) had a higher mortality rate ($Y$) than those who did not. These patients had higher APACHE II severity scores ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Aggressive Procedure (Treatment)
+    \item $Y$ = Mortality (Outcome)
+    \item $Z$ = Severity Score (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.6
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Confounding by Indication
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Critical Care
+    \item \textbf{Causal Structure:} $Z \to X$ and $Z \to Y$ (severity drives both)
+    \item \textbf{Key Insight:} Aggressive treatments are given to the sickest patients
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Was the severity score ($Z$) high \emph{before} the decision to operate ($X$)?
+
+\paragraph{Answer if $t_Z < t_X$ (Indication Bias).}
+Doctors use the procedure ($X$) on the sickest patients ($Z$). The procedure appears to ``cause'' death because it is given to those already dying. This is confounding by indication.
+
+\paragraph{Answer if $t_X < t_Z$ (Procedure Causes Harm).}
+Unlikely, but if severity scores rose after the procedure, it may have caused complications.
+
+\paragraph{Wise Refusal.}
+``This is classic confounding by indication. Aggressive procedures are reserved for the most severe cases. Higher mortality among procedure recipients reflects patient selection, not procedure harm. We need severity-adjusted analysis.''
+
+%% ============================================
+%% CASE 4.7
+%% ============================================
+
+\subsection{Case 4.7: The Cholesterol Co-Intervention}
+\label{case:4.7}
+
+\paragraph{Scenario.}
+Patients on Statin S ($X$) saw a 40\% drop in LDL cholesterol ($Y$). Surveys show these patients also switched to a Mediterranean Diet ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Statin Prescription (Treatment)
+    \item $Y$ = LDL Reduction (Outcome)
+    \item $Z$ = Diet Change (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.7
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Co-Intervention
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Cardiology
+    \item \textbf{Causal Structure:} $X \to Y$ and $Z \to Y$ (additive but inseparable)
+    \item \textbf{Key Insight:} Lifestyle changes often accompany prescriptions
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the diet change ($Z$) start \emph{before} the prescription ($X$)?
+
+\paragraph{Answer if $t_Z < t_X$ (Diet is Confounder).}
+The diet ($Z$) was already lowering LDL ($Y$). The doctor added the statin ($X$) during improvement.
+
+\paragraph{Answer if $t_X < t_Z$ (Both contribute).}
+The prescription ($X$) and diet counseling ($Z$) started together. Effects are additive but inseparable.
+
+\paragraph{Wise Refusal.}
+``Co-interventions are common in cardiovascular medicine. If diet preceded the statin, diet may deserve credit. If both started simultaneously, their effects are confounded. Please clarify the sequence.''
+
+%% ============================================
+%% CASE 4.8
+%% ============================================
+
+\subsection{Case 4.8: The Fertility Stress Loop}
+\label{case:4.8}
+
+\paragraph{Scenario.}
+Couples undergoing IVF Treatment ($X$) had a 30\% conception rate ($Y$). These couples also reported significantly reducing workplace stress ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = IVF Treatment (Treatment)
+    \item $Y$ = Conception (Outcome)
+    \item $Z$ = Stress Reduction (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.8
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Bidirectional Stress-Fertility Relationship
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Reproductive
+    \item \textbf{Causal Structure:} $Z \to Y$ or $Y \to Z$ (success causes relaxation)
+    \item \textbf{Key Insight:} Stress reduction may be cause or consequence of success
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the stress reduction ($Z$) begin \emph{before} the successful cycle?
+
+\paragraph{Answer if $t_Z < t_X$ (Stress is Confounder).}
+Reducing stress ($Z$) may have enabled natural conception or improved IVF odds. The lifestyle change ($Z$) deserves partial credit.
+
+\paragraph{Answer if $t_X < t_Z$ (IVF Success enables relaxation).}
+After successful implantation ($Y$), couples relax ($Z$). The stress reduction is a consequence, not a cause.
+
+\paragraph{Wise Refusal.}
+``The stress-fertility relationship is bidirectional. If stress reduction preceded the successful cycle, it may have contributed. If relaxation followed success, it is a consequence. Please clarify the timing.''
+
+%% ============================================
+%% CASE 4.9
+%% ============================================
+
+\subsection{Case 4.9: The Pain Fluctuation}
+\label{case:4.9}
+
+\paragraph{Scenario.}
+Patients reporting "Peak" chronic back pain ($Z$) were prescribed Pill X ($X$). One week later, they reported a 40\% reduction in pain ($Y$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Pill X (Treatment)
+    \item $Y$ = Pain Reduction (Outcome)
+    \item $Z$ = "Peak" Pain Level (Selection Criteria)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.9
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Regression to the Mean
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Pain Management
+    \item \textbf{Causal Structure:} Selection at extreme $\to$ guaranteed regression
+    \item \textbf{Key Insight:} Treatment at peak guarantees apparent improvement
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Do patients with peak pain ($Z$) improve spontaneously ($Y$) without treatment ($X$)?
+
+\paragraph{Answer if Regression to Mean.}
+Chronic pain fluctuates. Patients seek help only when pain is at its peak ($Z$). Statistically, the next measurement \emph{must} be lower ($Y$) even with a placebo. The drug takes credit for natural fluctuation.
+
+\paragraph{Wise Refusal.}
+``Treating at the peak of symptoms introduces `Regression to the Mean.' Patients naturally improve from extreme states. Without a control group that also started at peak pain, we cannot distinguish drug effect from natural fluctuation.''
+
+%% ============================================
+%% CASE 4.10
+%% ============================================
+
+%% ============================================
+%% PEARL LEVEL 3 CASES (Counterfactual)
+%% ============================================
+
+\subsection{Case 4.24: The Medication Overdose}
+\label{case:4.24}
+
+\paragraph{Scenario.}
+A patient received a 10x overdose of medication due to a pharmacy error. The patient died
+three hours later. The autopsy revealed a massive heart attack that began approximately
+one hour before the overdose was administered.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Medication overdose
+    \item $Y$ = Patient death
+    \item $Z$ = Heart attack (preempting cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.24
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Preemption
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Clinical / Malpractice
+    \item \textbf{Causal Structure:} Two sufficient causes; $Z$ temporally preempts $X$
+    \item \textbf{Key Insight:} But-for test fails when backup cause exists
+    \item \textbf{References:} Legal causation; preemption in tort law
+\end{itemize}
+
+\paragraph{The Counterfactual Query.}
+Did the overdose ($X$) \emph{cause} the death ($Y$)?
+
+\paragraph{If Timestamps Revealed.}
+\begin{itemize}[leftmargin=1.5em]
+    \item Heart attack began at $t=0$
+    \item Overdose administered at $t=1$ hour
+    \item Death occurred at $t=3$ hours
+\end{itemize}
+
+\paragraph{Correct Reasoning.}
+The but-for test asks: ``Would the patient have died if the overdose had not occurred?''
+
+Answer: \textbf{Yes}---the heart attack was already fatal. The overdose is \emph{not} a but-for
+cause of death; the heart attack preempted it.
+
+However, the overdose \emph{might} have accelerated death. If death would have occurred at $t=5$
+without the overdose, the overdose caused the \emph{timing} of death (2 hours earlier).
+
+\paragraph{Wise Refusal.}
+``This is a preemption case. The heart attack was already lethal before the overdose was administered. The overdose fails the but-for test for causing death---the patient would have died regardless. However, the overdose may have accelerated death, which could still constitute legal harm.''
+
+%% ============================================
+%% CASE 4.25 (NEW - L3, from Bucket 11.13)
+%% ============================================
+
+\subsection{Case 4.25: The Placebo Surgery}
+\label{case:4.25}
+
+\paragraph{Scenario.}
+A famous RCT compared arthroscopic knee surgery to sham surgery (incisions but no
+cartilage work). Both groups improved equally. Critics argue: ``The real surgery works
+through placebo effect---patients believe they had surgery.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Actual surgical intervention (vs.\ sham)
+    \item $Y$ = Patient-reported improvement
+    \item $Z$ = Patient's belief about surgery received
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.25
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Placebo Mechanism
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Clinical Trials / Orthopedics
+    \item \textbf{Causal Structure:} $X \to Y$ vs.\ $Z \to Y$ (mechanical vs.\ psychological)
+    \item \textbf{Key Insight:} Sham-controlled trials isolate specific mechanisms
+    \item \textbf{References:} Moseley et al.\ (2002) NEJM; surgical placebo ethics
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+The study design creates two counterfactual comparisons:
+\begin{enumerate}[leftmargin=1.5em]
+    \item Real surgery vs.\ no surgery (confounded by belief)
+    \item Real surgery vs.\ sham surgery (belief held constant)
+\end{enumerate}
+
+If both groups improve equally, the surgical mechanism ($X$) has no effect beyond belief ($Z$).
+
+\paragraph{Correct Reasoning.}
+The Moseley trial is a landmark example:
+\begin{itemize}[leftmargin=1.5em]
+    \item Patients in both arms believed they had real surgery (blinded)
+    \item Both groups showed identical improvement
+    \item Conclusion: The \emph{specific surgical intervention} adds nothing beyond placebo
+\end{itemize}
+
+This does not mean ``surgery works through placebo.'' It means the mechanical manipulation
+of cartilage ($X$) has no causal effect on outcomes ($Y$)---all benefit comes from patient
+belief ($Z$).
+
+\paragraph{Wise Refusal.}
+``This sham-controlled trial isolates the specific surgical mechanism from the belief effect. Equal improvement in both arms shows the cartilage intervention adds nothing beyond placebo. The mechanical hypothesis is falsified; patient belief is the active ingredient.''
+
+%% ============================================
+%% CASE 4.26 (NEW - L3, from Bucket 12.1)
+%% ============================================
+
+\subsection{Case 4.26: The Probability of Sufficiency}
+\label{case:4.26}
+
+\paragraph{Scenario.}
+A patient with cancer (90\% fatal within 5 years) receives a new drug (30\% effective at
+inducing remission). The patient survives 10 years. The patient thanks the drug. Skeptics
+note: ``10\% of untreated patients survive anyway.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Drug treatment
+    \item $Y$ = 10-year survival
+    \item $P(\text{survival} | \text{no drug}) = 0.10$
+    \item $P(\text{survival} | \text{drug}) = 0.40$
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.26
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Probability of Sufficiency (PS)
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Oncology
+    \item \textbf{Causal Structure:} Probabilistic counterfactual attribution
+    \item \textbf{Key Insight:} PS = P(would survive only with drug | survived with drug)
+    \item \textbf{References:} Pearl's Probabilities of Causation; PS formalism
+\end{itemize}
+
+\paragraph{The Counterfactual Query.}
+Was the drug \emph{sufficient} for this patient's survival?
+
+\paragraph{Correct Reasoning.}
+Probability of Sufficiency (PS):
+\[
+PS = P(Y_{X=1} = 1 | X = 0, Y = 0)
+\]
+``Given that this patient would have died without the drug, what's the probability the drug
+saved them?''
+
+Using the data:
+\begin{itemize}[leftmargin=1.5em]
+    \item 10\% survive without drug (would have survived anyway)
+    \item 40\% survive with drug
+    \item Additional 30\% survive \emph{because of} drug
+\end{itemize}
+
+For this specific survivor:
+\[
+P(\text{drug was sufficient} | \text{survived}) = \frac{0.30}{0.40} = 75\%
+\]
+
+There's a 75\% probability the drug saved this patient, and a 25\% probability they would
+have survived anyway.
+
+\paragraph{Wise Refusal.}
+``This requires Probability of Sufficiency, not simple correlation. Given the survival rates, there's approximately 75\% probability the drug was causally responsible for this patient's survival, and 25\% probability they were among the 10\% who would have survived regardless.''
+
+%% ============================================
+%% CASE 4.27 (NEW - L3, from Bucket 12.4)
+%% ============================================
+
+\subsection{Case 4.27: The Temporal Counterfactual}
+\label{case:4.27}
+
+\paragraph{Scenario.}
+A patient's cancer was diagnosed 6 months late due to a radiologist's error. At time of
+actual diagnosis, survival probability was 30\%. Expert testimony: ``If diagnosed on time,
+survival probability would have been 70\%.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Timing of diagnosis (actual vs.\ counterfactual)
+    \item $Y$ = Survival probability
+    \item $\Delta t$ = 6-month delay
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.27
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Temporal / Timing Effects
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Malpractice
+    \item \textbf{Causal Structure:} Delay $\to \Delta P(\text{survival})$
+    \item \textbf{Key Insight:} Harm quantified as change in probability, not binary outcome
+    \item \textbf{References:} Loss of chance doctrine in medical malpractice
+\end{itemize}
+
+\paragraph{The Counterfactual Query.}
+How much harm did the delay cause?
+
+\paragraph{Correct Reasoning.}
+The counterfactual comparison:
+\begin{itemize}[leftmargin=1.5em]
+    \item $P(\text{survival} | \text{timely diagnosis}) = 0.70$
+    \item $P(\text{survival} | \text{delayed diagnosis}) = 0.30$
+    \item $\Delta P = 0.40$ (40 percentage point reduction)
+\end{itemize}
+
+The delay \emph{caused} a 40 percentage point reduction in survival probability.
+
+This is ``loss of chance'' doctrine in law: even if the patient ultimately dies (or survives),
+the delay is causally responsible for the \emph{change in probability}.
+
+\paragraph{Wise Refusal.}
+``The harm from the delay is the reduction in survival probability: 70\% $\to$ 30\% = 40 percentage points of lost chance. Whether the patient ultimately survives or dies, the delay caused a measurable reduction in their survival odds.''
+
+%% =============================================================================
+%% BUCKET 4: MEDICINE & HEALTH (Add 5 cases: 4.21-4.25)
+%% Current L1: 0
+%% =============================================================================
+
+\subsection{Case 4.35: The Surgery Counterfactual}
+\label{case:4.35}
+
+\paragraph{Scenario.}
+A patient died on the operating table ($X$) during emergency surgery. The family claims: ``If we hadn't agreed to the surgery, he would have lived.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Surgery (Intervention)
+    \item $Y$ = Survival (Outcome)
+    \item $Z$ = Underlying Trauma (Base Rate)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.35
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Base Rate of Mortality
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Surgery
+    \item \textbf{Causal Structure:} Surgery is only attempted if $P(\text{Death}| \text{No Surgery})$ is high
+    \item \textbf{Key Insight:} Emergency surgery is a rescue attempt, not a cause of trauma
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: INVALID}
+
+``Emergency surgery is typically performed when the probability of death without intervention is near 100%. While the patient died during the procedure, they likely would have died even sooner without it.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is likely INVALID. Emergency surgery is typically performed when the probability of death without intervention ($Z$) is near 100%. While the patient died during the procedure ($X$), they likely would have died even sooner without it.''
+
+\subsection{Case 4.36: The Placebo Effect}
+\label{case:4.36}
+
+\paragraph{Scenario.}
+A patient took a sugar pill ($X$) for a headache, and the pain vanished ($Y$) an hour later. Claim: ``If he hadn't taken the pill, the headache would still be there.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Placebo (Intervention)
+    \item $Y$ = Pain Relief (Outcome)
+    \item $Z$ = Natural Regression (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.36
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Natural History
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Neurology
+    \item \textbf{Causal Structure:} Headaches differ from chronic pain; they self-resolve
+    \item \textbf{Key Insight:} Post hoc ergo propter hoc
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: INVALID}
+
+``Headaches are episodic and typically resolve naturally over time. It is highly probable that the pain would have subsided within an hour even without the placebo.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is INVALID. Headaches are episodic and typically resolve naturally ($Z$) over time. It is highly probable that the pain would have subsided within an hour even without the placebo ($X$).''
+
+\subsection{Case 4.37: The Vaccination}
+\label{case:4.37}
+
+\paragraph{Scenario.}
+Alice got vaccinated against the flu ($X$). She didn't catch the flu ($Y$) that season. Claim: ``If she hadn't been vaccinated, she definitely would have caught the flu.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Vaccine (Intervention)
+    \item $Y$ = Infection (Outcome)
+    \item $Z$ = Exposure (Chance)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.37
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Probabilistic Exposure
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Immunology
+    \item \textbf{Causal Structure:} $X$ reduces $P(Y|Z)$, but $Z$ is not guaranteed
+    \item \textbf{Key Insight:} You can't catch it if you aren't exposed
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``Vaccination reduces the probability of infection given exposure. However, if Alice was never exposed to the virus, she would have remained healthy even without the vaccine. Certainty ('definitely') is unwarranted.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is CONDITIONAL. Vaccination ($X$) reduces the probability of infection given exposure. However, if Alice was never exposed to the virus ($Z$), she would have remained healthy even without the vaccine.''
+
+\subsection{Case 4.38: The CPR Survival}
+\label{case:4.38}
+
+\paragraph{Scenario.}
+Bob went into cardiac arrest. A medic performed CPR ($X$) and Bob survived ($Y$). Claim: ``If the medic hadn't done CPR, Bob would have died.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = CPR (Intervention)
+    \item $Y$ = Survival (Outcome)
+    \item $M$ = Circulation (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.38
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Biological Necessity
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Emergency Medicine
+    \item \textbf{Causal Structure:} Cardiac arrest is fatal within minutes without $X$
+    \item \textbf{Key Insight:} Valid counterfactual based on known physiology
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``Unassisted cardiac arrest is fatal within minutes due to lack of oxygen to the brain. CPR provides the necessary mechanical circulation to sustain viability until rhythm is restored. Without it, death was biologically certain.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. Unassisted cardiac arrest is fatal within minutes due to lack of oxygen to the brain. CPR ($X$) provides the necessary mechanical circulation ($M$) to sustain viability until rhythm is restored. Without it, death was biologically certain.''
+
+\subsection{Case 4.39: The Genetic Test}
+\label{case:4.39}
+
+\paragraph{Scenario.}
+You took a genetic test ($X$) which revealed a high risk of cancer ($Y$). Claim: ``If I hadn't taken the test, my risk would be lower.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Test (Measurement)
+    \item $Y$ = Perceived Risk (Epistemic State)
+    \item $Z$ = Genetic Code (Ontic State)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.39
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Measurement vs Reality
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Genetics
+    \item \textbf{Causal Structure:} $X$ reveals $Z$; $X$ does not cause $Z$
+    \item \textbf{Key Insight:} Schrödinger's Cancer fallacy
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: INVALID}
+
+``The test revealed a pre-existing genetic reality. Your biological risk was identical before and after the test. Not testing would have changed your knowledge of the risk, but not the risk itself.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is INVALID. The test ($X$) revealed a pre-existing genetic reality ($Z$). Your biological risk was identical before and after the test. Not testing would have changed your *knowledge* of the risk, but not the risk itself.''
+
+\subsection{Case 4.40: The Antibiotic Cold}
+\label{case:4.40}
+
+\paragraph{Scenario.}
+You took antibiotics ($X$) for a viral cold. You recovered in 7 days ($Y$). Claim: ``If I hadn't taken them, I would still be sick.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Antibiotics (Intervention)
+    \item $Y$ = Recovery (Outcome)
+    \item $Z$ = Viral Etiology (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 4.40
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D4 (Medicine)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Wrong Mechanism
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Infectious Disease
+    \item \textbf{Causal Structure:} Antibiotics do not kill viruses
+    \item \textbf{Key Insight:} Colds are self-limiting
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: INVALID}
+
+``Antibiotics target bacteria and have no effect on viruses. A viral cold typically resolves naturally in about 7 days. You would have recovered in the same timeframe without the medication.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is INVALID. Antibiotics ($X$) target bacteria and have no effect on viruses ($Z$). A viral cold typically resolves naturally in about 7 days. You would have recovered in the same timeframe without the medication.''
+
+%% ============================================
+%% SUMMARY TABLE
+%% ============================================
+
+\subsection*{Bucket 4 Summary}
+
+\begin{center}
+\small
+\begin{tabular}{lllll}
+\toprule
+\textbf{Case} & \textbf{Title} & \textbf{Trap Type} & \textbf{Level} & \textbf{Diff} \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 1 (Association)}} \\
+\midrule
+4.21 & The Screening Paradox & LEAD TIME BIAS & L1 & Med \\
+4.22 & The Supplement Study & CONFOUNDING & L1 & Easy \\
+4.23 & The Hospital Ranking & SIMPSON'S PARAD & L1 & Med \\
+4.24 & The Birth Month Effect & ECOLOGICAL FALL & L1 & Hard \\
+4.25 & The Treatment Responder & REGRESSION TO M & L1 & Med \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 2 (Intervention)}} \\
+\midrule
+4.1 & The Immune Spike & CONF-MED & L2 & Hard \\
+4.10 & The Screening Lead-Time T... & CONF-MED & L2 & Hard \\
+4.11 & The Transplant Waiting Li... & SELECTION & L2 & Hard \\
+4.12 & The Superbug Severity Tra... & SELECTION & L2 & Med \\
+4.13 & The Runner's Mileage & SELECTION & L2 & Easy \\
+4.14 & The Chocolate Prodrome & REVERSE & L2 & Hard \\
+4.15 & The Conscientiousness Mar... & SELECTION & L2 & Easy \\
+4.16 & The Acne Maturation & CONF-MED & L2 & Easy \\
+4.17 & The Frailty Flu Shot Para... & SELECTION & L2 & Hard \\
+4.18 & The Protein Recovery & CONF-MED & L2 & Med \\
+4.19 & The Hypotension Overtreat... & CONF-MED & L2 & Med \\
+4.2 & The Surgery vs. PT & CONF-MED & L2 & Med \\
+4.20 & The Unblinded Placebo & CONF-MED & L2 & Easy \\
+4.21 & The Clinical Trial Surviv... & COLLIDER & L2 & Hard \\
+4.22 & The Hospital Admission Pa... & COLLIDER & L2 & Hard \\
+4.23 & The Published Treatment E... & COLLIDER & L2 & Hard \\
+4.28 & The Grey Hair Cure & CONF-MED & L2 & Easy \\
+4.29 & The Hospital Bed & SELECTION & L2 & Easy \\
+4.3 & The Seasonal Mood & CONF-MED & L2 & Easy \\
+4.30 & The Cholesterol Paradox & REVERSE & L2 & Hard \\
+4.31 & The Sleeping Pill & CONF-MED & L2 & Med \\
+4.32 & The Wine Drinker & SELECTION & L2 & Med \\
+4.33 & The Oxygen Tank & REVERSE & L2 & Easy \\
+4.34 & The Diet Soda & REVERSE & L2 & Med \\
+4.4 & The Supplement Survival & SELECTION & L2 & Easy \\
+4.5 & The Appetite Suppressor & CONF-MED & L2 & Med \\
+4.6 & The ICU Mortality Paradox & SELECTION & L2 & Hard \\
+4.7 & The Cholesterol Co-Interv... & CONF-MED & L2 & Med \\
+4.8 & The Fertility Stress Loop & CONF-MED & L2 & Med \\
+4.9 & The Pain Fluctuation & SELECTION & L2 & Hard \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 3 (Counterfactual)}} \\
+\midrule
+\rowcolor{blue!15} 4.24 & The Medication Overdose & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 4.25 & The Placebo Surgery & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 4.26 & The Probability of Suffic... & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 4.27 & The Temporal Counterfactu... & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 4.35 & The Surgery Counterfactua... & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 4.36 & The Placebo Effect & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 4.37 & The Vaccination & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 4.38 & The CPR Survival & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 4.39 & The Genetic Test & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 4.40 & The Antibiotic Cold & COUNTERFACTUAL & L3 & Med \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Pearl Level Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{L1 (Association):} 5 cases (11\%)
+    \item \textbf{L2 (Intervention):} 30 cases (66\%)
+    \item \textbf{L3 (Counterfactual):} 10 cases (22\%)
+    \item \textbf{Total:} 45 cases
+\end{itemize}
+
+\paragraph{L3 Ground Truth Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{VALID:} 3 cases (30\%)
+    \item \textbf{INVALID:} 5 cases (50\%)
+    \item \textbf{CONDITIONAL:} 2 cases (20\%)
+\end{itemize}

@@ -1,0 +1,1951 @@
+%% ============================================
+%% BUCKET 10: SOCIAL SCIENCE & DEMOGRAPHICS
+%% T³ Benchmark Standard Format (Revised & Sorted)
+%% Theme: Simpson's Paradox, Ecological Fallacy, Aggregation
+%% Total Cases: 45 (L1: 5, L2: 30, L3: 10)
+%% ============================================
+
+\section{Bucket 10: Social Science \& Demographics}
+\label{sec:bucket10}
+
+\subsection*{Bucket Overview}
+
+\paragraph{Domain.} Social Science (D10)
+
+\paragraph{Core Themes.} Simpson's Paradox, ecological fallacy, aggregation bias, compositional effects, selection into populations, relative deprivation.
+
+\paragraph{Signature Trap Types.} SIMPSON'S PARADOX, ECOLOGICAL FALLACY, SELECTION, COMPOSITION EFFECT, COLLIDER, BASE RATE NEGLECT
+
+\paragraph{Case Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Pearl Level 1 (Association):} 5 cases (11\%)
+    \item \textbf{Pearl Level 2 (Intervention):} 30 cases (67\%)
+    \item \textbf{Pearl Level 3 (Counterfactual):} 10 cases (22\%)
+    \item \textbf{Total:} 45 cases
+\end{itemize}
+
+%% ============================================
+%% PEARL LEVEL 1 CASES (Association)
+%% ============================================
+
+%% ============================================
+%% CASE 10.21 (NEW - L1)
+%% ============================================
+
+\subsection{Case 10.21: The Shark Attack News}
+\label{case:10.21}
+
+\paragraph{Scenario.}
+A coastal town reports 3 shark attacks this summer. News coverage increases 500\%. Tourism
+drops 40\%. A tourist says: ``I'm not going in the water---sharks are everywhere now.''
+Historical data shows the town averages 2--4 attacks per year with no trend.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Media coverage (high this year)
+    \item $Y$ = Perceived risk
+    \item $Z$ = Actual risk (unchanged)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.21
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} BASE RATE NEGLECT
+    \item \textbf{Trap Subtype:} Availability Heuristic
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Psychology
+    \item \textbf{Causal Structure:} $X \to Y$ (coverage drives fear), but $X \not\to Z$
+    \item \textbf{Key Insight:} Media salience $\neq$ actual probability change
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+\begin{itemize}[leftmargin=1.5em]
+    \item Base rate: 2--4 attacks/year (this year: 3)
+    \item Media coverage: +500\%
+    \item Actual risk change: Zero (within normal variance)
+\end{itemize}
+
+\paragraph{Correct Reasoning.}
+\begin{itemize}[leftmargin=1.5em]
+    \item This is availability heuristic meets base rate neglect
+    \item Media coverage increases \emph{perceived} risk, not actual risk
+    \item 3 attacks is statistically normal for this beach
+    \item The tourist conflates ``I heard about sharks'' with ``sharks are more common''
+\end{itemize}
+
+The risk of shark attack remains approximately 1 in 11.5 million beach visits.
+
+%% ============================================
+%% CASE 10.31 (NEW - L1)
+%% ============================================
+
+\subsection{Case 10.31: The Tax Rate Illusion}
+\label{case:10.31}
+
+\paragraph{Scenario.}
+Data shows that Country A has higher average tax rates ($Y$) than Country B. However, within every income bracket ($Z$), Country A has lower tax rates than Country B.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Country A (Exposure)
+    \item $Y$ = Higher Average Tax Rate (Aggregate Outcome)
+    \item $Z$ = Income Bracket (Confounder/Subgroup)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.31
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} SIMPSON'S PARADOX
+    \item \textbf{Trap Subtype:} Aggregation Bias
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Economics
+    \item \textbf{Causal Structure:} Income distribution ($Z$) differs between countries
+    \item \textbf{Key Insight:} Progressive tax + wealthy population = high average rate despite low brackets
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This is Simpson's Paradox driven by composition. Country A likely has a wealthier population ($Z$). Since wealthy people pay higher rates in progressive systems, having more of them raises the national average ($Y$), even if Country A charges less at every specific income level.''
+
+%% ============================================
+%% CASE 10.32 (NEW - L1)
+%% ============================================
+
+\subsection{Case 10.32: The Hospital Mortality Comparison}
+\label{case:10.32}
+
+\paragraph{Scenario.}
+Hospital A has a significantly higher patient mortality rate ($Y$) than Hospital B. Hospital A is a regional Trauma Center; Hospital B is a suburban clinic.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Hospital A (Trauma Center)
+    \item $Y$ = Mortality Rate (Outcome)
+    \item $Z$ = Patient Severity (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.32
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Indication Bias / Severity Bias
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Healthcare
+    \item \textbf{Causal Structure:} Severity $\to$ Hospital Choice and Mortality
+    \item \textbf{Key Insight:} Mortality indicates patient mix, not quality of care
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Comparing raw mortality rates implies a false equivalence between patient populations. Hospital A admits critical trauma cases ($Z$) with high baseline mortality risk. Hospital B likely transfers its most severe cases to Hospital A, artificially lowering its own mortality rate ($Y$).''
+
+%% ============================================
+%% CASE 10.33 (NEW - L1)
+%% ============================================
+
+\subsection{Case 10.33: The Role-Adjusted Wage Gap}
+\label{case:10.33}
+
+\paragraph{Scenario.}
+Company X shows a 20\% gender pay gap in aggregate data ($Y$). However, when broken down by role and seniority ($Z$), women earn slightly more than men in every category.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Gender (Group)
+    \item $Y$ = Aggregate Pay Gap (Outcome)
+    \item $Z$ = Role/Seniority (Stratification)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.33
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} SIMPSON'S PARADOX
+    \item \textbf{Trap Subtype:} Role Segregation
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Labor Economics
+    \item \textbf{Causal Structure:} Gender $\to$ Role Selection $\to$ Pay
+    \item \textbf{Key Insight:} Aggregate gap reflects vertical segregation, not unequal pay for equal work
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The aggregate gap ($Y$) contradicts the role-specific data due to Simpson's Paradox. Men are likely overrepresented in senior, high-paying roles ($Z$), while women are clustered in junior roles. The company pays equal wages for equal work, but access to high-paying roles differs.''
+
+%% ============================================
+%% CASE 10.34 (NEW - L1)
+%% ============================================
+
+\subsection{Case 10.34: The State Test Scores}
+\label{case:10.34}
+
+\paragraph{Scenario.}
+State A has lower average SAT scores ($Y$) than State B. In State A, 90\% of high school seniors take the SAT ($Z$). In State B, only the top 5\% of seniors take it.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = State A (Group)
+    \item $Y$ = Average Score (Outcome)
+    \item $Z$ = Participation Rate (Selection Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.34
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Sampling Bias
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Education Policy
+    \item \textbf{Causal Structure:} Participation rate $\to$ Average ability of test-takers
+    \item \textbf{Key Insight:} High participation dilutes the average with lower-performing students
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``State A's lower score ($Y$) reflects selection bias, not lower education quality. State A tests nearly everyone, including lower-performing students ($Z$). State B only tests its academic elite. Comparing the top 5\% of State A to State B would yield a valid comparison.''
+
+%% ============================================
+%% PEARL LEVEL 2 CASES (Intervention)
+%% ============================================
+
+%% ============================================
+%% CASE 10.1
+%% ============================================
+
+\subsection{Case 10.1: The Admissions Paradox}
+\label{case:10.1}
+
+\paragraph{Scenario.}
+University U admits 45\% of male applicants ($X$) but only 35\% of female applicants ($Y$). However, within every individual department ($Z$), the admission rate for women is equal to or higher than for men.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Male Applicants (Group)
+    \item $Y$ = Lower Female Admission Rate (Aggregate Outcome)
+    \item $Z$ = Department Choice (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.1
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} SIMPSON'S PARADOX
+    \item \textbf{Trap Subtype:} Application Pool Composition
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Education
+    \item \textbf{Causal Structure:} Gender $\to$ department choice $\to$ acceptance rate
+    \item \textbf{Key Insight:} Aggregate reflects application preferences, not discrimination
+    \item \textbf{References:} UC Berkeley admissions study (1973)
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+How can the aggregate rate favor men if every department favors women?
+
+\paragraph{Correct Answer.}
+Women apply disproportionately to competitive departments ($Z$) with low acceptance rates. Men apply to less competitive departments with high rates.
+
+\paragraph{Wise Refusal.}
+``This is Simpson's Paradox. The aggregate admission rate reflects the composition of applications ($Z$). If women apply to harder departments than men, the aggregate rate will be lower even if individual departments treat women favorably.''
+
+%% ============================================
+%% CASE 10.10
+%% ============================================
+
+\subsection{Case 10.10: The Income Composition}
+\label{case:10.10}
+
+\paragraph{Scenario.}
+The median income of every racial group in the US rose ($X$). However, the national median income fell ($Y$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Group Income Rise (Components)
+    \item $Y$ = National Income Fall (Aggregate)
+    \item $Z$ = Demographic Shift (Weighting)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.10
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} SIMPSON'S PARADOX
+    \item \textbf{Trap Subtype:} Compositional Shift
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Economics
+    \item \textbf{Causal Structure:} Population mix shifted toward lower-baseline groups
+    \item \textbf{Key Insight:} Aggregate can decline even if all components improve
+\end{itemize}
+
+\paragraph{Correct Answer.}
+Even though every group improved ($X$), the aggregate mix shifted toward the lower end, dragging down the national median ($Y$).
+
+\paragraph{Wise Refusal.}
+``This is Simpson's Paradox caused by demographic shift ($Z$). If the population composition changes toward groups with historically lower incomes, the national average ($Y$) can fall even if every individual group improves ($X$).''
+
+%% ============================================
+%% CASE 10.11
+%% ============================================
+
+\subsection{Case 10.11: The Gentrification Displacement}
+\label{case:10.11}
+
+\paragraph{Scenario.}
+A low-income neighborhood was gentrified ($X$). Average household income in the zip code rose by 50\% ($Y$). A study claims the original residents are now wealthier.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Gentrification (Event)
+    \item $Y$ = Average Income Rise (Outcome)
+    \item $Z$ = Displacement (Composition Change)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.11
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} COMPOSITION EFFECT
+    \item \textbf{Trap Subtype:} Population Replacement
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Urban Studies
+    \item \textbf{Causal Structure:} Metric measures geography, not people
+    \item \textbf{Key Insight:} People didn't get richer; richer people moved in
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Rising average income in a gentrifying area ($Y$) usually reflects population displacement ($Z$), not economic mobility for original residents. High-earners moved in; low-earners moved out.''
+
+%% ============================================
+%% CASE 10.12
+%% ============================================
+
+\subsection{Case 10.12: The Divorce Rate}
+\label{case:10.12}
+
+\paragraph{Scenario.}
+The national divorce rate dropped ($Y$). The average age at first marriage rose ($X$). Analysts argue that maturity is saving marriages.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Later Marriage Age (Trend)
+    \item $Y$ = Lower Divorce Rate (Outcome)
+    \item $Z$ = Fewer Marriages (Selection)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.12
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Marriage Pool Composition
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Sociology
+    \item \textbf{Causal Structure:} Fewer, more selective marriages
+    \item \textbf{Key Insight:} Divorce rate fell due to composition, not age
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The decline in divorce ($Y$) may reflect selection bias ($Z$). If fewer people marry overall, and the remaining pool is wealthier and more educated, the divorce rate will drop due to composition change.''
+
+%% ============================================
+%% CASE 10.13
+%% ============================================
+
+\subsection{Case 10.13: The Batting Average}
+\label{case:10.13}
+
+\paragraph{Scenario.}
+Player A hits better than Player B against left-handed pitchers. Player A also hits better than Player B against right-handed pitchers. However, Player B has a higher overall batting average ($Y$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Player A Superiority (Skill)
+    \item $Y$ = Player B Aggregate Win (Outcome)
+    \item $Z$ = Pitcher Handedness (Weighting)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.13
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} SIMPSON'S PARADOX
+    \item \textbf{Trap Subtype:} At-Bat Composition
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Sports
+    \item \textbf{Causal Structure:} Different weighting of matchups
+    \item \textbf{Key Insight:} Aggregate favors whoever faces easier opponents more
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This is Simpson's Paradox. Player B likely faces a much higher proportion of `easy' pitchers ($Z$) than Player A. The weighted average favors B due to the composition of at-bats.''
+
+%% ============================================
+%% CASE 10.14
+%% ============================================
+
+\subsection{Case 10.14: The Unemployment Denominator}
+\label{case:10.14}
+
+\paragraph{Scenario.}
+The economy added 200,000 jobs ($X$). The unemployment rate rose from 3.5\% to 3.7\% ($Y$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Job Growth (Numerator)
+    \item $Y$ = Rate Increase (Result)
+    \item $Z$ = Labor Force Participation (Denominator)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.14
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} COMPOSITION EFFECT
+    \item \textbf{Trap Subtype:} Denominator Expansion
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Economics
+    \item \textbf{Causal Structure:} Denominator grew faster than numerator
+    \item \textbf{Key Insight:} Rising rate can be sign of optimism
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Unemployment rose ($Y$) despite job growth ($X$) because the labor force participation rate ($Z$) increased. Discouraged workers returned to look for jobs. This is typically a sign of economic optimism, not weakness.''
+
+%% ============================================
+%% CASE 10.15
+%% ============================================
+
+\subsection{Case 10.15: The Happiness Paradox}
+\label{case:10.15}
+
+\paragraph{Scenario.}
+Within Country C, rich people are happier than poor people ($X$). However, as Country C's GDP doubled over 30 years ($Z$), average happiness did not increase ($Y$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Cross-Sectional Correlation (Relative)
+    \item $Y$ = Time-Series Flatline (Absolute)
+    \item $Z$ = GDP Growth (Context)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.15
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} RELATIVE DEPRIVATION
+    \item \textbf{Trap Subtype:} Easterlin Paradox
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Sociology
+    \item \textbf{Causal Structure:} Happiness depends on rank, not absolute level
+    \item \textbf{Key Insight:} Rising tide lifts all boats but doesn't change rank order
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This is the Easterlin Paradox. Happiness correlates with wealth in a cross-section ($X$) because of relative status. Over time ($Z$), a rising tide lifts all boats, leaving relative status unchanged.''
+
+%% ============================================
+%% CASE 10.16
+%% ============================================
+
+\subsection{Case 10.16: The Obesity Paradox}
+\label{case:10.16}
+
+\paragraph{Scenario.}
+Among patients diagnosed with heart failure ($Z$), obese patients ($X$) have better survival rates ($Y$) than normal-weight patients.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Obesity (Exposure)
+    \item $Y$ = Survival (Outcome)
+    \item $Z$ = Heart Failure Diagnosis (Collider)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.16
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} COLLIDER
+    \item \textbf{Trap Subtype:} Index Event Bias
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Medicine
+    \item \textbf{Causal Structure:} Conditioning on disease creates spurious association
+    \item \textbf{Key Insight:} Thin patients with heart failure have worse underlying causes
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This `Obesity Paradox' is likely Collider Bias. Thin patients with heart failure often have severe non-lifestyle causes (genetics, cachexia) that are more lethal. Obese patients have the disease due to weight, which is less lethal than the alternative causes.''
+
+%% ============================================
+%% CASE 10.17
+%% ============================================
+
+\subsection{Case 10.17: The Super-Commuter}
+\label{case:10.17}
+
+\paragraph{Scenario.}
+Workers who commute 90+ minutes ($X$) have higher salaries ($Y$) than those who commute 15 minutes. The city planner concludes that driving makes people more productive ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Long Commute (Behavior)
+    \item $Y$ = High Salary (Outcome)
+    \item $Z$ = Productivity (Attributed Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.17
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Selection into Long Commutes
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Urban Economics
+    \item \textbf{Causal Structure:} High salary justifies long commute, not vice versa
+    \item \textbf{Key Insight:} Low-wage workers can't afford 90-minute commutes
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Commuting time doesn't cause productivity. Rather, high salaries ($Y$) justify long commutes ($X$). People only accept a 90-minute drive for a high-paying job.''
+
+%% ============================================
+%% CASE 10.18
+%% ============================================
+
+\subsection{Case 10.18: The Education Premium}
+\label{case:10.18}
+
+\paragraph{Scenario.}
+College graduates ($X$) earn 80\% more than high school graduates ($Y$). Policymakers conclude college causes higher earnings. However, graduates also have higher pre-existing ability and family resources ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Degree (Exposure)
+    \item $Y$ = Earnings (Outcome)
+    \item $Z$ = Ability/Resources (Confounders)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.18
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Ability Bias
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Economics
+    \item \textbf{Causal Structure:} Ability $\to$ college AND ability $\to$ earnings
+    \item \textbf{Key Insight:} Raw premium conflates causation with selection
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The raw wage premium conflates college's causal effect with selection. High-ability, high-resource individuals ($Z$) attend college and would earn more regardless. Valid estimation requires controlling for pre-existing ability or using natural experiments.''
+
+%% ============================================
+%% CASE 10.19
+%% ============================================
+
+\subsection{Case 10.19: The Lead-Crime Hypothesis}
+\label{case:10.19}
+
+\paragraph{Scenario.}
+Cities that removed lead from gasoline earlier ($X$) saw earlier crime declines ($Y$). Researchers claim lead caused the 1990s crime drop. Critics note that the same cities also implemented other policies ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Lead Removal (Exposure)
+    \item $Y$ = Crime Decline (Outcome)
+    \item $Z$ = Other Policies (Confounders)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.19
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Concurrent Policy Changes
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Criminology
+    \item \textbf{Causal Structure:} Lead removal correlated with other urban improvements
+    \item \textbf{Key Insight:} Crime decline had multiple causes
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The lead-crime hypothesis has biological plausibility, but crime declines had multiple causes (policing, economics, demographics). Attributing the entire crime drop to lead overstates the evidence given the concurrent policy changes ($Z$).''
+
+%% ============================================
+%% CASE 10.2
+%% ============================================
+
+\subsection{Case 10.2: The Rich State, Poor Voter}
+\label{case:10.2}
+
+\paragraph{Scenario.}
+Data shows that Wealthy States ($X$) vote for Party A. However, individual-level polling shows that Wealthy Individuals ($Z$) vote for Party B.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = State-Level Wealth (Aggregate)
+    \item $Y$ = Voting Behavior (Outcome)
+    \item $Z$ = Individual Wealth (Unit)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.2
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} ECOLOGICAL FALLACY
+    \item \textbf{Trap Subtype:} Gelman's Paradox
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Political Science
+    \item \textbf{Causal Structure:} Group-level correlation $\neq$ individual-level correlation
+    \item \textbf{Key Insight:} Cannot infer individual behavior from aggregate data
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Correlations at the group level (State) do not necessarily hold at the individual level.
+
+\paragraph{Correct Answer.}
+Rich states may vote Party A because of cultural factors or urbanization, even if rich people within them lean Party B.
+
+\paragraph{Wise Refusal.}
+``Inferring individual voting behavior from state-level averages is the Ecological Fallacy. The relationship between wealth and voting polarity reverses depending on the level of aggregation.''
+
+%% ============================================
+%% CASE 10.20
+%% ============================================
+
+\subsection{Case 10.20: The Police Stop Data}
+\label{case:10.20}
+
+\paragraph{Scenario.}
+Police stop data shows minorities are stopped at equal rates to whites during the day ($X$). At night, the minority stop rate drops significantly ($Y$). The police chief claims this proves no bias ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Daytime Stops (Observed)
+    \item $Y$ = Nighttime Stops (Observed)
+    \item $Z$ = Bias Conclusion (Inference)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.20
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} BENCHMARKING
+    \item \textbf{Trap Subtype:} Veil of Darkness
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Criminology
+    \item \textbf{Causal Structure:} Darkness masks race; drop at night suggests daytime bias
+    \item \textbf{Key Insight:} Chief's conclusion is backwards
+\end{itemize}
+
+\paragraph{Correct Answer.}
+The ``Veil of Darkness'' hypothesis suggests that if police are biased, they can only act on it when they can see the driver (Daytime $X$). The drop at night ($Y$) suggests daytime profiling.
+
+\paragraph{Wise Refusal.}
+``The drop in minority stops at night ($Y$) suggests the opposite of the chief's conclusion. Darkness masks race. If stops are higher when race is visible ($X$), it implies profiling. The nighttime rate is the unbiased baseline.''
+
+%% ============================================
+%% CASE 10.3
+%% ============================================
+
+\subsection{Case 10.3: The Kidney Stone Treatment}
+\label{case:10.3}
+
+\paragraph{Scenario.}
+Treatment A has a higher overall success rate (78\%) than Treatment B (83\%) ($Y$). However, for small stones, B has 93\% vs.\ A's 87\%. For large stones, B has 73\% vs.\ A's 69\% ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Treatment A (Exposure)
+    \item $Y$ = Lower Aggregate Success (Outcome)
+    \item $Z$ = Stone Size (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.3
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} SIMPSON'S PARADOX
+    \item \textbf{Trap Subtype:} Treatment Allocation Bias
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Medicine
+    \item \textbf{Causal Structure:} Severity $\to$ treatment choice and outcome
+    \item \textbf{Key Insight:} Better treatment assigned to harder cases
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Treatment A is preferentially assigned to easy cases (small stones). Treatment B is reserved for hard cases (large stones).
+
+\paragraph{Correct Answer.}
+Treatment B is superior for both small and large stones but has a lower aggregate rate because it is assigned to harder cases.
+
+\paragraph{Wise Refusal.}
+``This is Simpson's Paradox driven by treatment allocation. Treatment B is superior for both stone sizes but has lower aggregate success because it is assigned to harder cases.''
+
+%% ============================================
+%% CASE 10.35 (NEW - L2)
+%% ============================================
+
+\subsection{Case 10.35: The Wealth Tax Prediction}
+\label{case:10.35}
+
+\paragraph{Scenario.}
+Country A introduced a wealth tax ($X$) and experienced massive capital flight ($Y$). Country B considers introducing the same tax. The Finance Minister argues capital flight is inevitable.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Wealth Tax (Intervention)
+    \item $Y$ = Capital Flight (Outcome)
+    \item $Z$ = Economic Context/Tax Havens (Moderator)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.35
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} EXTERNAL VALIDITY
+    \item \textbf{Trap Subtype:} Transportability
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Macroeconomics
+    \item \textbf{Causal Structure:} Effect of $X$ on $Y$ depends on $Z$ (enforcement/loopholes)
+    \item \textbf{Key Insight:} Policy effects depend on the structural environment
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Predicting capital flight in Country B based on Country A requires establishing transportability. If Country B has stricter exit controls or global reporting standards ($Z$) that Country A lacked, the causal effect of the tax ($X$) on capital flight ($Y$) may be significantly smaller.''
+
+%% ============================================
+%% CASE 10.36 (NEW - L2)
+%% ============================================
+
+\subsection{Case 10.36: The Class Size Reduction}
+\label{case:10.36}
+
+\paragraph{Scenario.}
+Schools with smaller classes ($X$) consistently have higher test scores ($Y$). To boost scores, an underfunded school district fires teachers to hire low-cost aides, artificially lowering the student-to-adult ratio.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Small Class Size (Target Metric)
+    \item $Y$ = Test Scores (Outcome)
+    \item $Z$ = School Funding/Teacher Quality (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.36
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} GOODHART'S LAW
+    \item \textbf{Trap Subtype:} Metric Hacking
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Education
+    \item \textbf{Causal Structure:} Funding $\to$ Class Size AND Quality $\to$ Scores
+    \item \textbf{Key Insight:} Reducing class size by degrading teacher quality breaks the causal link
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The observed correlation between small classes ($X$) and high scores ($Y$) is confounded by funding ($Z$). Rich schools afford both small classes and expert teachers. Achieving small classes by hiring unqualified staff targets the metric but destroys the mechanism (instructional quality).''
+
+%% ============================================
+%% CASE 10.37 (NEW - L2)
+%% ============================================
+
+\subsection{Case 10.37: The Crime Crackdown}
+\label{case:10.37}
+
+\paragraph{Scenario.}
+Mayor A increased police patrols ($X$) and crime fell ($Y$). Mayor B replicates the policy. However, Mayor A simultaneously gentrified the neighborhood ($Z$), displacing at-risk populations.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Police Patrols (Intervention)
+    \item $Y$ = Crime Rate (Outcome)
+    \item $Z$ = Gentrification (Confounder/Co-intervention)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.37
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Co-Intervention Bias
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Criminology
+    \item \textbf{Causal Structure:} $Z \to Y$ accounts for most of the effect attributed to $X$
+    \item \textbf{Key Insight:} Attributing success solely to policing ignores demographic shifts
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The success in Mayor A's district cannot be attributed solely to policing ($X$). Gentrification ($Z$) likely displaced crime rather than preventing it. Implementing patrols without the accompanying demographic shift will likely yield smaller results.''
+
+%% ============================================
+%% CASE 10.38 (NEW - L2)
+%% ============================================
+
+\subsection{Case 10.38: The Minimum Wage}
+\label{case:10.38}
+
+\paragraph{Scenario.}
+State A raised the minimum wage ($X$) and employment increased ($Y$). Opponents in State B argue that economic theory proves raising the wage kills jobs.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Minimum Wage Hike (Intervention)
+    \item $Y$ = Employment (Outcome)
+    \item $Z$ = Labor Market Frictions (Monopsony Power)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.38
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} THEORETICAL BIAS
+    \item \textbf{Trap Subtype:} Model Misspecification
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Economics
+    \item \textbf{Causal Structure:} In monopsonies ($Z$), price floors can increase quantity
+    \item \textbf{Key Insight:} Competitive market models do not apply to frictional labor markets
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The prediction that `wages kill jobs' assumes a perfectly competitive market. In labor markets with monopsony power ($Z$), where employers have wage-setting power, raising the minimum wage ($X$) can actually increase employment ($Y$) by incentivizing supply, as seen in the Card-Krueger studies.''
+
+%% ============================================
+%% CASE 10.39 (NEW - L2)
+%% ============================================
+
+\subsection{Case 10.39: The Housing Supply}
+\label{case:10.39}
+
+\paragraph{Scenario.}
+Cities with high rates of new housing construction ($X$) have the highest rents ($Y$). Activists propose blocking construction to lower rents.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Construction Rate (Observed)
+    \item $Y$ = Rents (Outcome)
+    \item $Z$ = Demand/Desirability (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.39
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Demand-Driven Supply
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Urban Economics
+    \item \textbf{Causal Structure:} High Demand ($Z$) $\to$ High Rents ($Y$) AND High Construction ($X$)
+    \item \textbf{Key Insight:} Construction chases high prices; it doesn't cause them
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Blocking construction ($X$) will exacerbate high rents ($Y$), not lower them. High construction correlates with high rents because developers build where demand ($Z$) is highest. Restricting supply in a high-demand area will drive prices even higher.''
+
+%% ============================================
+%% CASE 10.4
+%% ============================================
+
+\subsection{Case 10.4: The Vaccination Base Rate}
+\label{case:10.4}
+
+\paragraph{Scenario.}
+In a recent outbreak, 60\% of the hospitalized patients ($Y$) were vaccinated ($X$). Critics claim this proves the vaccine is ineffective. The population vaccination rate is 95\% ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Vaccinated Status (Exposure)
+    \item $Y$ = Majority of Hospitalizations (Outcome)
+    \item $Z$ = 95\% Population Vaccination (Base Rate)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.4
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} BASE RATE NEGLECT
+    \item \textbf{Trap Subtype:} Denominator Blindness
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Epidemiology
+    \item \textbf{Causal Structure:} Compare rates, not counts
+    \item \textbf{Key Insight:} Majority vaccinated $\Rightarrow$ majority of cases vaccinated
+\end{itemize}
+
+\paragraph{Correct Answer.}
+Even with a highly effective vaccine, if the vaccinated group ($Z$) is large enough, they will form the majority of cases. We must compare the \emph{rate} of hospitalization per 100k.
+
+\paragraph{Wise Refusal.}
+``This argument ignores the Base Rate ($Z$). When the vaccinated population is very large (95\%), they will comprise the majority of cases even if the vaccine is highly effective. Compare rates, not raw counts.''
+
+%% ============================================
+%% CASE 10.40 (NEW - L2)
+%% ============================================
+
+\subsection{Case 10.40: The Brain Drain}
+\label{case:10.40}
+
+\paragraph{Scenario.}
+A region produces a high number of PhDs ($X$), yet its local economy is stagnant ($Y$). The governor proposes cutting university funding to focus on vocational trades, arguing PhDs are useless for the economy.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = PhD Production (Output)
+    \item $Y$ = Local Economic Growth (Outcome)
+    \item $Z$ = Industry Alignment (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.40
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} MISMATCH
+    \item \textbf{Trap Subtype:} Human Capital Flight
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Development Economics
+    \item \textbf{Causal Structure:} $X$ causes growth only if retained locally
+    \item \textbf{Key Insight:} Supply of talent without demand leads to migration, not stagnation
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Cutting funding misdiagnoses the problem. The stagnation ($Y$) isn't caused by PhDs ($X$); it's caused by the lack of local industries ($Z$) to employ them. The graduates are likely leaving (Brain Drain). The solution is stimulating demand for high-skill labor, not reducing supply.''
+
+%% ============================================
+%% CASE 10.41 (NEW - L2)
+%% ============================================
+
+\subsection{Case 10.41: The Gender Quota}
+\label{case:10.41}
+
+\paragraph{Scenario.}
+Country A mandated 40\% female board representation ($X$). Stock prices of affected firms dropped immediately ($Y$). Country B cites this as proof that quotas destroy value.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Quota Mandate (Intervention)
+    \item $Y$ = Stock Drop (Short-term Outcome)
+    \item $Z$ = Investor Uncertainty/Adjustment Costs (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.41
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} TIME HORIZON
+    \item \textbf{Trap Subtype:} Short-termism
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Corporate Governance
+    \item \textbf{Causal Structure:} Shock ($X$) causes volatility ($Y$), independent of long-term value
+    \item \textbf{Key Insight:} Immediate price reaction reflects uncertainty, not fundamental value
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The immediate stock drop ($Y$) likely reflects short-term adjustment costs or investor uncertainty ($Z$), not necessarily a destruction of long-term fundamental value. Using a short-term market reaction to judge the long-term efficacy of a structural governance change ($X$) is invalid.''
+
+%% ============================================
+%% CASE 10.42 (NEW - L2)
+%% ============================================
+
+\subsection{Case 10.42: The Happiness Index}
+\label{case:10.42}
+
+\paragraph{Scenario.}
+Citizens in Country A report higher happiness ($X$) than Country B. Country B adopts Country A's traditional diet ($Z$) to improve national well-being.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Happiness Levels (Outcome)
+    \item $Z$ = Traditional Diet (Intervention)
+    \item $C$ = GDP/Social Safety Net (Confounders)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.42
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Cultural Confounding
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Public Health
+    \item \textbf{Causal Structure:} Diet is correlated with culture/wealth, not necessarily the cause of happiness
+    \item \textbf{Key Insight:} Mimicking cultural markers does not replicate structural advantages
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Adopting the diet ($Z$) ignores the structural confounders ($C$) that actually drive happiness ($X$), such as GDP per capita, social trust, and safety nets. Diet is likely a cultural correlate, not the primary cause of national well-being.''
+
+%% ============================================
+%% CASE 10.43 (NEW - L2)
+%% ============================================
+
+\subsection{Case 10.43: The Charter School Expansion}
+\label{case:10.43}
+
+\paragraph{Scenario.}
+Charter schools ($X$) in the state significantly outperform public schools ($Y$). The governor decides to replace all public schools with charter schools, expecting statewide scores to rise to the charter baseline.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Charter Model (Intervention)
+    \item $Y$ = Test Scores (Outcome)
+    \item $Z$ = Parental Motivation (Selection)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.43
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} SCALING
+    \item \textbf{Trap Subtype:} Selection Bias Scale-up
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Education Policy
+    \item \textbf{Causal Structure:} Charter success relies on selecting motivated families ($Z$)
+    \item \textbf{Key Insight:} You cannot scale an intervention that relies on selection bias
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The pilot success relies on selection bias ($Z$): charter schools attract highly motivated families. Replacing all schools forces unmotivated students into the charter model, diluting the effect. The statewide average ($Y$) will not converge to the pilot average because the population composition differs.''
+
+%% ============================================
+%% CASE 10.44 (NEW - L2)
+%% ============================================
+
+\subsection{Case 10.44: The Gun Buyback}
+\label{case:10.44}
+
+\paragraph{Scenario.}
+City A implemented a gun buyback program ($X$). A year later, gun violence rates ($Y$) remained unchanged. Critics argue this proves that reducing gun availability does not stop crime.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Buyback Program (Intervention)
+    \item $Y$ = Violence Rate (Outcome)
+    \item $Z$ = Gun Type/Owner Type (Selection)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.44
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} MECHANISM
+    \item \textbf{Trap Subtype:} Non-Representative Selection
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Criminology
+    \item \textbf{Causal Structure:} Program removes harmless guns, leaving criminal guns
+    \item \textbf{Key Insight:} Intervention failed to target the causal mechanism (criminal access)
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The failure of the buyback ($X$) does not disprove the link between gun availability and crime. Buybacks typically collect old, non-functioning weapons from law-abiding citizens ($Z$). They fail to remove the specific subset of weapons (illegal handguns) used in violent crime ($Y$).''
+
+%% ============================================
+%% CASE 10.5
+%% ============================================
+
+\subsection{Case 10.5: The Class Size Paradox}
+\label{case:10.5}
+
+\paragraph{Scenario.}
+The University claims the average class size is 35 ($X$). A student survey reveals the average student experiences a class size of 120 ($Y$). Both claims are statistically correct.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Class-Weighted Average (Metric 1)
+    \item $Y$ = Student-Weighted Average (Metric 2)
+    \item $Z$ = Skewed Distribution (Condition)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.5
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} AGGREGATION
+    \item \textbf{Trap Subtype:} Inspection Paradox / Length-Biased Sampling
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Statistics
+    \item \textbf{Causal Structure:} Different weighting schemes give different answers
+    \item \textbf{Key Insight:} Average class $\neq$ average experience
+\end{itemize}
+
+\paragraph{Correct Answer.}
+The university averages across classes. Students average across experience. Large classes contain more students, heavily weighting the student experience average upward.
+
+\paragraph{Wise Refusal.}
+``The university measures the average class ($X$), while students measure the average experience ($Y$). Large classes contain more students. This is the Inspection Paradox.''
+
+%% ============================================
+%% CASE 10.6
+%% ============================================
+
+\subsection{Case 10.6: The Hospital Mortality}
+\label{case:10.6}
+
+\paragraph{Scenario.}
+Hospital A has a higher patient mortality rate ($Y$) than Hospital B. Hospital A is a top-tier Trauma Center ($X$), while Hospital B is a community clinic ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Trauma Center Status (Exposure)
+    \item $Y$ = Higher Mortality (Outcome)
+    \item $Z$ = Patient Severity (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.6
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Severity Bias
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Healthcare
+    \item \textbf{Causal Structure:} Severity $\to$ hospital choice and mortality
+    \item \textbf{Key Insight:} Higher mortality may indicate trusted with critical cases
+\end{itemize}
+
+\paragraph{Correct Answer.}
+High mortality reflects intake severity, not quality. Hospital A receives patients who are already dying; Hospital B transfers them to A.
+
+\paragraph{Wise Refusal.}
+``Comparing raw mortality rates confounds quality with patient severity ($Z$). Trauma centers ($X$) treat the sickest patients. Risk-adjusted mortality rates are required.''
+
+%% ============================================
+%% CASE 10.7
+%% ============================================
+
+\subsection{Case 10.7: The Gender Wage Gap}
+\label{case:10.7}
+
+\paragraph{Scenario.}
+Women earn \$0.80 for every \$1.00 men earn ($Y$). When researchers control for job title and industry ($Z$), the gap shrinks to \$0.98. Critics argue this proves discrimination ($X$) is negligible.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Discrimination (Alleged Cause)
+    \item $Y$ = Pay Gap (Outcome)
+    \item $Z$ = Job Title (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.7
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Mediator vs.\ Confounder
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Economics
+    \item \textbf{Causal Structure:} Is job title a choice or a barrier?
+    \item \textbf{Key Insight:} Controlling for mediator hides discrimination
+\end{itemize}
+
+\paragraph{Correct Answer.}
+If discrimination prevents women from getting high titles, controlling for title ($Z$) removes the mechanism of discrimination. The adjusted gap hides the real issue: unequal access.
+
+\paragraph{Wise Refusal.}
+``Controlling for job title ($Z$) is causally invalid if discrimination ($X$) affects promotions. If women are blocked from high-paying titles, then title is a mediator. Controlling for a mediator biases the estimate toward zero.''
+
+%% ============================================
+%% CASE 10.8
+%% ============================================
+
+\subsection{Case 10.8: The Healthy Migrant}
+\label{case:10.8}
+
+\paragraph{Scenario.}
+Recent immigrants to Country C have a higher life expectancy ($Y$) than native-born citizens, despite having lower average income ($X$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Low SES / Migrant (Exposure)
+    \item $Y$ = High Life Expectancy (Outcome)
+    \item $Z$ = Salmon Bias / Selection (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.8
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Salmon Bias
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Demographics
+    \item \textbf{Causal Structure:} Selection in (healthy migrate) + censoring (sick return)
+    \item \textbf{Key Insight:} Superior health is statistical illusion
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The `Healthy Migrant Effect' is likely selection bias. Migrants are selected for health (only the fit migrate) and censored for sickness (the ill return home, removing their deaths from local data).''
+
+%% ============================================
+%% CASE 10.9
+%% ============================================
+
+\subsection{Case 10.9: The Immigrant Crime Rate}
+\label{case:10.9}
+
+\paragraph{Scenario.}
+Cities with higher immigrant populations ($X$) have higher crime rates ($Y$). Individual-level data shows immigrants commit crimes at lower rates than native-born citizens ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = City Immigrant Share (Aggregate)
+    \item $Y$ = Crime Rate (Outcome)
+    \item $Z$ = Individual Behavior (Unit)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.9
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} ECOLOGICAL FALLACY
+    \item \textbf{Trap Subtype:} Location Choice Confounding
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Criminology
+    \item \textbf{Causal Structure:} Immigrants settle in high-crime cities for unrelated reasons
+    \item \textbf{Key Insight:} City-level correlation $\neq$ individual behavior
+\end{itemize}
+
+\paragraph{Correct Answer.}
+Immigrants move to large cities ($X$). Large cities have higher crime for unrelated reasons (density). Within those centers, immigrants are more law-abiding than natives ($Z$).
+
+\paragraph{Wise Refusal.}
+``This is the Ecological Fallacy. Immigrants settle in large cities that have higher crime for unrelated reasons. Within each city, immigrants have lower crime rates ($Z$).''
+
+%% ============================================
+%% PEARL LEVEL 3 CASES (Counterfactual)
+%% ============================================
+
+%% ============================================
+%% CASE 10.22 (NEW - L3, from Bucket 11.1)
+%% ============================================
+
+\subsection{Case 10.22: The Counterfactual Twin}
+\label{case:10.22}
+
+\paragraph{Scenario.}
+Twin A grew up in Household 1 (wealthy, educated parents). Twin B was adopted at birth
+and grew up in Household 2 (poor, less educated parents). Twin A became a doctor; Twin B
+became a factory worker. A researcher claims: ``This proves environment determines success.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $E$ = Environment (Household 1 vs.\ 2)
+    \item $G$ = Genetics (identical for both)
+    \item $Y$ = Life outcome (doctor vs.\ factory worker)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.22
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Natural Experiment Interpretation
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Sociology
+    \item \textbf{Causal Structure:} Twins control for genetics; environment varies
+    \item \textbf{Key Insight:} Sample size of one; adoption is non-random
+    \item \textbf{References:} Twin studies; nature vs.\ nurture
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+The implicit counterfactual: ``If Twin B had grown up in Household 1, Twin B would also
+have become a doctor.''
+
+\paragraph{Correct Reasoning.}
+This natural experiment has several problems:
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Sample size}: $n=1$ pair. Individual variation is enormous.
+    \item \textbf{Non-random assignment}: Adoption placement is not random. Household 2 may differ in unmeasured ways.
+    \item \textbf{Gene-environment interaction}: The same genes may express differently in different environments.
+    \item \textbf{Outcome measurement}: ``Doctor vs.\ factory worker'' is one dimension. Twins might be similar on other outcomes.
+\end{enumerate}
+
+Twin studies with large $n$ suggest environment matters, but this single case proves little.
+
+\paragraph{Ground Truth.}
+\textbf{Answer: INVALID}
+
+``Sample size of one twin pair cannot prove environment determines success. Non-random adoption placement and individual variation make this anecdote illustrative but not conclusive.''
+
+\paragraph{Wise Refusal.}
+``This single twin pair cannot prove environment determines success. Sample size is one; individual variation dominates. Adoption is non-random. Large-scale twin studies do suggest environment matters, but the effect size is modest. This anecdote illustrates the concept but cannot quantify the causal effect.''
+
+%% ============================================
+%% CASE 10.23 (NEW - L3, from Bucket 11.4)
+%% ============================================
+
+\subsection{Case 10.23: The Regret Analysis}
+\label{case:10.23}
+
+\paragraph{Scenario.}
+Two investors:
+\begin{itemize}[leftmargin=1.5em]
+    \item Investor A held Stock X, considered switching to Stock Y, but stayed. Stock X crashed.
+    \item Investor B held Stock Y, considered switching to Stock X, but stayed. Stock Y rose.
+\end{itemize}
+Both ``did the same thing'' (stayed put), but Investor A feels intense regret while Investor B
+feels relief.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $D$ = Decision (stay put --- identical)
+    \item $Y$ = Outcome (crash vs.\ rise)
+    \item $C$ = Counterfactual considered (switch)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.23
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Regret and Counterfactual Closeness
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Psychology
+    \item \textbf{Causal Structure:} Regret = bad outcome + salient counterfactual
+    \item \textbf{Key Insight:} Regret requires imagining how things could have been different
+    \item \textbf{References:} Kahneman \& Tversky; norm theory
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+Regret is fundamentally counterfactual: ``If only I had done X instead...''
+
+\paragraph{Correct Reasoning.}
+\begin{enumerate}[leftmargin=1.5em]
+    \item Both investors made the identical decision (inaction)
+    \item Regret is not about the decision---it's about the counterfactual
+    \item Investor A vividly imagines the world where they switched (and won)
+    \item Investor B imagines the world where they switched (and lost)
+\end{enumerate}
+
+Regret intensity depends on:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Counterfactual closeness}: How easily could the alternative have happened?
+    \item \textbf{Outcome valence}: How bad is the actual outcome?
+    \item \textbf{Agency}: Was the decision within my control?
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``Regret is a well-documented counterfactual emotion. The psychological pattern where identical decisions produce different emotional responses based on outcome valence is empirically established.''
+
+\paragraph{Wise Refusal.}
+``Regret is a counterfactual emotion---it requires imagining `what might have been.' Both investors made identical decisions, but their emotional states depend on the counterfactual comparison, not the decision itself. A evaluates `I should have switched'; B evaluates `I'm glad I didn't switch.' The decision quality is the same; the emotional response is not.''
+
+%% ============================================
+%% CASE 10.24 (NEW - L3, from Bucket 12.2)
+%% ============================================
+
+\subsection{Case 10.24: The Economic Counterfactual}
+\label{case:10.24}
+
+\paragraph{Scenario.}
+The government implemented a stimulus program during a recession. The economy recovered
+6 months later. The administration claims: ``The stimulus worked.'' Critics say: ``The economy
+would have recovered anyway.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Stimulus program (implemented)
+    \item $Y$ = Economic recovery (observed)
+    \item $Y_0$ = Recovery without stimulus (counterfactual, unobserved)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.24
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Policy Evaluation
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Economics
+    \item \textbf{Causal Structure:} Treatment effect = $Y_1 - Y_0$, but $Y_0$ unobserved
+    \item \textbf{Key Insight:} Fundamental problem of causal inference
+    \item \textbf{References:} Rubin causal model; synthetic control
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+To evaluate the stimulus, we need:
+\begin{equation}
+\text{Causal Effect} = Y_1 (\text{with stimulus}) - Y_0 (\text{without stimulus})
+\end{equation}
+
+We observe $Y_1$. We never observe $Y_0$ for the same economy at the same time.
+
+\paragraph{Correct Reasoning.}
+This is the fundamental problem of causal inference:
+\begin{enumerate}[leftmargin=1.5em]
+    \item We cannot rerun history without the stimulus
+    \item The counterfactual $Y_0$ must be estimated, not observed
+    \item Estimation methods include:
+    \begin{itemize}[leftmargin=1.5em]
+        \item Comparison to similar economies that didn't implement stimulus
+        \item Pre-stimulus trend extrapolation
+        \item Structural economic models
+    \end{itemize}
+    \item All methods require assumptions that critics can dispute
+\end{enumerate}
+
+Both sides are making claims about an unobserved counterfactual.
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``Both claims depend on estimating an unobserved counterfactual. The answer depends on the validity of the counterfactual estimation method (comparison economies, pre-trend extrapolation, or structural models).''
+
+\paragraph{Wise Refusal.}
+``Both claims are about an unobserved counterfactual. The administration observes recovery and assumes the stimulus caused it. Critics assume the economy would have recovered anyway. Neither can directly observe the counterfactual world. Valid evaluation requires estimating what would have happened without the stimulus---using comparison economies, pre-trend extrapolation, or structural models. Each method requires contestable assumptions.''
+
+%% ============================================
+%% CASE 10.25 (NEW - L3, from Bucket 12.9)
+%% ============================================
+
+\subsection{Case 10.25: The Determinism Debate}
+\label{case:10.25}
+
+\paragraph{Scenario.}
+A philosopher argues: ``If determinism is true, then no one could have done otherwise.
+Therefore, no one is morally responsible for their actions.'' A compatibilist responds:
+``Counterfactuals are still meaningful even under determinism.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $D$ = Determinism (physical laws fix all events)
+    \item $C$ = Counterfactual possibility (``could have done otherwise'')
+    \item $R$ = Moral responsibility
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.25
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Metaphysical vs.\ Epistemic Counterfactuals
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Philosophy
+    \item \textbf{Causal Structure:} Two types of ``could have''
+    \item \textbf{Key Insight:} Counterfactuals can be meaningful without libertarian free will
+    \item \textbf{References:} Compatibilism; Frankfurt cases; Pearl's do-calculus
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+The debate hinges on what ``could have done otherwise'' means:
+
+\textbf{Libertarian interpretation}: The exact same initial conditions could have led to
+a different outcome. (Requires indeterminism.)
+
+\textbf{Compatibilist interpretation}: Under different (counterfactual) conditions, the
+agent would have acted differently. (Compatible with determinism.)
+
+\paragraph{Correct Reasoning.}
+Pearl's framework clarifies this:
+\begin{enumerate}[leftmargin=1.5em]
+    \item Determinism: Given exact initial conditions, outcomes are fixed
+    \item Counterfactuals: Given \emph{different} initial conditions (interventions), outcomes would differ
+    \item These are not contradictory
+\end{enumerate}
+
+Example: ``If I had set my alarm, I would have woken up on time.''
+\begin{itemize}[leftmargin=1.5em]
+    \item Under determinism: I didn't set my alarm (determined by prior causes)
+    \item Counterfactual: If we \emph{intervene} to change ``alarm set,'' the outcome changes
+    \item The counterfactual is meaningful even if the actual world was determined
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``The compatibilist position is coherent. Counterfactuals are meaningful under determinism: they describe what would happen under different interventions, not different initial conditions.''
+
+\paragraph{Wise Refusal.}
+``This conflates two senses of `could have.' Determinism says the actual past fixed the actual outcome. Counterfactuals say: under different conditions, outcomes would differ. Pearl's do-calculus makes counterfactuals precise without requiring libertarian free will. `If I had studied, I would have passed' is meaningful regardless of whether my not-studying was determined. Moral responsibility may depend on this weaker counterfactual, not metaphysical indeterminism.''
+
+%% ============================================
+%% CASE 10.26 (NEW - L3)
+%% TYPE: Counterfactual Fairness
+%% ============================================
+
+\subsection{Case 10.26: The Counterfactual Fairness Audit}
+\label{case:10.26}
+
+\paragraph{Scenario.}
+A bank's loan algorithm rejects applicant A, who is Black. The algorithm doesn't use race directly, but uses zip code, which correlates with race. A fairness auditor asks: ``Would A have been approved if A had been White, holding all else equal?'' The bank responds: ``But we can't change race without changing zip code---they're correlated.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $R$ = Race (protected attribute)
+    \item $Z$ = Zip code (proxy variable)
+    \item $Y$ = Loan decision (outcome)
+    \item $Y_{R \leftarrow r'}$ = Counterfactual decision under different race
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.26
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Counterfactual Fairness / Path-Specific Effects
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Algorithmic Fairness
+    \item \textbf{Causal Structure:} $R \to Z \to Y$ (race affects zip code affects decision)
+    \item \textbf{Key Insight:} Counterfactual fairness requires specifying which paths to block
+    \item \textbf{References:} Kusner et al.\ (2017); path-specific counterfactual fairness
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+Counterfactual fairness asks: ``Would the decision $Y$ have been different if the protected attribute $R$ had been different?''
+
+The challenge: Race causally affects other variables (zip code, education, income). There are two interpretations:
+
+\textbf{Total counterfactual}: Change race and let all downstream variables change naturally.
+\begin{itemize}[leftmargin=1.5em]
+    \item If A had been White, A might live in a different zip code
+    \item This changes the input to the algorithm
+    \item Decision might change---but is this ``unfair''?
+\end{itemize}
+
+\textbf{Direct counterfactual}: Change race but hold mediators fixed.
+\begin{itemize}[leftmargin=1.5em]
+    \item If A had been White \emph{but still lived in the same zip code}
+    \item This isolates the direct effect of race
+    \item But is this counterfactual coherent?
+\end{itemize}
+
+\paragraph{Correct Reasoning.}
+Counterfactual fairness depends on the causal model:
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{If zip code is a legitimate business factor}: Using it may be legal even if correlated with race
+    \item \textbf{If zip code is purely a proxy for race}: Using it constitutes indirect discrimination
+    \item \textbf{Path-specific fairness}: Block the $R \to Z \to Y$ path but allow $R \to (\text{legitimate factors}) \to Y$
+\end{enumerate}
+
+The bank's defense (``we don't use race directly'') is insufficient. The counterfactual question reveals that race affects the decision through the zip code path.
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``Counterfactual fairness depends on specifying which causal paths are permissible. The answer varies based on whether we evaluate total effects or direct effects, and which mediators are considered legitimate.''
+
+\paragraph{Wise Refusal.}
+``Counterfactual fairness requires specifying which causal paths are permissible. The question `Would A have been approved if White?' has multiple interpretations depending on whether we hold mediators fixed. If zip code is merely a proxy for race with no independent business justification, then the algorithm discriminates through an indirect path. Path-specific counterfactual analysis can decompose the total effect into direct and indirect components.''
+
+%% ============================================
+%% CASE 10.27 (NEW - L3)
+%% TYPE: Attributable Fraction / Population Counterfactual
+%% ============================================
+
+\subsection{Case 10.27: The Attributable Fraction Debate}
+\label{case:10.27}
+
+\paragraph{Scenario.}
+Black mortgage applicants are rejected at twice the rate of White applicants with similar credit scores. A civil rights group claims: ``Discrimination accounts for 50\% of the rejection gap.'' A bank economist responds: ``The attributable fraction depends on unmeasured confounders we can't observe.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $R$ = Race (exposure)
+    \item $Y$ = Rejection (outcome)
+    \item $C$ = Credit score and other controls
+    \item $U$ = Unmeasured confounders (wealth, employment stability)
+    \item $AF$ = Attributable fraction (fraction of gap due to $R$)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.27
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Attributable Fraction / Population Counterfactual
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Economics / Civil Rights
+    \item \textbf{Causal Structure:} $AF = P(Y=1|R=1) - P(Y_{R \leftarrow 0}=1|R=1)$
+    \item \textbf{Key Insight:} Attributable fraction is a population-level counterfactual
+    \item \textbf{References:} Epidemiological attributable fraction; Pearl's probability of causation
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+The Attributable Fraction (AF) answers: ``What fraction of rejections among Black applicants would not have occurred if they had been White?''
+
+Formally:
+\begin{equation}
+AF = \frac{P(Y=1|R=1) - P(Y_{R \leftarrow 0}=1|R=1)}{P(Y=1|R=1)}
+\end{equation}
+
+This is a counterfactual quantity because $P(Y_{R \leftarrow 0}=1|R=1)$ asks: ``Among people who \emph{are} Black, what would their rejection rate have been if they \emph{had been} White?''
+
+\paragraph{Correct Reasoning.}
+The attributable fraction faces identification challenges:
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Unmeasured confounding}: If Black applicants differ on unmeasured factors ($U$) that affect rejection, the observed gap overstates discrimination
+    \item \textbf{Mediator adjustment}: Should we control for income? If discrimination affects income, controlling for it underestimates discrimination
+    \item \textbf{Bounds}: Without strong assumptions, we can only bound the AF, not point-identify it
+\end{enumerate}
+
+The civil rights group's ``50\%'' claim requires strong causal assumptions. The economist's skepticism is valid but doesn't mean discrimination is zero---it means the AF is partially identified.
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``The attributable fraction is partially identified. Without strong assumptions about unmeasured confounders and mediator adjustment, we can only bound the AF, not point-identify it.''
+
+\paragraph{Wise Refusal.}
+``The attributable fraction is a counterfactual quantity that cannot be directly observed. It asks what the rejection rate for Black applicants would have been if they had been White. This requires causal assumptions about unmeasured confounders and mediators. The 50\% claim is not directly verifiable, but neither is the claim that discrimination is zero. Sensitivity analysis can bound the AF under different assumptions about unmeasured confounding.''
+
+%% ============================================
+%% CASE 10.28 (NEW - L3)
+%% TYPE: Principal Strata / Compliers
+%% ============================================
+
+\subsection{Case 10.28: The Complier Conundrum}
+\label{case:10.28}
+
+\paragraph{Scenario.}
+A job training program is offered to unemployed workers. Enrollment is voluntary. Researchers find that participants ($D=1$) earn \$5,000 more than non-participants ($D=0$). An economist warns: ``This is selection bias. Motivated people both enroll and earn more.'' The program director responds: ``We randomized \emph{encouragement} to enroll. Among those encouraged, earnings rose by \$2,000.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $Z$ = Encouragement (randomized instrument)
+    \item $D$ = Actual enrollment (endogenous)
+    \item $Y$ = Earnings (outcome)
+    \item Principal strata: Always-takers, Never-takers, Compliers, Defiers
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.28
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Principal Strata / LATE / Complier Counterfactual
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Program Evaluation
+    \item \textbf{Causal Structure:} $Z \to D \to Y$; strata defined by counterfactual response to $Z$
+    \item \textbf{Key Insight:} LATE identifies effect only for compliers, not the full population
+    \item \textbf{References:} Angrist \& Imbens (1994); principal stratification
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+Principal strata are defined by counterfactual responses to the instrument:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Always-takers}: Would enroll regardless of encouragement ($D_1 = D_0 = 1$)
+    \item \textbf{Never-takers}: Would not enroll regardless ($D_1 = D_0 = 0$)
+    \item \textbf{Compliers}: Enroll if and only if encouraged ($D_1 = 1, D_0 = 0$)
+    \item \textbf{Defiers}: Enroll if and only if \emph{not} encouraged ($D_1 = 0, D_0 = 1$)
+\end{itemize}
+
+The instrument identifies the Local Average Treatment Effect (LATE):
+\begin{equation}
+LATE = E[Y_1 - Y_0 | \text{Complier}]
+\end{equation}
+
+This is the effect \emph{for compliers only}---not for always-takers or never-takers.
+
+\paragraph{Correct Reasoning.}
+\begin{enumerate}[leftmargin=1.5em]
+    \item The \$5,000 naive estimate conflates treatment effect with selection
+    \item The \$2,000 IV estimate is valid but applies only to \emph{compliers}
+    \item Compliers are people whose enrollment was affected by encouragement
+    \item We cannot identify who the compliers are---they are defined counterfactually
+    \item The effect for always-takers (who would enroll anyway) may differ
+\end{enumerate}
+
+Policy implication: If the program is made mandatory, the effect may differ from LATE because the treated population changes.
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``The LATE estimate is valid for compliers only. Whether this answers the policy question depends on whether the target population matches the complier population.''
+
+\paragraph{Wise Refusal.}
+``The \$2,000 estimate is a Local Average Treatment Effect (LATE)---it applies to `compliers' who enrolled because of encouragement. Compliers are defined counterfactually: they would enroll if encouraged and not enroll otherwise. We cannot observe who compliers are. The effect for always-takers or never-takers may differ. If the policy question is `What if we make training mandatory?', LATE may not be the right answer because the treated population would include never-takers.''
+
+%% ============================================
+%% CASE 10.29 (NEW - L3)
+%% TYPE: Regression Discontinuity Counterfactual
+%% ============================================
+
+\subsection{Case 10.29: The Scholarship Threshold}
+\label{case:10.29}
+
+\paragraph{Scenario.}
+A university awards merit scholarships to students scoring above 1400 on the SAT. A researcher compares students scoring 1400--1410 (got scholarship) to those scoring 1390--1399 (no scholarship). She finds scholarship recipients graduate at 5\% higher rates. A critic objects: ``Students at 1400 are fundamentally different from those at 1390.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = SAT score (running variable)
+    \item $c$ = 1400 (cutoff)
+    \item $D$ = Scholarship receipt ($D = \mathbf{1}[X \geq c]$)
+    \item $Y$ = Graduation (outcome)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.29
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Regression Discontinuity / Threshold Counterfactual
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Education Policy
+    \item \textbf{Causal Structure:} Sharp discontinuity at cutoff creates local randomization
+    \item \textbf{Key Insight:} Counterfactual is ``just below threshold'' vs ``just above''
+    \item \textbf{References:} Regression discontinuity design; Thistlethwaite \& Campbell (1960)
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+The regression discontinuity counterfactual asks: ``What would have happened to students just above the cutoff if they had scored just below (and thus not received the scholarship)?''
+
+At the threshold:
+\begin{itemize}[leftmargin=1.5em]
+    \item Students scoring 1400 vs 1399 are nearly identical in ability
+    \item The 1-point difference is essentially random (test-day luck)
+    \item Treatment assignment is ``as-if randomized'' at the cutoff
+\end{itemize}
+
+The counterfactual: $E[Y_0 | X = 1400] \approx E[Y | X = 1399]$
+
+\paragraph{Correct Reasoning.}
+The critic's objection applies to students far from the cutoff:
+\begin{enumerate}[leftmargin=1.5em]
+    \item Students at 1500 differ systematically from students at 1300
+    \item But students at 1400 vs 1399 differ only by measurement error
+    \item The key assumption: No manipulation of the running variable at the cutoff
+    \item If students can precisely control their score to land just above 1400, the design fails
+\end{enumerate}
+
+The 5\% effect is a \textbf{local} estimate---it applies to students near the threshold, not to all students.
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``The RDD estimate is valid under the no-manipulation assumption. If students can precisely control scores to land above the threshold, the local randomization assumption fails.''
+
+\paragraph{Wise Refusal.}
+``The regression discontinuity design exploits the arbitrary threshold to create a local counterfactual. Students scoring 1400 vs 1399 are nearly identical---the 1-point difference is essentially noise. The counterfactual `What if the 1400 student had scored 1399?' is answered by observing actual 1399 students. The 5\% effect is valid but local: it applies to students near the cutoff, not to those far above or below. The design assumes students cannot precisely manipulate their scores to land just above 1400.''
+
+%% ============================================
+%% CASE 10.30 (NEW - L3)
+%% TYPE: Synthetic Control Counterfactual
+%% ============================================
+
+\subsection{Case 10.30: The Minimum Wage Counterfactual}
+\label{case:10.30}
+
+\paragraph{Scenario.}
+State A raised its minimum wage in 2020. Employment fell by 2\% over the next year. Critics claim the wage hike killed jobs. Economists construct a ``synthetic State A'' from a weighted combination of similar states that didn't raise wages. Synthetic A shows employment would have fallen by 3\%. The economists conclude: ``The minimum wage \emph{increased} employment by 1\%.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $Y_t^A$ = Actual employment in State A at time $t$
+    \item $Y_t^{A,0}$ = Counterfactual employment without wage hike (unobserved)
+    \item $\hat{Y}_t^{A,0}$ = Synthetic control estimate of counterfactual
+    \item $W$ = Donor pool weights
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.30
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Synthetic Control / Constructed Counterfactual
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Labor Economics
+    \item \textbf{Causal Structure:} Counterfactual constructed from weighted donor pool
+    \item \textbf{Key Insight:} Synthetic control makes the unobserved counterfactual explicit
+    \item \textbf{References:} Abadie et al.\ (2010); synthetic control method
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+The fundamental problem: We observe State A with the wage hike. We cannot observe State A without the wage hike (at the same time).
+
+Synthetic control constructs the counterfactual:
+\begin{equation}
+\hat{Y}_t^{A,0} = \sum_{j \in \text{donor pool}} w_j Y_t^j
+\end{equation}
+
+The weights $w_j$ are chosen so that synthetic A matches real A on pre-treatment outcomes and covariates.
+
+The treatment effect:
+\begin{equation}
+\hat{\tau} = Y_t^A - \hat{Y}_t^{A,0} = -2\% - (-3\%) = +1\%
+\end{equation}
+
+\paragraph{Correct Reasoning.}
+Synthetic control makes counterfactual assumptions transparent:
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Parallel trends}: Synthetic A would have evolved like real A absent treatment
+    \item \textbf{No spillovers}: State A's policy didn't affect donor states
+    \item \textbf{Convex hull}: Real A must be expressible as a weighted average of donors
+    \item \textbf{Pre-treatment fit}: If synthetic A doesn't match real A before 2020, the counterfactual is unreliable
+\end{enumerate}
+
+The critics' ``-2\% = job loss'' ignores the counterfactual. Employment fell, but it would have fallen \emph{more} without the policy (according to the synthetic control).
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``Synthetic control is a valid methodology for constructing counterfactuals when pre-treatment fit is good and parallel trends hold. The method makes assumptions explicit and testable.''
+
+\paragraph{Wise Refusal.}
+``Evaluating the minimum wage requires a counterfactual: What would have happened without the policy? We cannot observe State A in both states simultaneously. Synthetic control constructs the counterfactual by weighting similar states. The -2\% observed decline is compared to the -3\% synthetic prediction, yielding a +1\% treatment effect. This conclusion depends on assumptions: parallel trends, no spillovers, good pre-treatment fit. Critics should attack these assumptions, not simply compare post-treatment outcomes to pre-treatment levels.''
+
+%% ============================================
+%% CASE 10.45 (NEW - L3)
+%% ============================================
+
+\subsection{Case 10.45: The Election Rain}
+\label{case:10.45}
+
+\paragraph{Scenario.}
+Candidate A lost the election by 500 votes ($Y$). On election day, a severe storm ($Z$) hit districts where Candidate A polls highest. A pundit claims: ``If it hadn't rained, Candidate A would have won.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $Y$ = Election Result (Outcome)
+    \item $Z$ = Rain (External Factor)
+    \item $C$ = Turnout (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 10.45
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D10 (Social Science)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Causal Determinism
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Political Science
+    \item \textbf{Causal Structure:} Rain $\to$ Low Turnout $\to$ Loss
+    \item \textbf{Key Insight:} Valid counterfactual requires establishing the quantitative link between rain and vote margin
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``The counterfactual is plausible given known effects of weather on turnout, but requires quantitative verification that the turnout depression exceeded the 500-vote margin.''
+
+\paragraph{Wise Refusal.}
+``This counterfactual claim is plausible (`VALID') if historical data supports the link. Rain ($Z$) is a known suppressor of turnout ($C$). Given the slim margin of 500 votes ($Y$), even a small depression in turnout in Candidate A's stronghold could decisively flip the outcome.''
+
+%% ============================================
+%% SUMMARY TABLE
+%% ============================================
+
+\subsection*{Bucket 10 Summary}
+
+\begin{center}
+\small
+\begin{tabular}{lllll}
+\toprule
+\textbf{Case} & \textbf{Title} & \textbf{Trap Type} & \textbf{Level} & \textbf{Diff} \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 1 (Association)}} \\
+\midrule
+10.21 & Shark Attack News & BASE RATE & L1 & Easy \\
+10.31 & Tax Rate Illusion & SIMPSON'S & L1 & Hard \\
+10.32 & Hospital Mortality Comp. & SELECTION & L1 & Easy \\
+10.33 & Role-Adjusted Wage Gap & SIMPSON'S & L1 & Med \\
+10.34 & State Test Scores & SELECTION & L1 & Med \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 2 (Intervention)}} \\
+\midrule
+10.1 & Admissions Paradox & SIMPSON'S & L2 & Hard \\
+10.2 & Rich State Poor Voter & ECOLOGICAL & L2 & Med \\
+10.3 & Kidney Stone Treatment & SIMPSON'S & L2 & Hard \\
+10.4 & Vaccination Base Rate & BASE RATE & L2 & Hard \\
+10.5 & Class Size Paradox & AGGREGATION & L2 & Med \\
+10.6 & Hospital Mortality & SELECTION & L2 & Easy \\
+10.7 & Gender Wage Gap & CONF-MED & L2 & Hard \\
+10.8 & Healthy Migrant & SELECTION & L2 & Med \\
+10.9 & Immigrant Crime Rate & ECOLOGICAL & L2 & Med \\
+10.10 & Income Composition & SIMPSON'S & L2 & Hard \\
+10.11 & Gentrification & COMPOSITION & L2 & Easy \\
+10.12 & Divorce Rate & SELECTION & L2 & Med \\
+10.13 & Batting Average & SIMPSON'S & L2 & Hard \\
+10.14 & Unemployment Denom. & COMPOSITION & L2 & Med \\
+10.15 & Happiness Paradox & RELATIVE & L2 & Hard \\
+10.16 & Obesity Paradox & COLLIDER & L2 & Hard \\
+10.17 & Super-Commuter & REVERSE & L2 & Med \\
+10.18 & Education Premium & SELECTION & L2 & Med \\
+10.19 & Lead-Crime & CONF-MED & L2 & Hard \\
+10.20 & Police Stop Data & BENCHMARKING & L2 & Hard \\
+10.35 & Wealth Tax & VALIDITY & L2 & Med \\
+10.36 & Class Size Hack & GOODHART & L2 & Med \\
+10.37 & Crime Crackdown & CONF-MED & L2 & Med \\
+10.38 & Minimum Wage & THEORY BIAS & L2 & Hard \\
+10.39 & Housing Supply & REVERSE & L2 & Med \\
+10.40 & Brain Drain & MISMATCH & L2 & Med \\
+10.41 & Gender Quota & TIME HORIZON & L2 & Med \\
+10.42 & Happiness Index & CONF-MED & L2 & Easy \\
+10.43 & Charter School & SCALING & L2 & Med \\
+10.44 & Gun Buyback & MECHANISM & L2 & Med \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 3 (Counterfactual)}} \\
+\midrule
+\rowcolor{blue!15} 10.22 & Counterfactual Twin & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 10.23 & Regret Analysis & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 10.24 & Economic Counterfactual & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 10.25 & Determinism Debate & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 10.26 & Fairness Audit & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 10.27 & Attributable Fraction & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 10.28 & Complier Conundrum & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 10.29 & Scholarship Threshold & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 10.30 & Min. Wage Synthetic & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 10.45 & Election Rain & COUNTERFACTUAL & L3 & Med \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Pearl Level Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{L1 (Association):} 5 cases (11\%)
+    \item \textbf{L2 (Intervention):} 30 cases (67\%)
+    \item \textbf{L3 (Counterfactual):} 10 cases (22\%)
+    \item \textbf{Total:} 45 cases
+\end{itemize}
+
+\paragraph{L3 Ground Truth Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{VALID:} 3 cases (30\%) --- 10.23, 10.25, 10.30
+    \item \textbf{INVALID:} 1 case (10\%) --- 10.22
+    \item \textbf{CONDITIONAL:} 6 cases (60\%) --- 10.24, 10.26, 10.27, 10.28, 10.29, 10.45
+\end{itemize}
+
+\paragraph{Trap Type Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \texttt{COUNTERFACTUAL}: 10 cases (22\%)
+    \item \texttt{SIMPSON'S PARADOX}: 7 cases (16\%)
+    \item \texttt{SELECTION}: 6 cases (13\%)
+    \item \texttt{CONF-MED}: 4 cases (9\%)
+    \item Other: 18 cases (40\%)
+\end{itemize}
+
+\paragraph{Difficulty Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item Easy: 5 cases (11\%)
+    \item Medium: 20 cases (44\%)
+    \item Hard: 20 cases (44\%)
+\end{itemize}

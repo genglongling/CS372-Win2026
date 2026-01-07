@@ -1,0 +1,1868 @@
+%% ============================================
+%% BUCKET 9: PERFORMANCE, EVALUATION & LUCK
+%% T³ Benchmark Standard Format (Revised & Sorted)
+%% Theme: Regression to Mean, Outcome Bias, Survivorship, Selection
+%% Total Cases: 41 (L1: 6, L2: 25, L3: 10)
+%% ============================================
+
+\section{Bucket 9: Performance, Evaluation \& Luck}
+\label{sec:bucket9}
+
+\subsection*{Bucket Overview}
+
+\paragraph{Domain.} Performance (D9)
+
+\paragraph{Core Themes.} Regression to the mean, outcome bias, survivorship bias, selection effects, clustering illusion, availability bias.
+
+\paragraph{Signature Trap Types.} REGRESSION TO MEAN, SURVIVORSHIP, SELECTION, OUTCOME BIAS, AVAILABILITY BIAS
+
+\paragraph{Case Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Pearl Level 1 (Association):} 6 cases (15\%)
+    \item \textbf{Pearl Level 2 (Intervention):} 25 cases (61\%)
+    \item \textbf{Pearl Level 3 (Counterfactual):} 10 cases (24\%)
+    \item \textbf{Total:} 41 cases
+\end{itemize}
+
+%% ============================================
+%% PEARL LEVEL 1 CASES (Association)
+%% ============================================
+
+%% ============================================
+%% CASE 9.1 (L1 - Association)
+%% ============================================
+
+\subsection{Case 9.1: The Sophomore Slump}
+\label{case:9.1}
+
+\paragraph{Scenario.}
+A professional baseball player won the ``Rookie of the Year'' award with exceptional statistics, batting .350. In his second season, his batting average dropped to .270. Sports analysts attribute this decline to ``complacency'' or ``pressure.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Rookie of the Year Selection (Extreme Observation)
+    \item $Y$ = Second-Year Performance (Subsequent Observation)
+    \item $Z$ = Psychological Factors (Spurious Attribution)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.1
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} REGRESSION TO MEAN
+    \item \textbf{Trap Subtype:} Peak Selection Regression
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Sports
+    \item \textbf{Causal Structure:} Observed extremes regress toward population mean
+    \item \textbf{Key Insight:} Extreme observations are followed by less extreme observations
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+This is a pure observational pattern:
+\begin{itemize}[leftmargin=1.5em]
+    \item We observe: Player had extreme high performance (Year 1)
+    \item We observe: Player had less extreme performance (Year 2)
+    \item Question: What pattern connects these observations?
+\end{itemize}
+
+No intervention is being evaluated. We are simply recognizing a statistical regularity in observational data.
+
+\paragraph{Correct Reasoning.}
+The ``sophomore slump'' is regression to the mean:
+\begin{itemize}[leftmargin=1.5em]
+    \item Extreme observations = True ability + Random variance
+    \item Rookie of the Year requires ability + positive variance
+    \item In subsequent observations, variance is independent (not persistent)
+    \item Expected value of next observation is closer to true mean
+\end{itemize}
+
+The psychological explanation ($Z$) is unnecessary because the pattern is explained by statistics alone.
+
+\paragraph{Wise Refusal.}
+``This is an observational pattern called regression to the mean. Rookie of the Year winners are selected based on extreme performance, which combines skill and positive variance. In subsequent observations, variance is independent, so performance regresses toward the player's true mean. No psychological explanation is needed---this pattern appears in any data with measurement variability.''
+
+%% ============================================
+%% CASE 9.20 (L1 - Association)
+%% ============================================
+
+\subsection{Case 9.20: The Clutch Reputation}
+\label{case:9.20}
+
+\paragraph{Scenario.}
+A basketball player is called ``Clutch'' because fans vividly remember his game-winning shots. A statistical analysis shows his 4th-quarter shooting percentage is identical to his 1st-quarter percentage.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Memorable Game-Winning Shots (Available Observations)
+    \item $Y$ = ``Clutch'' Reputation (Inference)
+    \item $Z$ = Complete Statistical Record (Full Data)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.20
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} AVAILABILITY BIAS
+    \item \textbf{Trap Subtype:} Selective Memory / Biased Sampling
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Sports
+    \item \textbf{Causal Structure:} Biased observation leads to biased inference
+    \item \textbf{Key Insight:} Memorable observations don't represent the full distribution
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+This is about biased observation:
+\begin{itemize}[leftmargin=1.5em]
+    \item Fans observe: Dramatic game-winning shots (highly memorable)
+    \item Fans don't observe: Missed clutch shots, routine 1st-quarter shots
+    \item Fans infer: Player is ``clutch'' (special in pressure moments)
+    \item Data shows: No difference between pressure and non-pressure performance
+\end{itemize}
+
+The inference is based on a biased sample of observations.
+
+\paragraph{Correct Reasoning.}
+Availability Bias in action:
+\begin{itemize}[leftmargin=1.5em]
+    \item Game-winning shots are vivid, emotional, heavily replayed
+    \item Missed clutch shots are quickly forgotten
+    \item 1st-quarter shots are rarely memorable either way
+    \item Memory is a biased sample weighted by emotional salience
+\end{itemize}
+
+The player is consistent (same accuracy in all quarters), but our memory of his performance is not. ``Clutch'' is a property of our memory, not his performance.
+
+\paragraph{Wise Refusal.}
+``The `Clutch' reputation is an artifact of Availability Bias. Fans remember dramatic game-winners (high emotional salience) and forget missed clutch shots and routine plays. When we examine the complete data ($Z$) rather than memorable highlights ($X$), performance is identical across all quarters. The player is consistent; our memory of him is biased.''
+
+%% ============================================
+%% CASE 9.21 (NEW - L1)
+%% ============================================
+
+\subsection{Case 9.21: The Music Streaming Hits}
+\label{case:9.21}
+
+\paragraph{Scenario.}
+A music blog analyzed Spotify's ``Top 50'' playlist from January and found that by December,
+80\% of those songs had dropped out of the Top 50 entirely. The blogger concludes:
+``Today's hits have no staying power---music quality has declined.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = January Top 50 selection
+    \item $Y$ = December ranking
+    \item $Z$ = ``Staying power'' / quality
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.21
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} REGRESSION TO MEAN
+    \item \textbf{Trap Subtype:} Peak Selection Regression
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Arts
+    \item \textbf{Causal Structure:} Peak = quality + viral luck; luck fades
+    \item \textbf{Key Insight:} This has always happened; not a quality decline
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+The Top 50 represents the \emph{peak} of a song's popularity trajectory. Mathematical necessity:
+once at peak, songs can only stay (rare) or decline (common). This pattern has nothing to do
+with music quality and everything to do with selecting observations at extreme values.
+
+\paragraph{Correct Reasoning.}
+\begin{itemize}[leftmargin=1.5em]
+    \item Top 50 = quality + viral timing + algorithmic boost
+    \item Viral timing and algorithmic boost are temporary
+    \item Songs regress toward their ``true'' popularity level
+    \item This happened in 1990 with Billboard charts too
+\end{itemize}
+
+The blogger is observing regression to the mean and misattributing it to declining quality.
+
+%% ============================================
+%% CASE 9.3 (L1 - Association)
+%% ============================================
+
+\subsection{Case 9.3: The Hot Hand Debate}
+\label{case:9.3}
+
+\paragraph{Scenario.}
+A basketball player made 8 consecutive shots. Commentators claim he is ``on fire'' and predict he will continue hitting. His shooting percentage on the next 10 shots was exactly his season average.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Recent Shot Outcomes (Observed Streak)
+    \item $Y$ = Future Shot Outcomes (Subsequent Observation)
+    \item $Z$ = ``Hot Hand'' State (Hypothesized Hidden Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.3
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} OUTCOME BIAS
+    \item \textbf{Trap Subtype:} Hot Hand Fallacy
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Sports
+    \item \textbf{Causal Structure:} Testing correlation: Does $X$ predict $Y$?
+    \item \textbf{Key Insight:} Streaks in random sequences don't predict future outcomes
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+This is a correlation/prediction question:
+\begin{itemize}[leftmargin=1.5em]
+    \item Observation 1: Player made 8 consecutive shots ($X$)
+    \item Observation 2: Player's next 10 shots matched season average ($Y$)
+    \item Question: Does $X$ predict $Y$? Is $P(Y|X) > P(Y)$?
+\end{itemize}
+
+No intervention is involved. We are asking whether one observation predicts another.
+
+\paragraph{Correct Reasoning.}
+Statistical analysis of the ``Hot Hand'':
+\begin{itemize}[leftmargin=1.5em]
+    \item If shots are independent events with fixed probability $p$
+    \item Then $P(\text{hit next shot} | \text{8 consecutive hits}) = p$ (no change)
+    \item Streaks occur naturally in random sequences
+    \item An 8-hit streak doesn't change the underlying probability
+\end{itemize}
+
+The correlation $X \to Y$ is essentially zero---past streaks don't predict future success beyond the base rate.
+
+\paragraph{Wise Refusal.}
+``This is a question about whether past observations predict future observations. Statistical evidence suggests shot outcomes are largely independent---a streak doesn't change the underlying probability. The `Hot Hand' is a perception of pattern in what may be random data. The correlation between recent streak ($X$) and future performance ($Y$) is negligible.''
+
+%% ============================================
+%% CASE 9.39 (NEW - L2)
+%% ============================================
+
+\subsection{Case 9.39: The Roulette Wheel}
+\label{case:9.39}
+
+\paragraph{Scenario.}
+The number 7 has come up three times in a row ($X$). A gambler bets on 7, claiming it is 'hot'.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Recent History (7, 7, 7)
+    \item $Y$ = Next Spin (Outcome)
+    \item $Z$ = Independence (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.39
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} FALLACY
+    \item \textbf{Trap Subtype:} Hot Hand / Gambler's Fallacy
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Probability
+    \item \textbf{Causal Structure:} Spins are i.i.d.
+    \item \textbf{Key Insight:} The wheel has no memory
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This is the Hot Hand Fallacy. In a fair game of roulette, each spin is independent ($Z$). The history ($X$) has no causal influence on the next spin ($Y$). The probability remains $1/38$.''
+
+%% ============================================
+%% CASE 9.9 (L1 - Association)
+%% ============================================
+
+\subsection{Case 9.9: The Streaky Hitter}
+\label{case:9.9}
+
+\paragraph{Scenario.}
+A baseball player is described as ``streaky'' because observers notice clusters of hits followed by clusters of misses. Statistical tests show his hit sequence is indistinguishable from random coin flips with his batting average as the probability.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Observed Hit/Miss Sequence
+    \item $Y$ = Perceived Streakiness
+    \item $Z$ = Random Sequence (Null Hypothesis)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.9
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} CLUSTERING ILLUSION
+    \item \textbf{Trap Subtype:} Pattern Perception in Random Data
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Sports
+    \item \textbf{Causal Structure:} Perceived pattern vs. statistical randomness
+    \item \textbf{Key Insight:} Random sequences contain clusters; humans over-interpret them
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+This is about pattern recognition in observational data:
+\begin{itemize}[leftmargin=1.5em]
+    \item Observation: Sequence of hits and misses over a season
+    \item Human perception: ``I see clusters---he's streaky!''
+    \item Statistical test: Sequence matches random model
+    \item Question: Is the perceived pattern real or illusory?
+\end{itemize}
+
+\paragraph{Correct Reasoning.}
+The Clustering Illusion:
+\begin{itemize}[leftmargin=1.5em]
+    \item Random sequences naturally contain clusters (runs of same outcome)
+    \item A fair coin flipped 100 times will have several runs of 4+ heads
+    \item Humans expect ``random'' to look more alternating than it actually does
+    \item We perceive real patterns in sequences that are statistically random
+\end{itemize}
+
+The player isn't ``streaky''---he's random, and random looks streaky to humans.
+
+\paragraph{Wise Refusal.}
+``This is the Clustering Illusion---perceiving meaningful patterns in random data. Random sequences naturally contain clusters. When we flip a fair coin many times, we get runs of heads and tails that look like `streaks.' The player's sequence is statistically indistinguishable from randomness. The `streakiness' is a feature of human pattern perception, not the data.''
+
+%% ============================================
+%% PEARL LEVEL 2 CASES (Intervention)
+%% ============================================
+
+%% ============================================
+%% CASE 9.10
+%% ============================================
+
+\subsection{Case 9.10: The Second Novel Syndrome}
+\label{case:9.10}
+
+\paragraph{Scenario.}
+An author's debut novel became a global bestseller ($X$). Her second novel received mediocre reviews and sales ($Y$). Critics claim she ``lost her touch'' ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Global Bestseller (Peak Event)
+    \item $Y$ = Mediocre Sequel (Outcome)
+    \item $Z$ = ``Lost Skill'' (Attribution)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.10
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} REGRESSION TO MEAN
+    \item \textbf{Trap Subtype:} Viral Success Regression
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Arts
+    \item \textbf{Causal Structure:} Extreme success = skill + extraordinary luck
+    \item \textbf{Key Insight:} Lightning-in-a-bottle luck doesn't repeat
+\end{itemize}
+
+\paragraph{Answer (Regression).}
+A global bestseller ($X$) requires talent \emph{plus} extraordinary luck. The second book represents a regression to the author's true skill level ($Y$).
+
+\paragraph{Wise Refusal.}
+``A global bestseller ($X$) is an outlier event driven by skill and massive luck. The second novel's performance ($Y$) represents regression to the author's baseline. Attributing this to `losing touch' ($Z$) ignores the non-repeatable nature of viral success.''
+
+%% ============================================
+%% CASE 9.11
+%% ============================================
+
+\subsection{Case 9.11: The Startup Founder}
+\label{case:9.11}
+
+\paragraph{Scenario.}
+A founder ($X$) had a massive exit with their first startup. Their second startup failed ($Y$). Investors who attributed the first success to ``genius'' ($Z$) are confused.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = First Success (Selection)
+    \item $Y$ = Second Failure (Outcome)
+    \item $Z$ = ``Genius'' Attribution (Belief)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.11
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} SURVIVORSHIP
+    \item \textbf{Trap Subtype:} Single Data Point
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Business
+    \item \textbf{Causal Structure:} Success = ability + massive luck
+    \item \textbf{Key Insight:} Sample size of one is not proof of genius
+\end{itemize}
+
+\paragraph{Correct Answer.}
+Startup success involves massive luck (market timing, competitors). The first success ($X$) likely over-indexed on luck. The second failure ($Y$) is a regression to the base rate of startup failure.
+
+\paragraph{Wise Refusal.}
+``Startup success ($X$) is highly stochastic. Attributing it solely to `genius' ($Z$) ignores market timing and luck. The second failure ($Y$) suggests the first outcome was heavily influenced by variance.''
+
+%% ============================================
+%% CASE 9.12
+%% ============================================
+
+\subsection{Case 9.12: The Teacher Bonus}
+\label{case:9.12}
+
+\paragraph{Scenario.}
+A district gave extra training to the bottom 5\% of teachers ($X$) based on test scores. Next year, those teachers' students improved ($Y$). The district credits the training ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Bottom 5\% Selection (Condition)
+    \item $Y$ = Score Improvement (Outcome)
+    \item $Z$ = Training Program (Ambiguous Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.12
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} REGRESSION TO MEAN
+    \item \textbf{Trap Subtype:} Bottom Selection
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Education
+    \item \textbf{Causal Structure:} Selected at trough; would improve anyway
+    \item \textbf{Key Insight:} Need control group to prove training effect
+\end{itemize}
+
+\paragraph{Answer (Regression).}
+Selecting the bottom 5\% ($X$) captures teachers who had a ``bad luck'' year. They would naturally improve ($Y$) next year as luck normalizes.
+
+\paragraph{Wise Refusal.}
+``Selecting the bottom performers ($X$) guarantees improvement ($Y$) via regression to the mean. Without a control group, we cannot attribute the gain to the training ($Z$).''
+
+%% ============================================
+%% CASE 9.13
+%% ============================================
+
+\subsection{Case 9.13: The Management Consultant}
+\label{case:9.13}
+
+\paragraph{Scenario.}
+Company C hired a strategy consultant ($X$) during a year of record-low profits ($Z$). The following year, profits increased by 10\% ($Y$). The CEO concludes the consultant was worth the fee.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Hiring Consultant (Intervention)
+    \item $Y$ = Profit Increase (Outcome)
+    \item $Z$ = Record Low Profits (Context)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.13
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} REGRESSION TO MEAN
+    \item \textbf{Trap Subtype:} Consultant's Fallacy
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Business
+    \item \textbf{Causal Structure:} Hired at nadir; recovery is automatic
+    \item \textbf{Key Insight:} Consultants ride natural recovery waves
+\end{itemize}
+
+\paragraph{Correct Answer.}
+Profits fluctuate. Record lows ($Z$) are usually followed by recovery ($Y$) due to mean reversion (the ``Consultant's Fallacy'').
+
+\paragraph{Wise Refusal.}
+``Companies typically hire consultants when performance is at a nadir ($Z$). Natural mean reversion suggests profits would improve ($Y$) regardless of intervention.''
+
+%% ============================================
+%% CASE 9.15
+%% ============================================
+
+\subsection{Case 9.15: The Clinical Trial Site}
+\label{case:9.15}
+
+\paragraph{Scenario.}
+A drug company tested a new pill at 50 different hospitals. They identified the 5 hospitals with the best results ($X$) and ran a Phase 2 trial only at those sites. The Phase 2 results were much worse ($Y$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Top 5 Performing Sites (Selection)
+    \item $Y$ = Worse Phase 2 Results (Outcome)
+    \item $Z$ = Random Variance (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.15
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Winner's Curse / Optimization Bias
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Science
+    \item \textbf{Causal Structure:} Selected on positive noise; noise disappears
+    \item \textbf{Key Insight:} True efficacy is the average of all sites
+\end{itemize}
+
+\paragraph{Answer (Regression).}
+The top 5 sites ($X$) were likely the ones with the most positive measurement error. In Phase 2, their luck normalized.
+
+\paragraph{Wise Refusal.}
+``Selecting the top performing sites ($X$) picks those with the most positive noise. In the next trial, that noise disappears (regression). The true efficacy is likely the average of all 50 original sites.''
+
+%% ============================================
+%% CASE 9.17
+%% ============================================
+
+\subsection{Case 9.17: The Performance Review}
+\label{case:9.17}
+
+\paragraph{Scenario.}
+Employees rated ``Exceptional'' ($X$) in 2023 received bonuses. In 2024, their performance dropped to ``Good'' ($Y$). Managers fear the bonus caused complacency ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Exceptional Rating (Selection)
+    \item $Y$ = Drop to Good (Outcome)
+    \item $Z$ = Complacency (Attribution)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.17
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} REGRESSION TO MEAN
+    \item \textbf{Trap Subtype:} Performance Rating Regression
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Business
+    \item \textbf{Causal Structure:} Performance = Skill + Luck; luck normalizes
+    \item \textbf{Key Insight:} Statistical drop happens regardless of bonus
+\end{itemize}
+
+\paragraph{Answer (Regression).}
+To be rated ``Exceptional'' ($X$), an employee needs skill plus everything going right (luck). In 2024, luck normalizes, and they return to their (still good) baseline ($Y$).
+
+\paragraph{Wise Refusal.}
+``Exceptional performance ($X$) is often a combination of high skill and favorable circumstances. The decline to `Good' ($Y$) likely represents regression to the employee's sustainable baseline, not complacency ($Z$) caused by the reward.''
+
+%% ============================================
+%% CASE 9.2
+%% ============================================
+
+\subsection{Case 9.2: The Fired Coach Effect}
+\label{case:9.2}
+
+\paragraph{Scenario.}
+A soccer team fired their coach ($X$) after a 10-game losing streak. Under the new coach, the team won 5 of their next 8 games ($Y$). The media credited the new coach with ``turning the team around'' ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Coach Firing (Intervention)
+    \item $Y$ = Improved Win Rate (Outcome)
+    \item $Z$ = New Coach's Impact (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.2
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} REGRESSION TO MEAN
+    \item \textbf{Trap Subtype:} Trough Selection
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Sports
+    \item \textbf{Causal Structure:} Firing occurs at nadir; improvement is regression
+    \item \textbf{Key Insight:} New coach gets credit for mean reversion
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+The firing ($X$) occurred at the nadir of performance.
+
+\paragraph{Answer (Regression).}
+Coaches are fired when performance hits rock bottom ($X$). Rock bottom usually involves bad luck. Future performance ($Y$) will almost certainly improve as luck normalizes, regardless of who is coaching.
+
+\paragraph{Wise Refusal.}
+``Coaches are fired at performance troughs. Subsequent improvement ($Y$) typically reflects regression to the mean as bad luck normalizes. Attributing the turnaround solely to the new coach ($Z$) ignores the statistical inevitability of improvement from extreme lows.''
+
+%% ============================================
+%% CASE 9.25 (NEW - L2)
+%% ============================================
+
+\subsection{Case 9.25: The Madden Curse}
+\label{case:9.25}
+
+\paragraph{Scenario.}
+NFL players featured on the cover of the Madden video game ($X$) consistently have bad seasons or injuries ($Y$) the following year. A superstitious player refuses the cover to avoid injury.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Cover Feature (Event)
+    \item $Y$ = Performance Decline (Outcome)
+    \item $Z$ = Peak Performance (Selection Criteria)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.25
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} REGRESSION
+    \item \textbf{Trap Subtype:} Regression to the Mean
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Sports Analytics
+    \item \textbf{Causal Structure:} Selection on extreme value ($Z$) implies expected decline
+    \item \textbf{Key Insight:} Only outliers get on the cover; outliers regress
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The 'Madden Curse' is Regression to the Mean. Players are selected for the cover only after an outlier peak season ($Z$). Statistically, an outlier performance is likely to be followed by a more average season ($Y$), regardless of the video game cover ($X$).''
+
+%% ============================================
+%% CASE 9.26 (NEW - L2)
+%% ============================================
+
+\subsection{Case 9.26: The Mutual Fund Streak}
+\label{case:9.26}
+
+\paragraph{Scenario.}
+Fund Manager A beat the market for 5 consecutive years ($X$). Based on this 'hot hand,' you invest your life savings in Year 6.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = 5-Year Win Streak (Signal)
+    \item $Y$ = Future Performance (Outcome)
+    \item $Z$ = Luck/Random Variance (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.26
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Survivorship Bias
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Finance
+    \item \textbf{Causal Structure:} In a large population, long streaks of luck occur by chance
+    \item \textbf{Key Insight:} Past performance does not guarantee future results
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``A 5-year winning streak ($X$) is statistically expected in a large population of fund managers, purely due to chance ($Z$). Chasing past performance is the 'Hot Hand Fallacy.' Without evidence of structural edge, the manager is likely to regress to the market mean ($Y$).''
+
+%% ============================================
+%% CASE 9.27 (NEW - L2)
+%% ============================================
+
+\subsection{Case 9.27: The Coach Firing}
+\label{case:9.27}
+
+\paragraph{Scenario.}
+A team loses 5 games in a row ($X$). The owner fires the coach ($Z$). The team wins the next 2 games ($Y$). The owner claims the firing caused the turnaround.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Losing Streak (Pre-condition)
+    \item $Z$ = Firing Coach (Intervention)
+    \item $Y$ = Winning (Outcome)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.27
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} REGRESSION
+    \item \textbf{Trap Subtype:} Nadir Effect
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Management
+    \item \textbf{Causal Structure:} Interventions at the trough look effective due to natural bounce
+    \item \textbf{Key Insight:} Firing happens at the statistical bottom
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The team fired the coach ($Z$) at the nadir of performance ($X$). Since performance naturally fluctuates, a 'bounce back' to the mean ($Y$) was statistically likely even without changing the coach. Attributing the entire win to the firing ignores regression.''
+
+%% ============================================
+%% CASE 9.28 (NEW - L2)
+%% ============================================
+
+\subsection{Case 9.28: The Award Winner Regression}
+\label{case:9.28}
+
+\paragraph{Scenario.}
+A rookie player has a record-breaking first season ($X$). In their second season, their performance drops to average ($Y$). Fans claim the player 'got lazy' ($Z$).
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Record Rookie Season (Outlier)
+    \item $Y$ = Average Season (Regression)
+    \item $Z$ = Laziness (Attributed Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.28
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} REGRESSION
+    \item \textbf{Trap Subtype:} Sophomore Slump
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Sports
+    \item \textbf{Causal Structure:} Outlier $X$ implies $Y < X$
+    \item \textbf{Key Insight:} Sustaining outlier performance is probabilistically rare
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The 'Sophomore Slump' is a classic regression effect. The record-breaking first season ($X$) likely involved a combination of skill and positive variance. The second season ($Y$) represents a return to the player's true skill level, not necessarily a lack of effort ($Z$).''
+
+%% ============================================
+%% CASE 9.29 (NEW - L2)
+%% ============================================
+
+\subsection{Case 9.29: The One-Hit Wonder}
+\label{case:9.29}
+
+\paragraph{Scenario.}
+A band scores a global #1 hit ($X$). Their subsequent album flops ($Y$). Critics argue the first hit ruined their creativity.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Viral Hit (Extreme Value)
+    \item $Y$ = Average Follow-up (Regression)
+    \item $Z$ = Creativity Loss (Attributed Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.29
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} REGRESSION
+    \item \textbf{Trap Subtype:} Lightning Strikes Twice
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Entertainment
+    \item \textbf{Causal Structure:} Viral success relies on massive multiplicative luck
+    \item \textbf{Key Insight:} Replicating a 3-sigma event is nearly impossible
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``A global #1 hit ($X$) is a statistical outlier requiring the convergence of talent, timing, and luck. It is expected that the next attempt ($Y$) will regress toward the mean. This is statistical normalization, not necessarily a loss of creativity.''
+
+%% ============================================
+%% CASE 9.30 (NEW - L2)
+%% ============================================
+
+\subsection{Case 9.30: The Height Regression}
+\label{case:9.30}
+
+\paragraph{Scenario.}
+Two exceptionally tall parents ($X$) have a child. The child grows up to be tall, but shorter than the parents ($Y$). The parents worry nutritional deficiency caused the height loss.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Parents' Height (Extreme)
+    \item $Y$ = Child's Height (Regressed)
+    \item $Z$ = Nutrition (Attributed Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.30
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} REGRESSION
+    \item \textbf{Trap Subtype:} Galton's Regression
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Genetics
+    \item \textbf{Causal Structure:} Genetics sets a mean; extreme phenotypes regress
+    \item \textbf{Key Insight:} This is the original discovery case for Regression to the Mean
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This is Galton's classic 'Regression to Mediocrity.' Extreme traits ($X$) tend to revert toward the population average in the next generation ($Y$). The child is shorter not because of nutrition ($Z$), but because the parents represented a genetic outlier.''
+
+%% ============================================
+%% CASE 9.31 (NEW - L2)
+%% ============================================
+
+\subsection{Case 9.31: The Midterm Spike}
+\label{case:9.31}
+
+\paragraph{Scenario.}
+A student scores 100\% on the midterm ($X$), far above their average. They score 85\% on the final ($Y$). The teacher concludes the student stopped studying.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Perfect Score (Peak)
+    \item $Y$ = Normal Score (Regression)
+    \item $Z$ = Effort (Attributed Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.31
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} REGRESSION
+    \item \textbf{Trap Subtype:} Exam Variance
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Education
+    \item \textbf{Causal Structure:} Score = True Skill + Error
+    \item \textbf{Key Insight:} 100\% usually implies positive error term
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``A perfect score ($X$) typically implies maximum skill plus positive variance (luck). It is statistically probable that the next score ($Y$) will be lower as variance normalizes, even if the student's effort ($Z$) remained constant.''
+
+%% ============================================
+%% CASE 9.32 (NEW - L2)
+%% ============================================
+
+\subsection{Case 9.32: The Blood Pressure Trial}
+\label{case:9.32}
+
+\paragraph{Scenario.}
+Researchers recruit patients with the highest blood pressure ($X$) for a trial. After taking a supplement, their BP drops significantly ($Y$). The researchers claim the supplement works.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = High BP (Selection Criteria)
+    \item $Y$ = Lower BP (Outcome)
+    \item $Z$ = Regression (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.32
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} REGRESSION
+    \item \textbf{Trap Subtype:} Selection on Baseline
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Medicine
+    \item \textbf{Causal Structure:} Selecting extreme $X$ guarantees $\Delta Y < 0$
+    \item \textbf{Key Insight:} Must control for RTM (control group)
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Selecting patients based on extreme values ($X$) guarantees Regression to the Mean. Their blood pressure would likely have dropped naturally ($Y$) upon re-measurement. Without a control group to subtract this regression effect, the supplement's efficacy cannot be established.''
+
+%% ============================================
+%% CASE 9.33 (NEW - L2)
+%% ============================================
+
+\subsection{Case 9.33: The Dangerous Intersection}
+\label{case:9.33}
+
+\paragraph{Scenario.}
+The city installs cameras ($X$) at the intersection with the highest accident rate last year. Accidents fall by 40\% ($Y$). The mayor declares victory.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Camera (Intervention)
+    \item $Y$ = Accident Drop (Outcome)
+    \item $Z$ = Natural Variance (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.33
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} REGRESSION
+    \item \textbf{Trap Subtype:} Traffic Variance
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Public Policy
+    \item \textbf{Causal Structure:} Intervention triggered by outlier event
+    \item \textbf{Key Insight:} Accidents are rare, Poisson events; spikes usually regress
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Interventions triggered by record-high statistics ($X$) are prone to Regression to the Mean. The spike in accidents was likely a statistical anomaly that would have normalized ($Y$) even without the cameras. The true effect is likely smaller than 40\%.''
+
+%% ============================================
+%% CASE 9.34 (NEW - L2)
+%% ============================================
+
+\subsection{Case 9.34: The Placebo Pain}
+\label{case:9.34}
+
+\paragraph{Scenario.}
+Patients seeking help for extreme back pain ($X$) are given a sugar pill. They report feeling better the next day ($Y$).
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Peak Pain (Selection)
+    \item $Y$ = Relief (Outcome)
+    \item $Z$ = Natural Healing (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.34
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} REGRESSION
+    \item \textbf{Trap Subtype:} Natural History of Disease
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Medicine
+    \item \textbf{Causal Structure:} Patients seek help at local maxima ($X$)
+    \item \textbf{Key Insight:} Pain fluctuates; treatment coincides with peak
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Patients typically seek treatment when pain is at its peak ($X$). Since pain fluctuates, the subsequent period is likely to be less painful ($Y$) purely due to natural regression. The relief cannot be attributed causally to the sugar pill.''
+
+%% ============================================
+%% CASE 9.35 (NEW - L2)
+%% ============================================
+
+\subsection{Case 9.35: The Lucky Jersey}
+\label{case:9.35}
+
+\paragraph{Scenario.}
+A fan wears a specific jersey ($X$) and their team wins ($Y$). They conclude the jersey causes the win.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Jersey (Ritual)
+    \item $Y$ = Win (Outcome)
+    \item $Z$ = Independent Event (Reality)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.35
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} SPURIOUS
+    \item \textbf{Trap Subtype:} Superstition
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Psychology
+    \item \textbf{Causal Structure:} $X$ and $Y$ are independent
+    \item \textbf{Key Insight:} Post hoc ergo propter hoc
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This is the 'Post Hoc' fallacy. The outcome of the game ($Y$) is causally independent of the fan's attire ($X$). Any correlation is spurious and not predictive.''
+
+%% ============================================
+%% CASE 9.36 (NEW - L2)
+%% ============================================
+
+\subsection{Case 9.36: The Risky CEO}
+\label{case:9.36}
+
+\paragraph{Scenario.}
+A famous CEO took massive leverage ($X$) and built a giant company ($Y$). A business school student decides to take massive leverage to replicate the success.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = High Leverage (Strategy)
+    \item $Y$ = Success (Outcome)
+    \item $Z$ = Bankruptcies (Unobserved)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.36
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Survivorship Bias
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Business
+    \item \textbf{Causal Structure:} $X$ increases variance, leading to either $Y$ or ruin
+    \item \textbf{Key Insight:} We don't see the CEOs who took leverage and failed
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Replicating the strategy ($X$) ignores Survivorship Bias. For every CEO who succeeded with massive leverage ($Y$), many others went bankrupt ($Z$) and dropped out of the dataset. High leverage increases variance, not necessarily expected value.''
+
+%% ============================================
+%% CASE 9.37 (NEW - L2)
+%% ============================================
+
+\subsection{Case 9.37: The Bomber Armor}
+\label{case:9.37}
+
+\paragraph{Scenario.}
+Returning bombers have bullet holes concentrated on the wings ($X$). The general orders the wings armored.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Observable Damage (Wings)
+    \item $Y$ = Survival (Selection)
+    \item $Z$ = Fatal Damage (Engines/Cockpit)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.37
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Wald's Survivorship Bias
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} History / OR
+    \item \textbf{Causal Structure:} Damage to $Z$ causes plane to be missing from $X$
+    \item \textbf{Key Insight:} Armor the places with NO holes
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This is Wald's Survivorship Bias. The returning planes ($Y$) survived hits to the wings ($X$). Planes hit in the engines or cockpit ($Z$) did not return. You should armor the areas with no holes, as hits there are fatal.''
+
+%% ============================================
+%% CASE 9.38 (NEW - L2)
+%% ============================================
+
+\subsection{Case 9.38: The Founder's Advice}
+\label{case:9.38}
+
+\paragraph{Scenario.}
+A billionaire advises: 'Never give up' ($X$). He claims this trait caused his success ($Y$).
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Persistence (Trait)
+    \item $Y$ = Success (Outcome)
+    \item $Z$ = Failed Persisters (Unobserved)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.38
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Survivorship Bias
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Sociology
+    \item \textbf{Causal Structure:} $X$ is necessary but not sufficient
+    \item \textbf{Key Insight:} Persistence is common among failures too
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``This advice suffers from Survivorship Bias. Many founders who 'never gave up' ($X$) eventually failed ($Z$) and are not interviewed. While persistence may be necessary, it is not a sufficient condition for success ($Y$).''
+
+%% ============================================
+%% CASE 9.4
+%% ============================================
+
+\subsection{Case 9.4: The Mutual Fund Winner}
+\label{case:9.4}
+
+\paragraph{Scenario.}
+A mutual fund ($X$) was featured in a financial magazine after beating the market for 5 consecutive years ($Z$). Investors poured billions into the fund. Over the next 5 years, the fund underperformed the market average ($Y$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Featured Fund (Selection)
+    \item $Y$ = Underperformance (Outcome)
+    \item $Z$ = Past 5-Year Outperformance (Criteria)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.4
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} SURVIVORSHIP
+    \item \textbf{Trap Subtype:} Fund Selection Bias
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Finance
+    \item \textbf{Causal Structure:} Selected on luck; future uncorrelated
+    \item \textbf{Key Insight:} Past performance reflects luck, not skill
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Selection ($X$) is based on past outliers ($Z$).
+
+\paragraph{Answer (Regression).}
+With thousands of funds, some will beat the market for 5 years purely by coin-flipping chance. The magazine selects these lucky outliers ($Z$). Future performance ($Y$) is uncorrelated with past luck.
+
+\paragraph{Wise Refusal.}
+``Selecting funds based on past outperformance ($Z$) suffers from survivorship bias and regression to the mean. The `winning' funds likely benefited from luck. Future returns ($Y$) regress to the average, often underperforming due to high fees.''
+
+%% ============================================
+%% CASE 9.6
+%% ============================================
+
+\subsection{Case 9.6: The Traffic Camera Illusion}
+\label{case:9.6}
+
+\paragraph{Scenario.}
+The city installed speed cameras ($X$) at the 10 intersections with the highest accident rates ($Z$) last year. This year, accidents at those intersections dropped by 40\% ($Y$). The city credits the cameras.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Camera Installation (Intervention)
+    \item $Y$ = Accident Reduction (Outcome)
+    \item $Z$ = Highest Accident Rate (Selection Criterion)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.6
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} REGRESSION TO MEAN
+    \item \textbf{Trap Subtype:} Peak Selection Regression
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Policy
+    \item \textbf{Causal Structure:} Extreme sites selected; would regress anyway
+    \item \textbf{Key Insight:} Need control sites to prove camera effect
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Selection on extreme values ($Z$) guarantees regression.
+
+\paragraph{Answer (Regression).}
+The top 10 accident sites ($Z$) likely had a bad luck year (random variance). Even without cameras ($X$), accident rates would naturally fall ($Y$) closer to the long-term average next year.
+
+\paragraph{Wise Refusal.}
+``Selecting sites with peak accident rates ($Z$) guarantees regression to the mean. A drop ($Y$) is expected purely statistically. To prove the cameras ($X$) worked, we must compare the drop to `control' intersections that had high accidents but received no cameras.''
+
+%% ============================================
+%% CASE 9.7
+%% ============================================
+
+\subsection{Case 9.7: The Pundit Prediction}
+\label{case:9.7}
+
+\paragraph{Scenario.}
+A stock pundit ($X$) correctly predicted 8 of the last 10 market moves ($Z$) and was hired by a major network. His subsequent predictions were only 50\% accurate ($Y$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Pundit Selection (Action)
+    \item $Y$ = Regression to Chance (Outcome)
+    \item $Z$ = Past Accuracy Record (Criteria)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.7
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} SURVIVORSHIP
+    \item \textbf{Trap Subtype:} Lucky Pundit Selection
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Finance
+    \item \textbf{Causal Structure:} Many pundits; one gets lucky streak
+    \item \textbf{Key Insight:} Selected for luck, not skill
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Are there enough pundits that one would get 8/10 by chance?
+
+\paragraph{Correct Answer.}
+If 1,000 pundits flip coins, several will get 8/10 heads. The network selected the luckiest one ($Z$). Once hired, his luck ran out.
+
+\paragraph{Wise Refusal.}
+``With a large pool of pundits, a streak of 8/10 correct calls ($Z$) is statistically expected by chance. The network selected for luck, not skill. The subsequent 50\% accuracy ($Y$) represents regression to the mean of random guessing.''
+
+%% ============================================
+%% CASE 9.8
+%% ============================================
+
+\subsection{Case 9.8: The Fourth-Down Decision}
+\label{case:9.8}
+
+\paragraph{Scenario.}
+A coach went for it on 4th down ($X$) and failed. The team lost the game ($Y$). Critics called the decision ``reckless'' ($Z$). Analytics show the play had a 60\% success rate and positive Expected Value.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = The Decision (Action)
+    \item $Y$ = Bad Outcome (Result)
+    \item $Z$ = Criticism (Evaluation)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.8
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} OUTCOME BIAS
+    \item \textbf{Trap Subtype:} Process vs.\ Outcome Confusion
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Sports
+    \item \textbf{Causal Structure:} Good decision, bad luck
+    \item \textbf{Key Insight:} Evaluate decisions by EV, not realized outcome
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Evaluating process ($X$) vs.\ outcome ($Y$).
+
+\paragraph{Correct Answer.}
+The decision ($X$) was correct because it maximized winning probability. The failure ($Y$) was the 40\% downside. Critics are committing Outcome Bias.
+
+\paragraph{Wise Refusal.}
+``Critics are displaying Outcome Bias. They are judging the decision ($X$) based on the negative result ($Y$) rather than the probability at the time. Since the play had a 60\% success rate, it was the correct strategic move despite the failure.''
+
+%% ============================================
+%% PEARL LEVEL 3 CASES (Counterfactual)
+%% ============================================
+
+%% ============================================
+%% CASE 9.14 (L3 - Counterfactual)
+%% ============================================
+
+\subsection{Case 9.14: The Contrarian Counterfactual}
+\label{case:9.14}
+
+\paragraph{Scenario.}
+Stocks rated ``Strong Buy'' by analysts underperformed ``Sell'' rated stocks over the next year. An investor asks: ``What would have happened to my portfolio if I had done the opposite of analyst recommendations?''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Following Analyst Ratings (Strategy A)
+    \item $X'$ = Doing Opposite of Ratings (Strategy B)
+    \item $Y$ = Portfolio Returns (Outcome)
+    \item $Z$ = Price Momentum at Rating Time
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.14
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Contrarian Counterfactual / Regression Timing
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Finance
+    \item \textbf{Causal Structure:} $Z \to X$ (momentum causes rating); $Z \to Y$ (momentum reverses)
+    \item \textbf{Key Insight:} The counterfactual strategy exploits regression to the mean
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+Two counterfactual worlds:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{World A}: Investor follows ratings (buy ``Strong Buy,'' sell ``Sell'')
+    \item \textbf{World B}: Investor does the opposite (sell ``Strong Buy,'' buy ``Sell'')
+\end{itemize}
+
+The question: ``Would I have been better off in World B?''
+
+\paragraph{Correct Reasoning.}
+The counterfactual analysis reveals:
+\begin{itemize}[leftmargin=1.5em]
+    \item Analysts issue ``Buy'' ratings \emph{after} stocks have risen (chasing momentum)
+    \item These stocks are at temporary peaks due to momentum + luck
+    \item Regression to the mean predicts they will underperform going forward
+    \item The contrarian counterfactual (World B) exploits this regression
+\end{itemize}
+
+\textbf{However}, the counterfactual has limits:
+\begin{itemize}[leftmargin=1.5em]
+    \item If everyone adopted the contrarian strategy, it would stop working
+    \item The strategy's success depends on others following analysts
+    \item This is a counterfactual about a policy, not just an outcome
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``The contrarian counterfactual exploits regression to the mean and is valid for an individual investor. However, it is not universalizable---if everyone became contrarian, the edge would disappear.''
+
+\paragraph{Wise Refusal.}
+``The contrarian counterfactual appears profitable because analyst ratings are lagging indicators issued at momentum peaks. In the counterfactual world where you did the opposite, you would exploit regression to the mean. But this counterfactual assumes others continue following analysts---if everyone became contrarian, the edge would disappear. The counterfactual is valid for an individual but not universalizable.''
+
+%% ============================================
+%% CASE 9.16 (L3 - Counterfactual)
+%% ============================================
+
+\subsection{Case 9.16: The Trade Counterfactual}
+\label{case:9.16}
+
+\paragraph{Scenario.}
+A baseball team traded a player immediately after his career-best season. His performance declined with the new team. Fans claim: ``If he had stayed, he would have kept performing at that level.'' The original team's GM responds: ``He would have declined anyway.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Trade Decision (Intervention)
+    \item $Y$ = Post-Trade Performance (Outcome)
+    \item $Y'$ = Counterfactual Performance if Stayed
+    \item $Z$ = Career-Best Season (Peak Selection)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.16
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Unobservable Counterfactual / Regression
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Sports
+    \item \textbf{Causal Structure:} Peak = Skill + Luck; counterfactual cannot preserve luck
+    \item \textbf{Key Insight:} The counterfactual ``stayed and kept peak performance'' is statistically impossible
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+The fan's counterfactual: ``If the player had not been traded ($\neg X$), would he have maintained peak performance ($Y' = $ peak)?''
+
+This requires imagining an alternative world where:
+\begin{itemize}[leftmargin=1.5em]
+    \item The player stayed with the original team
+    \item Everything else (luck, health, opponents) remained the same
+\end{itemize}
+
+\paragraph{Correct Reasoning.}
+The counterfactual is flawed because:
+\begin{itemize}[leftmargin=1.5em]
+    \item Career-best season = True Skill + Positive Variance (luck)
+    \item The luck component is \emph{by definition} non-repeatable
+    \item In the counterfactual world where he stayed, luck would still normalize
+    \item $Y' \approx Y$ (decline happens either way)
+\end{itemize}
+
+The fan imagines a counterfactual where staying \emph{also} preserves the lucky variance. But counterfactuals don't work that way---you can counterfactually change the trade decision, but you cannot counterfactually ``keep the same luck.''
+
+\paragraph{Ground Truth.}
+\textbf{Answer: INVALID}
+
+``The fans' counterfactual assumes staying would preserve peak performance. But peak performance includes unsustainable luck that regresses regardless of team. The counterfactual 'stayed and kept playing at peak' is statistically impossible.''
+
+\paragraph{Wise Refusal.}
+``The fans' counterfactual assumes that staying with the team would have preserved the peak performance. But peak performance includes unsustainable luck. In the counterfactual world where he stayed, luck still normalizes, and performance still regresses. The trade didn't cause the decline---regression did. The counterfactual `stayed and kept playing at peak' is statistically impossible.''
+
+%% ============================================
+%% CASE 9.18 (L3 - Counterfactual)
+%% ============================================
+
+\subsection{Case 9.18: The Perfect Score Counterfactual}
+\label{case:9.18}
+
+\paragraph{Scenario.}
+A university gave scholarships to students with perfect SAT scores. Their college GPAs were good but rarely perfect. The dean asks: ``What would have happened if we had given scholarships to students with 1400 scores instead?''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Perfect SAT Selection (Policy A)
+    \item $X'$ = 1400 SAT Selection (Policy B)
+    \item $Y$ = Scholarship Recipients' GPA (Outcome)
+    \item $Z$ = True Ability (Latent)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.18
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Ceiling Counterfactual / Regression Asymmetry
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Education
+    \item \textbf{Causal Structure:} Perfect = Ability + Zero Error; counterfactual groups have different regression
+    \item \textbf{Key Insight:} Counterfactual comparison is asymmetric due to ceiling effects
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+Two counterfactual policies:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Policy A (Actual)}: Select students with perfect 1600 SAT
+    \item \textbf{Policy B (Counterfactual)}: Select students with 1400 SAT
+\end{itemize}
+
+The dean's implicit question: ``Would Policy B students have similar college GPAs?''
+
+\paragraph{Correct Reasoning.}
+The counterfactual comparison is asymmetric:
+
+\textbf{Policy A (Perfect Scores)}:
+\begin{itemize}[leftmargin=1.5em]
+    \item True ability distribution: Very high (but not all maximal)
+    \item SAT performance: Ability + zero measurement error (lucky day)
+    \item College GPA: Regresses DOWN (measurement error returns)
+\end{itemize}
+
+\textbf{Policy B (1400 Scores)}:
+\begin{itemize}[leftmargin=1.5em]
+    \item True ability distribution: High (some could score higher, some lower)
+    \item SAT performance: Ability + variable measurement error
+    \item College GPA: Regresses TOWARD MEAN (could go up or down)
+\end{itemize}
+
+The perfect-score group has \emph{asymmetric regression}---they can only go down. The 1400 group has \emph{symmetric regression}---some go up, some down.
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``The counterfactual depends on test design. If the test has a hard ceiling and the student has mastered all material, then 'would have scored 100' is valid. If luck plays a role, the counterfactual is uncertain.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual comparison is asymmetric. Perfect-score students include some with true ability below 1600 who got lucky---they can only regress down. 1400-score students include some with true ability above 1400 who got unlucky---they can regress up. The dean is comparing a group that can only fall to a group that can go either direction. This isn't evidence the SAT over-predicts; it's a ceiling effect in the counterfactual structure.''
+
+%% ============================================
+%% CASE 9.19 (L3 - Counterfactual)
+%% ============================================
+
+\subsection{Case 9.19: The Survivorship Counterfactual}
+\label{case:9.19}
+
+\paragraph{Scenario.}
+A poker player won 10 consecutive tournaments. Fans claim he is the best in the world. A statistician asks: ``What would we conclude if we had tracked all 10 million players from the start, rather than noticing this one after his streak?''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = This specific player's streak
+    \item $Y$ = Skill attribution
+    \item $Z$ = Population of 10 million players
+    \item $W$ = Counterfactual: pre-registered prediction
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.19
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Pre-Registration Counterfactual / Survivorship
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Gambling
+    \item \textbf{Causal Structure:} Post-hoc selection vs. pre-registered prediction
+    \item \textbf{Key Insight:} The counterfactual of pre-registration changes the evidential value
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+Two counterfactual worlds:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{World A (Actual)}: We notice the player \emph{after} his 10-win streak
+    \item \textbf{World B (Counterfactual)}: We predict \emph{before} any tournaments that this specific player will win 10 in a row
+\end{itemize}
+
+The question: ``Is the evidential value of the streak the same in both worlds?''
+
+\paragraph{Correct Reasoning.}
+The counterfactual reveals a fundamental asymmetry:
+
+\textbf{World A (Post-hoc observation)}:
+\begin{itemize}[leftmargin=1.5em]
+    \item With 10 million players, \emph{someone} getting a 10-win streak is nearly certain
+    \item We noticed this player \emph{because} of the streak
+    \item The streak is weak evidence of skill (selection effect)
+\end{itemize}
+
+\textbf{World B (Pre-registered prediction)}:
+\begin{itemize}[leftmargin=1.5em]
+    \item Probability of a \emph{specific} player winning 10 in a row by chance is tiny
+    \item If we predicted this player beforehand and he succeeded, that's strong evidence
+    \item The same outcome has vastly different evidential value
+\end{itemize}
+
+The counterfactual shows that \emph{when} we identify the player completely changes our inference. Post-hoc identification after observing the streak is nearly worthless; pre-registered prediction would be compelling.
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``The evidential value of the streak depends entirely on when we identified the player. Post-hoc identification after observing the streak is nearly worthless; pre-registered prediction would be compelling evidence of skill.''
+
+\paragraph{Wise Refusal.}
+``The evidential value depends on the counterfactual of when we identified the player. In the actual world, we noticed him after his streak---but with 10 million players, someone was bound to streak. In the counterfactual world where we predicted this specific player beforehand, the same streak would be extraordinary evidence of skill. The streak itself doesn't change; its meaning completely depends on whether our attention was pre-registered or post-hoc.''
+
+%% ============================================
+%% CASE 9.22 (NEW - L3, from Bucket 11.9)
+%% ============================================
+
+\subsection{Case 9.22: The Counterfactual Biography}
+\label{case:9.22}
+
+\paragraph{Scenario.}
+A biographer writes: ``If Einstein had died in 1905, special relativity would never have been
+discovered.'' A historian of science objects: ``Lorentz and Poincaré were already close to
+the same conclusions.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Einstein's contribution
+    \item $Y$ = Discovery of special relativity
+    \item $Z$ = State of physics in 1905
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.22
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Great Man vs.\ Inevitability
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} History of Science
+    \item \textbf{Causal Structure:} Individual vs.\ zeitgeist as cause
+    \item \textbf{Key Insight:} Counterfactual depends on causal model of discovery
+    \item \textbf{References:} Simultaneous discovery; Merton's thesis
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+The counterfactual: ``If Einstein had not existed, would special relativity have been discovered?''
+
+\paragraph{Correct Reasoning.}
+This depends on the causal model of scientific discovery:
+
+\textbf{``Great Man'' model}:
+\begin{itemize}[leftmargin=1.5em]
+    \item Individual genius is necessary
+    \item Einstein was a but-for cause of relativity
+    \item Counterfactual: No Einstein $\to$ No (or much later) relativity
+\end{itemize}
+
+\textbf{``Zeitgeist'' model}:
+\begin{itemize}[leftmargin=1.5em]
+    \item Discoveries are ``in the air'' when conditions are ripe
+    \item Lorentz transformations existed; the philosophy of time was evolving
+    \item Counterfactual: No Einstein $\to$ Poincaré publishes similar theory by 1910
+\end{itemize}
+
+Historical evidence of simultaneous discovery (Newton/Leibniz, Darwin/Wallace, multiple
+inventors of calculus, telephone, etc.) suggests discoveries are often overdetermined.
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``The counterfactual depends on the causal model of scientific discovery. Under the 'Great Man' model, Einstein was necessary. Under the 'zeitgeist' model, the discovery was overdetermined. Historical evidence of simultaneous discovery supports partial overdetermination.''
+
+\paragraph{Wise Refusal.}
+``This is a question about the causal structure of scientific discovery. The `Great Man' model makes Einstein a but-for cause. The `zeitgeist' model suggests the discovery was overdetermined---Lorentz and Poincaré had the mathematical tools, and someone would have synthesized them. Historical patterns of simultaneous discovery support partial overdetermination.''
+
+%% ============================================
+%% CASE 9.23 (NEW - L3, from Bucket 12.1)
+%% ============================================
+
+\subsection{Case 9.23: The Historical Counterfactual}
+\label{case:9.23}
+
+\paragraph{Scenario.}
+A historian argues: ``If Archduke Franz Ferdinand had not been assassinated, World War I
+would not have occurred.'' A critic responds: ``The tensions between European powers made
+a major war inevitable; it would have started within a year anyway.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Assassination (trigger event)
+    \item $Y$ = World War I (outcome)
+    \item $Z$ = Underlying tensions (structural causes)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.23
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Trigger vs.\ Structural Cause
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} History
+    \item \textbf{Causal Structure:} $Z$ makes $Y$ likely; $X$ is one possible trigger
+    \item \textbf{Key Insight:} Triggers are replaceable; structures are not
+    \item \textbf{References:} Historical counterfactuals; contingency vs.\ necessity
+\end{itemize}
+
+\paragraph{The Counterfactual Question.}
+``If $X$ had not occurred, would $Y$ have occurred?''
+
+\paragraph{Correct Reasoning.}
+This requires distinguishing:
+
+\textbf{Trigger causes}: Events that initiate a chain reaction
+\begin{itemize}[leftmargin=1.5em]
+    \item Assassination was a trigger
+    \item But triggers are often replaceable---another crisis could have sparked war
+\end{itemize}
+
+\textbf{Structural causes}: Background conditions that make outcomes likely
+\begin{itemize}[leftmargin=1.5em]
+    \item Alliance systems, arms races, nationalist tensions
+    \item These made \emph{some} major war highly probable
+\end{itemize}
+
+The counterfactual ``No assassination $\to$ No WWI'' is:
+\begin{itemize}[leftmargin=1.5em]
+    \item Possibly true in the narrow sense (no war in July 1914)
+    \item Probably false in the broader sense (war within 5 years via different trigger)
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``Historical counterfactuals face the trigger-vs-structure problem. The specific event may have been necessary for the specific outcome, but structural conditions often make some similar outcome likely regardless.''
+
+\paragraph{Wise Refusal.}
+``This illustrates the distinction between trigger causes and structural causes. The assassination was a but-for cause of the war starting in July 1914. But the structural causes (alliances, arms races, nationalism) made some major war highly probable. Without the assassination, another trigger would likely have produced a similar outcome within years. The trigger is replaceable; the structure was not.''
+
+%% ============================================
+%% CASE 9.24 (NEW - L3, from Bucket 12.6)
+%% ============================================
+
+\subsection{Case 9.24: The Actual Cause (Sports Defeat)}
+\label{case:9.24}
+
+\paragraph{Scenario.}
+A football team loses 21-20. The kicker missed an easy field goal in the 4th quarter. The
+quarterback threw two interceptions earlier. The defense allowed a touchdown in the final minute.
+Post-game: The kicker is blamed for ``losing the game.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $K$ = Missed field goal ($-$3 points)
+    \item $Q$ = Quarterback interceptions ($-$14 points estimated)
+    \item $D$ = Defensive failure ($-$7 points)
+    \item $Y$ = Loss by 1 point
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.24
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Recency Bias / Actual Cause Selection
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Sports
+    \item \textbf{Causal Structure:} Multiple but-for causes; one gets blamed
+    \item \textbf{Key Insight:} Proximate cause $\neq$ most important cause
+    \item \textbf{References:} Actual causation; blame assignment; recency bias
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+The loss ($Y$) has multiple but-for causes:
+\begin{enumerate}[leftmargin=1.5em]
+    \item If kicker had made the field goal: 24-21 win
+    \item If QB had thrown 0 interceptions: Estimated 35-21 win
+    \item If defense had held: 21-14 win
+\end{enumerate}
+
+All three are but-for causes. Why does the kicker get blamed?
+
+\paragraph{Correct Reasoning.}
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Recency bias}: The missed kick was the final failure
+    \item \textbf{Counterfactual salience}: It's easy to imagine the kick going in
+    \item \textbf{Causal proximity}: It was the last link in the chain
+\end{enumerate}
+
+But counterfactual analysis shows the interceptions likely cost more points. The selection
+of the kicker as ``the cause'' is a psychological phenomenon, not a logical one.
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``Sports defeats typically have multiple NESS (Necessary Element of Sufficient Set) causes. Each failure was necessary for the loss, but none was uniquely 'the' cause. Causal attribution depends on which factors we consider mutable.''
+
+\paragraph{Wise Refusal.}
+``All three failures are but-for causes of the loss. The kicker is blamed due to recency bias and counterfactual salience---the missed kick was the final, easily-imagined failure. But the interceptions likely cost more points. `Actual cause' selection in sports often reflects psychological availability rather than causal importance.''
+
+%% ============================================
+%% CASE 9.40 (NEW - L3)
+%% ============================================
+
+\subsection{Case 9.40: The Penalty Kick}
+\label{case:9.40}
+
+\paragraph{Scenario.}
+A striker kicked left ($X$) and the goalie saved it ($Y$). The striker claims: ``If I had kicked right, I would have scored.'' Video analysis confirms the goalie committed fully to the left before the ball was struck.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Kick Direction (Left)
+    \item $Y$ = Save (Outcome)
+    \item $G$ = Goalie Dive (Left)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.40
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Game Theory Determinism
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Sports
+    \item \textbf{Causal Structure:} Goalie position ($G$) is fixed at time of kick
+    \item \textbf{Key Insight:} If $G=Left$ and $Kick=Right$, outcome is Goal
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``The counterfactual is valid. Since the goalie had already committed left, kicking right into the open net would have resulted in a goal with certainty. The causal mechanism is deterministic given the goalie's fixed position.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. Since the goalie had already committed left ($G$), kicking right ($X'$) into the open net would have resulted in a goal. The causal mechanism is deterministic given the goalie's state.''
+
+%% ============================================
+%% CASE 9.41 (NEW - L3)
+%% ============================================
+
+\subsection{Case 9.41: The Poker Fold}
+\label{case:9.41}
+
+\paragraph{Scenario.}
+You folded ($X$) a hand with two hearts. The dealer reveals the river card was the Ace of Hearts ($Z$). You claim: ``If I had called, I would have made a flush.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Decision (Fold)
+    \item $Z$ = River Card (Ace of Hearts)
+    \item $Y$ = Hand Strength (Flush)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.41
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D9 (Performance & Luck)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Deterministic Sequence
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Game Theory
+    \item \textbf{Causal Structure:} Deck order is fixed pre-deal
+    \item \textbf{Key Insight:} Your decision does not reshuffle the deck
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``The counterfactual is valid. In physical poker, the deck order is fixed before the deal. The decision to fold does not causally affect which card comes next. Had you called, the same Ace of Hearts would have been dealt.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. In physical poker, the deck order is fixed ($Z$). Your decision to fold ($X$) does not causally affect the identity of the next card. Had you called, the same Ace of Hearts would have been dealt, completing the flush.''
+
+%% ============================================
+%% CASE 9.5 (L3 - Counterfactual)
+%% ============================================
+
+\subsection{Case 9.5: The Hiring Counterfactual}
+\label{case:9.5}
+
+\paragraph{Scenario.}
+A company analyzed its current employees and found a weak correlation between interview scores ($X$) and job performance ($Y$). HR concludes interviews are useless. A statistician asks: ``What would have happened if we had hired the candidates we rejected?''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Interview Score (Predictor)
+    \item $Y$ = Job Performance (Outcome)
+    \item $Z$ = Hiring Decision (Selection Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 9.5
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D9 (Performance)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Unobserved Counterfactual / Range Restriction
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Business
+    \item \textbf{Causal Structure:} Selection truncates the observable distribution
+    \item \textbf{Key Insight:} We cannot observe the counterfactual world where low scorers were hired
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+The key counterfactual question: ``If we had hired candidates with low interview scores, what would their job performance have been?''
+
+This counterfactual is fundamentally unobservable---we never hired them, so we have no data on their performance.
+
+\paragraph{Correct Reasoning.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Observable world}: Among hired employees (high scorers), weak $X \to Y$ correlation
+    \item \textbf{Counterfactual world}: Among rejected candidates (low scorers), performance is unknown
+    \item \textbf{The trap}: HR assumes the counterfactual world would show the same weak correlation
+    \item \textbf{Reality}: The interview may have successfully filtered out poor performers---we just can't see them
+\end{itemize}
+
+The weak correlation within the hired group could mean:
+\begin{enumerate}[leftmargin=1.5em]
+    \item Interviews are useless (HR's conclusion)
+    \item Interviews are excellent filters---all hired candidates are above threshold, so variance is compressed
+\end{enumerate}
+
+Without the counterfactual (rejected candidates' performance), we cannot distinguish these possibilities.
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``The counterfactual is underdetermined. Without observing rejected candidates' performance, we cannot distinguish whether interviews are useless or are effective filters that compress variance among the hired.''
+
+\paragraph{Wise Refusal.}
+``This requires reasoning about an unobservable counterfactual. We don't know how rejected candidates would have performed because we never hired them. The weak correlation among hired employees could indicate either (1) interviews are useless, or (2) interviews are such effective filters that all hired candidates are qualified. The counterfactual world where low scorers were hired is forever hidden from us.''
+
+%% ============================================
+%% BUCKET 9 SUMMARY
+%% ============================================
+
+\subsection*{Bucket 9 Summary}
+
+\begin{center}
+\small
+\begin{tabular}{lllll}
+\toprule
+\textbf{Case} & \textbf{Title} & \textbf{Trap Type} & \textbf{Level} & \textbf{Diff} \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 1 (Association)}} \\
+\midrule
+9.1 & The Sophomore Slump & REGRESSION TO M & L1 & Easy \\
+9.20 & The Clutch Reputation & AVAILABILITY BI & L1 & Med \\
+9.21 & The Music Streaming Hits & REGRESSION TO M & L1 & Easy \\
+9.3 & The Hot Hand Debate & OUTCOME BIAS & L1 & Hard \\
+9.39 & The Roulette Wheel & FALLACY & L1 & Easy \\
+9.9 & The Streaky Hitter & CLUSTERING ILLU & L1 & Med \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 2 (Intervention)}} \\
+\midrule
+9.10 & The Second Novel Syndrome & REGRESSION TO M & L2 & Easy \\
+9.11 & The Startup Founder & SURVIVORSHIP & L2 & Med \\
+9.12 & The Teacher Bonus & REGRESSION TO M & L2 & Med \\
+9.13 & The Management Consultant & REGRESSION TO M & L2 & Med \\
+9.15 & The Clinical Trial Site & SELECTION & L2 & Hard \\
+9.17 & The Performance Review & REGRESSION TO M & L2 & Easy \\
+9.2 & The Fired Coach Effect & REGRESSION TO M & L2 & Med \\
+9.25 & The Madden Curse & REGRESSION & L2 & Med \\
+9.26 & The Mutual Fund Streak & SELECTION & L2 & Med \\
+9.27 & The Coach Firing & REGRESSION & L2 & Hard \\
+9.28 & The Award Winner Regressi... & REGRESSION & L2 & Easy \\
+9.29 & The One-Hit Wonder & REGRESSION & L2 & Easy \\
+9.30 & The Height Regression & REGRESSION & L2 & Hard \\
+9.31 & The Midterm Spike & REGRESSION & L2 & Easy \\
+9.32 & The Blood Pressure Trial & REGRESSION & L2 & Hard \\
+9.33 & The Dangerous Intersectio... & REGRESSION & L2 & Med \\
+9.34 & The Placebo Pain & REGRESSION & L2 & Med \\
+9.35 & The Lucky Jersey & SPURIOUS & L2 & Easy \\
+9.36 & The Risky CEO & SELECTION & L2 & Med \\
+9.37 & The Bomber Armor & SELECTION & L2 & Hard \\
+9.38 & The Founder's Advice & SELECTION & L2 & Med \\
+9.4 & The Mutual Fund Winner & SURVIVORSHIP & L2 & Med \\
+9.6 & The Traffic Camera Illusi... & REGRESSION TO M & L2 & Hard \\
+9.7 & The Pundit Prediction & SURVIVORSHIP & L2 & Easy \\
+9.8 & The Fourth-Down Decision & OUTCOME BIAS & L2 & Med \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 3 (Counterfactual)}} \\
+\midrule
+\rowcolor{blue!15} 9.14 & The Contrarian Counterfac... & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 9.16 & The Trade Counterfactual & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 9.18 & The Perfect Score Counter... & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 9.19 & The Survivorship Counterf... & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 9.22 & The Counterfactual Biogra... & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 9.23 & The Historical Counterfac... & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 9.24 & The Actual Cause (Sports ... & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 9.40 & The Penalty Kick & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 9.41 & The Poker Fold & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 9.5 & The Hiring Counterfactual & COUNTERFACTUAL & L3 & Med \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Pearl Level Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{L1 (Association):} 6 cases (15\%)
+    \item \textbf{L2 (Intervention):} 25 cases (61\%)
+    \item \textbf{L3 (Counterfactual):} 10 cases (24\%)
+    \item \textbf{Total:} 41 cases
+\end{itemize}
+
+\paragraph{L3 Ground Truth Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{VALID:} 2 cases (20\%) --- 9.40, 9.41
+    \item \textbf{INVALID:} 1 case (10\%) --- 9.16
+    \item \textbf{CONDITIONAL:} 7 cases (70\%) --- 9.5, 9.14, 9.18, 9.19, 9.22, 9.23, 9.24
+\end{itemize}
+
+\paragraph{Trap Type Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \texttt{REGRESSION TO MEAN}: 15 cases (37\%)
+    \item \texttt{COUNTERFACTUAL}: 10 cases (24\%)
+    \item \texttt{SURVIVORSHIP/SELECTION}: 8 cases (20\%)
+    \item \texttt{OUTCOME BIAS}: 3 cases (7\%)
+    \item Other: 5 cases (12\%)
+\end{itemize}
+
+\paragraph{Difficulty Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item Easy: 10 cases (24\%)
+    \item Medium: 18 cases (44\%)
+    \item Hard: 13 cases (32\%)
+\end{itemize}

@@ -1,0 +1,2097 @@
+%% ============================================
+%% BUCKET 6: ENVIRONMENT & CLIMATE
+%% T³ Benchmark Standard Format (Revised & Sorted)
+%% Theme: Feedback Loops, System Boundaries, Time Lags
+%% Total Cases: 45 (L1: 5, L2: 30, L3: 10)
+%% ============================================
+
+\section{Bucket 6: Environment \& Climate}
+\label{sec:bucket6}
+
+\subsection*{Bucket Overview}
+
+\paragraph{Domain.} Environment (D6)
+
+\paragraph{Core Themes.} Climate systems, conservation, policy evaluation, feedback loops, system boundaries, time lags, leakage effects.
+
+\paragraph{Signature Trap Types.} Conf-Med, Feedback (bidirectional causation), Collider, System Boundary Problems
+
+\paragraph{Case Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Pearl Level 1 (Association):} 5 cases (11\%)
+    \item \textbf{Pearl Level 2 (Intervention):} 30 cases (67\%)
+    \item \textbf{Pearl Level 3 (Counterfactual):} 10 cases (22\%)
+    \item \textbf{Total:} 45 cases
+\end{itemize}
+
+%% ============================================
+%% PEARL LEVEL 1 CASES (Association)
+%% ============================================
+
+%% ============================================
+%% CASE 6.21
+%% ============================================
+
+\subsection{Case 6.21: The Record Hurricane Season}
+\label{case:6.21}
+
+\paragraph{Scenario.}
+Last year had a record number of named hurricanes ($X$). Climate activists claim this proves climate change is intensifying storms ($Y$). Meteorologists note that improved satellite detection ($Z$) now identifies storms that would have gone unnoticed decades ago.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Record hurricane count (Observed)
+    \item $Y$ = Climate change intensification (Claimed cause)
+    \item $Z$ = Improved detection technology (Confounding factor)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.21
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Regression to Mean
+    \item \textbf{Trap Subtype:} Detection Bias / Measurement Change
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Climate Attribution
+    \item \textbf{Causal Structure:} $Y \to X$ vs $Z \to X$ (real increase vs detection artifact)
+    \item \textbf{Key Insight:} Record counts may reflect better counting, not more storms
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+Hurricane records face two confounds:
+\begin{itemize}[leftmargin=1.5em]
+    \item Detection bias: Satellites now see storms ships missed
+    \item Regression to mean: Records cluster randomly; a record year is often followed by a normal year
+\end{itemize}
+
+\paragraph{Correct Reasoning.}
+A single record year proves little:
+\begin{itemize}[leftmargin=1.5em]
+    \item Natural variability produces record years randomly
+    \item Improved detection inflates recent counts relative to historical
+    \item Climate attribution requires long-term trends adjusted for detection changes
+    \item Individual seasons are weather, not climate
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``A record hurricane season doesn't prove climate causation. Improved satellite detection inflates recent counts relative to ship-based historical records. Natural variability produces record years randomly. Climate attribution requires detection-adjusted long-term trends, not single-year records.''
+
+%% ============================================
+%% CASE 6.22
+%% ============================================
+
+\subsection{Case 6.22: The Conservation Paradox}
+\label{case:6.22}
+
+\paragraph{Scenario.}
+Species in protected areas show slower population declines than species outside protected areas. A report concludes that protection works. A statistician notes that we preferentially protect species that are easier to save---charismatic megafauna with large ranges and stable populations.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Protected status
+    \item $Y$ = Population trend (slower decline)
+    \item $Z$ = Species traits (selection into protection)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.22
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Selection Bias
+    \item \textbf{Trap Subtype:} Non-Random Treatment Assignment
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Conservation Biology
+    \item \textbf{Causal Structure:} $Z \to X$ and $Z \to Y$ (traits confound both)
+    \item \textbf{Key Insight:} We protect species that would do better anyway
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+Selection into protection is non-random:
+\begin{itemize}[leftmargin=1.5em]
+    \item Charismatic species get more protection
+    \item Species with larger ranges are easier to protect
+    \item Already-stable species are prioritized over hopeless cases
+\end{itemize}
+
+\paragraph{Correct Reasoning.}
+The comparison is confounded:
+\begin{itemize}[leftmargin=1.5em]
+    \item Protected species differ systematically from unprotected
+    \item These differences predict population trends independent of protection
+    \item A fair comparison requires matching on species traits
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Species receiving protection differ from those without. We protect charismatic species with favorable traits---the same traits that predict better outcomes. The correlation between protection and success may reflect selection, not effectiveness. Compare outcomes for similar species with and without protection.''
+
+%% ============================================
+%% CASE 6.23
+%% ============================================
+
+\subsection{Case 6.23: The Organic Yield Gap}
+\label{case:6.23}
+
+\paragraph{Scenario.}
+Organic farms produce 20\% lower yields than conventional farms ($X \to Y$). Critics argue organic farming can't feed the world. Agronomists note that organic certification is more common on marginal lands ($Z$) where conventional farming is less profitable anyway.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Organic vs conventional farming
+    \item $Y$ = Crop yield
+    \item $Z$ = Land quality (selection factor)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.23
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Selection Bias
+    \item \textbf{Trap Subtype:} Non-Random Farm Selection
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Agricultural Science
+    \item \textbf{Causal Structure:} $Z \to X$ and $Z \to Y$ (land quality confounds)
+    \item \textbf{Key Insight:} Organic farms may be on worse land
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+Farm selection into organic is non-random:
+\begin{itemize}[leftmargin=1.5em]
+    \item Best land goes to highest-value crops (often conventional)
+    \item Marginal land where chemicals are less effective goes organic
+    \item The yield gap reflects land differences, not just farming method
+\end{itemize}
+
+\paragraph{Correct Reasoning.}
+The 20\% gap overstates the true organic penalty:
+\begin{itemize}[leftmargin=1.5em]
+    \item Organic farms self-select onto different land
+    \item Controlled experiments on identical plots show smaller gaps
+    \item The observed gap conflates method and land quality
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The 20\% organic yield gap may overstate the true difference. Organic certification is more common on marginal lands with lower expected yields. Comparing organic and conventional farms compares different lands, not just different methods. Controlled trials show smaller gaps.''
+
+%% ============================================
+%% CASE 6.24
+%% ============================================
+
+\subsection{Case 6.24: The Endangered Species Hotspot}
+\label{case:6.24}
+
+\paragraph{Scenario.}
+Regions with more conservation funding ($X$) have more endangered species ($Y$). A critic argues: ``Conservation spending doesn't work---funded regions have the most endangered species!'' An ecologist responds that we fund regions \emph{because} they have endangered species.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Conservation funding
+    \item $Y$ = Endangered species count
+    \item $Z$ = Threat level driving both
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.24
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Reverse Causation
+    \item \textbf{Trap Subtype:} Response to Problem
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Conservation Finance
+    \item \textbf{Causal Structure:} $Y \to X$ (endangerment causes funding, not reverse)
+    \item \textbf{Key Insight:} We spend money where problems exist
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+The correlation is $Y \to X$, not $X \to Y$:
+\begin{itemize}[leftmargin=1.5em]
+    \item Endangered species attract conservation attention
+    \item Attention brings funding
+    \item High endangered counts cause high funding, not vice versa
+\end{itemize}
+
+\paragraph{Correct Reasoning.}
+This is reverse causation:
+\begin{itemize}[leftmargin=1.5em]
+    \item Conservation responds to problems, not causes them
+    \item Hospitals don't cause illness despite correlation
+    \item Fire departments don't cause fires despite responding to them
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The correlation reflects reverse causation: we fund regions \emph{because} they have endangered species, not the other way around. To evaluate conservation effectiveness, compare species trends in funded vs. unfunded regions with similar baseline threats.''
+
+%% ============================================
+%% CASE 6.25
+%% ============================================
+
+\subsection{Case 6.25: The Fuel Economy Rebound}
+\label{case:6.25}
+
+\paragraph{Scenario.}
+Households that buy fuel-efficient cars drive 15\% more miles than before. A researcher claims this ``rebound effect'' means fuel efficiency standards don't reduce fuel consumption.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Fuel-efficient car purchase
+    \item $Y$ = Miles driven increase (15\%)
+    \item $Z$ = Net fuel consumption change
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.25
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Base Rate Neglect
+    \item \textbf{Trap Subtype:} Partial vs. Total Effect
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Transportation Policy
+    \item \textbf{Causal Structure:} Efficiency gain > rebound loss (net benefit)
+    \item \textbf{Key Insight:} Rebound is real but partial
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+Calculate net effect:
+\begin{itemize}[leftmargin=1.5em]
+    \item If efficiency doubles (50\% less fuel per mile)
+    \item And driving increases 15\%
+    \item Net fuel use: $0.50 \times 1.15 = 0.575$ (42.5\% reduction)
+\end{itemize}
+
+\paragraph{Correct Reasoning.}
+The rebound effect is real but overstated as a policy failure:
+\begin{itemize}[leftmargin=1.5em]
+    \item Efficiency gains typically exceed rebound losses
+    \item 15\% more driving with 50\% better efficiency = 42.5\% fuel savings
+    \item The rebound erodes but doesn't eliminate the benefit
+    \item Focusing on rebound ignores the net improvement
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``If efficiency doubles and driving increases 15\%, net fuel use still drops 42.5\%. The rebound effect is real but partial. Focusing on the 15\% rebound while ignoring the 50\% efficiency gain misrepresents the net benefit. Rebound erodes but doesn't eliminate savings.''
+
+%% ============================================
+%% PEARL LEVEL 3 CASES (6.26 - 6.28)
+%% ============================================
+
+%% ============================================
+%% PEARL LEVEL 2 CASES (Intervention)
+%% ============================================
+
+%% ============================================
+%% CASE 6.1
+%% ============================================
+
+\subsection{Case 6.1: The Carbon Tax Recession}
+\label{case:6.1}
+
+\paragraph{Scenario.}
+A nation implemented a carbon tax ($X$) on industrial emissions. Within two years, industrial CO$_2$ emissions dropped 15\% ($Y$). Economic data reveals the nation also experienced a significant recession ($Z$) during the same period, with GDP contracting 3\%.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Carbon Tax Implementation (Policy Intervention)
+    \item $Y$ = 15\% Emission Reduction (Outcome)
+    \item $Z$ = Economic Recession (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.1
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Recession Confounding
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Climate Policy
+    \item \textbf{Causal Structure:} $X \to Y$ vs $Z \to Y$ (competing causes)
+    \item \textbf{Key Insight:} Economic contractions reduce emissions regardless of policy
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the recession ($Z$) begin \emph{before} or \emph{after} the carbon tax ($X$) was implemented?
+
+\paragraph{Answer if $t_Z < t_X$ (Recession is Confounder).}
+The recession preceded the tax and independently reduced industrial activity. Emissions dropped due to economic contraction, not policy effectiveness. The carbon tax gets false credit.
+
+\paragraph{Answer if $t_X < t_Z$ (Tax may have caused recession).}
+The carbon tax may have contributed to economic contraction by raising energy costs. The emission reduction is real but achieved through economic harm---a pyrrhic policy victory.
+
+\paragraph{Correct Reasoning.}
+Without temporal ordering, we cannot determine whether:
+\begin{itemize}[leftmargin=1.5em]
+    \item The tax reduced emissions directly (intended effect)
+    \item The recession reduced emissions (confounding)
+    \item The tax caused the recession which reduced emissions (unintended mechanism)
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Emissions reductions during recessions are difficult to attribute to policy. If the recession preceded the tax, the reduction is demand-driven. If the tax preceded the recession, the policy may have achieved its goal through economic harm. Please clarify the sequence.''
+
+%% ============================================
+%% CASE 6.10
+%% ============================================
+
+\subsection{Case 6.10: The Invasive Species}
+\label{case:6.10}
+
+\paragraph{Scenario.}
+An invasive plant species ($X$) has spread across a grassland ecosystem. Native plant diversity ($Y$) has declined 60\%. Land managers blame the invader. Ecologists note that fire suppression ($Z$) has also altered the ecosystem, allowing woody plants to encroach.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Invasive Species Spread (Biological Invasion)
+    \item $Y$ = Native Diversity Decline (Outcome)
+    \item $Z$ = Fire Suppression (Management Change)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.10
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Disturbance Regime Change
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Invasion Ecology
+    \item \textbf{Causal Structure:} $Z \to X \to Y$ or $Z \to Y$ directly
+    \item \textbf{Key Insight:} Invasions often succeed because disturbance regimes changed
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Did fire suppression ($Z$) enable the invasion ($X$), or are they independent?
+
+\paragraph{Answer if $Z \to X$ (Fire suppression enabled invasion).}
+The invasive species thrives without fire. Fire suppression created conditions for invasion. Restoring fire would control the invader without herbicides.
+
+\paragraph{Answer if $Z$ and $X$ are independent.}
+Both factors independently harm natives. Fire suppression favors woody encroachment; the invader outcompetes remaining herbaceous plants. Both must be addressed.
+
+\paragraph{Correct Reasoning.}
+Invasive species often exploit altered disturbance regimes:
+\begin{itemize}[leftmargin=1.5em]
+    \item Fire-adapted systems invaded when fire is suppressed
+    \item Flood-adapted systems invaded when hydrology changes
+    \item Grazing-adapted systems invaded when grazing stops
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Invasive species success often reflects changed disturbance regimes. If fire suppression enabled the invasion, restoring fire may control the invader. Treating the symptom (herbicide) without addressing the cause (fire suppression) provides temporary relief.''
+
+%% ============================================
+%% CASE 6.11
+%% ============================================
+
+\subsection{Case 6.11: The Wildfire Paradox}
+\label{case:6.11}
+
+\paragraph{Scenario.}
+A region implemented aggressive fire suppression ($X$) for 50 years. Recently, catastrophic megafires ($Y$) have become common. Forest ecologists note that decades without fire allowed fuel accumulation ($Z$)---dead wood, dense understory, and ladder fuels.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Fire Suppression Policy (Intervention)
+    \item $Y$ = Catastrophic Megafires (Outcome)
+    \item $Z$ = Fuel Accumulation (Mediating Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.11
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Delayed Consequences / Time Lag
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Fire Ecology
+    \item \textbf{Causal Structure:} $X \to Z \to Y$ (suppression $\to$ fuel $\to$ megafire)
+    \item \textbf{Key Insight:} Short-term success can create long-term catastrophe
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+The time lag between cause ($X$) and effect ($Y$) spans decades, obscuring the connection.
+
+\paragraph{The Paradox Structure.}
+\begin{enumerate}[leftmargin=1.5em]
+    \item Fire suppression reduces fire frequency (short-term success)
+    \item Without fire, fuels accumulate for decades
+    \item When ignition finally occurs, fuel load creates unstoppable megafire
+    \item Megafires are worse than the frequent small fires that were suppressed
+\end{enumerate}
+
+\paragraph{Correct Reasoning.}
+Fire suppression is a classic ``risk transfer through time'':
+\begin{itemize}[leftmargin=1.5em]
+    \item Eliminates frequent, low-intensity fires
+    \item Accumulates fuel for rare, high-intensity fires
+    \item Trades many small losses for occasional catastrophic loss
+    \item The policy ``worked'' for decades before failing spectacularly
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Fire suppression created the conditions for megafires. By preventing frequent small fires, fuel accumulated for 50 years. The catastrophic fires are a delayed consequence of the `successful' suppression policy. Prescribed burns can reduce accumulated fuel.''
+
+%% ============================================
+%% CASE 6.12
+%% ============================================
+
+\subsection{Case 6.12: The Ozone Recovery}
+\label{case:6.12}
+
+\paragraph{Scenario.}
+The ozone hole ($Y$) has been shrinking since the 1990s. Scientists credit the Montreal Protocol ($X$), which banned CFCs. However, CFC concentrations ($Z$) continued rising for a decade after the ban due to long atmospheric lifetimes and illegal production.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Montreal Protocol (Policy Intervention)
+    \item $Y$ = Ozone Hole Shrinkage (Outcome)
+    \item $Z$ = Atmospheric CFC Concentration (Mediator)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.12
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Time Lag in Mechanism
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Atmospheric Chemistry
+    \item \textbf{Causal Structure:} $X \to \Delta Z \to \Delta Y$ (policy $\to$ reduced emissions $\to$ recovery)
+    \item \textbf{Key Insight:} Policy effects may lag decades due to system inertia
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+When did CFC concentrations actually begin declining relative to ozone recovery?
+
+\paragraph{Correct Reasoning.}
+The Montreal Protocol's success required patience:
+\begin{itemize}[leftmargin=1.5em]
+    \item Emissions dropped immediately after the ban
+    \item Atmospheric concentrations continued rising (existing CFCs persist 50+ years)
+    \item Peak CFC concentration occurred ~2000
+    \item Ozone recovery began only after concentrations peaked
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The Montreal Protocol worked, but with a multi-decade lag. CFC lifetimes of 50+ years meant concentrations rose for years after the ban. Ozone recovery began only after atmospheric CFC levels peaked. The policy succeeded, but on atmospheric timescales, not political ones.''
+
+%% ============================================
+%% CASE 6.13
+%% ============================================
+
+\subsection{Case 6.13: The Agricultural Runoff}
+\label{case:6.13}
+
+\paragraph{Scenario.}
+A lake experiences algal blooms ($Y$) every summer. Farmers upstream use nitrogen fertilizer ($X$). A new study shows that sediment cores contain high phosphorus ($Z$) from decades of past pollution, which is now being released from the lakebed.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Current Nitrogen Fertilizer Use (Active Source)
+    \item $Y$ = Algal Blooms (Outcome)
+    \item $Z$ = Legacy Phosphorus in Sediments (Historical Source)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.13
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Legacy Pollution
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Limnology
+    \item \textbf{Causal Structure:} $X \to Y$ and $Z \to Y$ (current and legacy sources)
+    \item \textbf{Key Insight:} Current pollution may be blamed for legacy effects
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Which nutrient is limiting? Algae need both N and P; the scarcer one controls growth.
+
+\paragraph{Answer if Nitrogen-Limited.}
+Current fertilizer ($X$) is the proximate cause. Reducing nitrogen inputs would reduce blooms even with legacy phosphorus present.
+
+\paragraph{Answer if Phosphorus-Limited.}
+Legacy sediment phosphorus ($Z$) drives blooms. Even eliminating current nitrogen inputs won't stop blooms until sediment P is exhausted (decades).
+
+\paragraph{Correct Reasoning.}
+Lake eutrophication involves:
+\begin{itemize}[leftmargin=1.5em]
+    \item Current external loading (ongoing pollution)
+    \item Internal loading (legacy nutrients recycling from sediments)
+    \item Limiting nutrient (whichever is scarcer controls algae)
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Algal blooms can have both current and legacy causes. If the lake is phosphorus-limited, sediment release may sustain blooms for decades regardless of current nitrogen reductions. Effective management requires identifying the limiting nutrient and its source.''
+
+%% ============================================
+%% CASE 6.14
+%% ============================================
+
+\subsection{Case 6.14: The Electric Vehicle Emissions}
+\label{case:6.14}
+
+\paragraph{Scenario.}
+A city reports that electric vehicle adoption ($X$) increased 500\%. Transportation CO$_2$ emissions ($Y$) dropped only 2\%. Critics claim EVs don't help. Grid data shows the region's electricity ($Z$) is 80\% coal-powered.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = EV Adoption (Policy Success)
+    \item $Y$ = Transportation Emissions (Measured Outcome)
+    \item $Z$ = Grid Carbon Intensity (Contextual Factor)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.14
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} System Boundary Problem
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Transportation/Energy
+    \item \textbf{Causal Structure:} $X \times Z \to Y$ (EV benefit depends on grid)
+    \item \textbf{Key Insight:} EVs shift emissions from tailpipe to power plant
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Where are the system boundaries drawn? Tailpipe only, or lifecycle?
+
+\paragraph{Answer if Tailpipe Only.}
+EVs have zero tailpipe emissions. Transportation emissions drop. But this ignores upstream power plant emissions.
+
+\paragraph{Answer if Lifecycle / Full System.}
+EVs powered by coal may have higher lifecycle emissions than efficient gasoline cars. The 2\% reduction reflects the dirty grid.
+
+\paragraph{Correct Reasoning.}
+EV emissions depend on grid carbon intensity:
+\begin{itemize}[leftmargin=1.5em]
+    \item Coal grid: EVs may be worse than hybrids
+    \item Gas grid: EVs roughly equal to hybrids
+    \item Renewable grid: EVs far better than any ICE
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``EV climate benefits depend on grid carbon intensity. With 80\% coal power, EVs shift emissions from tailpipe to power plant with minimal net reduction. The same EVs would achieve 80\% reductions on a renewable grid. The problem is the grid, not the EVs.''
+
+%% ============================================
+%% CASE 6.15
+%% ============================================
+
+\subsection{Case 6.15: The Conservation Leakage}
+\label{case:6.15}
+
+\paragraph{Scenario.}
+A country banned logging ($X$) in its primary forests. Domestic deforestation ($Y$) dropped 90\%. Satellite data reveals that deforestation ($Z$) in neighboring countries with weaker regulations increased by the exact amount that domestic deforestation decreased.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Logging Ban (Policy Intervention)
+    \item $Y$ = Domestic Deforestation (Measured Outcome)
+    \item $Z$ = International Deforestation Leakage (Displaced Impact)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.15
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Leakage / Displacement
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Forest Policy
+    \item \textbf{Causal Structure:} $X \to \neg Y$ but $X \to Z$ (domestic success, global failure)
+    \item \textbf{Key Insight:} Local conservation can displace rather than prevent destruction
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+What is the global net effect when accounting for leakage?
+
+\paragraph{Correct Reasoning.}
+Conservation leakage occurs when:
+\begin{itemize}[leftmargin=1.5em]
+    \item Demand for wood/land remains constant
+    \item Domestic supply is restricted
+    \item Production shifts to less-regulated regions
+    \item Global deforestation unchanged or worse (if new areas are more biodiverse)
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The logging ban achieved domestic success but global failure. If timber demand is constant and production shifted abroad, net deforestation is unchanged. Worse, if neighboring forests are more biodiverse, the policy caused net ecological harm. Effective policy must address demand, not just domestic supply.''
+
+%% ============================================
+%% CASE 6.16
+%% ============================================
+
+\subsection{Case 6.16: The Groundwater Depletion}
+\label{case:6.16}
+
+\paragraph{Scenario.}
+A farming region reports stable crop yields ($Y$) despite a decade of drought ($X$). Hydrologists discover that farmers have been pumping groundwater ($Z$) at 3x the recharge rate, depleting an aquifer that took millennia to fill.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Drought (Environmental Stressor)
+    \item $Y$ = Stable Crop Yields (Apparent Success)
+    \item $Z$ = Groundwater Mining (Hidden Adaptation)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.16
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Hidden Borrowing from Future
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Water Resources
+    \item \textbf{Causal Structure:} $X \to \neg Y$ masked by $Z \to Y$
+    \item \textbf{Key Insight:} Stable outcomes can mask unsustainable resource extraction
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Stable yields ($Y$) appear resilient but are borrowing from a non-renewable stock ($Z$).
+
+\paragraph{Correct Reasoning.}
+``Resilience'' through resource mining is illusory:
+\begin{itemize}[leftmargin=1.5em]
+    \item Short-term stability masks long-term collapse
+    \item When the aquifer is exhausted, yields will crash suddenly
+    \item The ``success'' is actually deferred failure
+    \item True resilience requires living within recharge rates
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Stable yields during drought don't indicate resilience---they indicate aquifer mining. Pumping at 3x recharge is borrowing from a finite stock. When the aquifer is depleted, yields will collapse suddenly. Current `success' is deferred catastrophe.''
+
+%% ============================================
+%% CASE 6.17
+%% ============================================
+
+\subsection{Case 6.17: The Lockdown Air Quality}
+\label{case:6.17}
+
+\paragraph{Scenario.}
+During pandemic lockdowns ($X$), urban air pollution ($Y$) dropped 40\%. Some argued this proves cars cause most pollution. Post-lockdown data showed industrial facilities ($Z$) had also shut down, and weather patterns ($W$) were unusually favorable for pollution dispersion.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Reduced Vehicle Traffic (Lockdown Effect)
+    \item $Y$ = Air Quality Improvement (Outcome)
+    \item $Z$ = Industrial Shutdowns (Confounding Reduction)
+    \item $W$ = Weather Patterns (Confounding Factor)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.17
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Multiple Simultaneous Changes
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Air Quality
+    \item \textbf{Causal Structure:} $X, Z, W \to Y$ (multiple simultaneous causes)
+    \item \textbf{Key Insight:} Lockdowns changed many things simultaneously
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Lockdowns affected transportation, industry, and construction simultaneously. Weather added another variable.
+
+\paragraph{Correct Reasoning.}
+Attributing air quality gains solely to reduced driving ignores:
+\begin{itemize}[leftmargin=1.5em]
+    \item Industrial emissions reductions
+    \item Construction activity cessation
+    \item Favorable weather dispersion
+    \item Reduced electricity demand (less power plant emissions)
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Lockdown air quality improvements had multiple causes: reduced driving, industrial shutdowns, halted construction, and favorable weather. Attributing the 40\% improvement solely to cars overstates their contribution. Disentangling sources requires pollutant-specific analysis.''
+
+%% ============================================
+%% CASE 6.18
+%% ============================================
+
+\subsection{Case 6.18: The Biofuel Land Use}
+\label{case:6.18}
+
+\paragraph{Scenario.}
+A country mandated 10\% ethanol ($X$) in gasoline to reduce fossil fuel dependence. Corn prices rose, and satellite imagery shows grasslands ($Z$) being converted to corn production. Critics argue the carbon released from land conversion ($W$) exceeds the carbon saved by displacing gasoline.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Biofuel Mandate (Policy)
+    \item $Y$ = Net Carbon Impact (Outcome)
+    \item $Z$ = Land Use Change (Indirect Effect)
+    \item $W$ = Soil Carbon Release (Hidden Emission)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.18
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Indirect Land Use Change
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Bioenergy Policy
+    \item \textbf{Causal Structure:} $X \to Z \to W$; net effect of $X$ on $Y$ unclear
+    \item \textbf{Key Insight:} Biofuel carbon accounting must include land use change
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Direct carbon savings (displacing gasoline) vs. indirect carbon costs (land conversion).
+
+\paragraph{Correct Reasoning.}
+Biofuel carbon accounting is complex:
+\begin{itemize}[leftmargin=1.5em]
+    \item Direct effect: Biofuel displaces fossil fuel (carbon benefit)
+    \item Indirect effect: Increased crop prices $\to$ land conversion $\to$ carbon release
+    \item Grassland and forest soils contain centuries of accumulated carbon
+    \item Land conversion can create ``carbon debt'' taking decades to repay
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Biofuel carbon accounting must include indirect land use change. If grassland conversion releases more carbon than ethanol saves, the mandate increases net emissions. The `green' fuel may have a larger carbon footprint than the gasoline it replaces when full system boundaries are drawn.''
+
+%% ============================================
+%% CASE 6.19
+%% ============================================
+
+\subsection{Case 6.19: The Protected Area Paradox}
+\label{case:6.19}
+
+\paragraph{Scenario.}
+Countries with more protected areas ($X$) have higher biodiversity ($Y$). A policymaker concludes that creating protected areas causes biodiversity conservation. An ecologist notes that countries protect areas \emph{because} they are biodiverse ($Y \to X$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Protected Area Extent (Policy)
+    \item $Y$ = Biodiversity Level (Outcome or Cause?)
+    \item $Z$ = Conservation Prioritization (Selection Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.19
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Collider
+    \item \textbf{Trap Subtype:} Reverse Causation / Selection
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Conservation Planning
+    \item \textbf{Causal Structure:} $Y \to X$ (biodiversity causes protection, not reverse)
+    \item \textbf{Key Insight:} Conservation targets biodiversity hotspots
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+The correlation $X \leftrightarrow Y$ may reflect $Y \to X$ (we protect what's valuable) rather than $X \to Y$ (protection creates value).
+
+\paragraph{Correct Reasoning.}
+The cross-sectional correlation is confounded by selection:
+\begin{itemize}[leftmargin=1.5em]
+    \item Countries protect their most biodiverse areas first
+    \item More biodiversity $\to$ more areas worth protecting $\to$ more protected areas
+    \item The correlation is $Y \to X$, not $X \to Y$
+    \item Protection may prevent \emph{loss}, but doesn't \emph{create} biodiversity
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The correlation between protected areas and biodiversity likely reflects reverse causation: we protect places \emph{because} they are biodiverse. Protection prevents loss but doesn't create diversity. Evaluating protection requires comparing biodiversity trends inside vs. outside protected areas over time.''
+
+%% ============================================
+%% CASE 6.2
+%% ============================================
+
+\subsection{Case 6.2: The Deforestation Drought Spiral}
+\label{case:6.2}
+
+\paragraph{Scenario.}
+Satellite imagery shows widespread deforestation ($X$) in Region R over the past decade. The region subsequently experienced severe drought ($Y$), with rainfall 40\% below historical averages. Climate models suggest that reduced evapotranspiration from forest loss significantly affects regional rainfall patterns ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Deforestation (Human Activity)
+    \item $Y$ = Severe Drought (Outcome)
+    \item $Z$ = Reduced Evapotranspiration / Rainfall Feedback (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.2
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Feedback
+    \item \textbf{Trap Subtype:} Bidirectional / Self-Reinforcing Loop
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Hydrology / Land Use
+    \item \textbf{Causal Structure:} $X \to Z \to Y$ and $Y \to X$ (positive feedback)
+    \item \textbf{Key Insight:} Deforestation and drought can mutually reinforce each other
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did deforestation ($X$) begin before or after the onset of drought conditions ($Y$)?
+
+\paragraph{Answer if $t_X < t_Y$ (Deforestation initiated the cycle).}
+Human-driven deforestation reduced evapotranspiration, disrupting the water cycle. This triggered drought, which killed more trees, creating a self-reinforcing spiral. Human activity is the root cause.
+
+\paragraph{Answer if $t_Y < t_X$ (Drought initiated the cycle).}
+Natural drought stressed the forest, causing tree mortality (natural deforestation). This further reduced rainfall. Human land-clearing may have accelerated but did not initiate the cycle.
+
+\paragraph{Correct Reasoning.}
+Positive feedback loops make causal attribution difficult because:
+\begin{itemize}[leftmargin=1.5em]
+    \item Once the loop starts, both variables cause each other
+    \item The ``first mover'' may be impossible to identify
+    \item Intervention anywhere in the loop can break the cycle
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Deforestation and drought can form a positive feedback loop. Deforestation reduces rainfall, and drought kills forests. Without long-term time series showing which process began first, we cannot identify a single root cause.''
+
+%% ============================================
+%% CASE 6.20
+%% ============================================
+
+\subsection{Case 6.20: The Climate Migration}
+\label{case:6.20}
+
+\paragraph{Scenario.}
+Regions experiencing climate stress ($X$) show higher outmigration ($Y$). A report claims climate change causes migration. Economists note that wealthier households ($Z$) are more likely to migrate, and climate-stressed regions are often poor, limiting migration capacity.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Climate Stress (Environmental Driver)
+    \item $Y$ = Migration Rate (Outcome)
+    \item $Z$ = Household Wealth (Enabling Factor / Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.20
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Capacity Confounding
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Climate Adaptation
+    \item \textbf{Causal Structure:} $X \to$ desire to migrate; $Z \to$ ability to migrate
+    \item \textbf{Key Insight:} Migration requires both motivation and capacity
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Climate stress creates migration pressure, but poverty may trap people in place.
+
+\paragraph{Correct Reasoning.}
+Climate-migration relationships are complex:
+\begin{itemize}[leftmargin=1.5em]
+    \item Climate stress increases \emph{desire} to migrate
+    \item Wealth enables \emph{ability} to migrate
+    \item The poorest (most stressed) may be least able to leave
+    \item Observed migration may understate climate pressure
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Climate stress and migration have a complex relationship. While stress creates migration pressure, poverty can trap people in place. High migration from moderately stressed wealthy areas and low migration from severely stressed poor areas can coexist. Observed migration underestimates climate pressure in the poorest regions.''
+
+%% ============================================
+%% PEARL LEVEL 1 CASES (6.21 - 6.25)
+%% ============================================
+
+%% ============================================
+%% CASE 6.29
+%% ============================================
+
+\subsection{Case 6.29: The Paper Straw Ban}
+\label{case:6.29}
+
+\paragraph{Scenario.}
+Coastal cities with paper straw bans ($X$) measure less plastic in local oceans ($Y$). A landlocked city 1,000 miles inland bans plastic straws to save the ocean.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Straw Ban (Intervention)
+    \item $Y$ = Ocean Plastic (Outcome)
+    \item $Z$ = Waste Stream Geography (Context)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.29
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} SCOPE
+    \item \textbf{Trap Subtype:} Geographic Mismatch
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Waste Management
+    \item \textbf{Causal Structure:} $X$ causes $Y$ only if path to ocean exists
+    \item \textbf{Key Insight:} Landlocked waste goes to landfills, not oceans
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Banning straws in a landlocked city ($Z$) will not measurably reduce ocean plastic ($Y$). Unlike coastal cities where litter enters waterways directly, inland waste goes to managed landfills. The causal path from $X$ to $Y$ is broken by geography.''
+
+%% ============================================
+%% CASE 6.3
+%% ============================================
+
+\subsection{Case 6.3: The Renewable Subsidy}
+\label{case:6.3}
+
+\paragraph{Scenario.}
+A government offered generous subsidies for residential solar installation ($X$). Within three years, solar adoption tripled ($Y$). During the same period, global solar panel manufacturing costs ($Z$) dropped 60\% due to economies of scale in Asian production.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Solar Subsidy (Policy Intervention)
+    \item $Y$ = Tripled Adoption (Outcome)
+    \item $Z$ = Global Manufacturing Cost Drop (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.3
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Technology Cost Curve Confounding
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Energy Policy
+    \item \textbf{Causal Structure:} $X \to Y$ vs $Z \to Y$ or $X \to Z \to Y$
+    \item \textbf{Key Insight:} Global technology trends can confound national policy evaluation
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did global cost reductions ($Z$) precede the subsidy ($X$), or did the subsidy contribute to global demand that drove cost reductions?
+
+\paragraph{Answer if $t_Z < t_X$ (Cost drop is Confounder).}
+Solar was becoming affordable globally anyway. The subsidy coincided with but did not cause the adoption surge. Money was spent accelerating an inevitable trend.
+
+\paragraph{Answer if $t_X < t_Z$ (Subsidy contributed to global demand).}
+The subsidy increased demand, which contributed to global manufacturing scale, which lowered costs worldwide. The policy worked through a global feedback mechanism.
+
+\paragraph{Correct Reasoning.}
+Policy evaluation requires counterfactual: what would adoption have been \emph{without} the subsidy, given the same global cost trends? Countries that didn't subsidize also saw adoption growth.
+
+\paragraph{Wise Refusal.}
+``Global cost drops confound national policy evaluation. If manufacturing costs fell before the subsidy due to other countries' demand, adoption growth may be market-driven. Compare to non-subsidizing countries with similar cost drops.''
+
+%% ============================================
+%% CASE 6.30
+%% ============================================
+
+\subsection{Case 6.30: The Coal-Powered EV}
+\label{case:6.30}
+
+\paragraph{Scenario.}
+Electric Vehicles ($X$) generally have lower carbon footprints ($Y$). You buy an EV in a state where the grid is 100\% coal-powered ($Z$).
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = EV Purchase (Intervention)
+    \item $Y$ = Total Emissions (Outcome)
+    \item $Z$ = Grid Mix (Mediator)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.30
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} MEDIATOR
+    \item \textbf{Trap Subtype:} Energy Source
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Energy
+    \item \textbf{Causal Structure:} $X$ only reduces $Y$ if $Z$ is clean
+    \item \textbf{Key Insight:} An EV is a coal-burning car in a coal state
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Buying an EV ($X$) in a 100\% coal grid ($Z$) may not reduce total emissions ($Y$) compared to a hybrid. The EV is simply displacing the exhaust pipe to the power plant. The cleanliness of the vehicle is causally dependent on the cleanliness of the grid.''
+
+%% ============================================
+%% CASE 6.31
+%% ============================================
+
+\subsection{Case 6.31: The Tundra Trees}
+\label{case:6.31}
+
+\paragraph{Scenario.}
+Forests ($X$) absorb carbon ($Y$). To cool the planet, we plant a trillion trees in the snowy Arctic tundra.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Tree Planting (Intervention)
+    \item $Y$ = Global Temperature (Outcome)
+    \item $Z$ = Albedo Effect (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.31
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} SIDE EFFECT
+    \item \textbf{Trap Subtype:} Albedo Feedback
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Climate Science
+    \item \textbf{Causal Structure:} $X$ reduces CO2 but increases Heat Absorption ($Z$)
+    \item \textbf{Key Insight:} Dark trees on white snow warm the planet
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Planting trees in the tundra ($X$) would warm the planet, not cool it. While trees absorb carbon, they are much darker than snow ($Z$). This reduces the Earth's albedo (reflectivity), causing the ground to absorb more heat than the carbon sequestration offsets.''
+
+%% ============================================
+%% CASE 6.32
+%% ============================================
+
+\subsection{Case 6.32: The Organic Mandate}
+\label{case:6.32}
+
+\paragraph{Scenario.}
+Organic farms ($X$) have higher local biodiversity ($Y$). A policy mandates all farms globally switch to organic to save biodiversity.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Organic Farming (Intervention)
+    \item $Y$ = Global Biodiversity (Outcome)
+    \item $Z$ = Land Use / Yield (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.32
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} TRADE-OFF
+    \item \textbf{Trap Subtype:} Yield Gap
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Agriculture
+    \item \textbf{Causal Structure:} Lower yield ($Z$) requires more land deforestation
+    \item \textbf{Key Insight:} Local gain $\to$ Global loss due to land expansion
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The answer is PARTIAL/NO. While organic farms support local biodiversity ($X$), they typically have lower yields ($Z$). Feeding the global population with organic-only yields would require converting millions of acres of wild forest into farmland, causing a net loss of global biodiversity ($Y$).''
+
+%% ============================================
+%% CASE 6.33
+%% ============================================
+
+\subsection{Case 6.33: The Desert Wolves}
+\label{case:6.33}
+
+\paragraph{Scenario.}
+Reintroducing wolves ($X$) to Yellowstone changed river courses ($Y$) via trophic cascades. A park ranger wants to introduce wolves to a desert ecosystem to fix its rivers.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Wolves (Intervention)
+    \item $Y$ = River Stability (Outcome)
+    \item $Z$ = Ecosystem Specifics (Context)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.33
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} EXTERNAL VALIDITY
+    \item \textbf{Trap Subtype:} Ecological Context
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Ecology
+    \item \textbf{Causal Structure:} Cascade requires elk/willow chain ($Z$)
+    \item \textbf{Key Insight:} Trophic cascades are not universal
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The Yellowstone effect ($Y$) relied on a specific food web: wolves ate elk, which allowed willows to grow, which stabilized banks ($Z$). A desert ecosystem lacks these specific intermediates. Introducing wolves ($X$) where they are not native will not replicate the cascade.''
+
+%% ============================================
+%% CASE 6.34
+%% ============================================
+
+\subsection{Case 6.34: The Office Bin}
+\label{case:6.34}
+
+\paragraph{Scenario.}
+Towns with blue bins ($X$) recycle more ($Y$). You place a blue bin in an office that has no recycling pickup contract ($Z$).
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Blue Bin (Intervention)
+    \item $Y$ = Recycling Rate (Outcome)
+    \item $Z$ = Pickup Infrastructure (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.34
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} MECHANISM
+    \item \textbf{Trap Subtype:} Broken Chain
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Waste Management
+    \item \textbf{Causal Structure:} Bin ($X$) is useless without Truck ($Z$)
+    \item \textbf{Key Insight:} The bin is a signal, the truck is the mechanism
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Placing a bin ($X$) will not increase recycling ($Y$) if the downstream infrastructure ($Z$) is missing. Without a pickup contract, the contents of the blue bin will simply be emptied into the trash by the cleaning crew.''
+
+%% ============================================
+%% CASE 6.35
+%% ============================================
+
+\subsection{Case 6.35: The Invasive Fix}
+\label{case:6.35}
+
+\paragraph{Scenario.}
+We introduced cane toads ($X$) to eat beetles ($Y$). The toads ignored beetles and ate everything else. Now we want to introduce snakes ($Z$) to eat the toads.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Cane Toads (Failed Intervention)
+    \item $Z$ = Snakes (New Intervention)
+    \item $W$ = Ecosystem Collapse (Risk)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.35
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} BACKFIRE
+    \item \textbf{Trap Subtype:} Cobra Effect / Bio-Control
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Conservation
+    \item \textbf{Causal Structure:} Adding complexity increases unpredictable side effects
+    \item \textbf{Key Insight:} Biological interventions rarely have single targets
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Introducing snakes ($Z$) to fix the toad problem ($X$) is likely to compound the disaster. Biological control agents rarely target only the intended pest. The snakes will likely consume native species ($W$), causing further ecosystem collapse.''
+
+%% ============================================
+%% CASE 6.36
+%% ============================================
+
+\subsection{Case 6.36: The Seawall}
+\label{case:6.36}
+
+\paragraph{Scenario.}
+Building a seawall ($X$) protects the house behind it ($Y$). You build a wall to protect your beachfront property long-term.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Seawall (Intervention)
+    \item $Y$ = House Safety (Goal)
+    \item $Z$ = Beach Erosion (Side Effect)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.36
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} DYNAMICS
+    \item \textbf{Trap Subtype:} Erosion Feedback
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Coastal Engineering
+    \item \textbf{Causal Structure:} $X$ protects $Y$ short-term but destroys $Z$ long-term
+    \item \textbf{Key Insight:} Walls destroy the beach they sit on
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``While the wall ($X$) protects the house initially, it reflects wave energy that scours away the sand ($Z$) in front of it. Over time, this accelerates erosion, destroying the beach and eventually undermining the wall itself ($Y$). It is not a sustainable long-term solution.''
+
+%% ============================================
+%% CASE 6.37
+%% ============================================
+
+\subsection{Case 6.37: Trophy Hunting}
+\label{case:6.37}
+
+\paragraph{Scenario.}
+Countries that allow expensive trophy hunting ($X$) often have stable or growing elephant populations ($Y$). Activists ban hunting to save the elephants.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Legal Hunting (Intervention)
+    \item $Y$ = Population Stability (Outcome)
+    \item $Z$ = Conservation Funding (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.37
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} MECHANISM
+    \item \textbf{Trap Subtype:} Funding Feedback
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Wildlife Management
+    \item \textbf{Causal Structure:} $X$ provides revenue ($Z$) for anti-poaching
+    \item \textbf{Key Insight:} Banning the revenue source can increase illegal poaching
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Banning hunting ($X$) may ironically decrease elephant populations ($Y$). In many regions, hunting fees fund the rangers ($Z$) who stop poachers. Without this revenue, land may be converted to agriculture, leading to habitat loss and increased poaching.''
+
+%% ============================================
+%% CASE 6.38
+%% ============================================
+
+\subsection{Case 6.38: The Desalination Fix}
+\label{case:6.38}
+
+\paragraph{Scenario.}
+Desalination plants ($X$) provide unlimited fresh water ($Y$). We propose building 100 plants to solve the water crisis cost-free.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Desalination (Intervention)
+    \item $Y$ = Water Access (Benefit)
+    \item $Z$ = Brine Waste / Energy (Cost)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.38
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} SIDE EFFECT
+    \item \textbf{Trap Subtype:} Negative Externality
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Engineering
+    \item \textbf{Causal Structure:} $X$ produces $Y$ and toxic $Z$
+    \item \textbf{Key Insight:} There is no such thing as free water (thermodynamically)
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Desalination ($X$) is not environmentally cost-free. It produces massive amounts of toxic brine ($Z$) which kills marine life if dumped, and it requires enormous energy input. Solving water scarcity ($Y$) this way creates new ecological crises.''
+
+%% ============================================
+%% CASE 6.4
+%% ============================================
+
+\subsection{Case 6.4: The Species Recovery}
+\label{case:6.4}
+
+\paragraph{Scenario.}
+An endangered species population ($Y$) increased 300\% over a decade after the government established a protected area ($X$) encompassing their primary habitat. Field researchers also documented that a key predator species ($Z$) had been illegally hunted to near-extinction during the same period.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Protected Area Establishment (Policy Intervention)
+    \item $Y$ = Population Recovery (Outcome)
+    \item $Z$ = Predator Population Collapse (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.4
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Trophic Release Confounding
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Conservation Biology
+    \item \textbf{Causal Structure:} $X \to Y$ vs $\neg Z \to Y$ (protection vs predator release)
+    \item \textbf{Key Insight:} Prey populations explode when predators are removed
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did predator decline ($Z$) begin before or after protected area establishment ($X$)?
+
+\paragraph{Answer if $t_Z < t_X$ (Predator decline is Confounder).}
+The species was recovering due to predator release before protection began. The protected area gets credit for a trophic cascade effect it didn't cause.
+
+\paragraph{Answer if $t_X < t_Z$ (Temporal overlap).}
+Both factors contributed. Habitat protection reduced direct human pressure while predator loss provided additional release. Effects are additive but not separable.
+
+\paragraph{Correct Reasoning.}
+Conservation success stories often have multiple causes. Attributing recovery solely to protection ignores:
+\begin{itemize}[leftmargin=1.5em]
+    \item Trophic release from predator loss
+    \item Climate changes affecting habitat quality
+    \item Disease cycles in prey populations
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Species recovery can have multiple causes. If predator decline preceded protection, the recovery may be trophic release rather than habitat conservation. Both factors may contribute, but attribution requires separating their effects.''
+
+%% ============================================
+%% CASE 6.5
+%% ============================================
+
+\subsection{Case 6.5: The Ice Albedo Feedback}
+\label{case:6.5}
+
+\paragraph{Scenario.}
+Arctic sea ice extent ($Y$) has declined 40\% since 1980. Global mean temperatures ($X$) have risen approximately 1°C during the same period. Climate scientists note that ice loss exposes dark ocean water ($Z$), which absorbs more solar radiation than reflective ice, amplifying warming.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Global Temperature Rise (Driver)
+    \item $Y$ = Sea Ice Decline (Outcome)
+    \item $Z$ = Albedo Reduction / Heat Absorption (Feedback Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.5
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Feedback
+    \item \textbf{Trap Subtype:} Positive Feedback Loop
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Climate Science
+    \item \textbf{Causal Structure:} $X \to Y \to Z \to X$ (circular amplification)
+    \item \textbf{Key Insight:} Positive feedbacks make linear causal attribution impossible
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+This is a system with continuous feedback---asking ``which came first'' misunderstands the dynamics.
+
+\paragraph{The Feedback Structure.}
+\begin{enumerate}[leftmargin=1.5em]
+    \item Warming ($X$) melts ice ($Y$)
+    \item Ice loss exposes dark ocean ($Z$)
+    \item Dark ocean absorbs more heat
+    \item Additional heat causes more warming ($X$)
+    \item Return to step 1
+\end{enumerate}
+
+\paragraph{Correct Reasoning.}
+In positive feedback systems:
+\begin{itemize}[leftmargin=1.5em]
+    \item The initial perturbation (greenhouse gases) triggers the loop
+    \item Once triggered, the system amplifies itself
+    \item Each variable is both cause and effect
+    \item Breaking the loop requires intervening on the initial driver
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The ice-albedo effect is a positive feedback loop. Warming causes ice loss, which causes more warming. Asking whether temperature or ice changed `first' misunderstands the self-reinforcing dynamics. The initial driver is greenhouse gas forcing.''
+
+%% ============================================
+%% CASE 6.6
+%% ============================================
+
+\subsection{Case 6.6: The Coral Bleaching}
+\label{case:6.6}
+
+\paragraph{Scenario.}
+A coral reef experienced mass bleaching ($Y$), with 60\% of coral affected. Ocean temperatures ($X$) were 2°C above seasonal average that summer. Water quality monitoring also showed that agricultural runoff ($Z$) had doubled nitrogen levels in coastal waters over the preceding five years.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Elevated Ocean Temperature (Stressor)
+    \item $Y$ = Mass Coral Bleaching (Outcome)
+    \item $Z$ = Nutrient Pollution from Runoff (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.6
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Synergistic Interaction
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Marine Ecology
+    \item \textbf{Causal Structure:} $X \times Z \to Y$ (multiplicative interaction)
+    \item \textbf{Key Insight:} Multiple stressors can interact synergistically
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Are $X$ and $Z$ independent causes, or do they interact?
+
+\paragraph{Answer if Additive Effects.}
+Temperature stress and nutrient stress each contribute to bleaching probability. Total risk = sum of individual risks. Either stressor alone might not trigger mass bleaching.
+
+\paragraph{Answer if Synergistic Effects.}
+Nutrient pollution weakens coral immune systems, making them more susceptible to temperature stress. The interaction effect exceeds the sum of individual effects: $\text{Risk}(X,Z) > \text{Risk}(X) + \text{Risk}(Z)$.
+
+\paragraph{Correct Reasoning.}
+Attributing bleaching solely to temperature ignores that:
+\begin{itemize}[leftmargin=1.5em]
+    \item Pristine reefs survive temperature spikes that kill polluted reefs
+    \item Local stressors (runoff) compound global stressors (warming)
+    \item Intervention on local factors can increase resilience to global factors
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Coral bleaching often results from multiple interacting stressors. Temperature alone may not explain 60\% bleaching---nutrient pollution may have weakened coral resilience. Reefs with better water quality often survive similar temperature anomalies.''
+
+%% ============================================
+%% CASE 6.7
+%% ============================================
+
+\subsection{Case 6.7: The Fishing Collapse}
+\label{case:6.7}
+
+\paragraph{Scenario.}
+A commercial fish stock ($Y$) collapsed to 10\% of historical levels. Fishing pressure ($X$) had increased steadily for two decades. Ocean temperature data shows the region experienced a regime shift ($Z$) to warmer conditions that disrupted the fish's spawning habitat.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Fishing Pressure (Human Activity)
+    \item $Y$ = Stock Collapse (Outcome)
+    \item $Z$ = Ocean Regime Shift (Environmental Change)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.7
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Regime Shift Confounding
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Fisheries Science
+    \item \textbf{Causal Structure:} $X \to Y$ vs $Z \to Y$ (overfishing vs climate)
+    \item \textbf{Key Insight:} Stock collapses often have multiple contributing factors
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the regime shift ($Z$) occur before or after fishing pressure ($X$) intensified?
+
+\paragraph{Answer if $t_Z < t_X$ (Climate initiated collapse).}
+The regime shift reduced carrying capacity. Even sustainable historical fishing levels became unsustainable under new conditions. Fishers are blamed for climate-driven collapse.
+
+\paragraph{Answer if $t_X < t_Z$ (Overfishing depleted resilience).}
+Decades of overfishing reduced the population to levels unable to withstand environmental stress. The regime shift was the proximate trigger, but overfishing removed the buffer.
+
+\paragraph{Correct Reasoning.}
+Stock collapses typically involve:
+\begin{itemize}[leftmargin=1.5em]
+    \item Chronic pressure (overfishing) reducing resilience
+    \item Acute shock (regime shift) triggering collapse
+    \item Feedback effects (Allee effects at low population)
+\end{itemize}
+Both factors are ``causes'' in different senses.
+
+\paragraph{Wise Refusal.}
+``Fish stock collapses rarely have single causes. Overfishing may have depleted resilience, while the regime shift triggered collapse. Or the regime shift reduced carrying capacity, making historical catch levels unsustainable. Both factors likely contributed.''
+
+%% ============================================
+%% CASE 6.8
+%% ============================================
+
+\subsection{Case 6.8: The Urban Heat Island}
+\label{case:6.8}
+
+\paragraph{Scenario.}
+City temperatures ($Y$) are consistently 3°C higher than surrounding rural areas. Urban planners attribute this to concrete and asphalt surfaces ($X$) that absorb and retain heat. A meteorologist notes that cities also generate waste heat ($Z$) from air conditioning, vehicles, and industry.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Impervious Surface Coverage (Land Use)
+    \item $Y$ = Urban Heat Island Effect (Outcome)
+    \item $Z$ = Anthropogenic Waste Heat (Additional Source)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.8
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Multiple Additive Causes
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Urban Climate
+    \item \textbf{Causal Structure:} $X \to Y$ and $Z \to Y$ (additive)
+    \item \textbf{Key Insight:} Urban heating has multiple independent sources
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+What fraction of the 3°C difference comes from each source?
+
+\paragraph{Correct Reasoning.}
+The urban heat island effect has multiple additive causes:
+\begin{itemize}[leftmargin=1.5em]
+    \item Surface albedo (dark surfaces absorb heat)
+    \item Thermal mass (concrete retains heat overnight)
+    \item Waste heat (HVAC, vehicles, industry)
+    \item Reduced evapotranspiration (no vegetation)
+    \item Canyon geometry (trapped radiation)
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Urban heat islands result from multiple factors: surface properties, waste heat, reduced vegetation, and building geometry. Attributing the full 3°C to any single factor overstates its contribution. Effective mitigation requires addressing multiple causes.''
+
+%% ============================================
+%% CASE 6.9
+%% ============================================
+
+\subsection{Case 6.9: The Wetland Restoration}
+\label{case:6.9}
+
+\paragraph{Scenario.}
+A coastal wetland was restored ($X$) by removing drainage infrastructure. Five years later, bird populations ($Y$) in the area increased 400\%. A researcher notes that a nearby industrial facility ($Z$) also closed during this period, eliminating a source of heavy metal contamination.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Wetland Restoration (Intervention)
+    \item $Y$ = Bird Population Increase (Outcome)
+    \item $Z$ = Industrial Closure / Pollution Reduction (Confounding Event)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.9
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Conf-Med
+    \item \textbf{Trap Subtype:} Coincident Intervention
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Restoration Ecology
+    \item \textbf{Causal Structure:} $X \to Y$ vs $\neg Z \to Y$ (habitat vs toxics)
+    \item \textbf{Key Insight:} Restoration success may be confounded by pollution reduction
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the industrial closure ($Z$) occur before, during, or after wetland restoration ($X$)?
+
+\paragraph{Answer if $t_Z < t_X$ (Pollution reduction came first).}
+Birds may have been limited by contamination, not habitat. The restoration coincided with recovery already underway from pollution reduction.
+
+\paragraph{Answer if $t_X = t_Z$ (Simultaneous).}
+Both factors contributed. The restoration provided habitat while pollution reduction made the habitat usable. Effects cannot be separated.
+
+\paragraph{Correct Reasoning.}
+Restoration projects often coincide with other environmental improvements:
+\begin{itemize}[leftmargin=1.5em]
+    \item Industrial declines in rural areas
+    \item Improved water quality regulations
+    \item Climate shifts affecting species ranges
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The 400\% bird increase may reflect wetland restoration, pollution reduction, or both. If heavy metals were limiting bird reproduction, industrial closure alone could explain recovery. Compare to restored wetlands without coincident pollution reduction.''
+
+%% ============================================
+%% PEARL LEVEL 3 CASES (Counterfactual)
+%% ============================================
+
+%% ============================================
+%% CASE 6.26
+%% ============================================
+
+\subsection{Case 6.26: The Quantum Observer}
+\label{case:6.26}
+
+\paragraph{Scenario.}
+Climate scientists install a new monitoring station in a remote watershed. Before installation, the watershed had ``pristine'' status. After installation, contamination is detected. A critic argues: ``Your measurement equipment contaminated the site---the observer affected the observed.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Monitoring station installation
+    \item $Y$ = Contamination detection
+    \item $Z$ = Pre-existing contamination (unobserved before monitoring)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.26
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Counterfactual
+    \item \textbf{Trap Subtype:} Observer Effect Fallacy
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Environmental Monitoring
+    \item \textbf{Causal Structure:} $X \to Y$ (detection) vs $X \to Z$ (causation)
+    \item \textbf{Key Insight:} Detecting a problem differs from causing it
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+Two counterfactual questions:
+\begin{enumerate}[leftmargin=1.5em]
+    \item Would contamination \emph{exist} without the station? (Probably yes, if source is upstream)
+    \item Would contamination be \emph{detected} without the station? (No)
+\end{enumerate}
+
+\paragraph{Correct Reasoning.}
+The critic confuses detection with causation:
+\begin{itemize}[leftmargin=1.5em]
+    \item ``Pristine status'' meant ``unmeasured,'' not ``uncontaminated''
+    \item The station revealed pre-existing contamination
+    \item If the contamination source is upstream, it existed before monitoring
+    \item The counterfactual: contamination exists whether or not we measure it
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``The quantum observer counterfactual depends on interpretation of quantum mechanics. In Copenhagen interpretation, observation collapses the wavefunction. In Many-Worlds, all outcomes occur. The answer varies by theoretical framework.''
+
+\paragraph{Wise Refusal.}
+``This confuses detection with causation. `Pristine status' meant `unmeasured,' not `uncontaminated.' The counterfactual question is whether contamination would exist without the station---and if the source is upstream, the answer is yes. The station revealed a problem; it didn't create one.''
+
+%% ============================================
+%% CASE 6.27
+%% ============================================
+
+\subsection{Case 6.27: The Tipping Point}
+\label{case:6.27}
+
+\paragraph{Scenario.}
+An ecosystem collapsed after CO$_2$ levels crossed 450 ppm. Scientists claim: ``The emission that pushed levels from 449 to 450 ppm caused the collapse.'' A philosopher objects: ``Any of the previous trillion tons of emissions could equally be called `the cause.'''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X_n$ = The $n$-th unit of emissions
+    \item $Y$ = Ecosystem collapse
+    \item $\theta$ = Tipping point threshold (450 ppm)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.27
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Counterfactual
+    \item \textbf{Trap Subtype:} Threshold Effects / Overdetermination
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Climate Tipping Points
+    \item \textbf{Causal Structure:} Cumulative causation with threshold trigger
+    \item \textbf{Key Insight:} Every emission is necessary; none is individually sufficient
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+For any emission unit $X_i$:
+\begin{itemize}[leftmargin=1.5em]
+    \item Counterfactual: If $X_i$ hadn't occurred, would collapse happen?
+    \item Answer: Yes (some other unit would have been the ``last'' one)
+    \item But also: If NO units had occurred, collapse wouldn't happen
+\end{itemize}
+
+\paragraph{Correct Reasoning.}
+This is the problem of cumulative causation:
+\begin{itemize}[leftmargin=1.5em]
+    \item Each emission is a ``Necessary Element of a Sufficient Set'' (NESS)
+    \item The ``last'' emission has no special causal status
+    \item All emissions are equally ``causes'' of the threshold crossing
+    \item But-for causation fails for any individual emission
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``This is cumulative causation with a threshold trigger. Each emission unit is a 'Necessary Element of a Sufficient Set' (NESS). Attributing special status to the 'last' unit is arbitrary---all emissions share causal responsibility.''
+
+\paragraph{Wise Refusal.}
+``This is cumulative causation with a threshold trigger. Each emission unit is a `Necessary Element of a Sufficient Set' (NESS). Attributing special status to the `last' unit is arbitrary---remove any earlier unit and collapse wouldn't occur either. All emissions share causal responsibility.''
+
+%% ============================================
+%% CASE 6.28
+%% ============================================
+
+\subsection{Case 6.28: The Causal Chain Attribution}
+\label{case:6.28}
+
+\paragraph{Scenario.}
+A factory ($A$) dumps chemicals that kill fish. Fewer fish means fewer birds ($B$) starve. An ecologist claims: ``The factory saved the birds!'' A critic responds: ``The factory killed the fish that would have fed the birds---that's harm, not help.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $A$ = Factory pollution
+    \item $B$ = Fish death
+    \item $C$ = Bird starvation (reduced in short term)
+    \item $D$ = Bird population (long-term effect)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.28
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} Counterfactual
+    \item \textbf{Trap Subtype:} Causal Chain Framing
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Ecosystem Dynamics
+    \item \textbf{Causal Structure:} $A \to B \to \neg C$ (short-term) but $A \to B \to \neg D$ (long-term harm)
+    \item \textbf{Key Insight:} Cherry-picking intermediate outcomes misrepresents net effect
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+Short-term counterfactual: With fish dead, birds can't overbreed and starve (fewer starvation deaths).
+Long-term counterfactual: With no fish, bird population collapses from food shortage.
+
+\paragraph{Correct Reasoning.}
+The ecologist cherry-picks an intermediate outcome:
+\begin{itemize}[leftmargin=1.5em]
+    \item Short-term: Fewer fish $\to$ fewer birds $\to$ less starvation (true but misleading)
+    \item Long-term: Fewer fish $\to$ bird population collapse (the real effect)
+    \item Starvation reduction is an artifact of population collapse, not a benefit
+    \item Counterfactual: Without pollution, fish thrive $\to$ birds thrive
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: INVALID}
+
+``The ecologist cherry-picks an intermediate outcome from a harmful causal chain. Short-term reduction in starvation is an artifact of population collapse. The counterfactual shows net harm: without pollution, fish and birds would both thrive.''
+
+\paragraph{Wise Refusal.}
+``This cherry-picks an intermediate outcome from a harmful causal chain. Short-term reduction in starvation (an artifact of population collapse) does not constitute `saving' the birds. The counterfactual shows net harm: without pollution, fish and birds would both thrive.''
+
+%% ============================================
+%% CASE 6.39
+%% ============================================
+
+\subsection{Case 6.39: The Ozone Counterfactual}
+\label{case:6.39}
+
+\paragraph{Scenario.}
+We banned CFCs in 1987 ($X$). The ozone hole shrank ($Y$). Claim: ``If we hadn't banned CFCs, the ozone layer would be destroyed by now.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Montreal Protocol (Intervention)
+    \item $Y$ = Ozone Recovery (Outcome)
+    \item $M$ = Atmospheric Chemistry (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.39
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Scientific Consensus
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Atmospheric Science
+    \item \textbf{Causal Structure:} Deterministic chemical reaction
+    \item \textbf{Key Insight:} We know the reaction rate of CFCs + Ozone
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``Atmospheric models confirm that without the Montreal Protocol, CFC concentrations would have continued to rise, leading to the collapse of the ozone layer and massive increases in UV radiation. The chemistry is well-understood and deterministic.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. Atmospheric models confirm that without the Montreal Protocol ($X$), CFC concentrations would have continued to rise, leading to the collapse of the ozone layer ($Y$) and massive increases in UV radiation.''
+
+%% ============================================
+%% CASE 6.40
+%% ============================================
+
+\subsection{Case 6.40: The Nuclear Shutdown}
+\label{case:6.40}
+
+\paragraph{Scenario.}
+Germany shut down nuclear plants ($X$). Coal consumption rose ($Y$). Claim: ``If they had kept nuclear plants open, carbon emissions would be lower today.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Nuclear Phase-out (Intervention)
+    \item $Y$ = Coal/Gas Mix (Outcome)
+    \item $Z$ = Baseload Substitution (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.40
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Energy Substitution
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Energy Policy
+    \item \textbf{Causal Structure:} Nuclear displaces fossil fuels in baseload
+    \item \textbf{Key Insight:} Renewables could not scale fast enough to replace both nuclear and coal
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``Nuclear power provides zero-carbon baseload. By shutting it down, Germany forced the grid to rely on coal and gas to meet demand that renewables could not yet fully cover. Keeping nuclear would have displaced those fossil fuels.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. Nuclear power provides zero-carbon baseload. By shutting it down ($X$), Germany forced the grid to rely on coal and gas ($Y$) to meet demand that renewables could not yet fully cover. Keeping nuclear would have displaced those fossil fuels.''
+
+%% ============================================
+%% CASE 6.41
+%% ============================================
+
+\subsection{Case 6.41: The Dinosaur Asteroid}
+\label{case:6.41}
+
+\paragraph{Scenario.}
+An asteroid hit Earth ($X$) and dinosaurs went extinct ($Y$). Claim: ``If the asteroid had missed, dinosaurs would still be the dominant land animals.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Chicxulub Impact (Event)
+    \item $Y$ = Extinction (Outcome)
+    \item $Z$ = Evolutionary Competition (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.41
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Evolutionary History
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Paleontology
+    \item \textbf{Causal Structure:} Mammals were suppressed by dinosaurs for millions of years
+    \item \textbf{Key Insight:} No other pressure was reducing dinosaur dominance
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``Dinosaurs dominated mammals for 150 million years. Without the cataclysmic environmental change caused by the asteroid, there is no evidence that mammals would have displaced them naturally. The counterfactual is well-supported by paleontological evidence.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. Dinosaurs dominated mammals for 150 million years. Without the cataclysmic environmental change caused by the asteroid ($X$), there is no evidence that mammals ($Z$) would have displaced them naturally.''
+
+%% ============================================
+%% CASE 6.42
+%% ============================================
+
+\subsection{Case 6.42: The Kyoto Protocol}
+\label{case:6.42}
+
+\paragraph{Scenario.}
+The US did not sign the Kyoto Protocol ($X$). Global emissions rose ($Y$). Claim: ``If the US had signed, climate change would be solved today.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = US Signature (Intervention)
+    \item $Y$ = Global Warming (Outcome)
+    \item $Z$ = Developing Nation Growth (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.42
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Magnitude Error
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Climate Policy
+    \item \textbf{Causal Structure:} US participation helps but doesn't offset China/India growth ($Z$)
+    \item \textbf{Key Insight:} One nation cannot 'solve' a global stock problem
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: INVALID}
+
+``While US participation would have reduced emissions, the rapid industrialization of China and India drove the bulk of emissions growth in the 21st century. The Kyoto targets were insufficient to 'solve' climate change regardless of US participation.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is INVALID. While US participation ($X$) would have reduced emissions, the rapid industrialization of China and India ($Z$) drove the bulk of emissions growth in the 21st century. The Kyoto targets were insufficient to 'solve' climate change regardless of US participation.''
+
+%% ============================================
+%% CASE 6.43
+%% ============================================
+
+\subsection{Case 6.43: The Plastic Turtle}
+\label{case:6.43}
+
+\paragraph{Scenario.}
+You used a plastic bag ($X$) which ended up choking a turtle ($Y$). Claim: ``If you had used a paper bag, the turtle would be fine.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Plastic Bag (Cause)
+    \item $Y$ = Turtle Death (Outcome)
+    \item $Z$ = Waste Management Quality (Context)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.43
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Probabilistic vs Deterministic
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Pollution
+    \item \textbf{Causal Structure:} Bag only reaches ocean if management fails
+    \item \textbf{Key Insight:} Individual action depends on systemic failure
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``If your trash goes to a secure landfill, the plastic bag would not have reached the ocean. The turtle's death required both the use of plastic AND a failure in waste management. The counterfactual depends on the waste infrastructure context.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is CONDITIONAL. If your trash goes to a secure landfill ($Z$), the plastic bag ($X$) would not have reached the ocean. The turtle's death required both the use of plastic AND a failure in waste management.''
+
+%% ============================================
+%% CASE 6.44
+%% ============================================
+
+\subsection{Case 6.44: The Salmon Dam}
+\label{case:6.44}
+
+\paragraph{Scenario.}
+We built a dam ($X$) and salmon migration stopped ($Y$). Claim: ``If we remove the dam, the salmon will return.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Dam (Blocker)
+    \item $Y$ = Salmon Return (Outcome)
+    \item $Z$ = Upstream Habitat Quality (Pre-condition)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.44
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Reversibility
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Ecology
+    \item \textbf{Causal Structure:} Removing $X$ is necessary but not sufficient
+    \item \textbf{Key Insight:} If spawning grounds ($Z$) are degraded, removal fails
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``Removing the dam restores the path, but the salmon will only return if the upstream spawning habitat is still intact. If the habitat has been degraded by logging or warming, dam removal alone is insufficient.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is CONDITIONAL. Removing the dam ($X$) restores the path, but the salmon will only return if the upstream spawning habitat ($Z$) is still intact. If the habitat has been degraded by logging or warming, dam removal alone is insufficient.''
+
+%% ============================================
+%% CASE 6.45
+%% ============================================
+
+\subsection{Case 6.45: The Krakatoa Winter}
+\label{case:6.45}
+
+\paragraph{Scenario.}
+Krakatoa erupted in 1883 ($X$), and global temperatures dropped ($Y$). Claim: ``If it hadn't erupted, 1883 would have been a normal warm year.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Eruption (Event)
+    \item $Y$ = Cooling (Outcome)
+    \item $Z$ = Aerosol Physics (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 6.45
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D6 (Environment)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Physical Determinism
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Geophysics
+    \item \textbf{Causal Structure:} Volcanic aerosols ($Z$) reflect sunlight
+    \item \textbf{Key Insight:} Massive eruptions causally force cooling
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``Volcanic eruptions inject sulfate aerosols into the stratosphere, which reflect sunlight and cool the Earth. Without the Krakatoa event, this forcing mechanism would have been absent, and temperatures would have followed the baseline trend.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. Volcanic eruptions inject sulfate aerosols ($Z$) into the stratosphere, which reflect sunlight and cool the Earth. Without the Krakatoa event ($X$), this forcing mechanism would have been absent, and temperatures would have followed the baseline trend.''
+
+%% ============================================
+%% SUMMARY TABLE
+%% ============================================
+
+\subsection*{Bucket 6 Summary}
+
+\begin{center}
+\small
+\begin{tabular}{lllll}
+\toprule
+\textbf{Case} & \textbf{Title} & \textbf{Trap Type} & \textbf{Level} & \textbf{Diff} \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 1 (Association)}} \\
+\midrule
+6.21 & The Record Hurricane Seas... & Regression to M & L1 & Med \\
+6.22 & The Conservation Paradox & Selection Bias & L1 & Med \\
+6.23 & The Organic Yield Gap & Selection Bias & L1 & Med \\
+6.24 & The Endangered Species Ho... & Reverse Causati & L1 & Easy \\
+6.25 & The Fuel Economy Rebound & Base Rate Negle & L1 & Med \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 2 (Intervention)}} \\
+\midrule
+6.1 & The Carbon Tax Recession & Conf-Med & L2 & Med \\
+6.10 & The Invasive Species & Conf-Med & L2 & Med \\
+6.11 & The Wildfire Paradox & Conf-Med & L2 & Hard \\
+6.12 & The Ozone Recovery & Conf-Med & L2 & Med \\
+6.13 & The Agricultural Runoff & Conf-Med & L2 & Easy \\
+6.14 & The Electric Vehicle Emis... & Conf-Med & L2 & Med \\
+6.15 & The Conservation Leakage & Conf-Med & L2 & Hard \\
+6.16 & The Groundwater Depletion & Conf-Med & L2 & Med \\
+6.17 & The Lockdown Air Quality & Conf-Med & L2 & Easy \\
+6.18 & The Biofuel Land Use & Conf-Med & L2 & Hard \\
+6.19 & The Protected Area Parado... & Collider & L2 & Hard \\
+6.2 & The Deforestation Drought... & Feedback & L2 & Hard \\
+6.20 & The Climate Migration & Conf-Med & L2 & Hard \\
+6.29 & The Paper Straw Ban & SCOPE & L2 & Easy \\
+6.3 & The Renewable Subsidy & Conf-Med & L2 & Med \\
+6.30 & The Coal-Powered EV & MEDIATOR & L2 & Med \\
+6.31 & The Tundra Trees & SIDE EFFECT & L2 & Hard \\
+6.32 & The Organic Mandate & TRADE-OFF & L2 & Hard \\
+6.33 & The Desert Wolves & EXTERNAL VALIDI & L2 & Med \\
+6.34 & The Office Bin & MECHANISM & L2 & Easy \\
+6.35 & The Invasive Fix & BACKFIRE & L2 & Med \\
+6.36 & The Seawall & DYNAMICS & L2 & Med \\
+6.37 & Trophy Hunting & MECHANISM & L2 & Hard \\
+6.38 & The Desalination Fix & SIDE EFFECT & L2 & Easy \\
+6.4 & The Species Recovery & Conf-Med & L2 & Med \\
+6.5 & The Ice Albedo Feedback & Feedback & L2 & Hard \\
+6.6 & The Coral Bleaching & Conf-Med & L2 & Hard \\
+6.7 & The Fishing Collapse & Conf-Med & L2 & Hard \\
+6.8 & The Urban Heat Island & Conf-Med & L2 & Easy \\
+6.9 & The Wetland Restoration & Conf-Med & L2 & Med \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 3 (Counterfactual)}} \\
+\midrule
+\rowcolor{blue!15} 6.26 & The Quantum Observer & Counterfactual & L3 & Med \\
+\rowcolor{blue!15} 6.27 & The Tipping Point & Counterfactual & L3 & Hard \\
+\rowcolor{blue!15} 6.28 & The Causal Chain Attribut... & Counterfactual & L3 & Med \\
+\rowcolor{blue!15} 6.39 & The Ozone Counterfactual & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 6.40 & The Nuclear Shutdown & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 6.41 & The Dinosaur Asteroid & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 6.42 & The Kyoto Protocol & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 6.43 & The Plastic Turtle & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 6.44 & The Salmon Dam & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 6.45 & The Krakatoa Winter & COUNTERFACTUAL & L3 & Easy \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Pearl Level Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{L1 (Association):} 5 cases (11\%)
+    \item \textbf{L2 (Intervention):} 30 cases (66\%)
+    \item \textbf{L3 (Counterfactual):} 10 cases (22\%)
+    \item \textbf{Total:} 45 cases
+\end{itemize}
+
+\paragraph{L3 Ground Truth Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{VALID:} 4 cases (40\%) --- 6.39, 6.40, 6.41, 6.45
+    \item \textbf{INVALID:} 2 cases (20\%) --- 6.28, 6.42
+    \item \textbf{CONDITIONAL:} 4 cases (40\%) --- 6.26, 6.27, 6.43, 6.44
+\end{itemize}
+
+\paragraph{Trap Type Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \texttt{Conf-Med}: 17 cases (38\%)
+    \item \texttt{Counterfactual}: 10 cases (22\%)
+    \item \texttt{Feedback/Dynamics}: 4 cases (9\%)
+    \item \texttt{Side Effect}: 3 cases (7\%)
+    \item Other: 11 cases (24\%)
+\end{itemize}
+
+\paragraph{Difficulty Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item Easy: 8 cases (18\%)
+    \item Medium: 22 cases (49\%)
+    \item Hard: 15 cases (33\%)
+\end{itemize}

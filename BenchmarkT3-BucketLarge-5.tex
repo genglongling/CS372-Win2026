@@ -1,0 +1,1903 @@
+%% ============================================
+%% BUCKET 5: ECONOMICS & TECHNOLOGY
+%% T³ Benchmark Standard Format (Revised & Sorted)
+%% Theme: Dynamic Feedback Loops, Mechanism Tracing, Policy Evaluation
+%% Total Cases: 45 (L1: 5, L2: 30, L3: 10)
+%% ============================================
+
+\section{Bucket 5: Economics \& Technology}
+\label{sec:bucket5}
+
+\subsection*{Bucket Overview}
+
+\paragraph{Domain.} Economics (D5)
+
+\paragraph{Core Themes.} Policy evaluation, macro effects, dynamic feedback loops, mechanism tracing, substitution effects, network effects.
+
+\paragraph{Signature Trap Types.} CONF-MED, SELECTION, REVERSE (Circular Causality), COLLIDER
+
+\paragraph{Case Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Pearl Level 1 (Association):} 5 cases (11\%)
+    \item \textbf{Pearl Level 2 (Intervention):} 30 cases (66\%)
+    \item \textbf{Pearl Level 3 (Counterfactual):} 10 cases (22\%)
+    \item \textbf{Total:} 45 cases
+\end{itemize}
+
+%% ============================================
+%% PEARL LEVEL 1 CASES (Association)
+%% ============================================
+
+\subsection{Case 5.41: The Minimum Wage Debate}
+\label{case:5.41}
+
+\paragraph{Scenario.}
+States that raised minimum wage saw employment increases over the next year. An advocate
+argues: ``Higher minimum wage creates jobs by boosting consumer spending.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Minimum wage increase
+    \item $Y$ = Employment change
+    \item $Z$ = Economic conditions prompting the increase
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.41
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} REVERSE CAUSATION
+    \item \textbf{Trap Subtype:} Policy Endogeneity
+    \item \textbf{Difficulty:} Medium
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+States raise minimum wage when their economy is strong ($Z$). Strong economies increase
+employment ($Y$). The wage increase ($X$) and employment growth ($Y$) are both effects
+of $Z$. The policy didn't cause the growth; both reflect prosperity.
+
+\paragraph{Correct Reasoning.}
+Minimum wage increases are endogenous to economic conditions. Proper evaluation requires
+difference-in-differences or regression discontinuity designs to isolate the policy effect.
+
+%% --------------------------------------------
+
+\subsection{Case 5.42: The Immigration GDP}
+\label{case:5.42}
+
+\paragraph{Scenario.}
+Countries with higher immigration rates have higher GDP growth. A pro-immigration group
+argues: ``Immigration drives growth. Open borders mean prosperity.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Immigration rate
+    \item $Y$ = GDP growth
+    \item $Z$ = Economic opportunity attracting migrants
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.42
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} REVERSE CAUSATION
+    \item \textbf{Trap Subtype:} Destination Selection
+    \item \textbf{Difficulty:} Medium
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+Migrants move to growing economies ($Z \to X$). GDP growth attracts immigration, not
+vice versa (or both). The correlation confounds destination selection with immigrant
+contribution.
+
+\paragraph{Correct Reasoning.}
+The correlation is consistent with immigrants causing growth OR growth attracting
+immigrants OR both. Cross-sectional comparison can't distinguish direction.
+
+%% --------------------------------------------
+
+\subsection{Case 5.43: The Education Premium}
+\label{case:5.43}
+
+\paragraph{Scenario.}
+College graduates earn 70\% more than high school graduates. A policy group argues:
+``College is a great investment. Send more students to college.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = College attendance
+    \item $Y$ = Earnings premium
+    \item $Z$ = Ability, family background, motivation
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.43
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} SELECTION BIAS
+    \item \textbf{Trap Subtype:} Ability Sorting
+    \item \textbf{Difficulty:} Medium
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+College graduates differ from non-graduates in ability, motivation, and family resources
+($Z$). These traits cause both college attendance ($X$) and higher earnings ($Y$). The
+70\% premium overstates the causal effect of education itself.
+
+\paragraph{Correct Reasoning.}
+The observed premium mixes education's causal effect with selection effects. Studies
+using twins or regression discontinuity suggest the true effect is 40-50\%, not 70\%.
+
+%% --------------------------------------------
+
+\subsection{Case 5.44: The Debt Threshold}
+\label{case:5.44}
+
+\paragraph{Scenario.}
+Countries with debt-to-GDP ratios above 90\% have lower growth. A fiscal hawk argues:
+``Debt above 90\% kills growth. We must cut spending now.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Debt-to-GDP ratio
+    \item $Y$ = GDP growth
+    \item $Z$ = Prior slow growth causing debt accumulation
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.44
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} REVERSE CAUSATION
+    \item \textbf{Trap Subtype:} Denominator Effect
+    \item \textbf{Difficulty:} Hard
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+Slow growth ($Y$ low) mechanically increases debt-to-GDP ($X$ high) because GDP is the
+denominator. Countries don't have high debt causing slow growth; they have slow growth
+causing high debt ratios. The causation is reversed.
+
+\paragraph{Correct Reasoning.}
+The correlation is partly mechanical (slow growth raises the ratio) and partly reverse
+causal (recessions increase deficits). The 90\% ``threshold'' was later found to be
+based on coding errors and selective data.
+
+%% --------------------------------------------
+
+\subsection{Case 5.45: The Tax Revenue Curve}
+\label{case:5.45}
+
+\paragraph{Scenario.}
+After a tax cut, total tax revenue increased. A supply-sider claims: ``Tax cuts pay for
+themselves. Lower rates mean higher revenue.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Tax rate cut
+    \item $Y$ = Tax revenue increase
+    \item $Z$ = Economic growth, bracket creep, other revenue sources
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.45
+    \item \textbf{Pearl Level:} L1 (Association)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONFOUNDING
+    \item \textbf{Trap Subtype:} Time Trend Confounding
+    \item \textbf{Difficulty:} Medium
+\end{itemize}
+
+\paragraph{The Statistical Structure.}
+Revenue grows with the economy regardless of tax rates. If the economy grew 5\% and tax
+cuts cost 1\% of revenue, revenue still increases. The cut may have \emph{reduced}
+revenue relative to counterfactual, while absolute revenue rose.
+
+\paragraph{Correct Reasoning.}
+Compare actual revenue to projected revenue without the cut, not to prior-year revenue.
+Tax cuts rarely ``pay for themselves''—the correlation with rising revenue is spurious.
+
+%% ============================================
+%% PEARL LEVEL 2 CASES (Intervention)
+%% ============================================
+
+%% ============================================
+%% PEARL LEVEL 2 CASES (Intervention)
+%% ============================================
+
+\subsection{Case 5.1: The Inflation Reduction Trap}
+\label{case:5.1}
+
+\paragraph{Scenario.}
+Following the Central Bank's decision to raise interest rates by 75bps ($X$), the quarterly report showed a 2\% drop in core inflation ($Y$). Analysts noted that global shipping container costs ($Z$) plummeted by 40\% during this period.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Interest Rate Hike (Policy)
+    \item $Y$ = Inflation Drop (Outcome)
+    \item $Z$ = Shipping Cost Drop (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.1
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Supply Shock Confounding
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Macro
+    \item \textbf{Causal Structure:} $Z \to Y$ independently or $X \to Z \to Y$
+    \item \textbf{Key Insight:} Central banks may claim credit for supply-side disinflation
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did shipping costs ($Z$) drop \emph{before} the rate hike, or \emph{after} demand destruction caused by the hike?
+
+\paragraph{Answer if $t_Z < t_X$ (Supply Shock is Confounder).}
+Supply chain normalization ($Z$) lowered costs independently. The rate hike ($X$) coincided with but did not cause the inflation drop ($Y$). The Central Bank gets false credit.
+
+\paragraph{Answer if $t_X < t_Z$ (Rate Hike caused demand destruction).}
+The rate hike ($X$) cooled demand, which reduced shipping volume ($Z$), which lowered inflation ($Y$). The policy worked via the demand channel.
+
+\paragraph{Wise Refusal.}
+``Monetary policy and supply shocks coincided. If shipping costs dropped before the rate hike, the inflation decline is supply-driven. If shipping costs dropped after demand cooled, the policy deserves credit. Please clarify the sequence.''
+
+%% ============================================
+%% CASE 5.2
+%% ============================================
+
+\subsection{Case 5.10: The Streaming Subscriber War}
+\label{case:5.10}
+
+\paragraph{Scenario.}
+Streaming Service S gained 2 million subscribers ($Y$). They released the hit series `Dragon Fire' ($X$). A competitor raised subscription prices ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Hit Series Release (Content)
+    \item $Y$ = Subscriber Gain (Outcome)
+    \item $Z$ = Competitor Price Hike (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.10
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Content vs.\ Competitive Dynamics
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Media
+    \item \textbf{Causal Structure:} $Z \to Y$ (switching) or $X \to Y$ (content pull)
+    \item \textbf{Key Insight:} Subscriber gains may reflect competitor mistakes
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the competitor raise prices ($Z$) \emph{before} the show premiered?
+
+\paragraph{Answer if $t_Z < t_X$ (Price is Confounder).}
+The competitor's price hike ($Z$) drove users to switch. The show ($X$) is lucky timing.
+
+\paragraph{Answer if $t_X < t_Z$ (Content is Cause).}
+The hit show ($X$) attracted subscribers ($Y$). The competitor's price hike ($Z$) is coincidental.
+
+\paragraph{Wise Refusal.}
+``Subscriber gains reflect both content quality and competitive dynamics. If the competitor raised prices before the show launched, the gains may be price-driven switching. Please clarify the timing of the competitor's price change.''
+
+%% ============================================
+%% CASE 5.11
+%% ============================================
+
+\subsection{Case 5.11: The Retail Pivot Trap}
+\label{case:5.11}
+
+\paragraph{Scenario.}
+Retail Chain R filed for bankruptcy ($Y$). This followed a pivot to an `Online-First' strategy ($X$). Consumer discretionary spending dropped nationwide ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Online Pivot (Strategy)
+    \item $Y$ = Bankruptcy (Outcome)
+    \item $Z$ = Consumer Spending Drop (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.11
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Strategy Failure vs.\ Macro Environment
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Retail
+    \item \textbf{Causal Structure:} $Z \to Y$ (recession kills) or $X \to Y$ (pivot fails)
+    \item \textbf{Key Insight:} Strategy failures and recessions are confounded
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did spending ($Z$) drop \emph{before} the strategy pivot?
+
+\paragraph{Answer if $t_Z < t_X$ (Recession is Confounder).}
+The recession ($Z$) killed sales. The pivot ($X$) was a desperate last attempt. The bankruptcy was inevitable regardless of strategy.
+
+\paragraph{Answer if $t_X < t_Z$ (Pivot is Cause).}
+The botched pivot ($X$) destroyed the business. The recession ($Z$) is coincidental.
+
+\paragraph{Wise Refusal.}
+``Strategy failures and macro downturns both cause bankruptcies. If the spending drop preceded the pivot, the company was already dying. Please clarify whether the pivot was proactive or reactive to falling sales.''
+
+%% ============================================
+%% CASE 5.12
+%% ============================================
+
+\subsection{Case 5.12: The Carbon Leakage}
+\label{case:5.12}
+
+\paragraph{Scenario.}
+Domestic manufacturing emissions ($Y$) dropped by 15\%. The government implemented a strict Carbon Tax ($X$). However, imports of heavy steel ($Z$) surged from unregulated countries.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Carbon Tax (Policy)
+    \item $Y$ = Domestic Emissions Drop (Outcome)
+    \item $Z$ = Import Surge (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.12
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Substitution Effect / Carbon Leakage
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Energy
+    \item \textbf{Causal Structure:} $X \to Z$ (offshoring) $\to$ no net $Y_{global}$ change
+    \item \textbf{Key Insight:} Domestic success may export the problem
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did global emissions ($Y_{global}$) drop, or just domestic ($Y_{domestic}$)?
+
+\paragraph{Answer if Leakage ($X \to Z \to Y$).}
+The tax ($X$) made domestic steel expensive, causing buyers to import dirty steel ($Z$). Domestic emissions ($Y$) fell, but global emissions stayed flat. The policy failed to reduce carbon, it just moved it.
+
+\paragraph{Answer if True Success.}
+If imports ($Z$) remained flat or were green steel, the tax ($X$) genuinely decarbonized the economy.
+
+\paragraph{Wise Refusal.}
+``A drop in domestic emissions is not a success if it merely exports the pollution. If the carbon tax ($X$) caused a surge in dirty imports ($Z$), we are observing `Carbon Leakage', not genuine abatement. Please clarify the carbon intensity of the imports.''
+
+%% ============================================
+%% CASE 5.13
+%% ============================================
+
+\subsection{Case 5.13: The IPO Macro Lift}
+\label{case:5.13}
+
+\paragraph{Scenario.}
+Tech Firm T's IPO soared 50\% on opening day ($Y$). The company secured a partnership with Big Tech Co ($X$). The Federal Reserve paused interest rate hikes ($Z$) that week.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Partnership Announcement (Event)
+    \item $Y$ = IPO Pop (Outcome)
+    \item $Z$ = Fed Rate Pause (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.13
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Idiosyncratic vs.\ Systematic Risk
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Equity
+    \item \textbf{Causal Structure:} $Z \to Y$ (macro beta) or $X \to Y$ (company-specific)
+    \item \textbf{Key Insight:} All IPOs may pop in risk-on environments
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Was the rate pause ($Z$) announced \emph{before} the IPO pricing?
+
+\paragraph{Answer if $t_Z < t_X$ (Macro is Confounder).}
+The Fed pause ($Z$) created risk-on sentiment, lifting all IPOs. The partnership ($X$) may be irrelevant; any tech IPO would have popped.
+
+\paragraph{Answer if $t_X < t_Z$ (Partnership is Cause).}
+The partnership ($X$) signaled quality, driving the pop ($Y$). The Fed decision ($Z$) is coincidental.
+
+\paragraph{Wise Refusal.}
+``IPO performance reflects both company-specific news and macro sentiment. If the Fed pause preceded the IPO, the pop may be market-wide beta. Please compare to other IPOs that week to isolate the partnership effect.''
+
+%% ============================================
+%% CASE 5.14
+%% ============================================
+
+\subsection{Case 5.14: The Minimum Wage Consolidation}
+\label{case:5.14}
+
+\paragraph{Scenario.}
+Unemployment in Sector S remained low ($Y$) despite a minimum wage hike ($X$). Large competitors absorbed smaller firms ($Z$) during this period.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Minimum Wage Hike (Policy)
+    \item $Y$ = Low Unemployment (Outcome)
+    \item $Z$ = Industry Consolidation (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.14
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Aggregation Hiding Small Business Destruction
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Labor
+    \item \textbf{Causal Structure:} $X \to$ small firm death $\to Z$ (absorption) $\to Y$ stable
+    \item \textbf{Key Insight:} Sector-level stats hide firm-level destruction
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did consolidation ($Z$) accelerate \emph{after} the wage hike legislation passed?
+
+\paragraph{Answer if $t_X < t_Z$ (Wage hike caused consolidation).}
+The wage hike ($X$) killed small firms that couldn't afford higher wages. Large firms absorbed their workers ($Z$), masking job losses in sector-level unemployment stats ($Y$). The ``low unemployment'' hides destroyed businesses.
+
+\paragraph{Answer if $t_Z < t_X$ (Consolidation is Confounder).}
+Consolidation ($Z$) was happening anyway (technology, scale economies). The wage hike ($X$) is irrelevant to employment.
+
+\paragraph{Wise Refusal.}
+``Sector-level unemployment can hide job destruction if large firms absorb displaced workers. If consolidation accelerated after the wage hike, small business job losses may be masked. Please provide data on small firm employment separately.''
+
+%% ============================================
+%% CASE 5.15
+%% ============================================
+
+\subsection{Case 5.15: The Generic Drug Race}
+\label{case:5.15}
+
+\paragraph{Scenario.}
+Pharma Company P raised the price of Insulin ($X$) and revenue remained flat ($Y$). A generic competitor entered the market ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Price Hike (Strategy)
+    \item $Y$ = Flat Revenue (Outcome)
+    \item $Z$ = Generic Entry (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.15
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Price vs.\ Volume Decomposition
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Pharma
+    \item \textbf{Causal Structure:} $Z \to$ volume loss $\to X$ (desperate price hike)
+    \item \textbf{Key Insight:} Flat revenue may hide collapsing volume
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the generic launch ($Z$) happen \emph{before} the price hike?
+
+\paragraph{Answer if $t_Z < t_X$ (Generic caused the hike).}
+The generic ($Z$) stole volume. The price hike ($X$) was a desperate attempt to maintain revenue ($Y$) on declining volume. The flat revenue masks a collapsing business.
+
+\paragraph{Answer if $t_X < t_Z$ (Price hike invited entry).}
+The price hike ($X$) created a price umbrella, inviting the generic ($Z$). The company's greed caused its own competitive problem.
+
+\paragraph{Wise Refusal.}
+``Flat revenue during a price hike suggests volume loss. If the generic preceded the hike, the company is extracting value from a shrinking customer base. Please clarify whether volume declined.''
+
+%% ============================================
+%% CASE 5.16
+%% ============================================
+
+\subsection{Case 5.16: The Gig Economy Deadlock}
+\label{case:5.16}
+
+\paragraph{Scenario.}
+Ride-sharing Platform R failed to gain traction in City C ($Y$). Drivers cited a lack of riders ($X$). Riders cited long wait times due to a lack of drivers ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Low Rider Demand (Constraint A)
+    \item $Y$ = Platform Failure (Outcome)
+    \item $Z$ = Low Driver Supply (Constraint B)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.16
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Circular Causality / Cold Start Problem
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Finance
+    \item \textbf{Causal Structure:} $X \leftrightarrow Z$ (mutual causation)
+    \item \textbf{Key Insight:} Neither side is ``root cause'' in network effects
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the platform subsidize one side ($X$ or $Z$) to break the loop?
+
+\paragraph{Answer if Circular (Cold Start Problem).}
+$X$ causes $Z$, and $Z$ causes $X$. The failure ($Y$) is due to the inability to catalyze the network effect. Neither is the ``root'' cause; the system lacks a catalyst.
+
+\paragraph{Answer if Unbalanced.}
+If thousands of drivers signed up ($High Z$) but riders hated the app UI ($Low X$), then rider demand is the root failure.
+
+\paragraph{Wise Refusal.}
+``Two-sided marketplaces suffer from the `Cold Start Problem' where supply and demand are mutually causal. Attributing failure to `lack of riders' ignores that riders require drivers. We need to analyze whether the platform incentivized either side to break the deadlock.''
+
+%% ============================================
+%% CASE 5.17
+%% ============================================
+
+\subsection{Case 5.17: The Stadium Application Bump}
+\label{case:5.17}
+
+\paragraph{Scenario.}
+University U saw a 40\% increase in applications ($Y$). They opened a \$100M stadium ($X$). The university climbed 10 spots in the `Best Colleges' ranking ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Stadium Opening (Investment)
+    \item $Y$ = Application Increase (Outcome)
+    \item $Z$ = Ranking Improvement (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.17
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Amenities vs.\ Academic Reputation
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Education
+    \item \textbf{Causal Structure:} $Z \to Y$ or $X \to Y$
+    \item \textbf{Key Insight:} Rankings may drive applications more than facilities
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Was the ranking ($Z$) published \emph{before} the application window opened?
+
+\paragraph{Answer if $t_Z < t_X$ (Ranking is Confounder).}
+The ranking improvement ($Z$) drove applications ($Y$). The stadium ($X$) was funded by resulting donations but didn't cause the application surge.
+
+\paragraph{Answer if $t_X < t_Z$ (Stadium is Cause).}
+The stadium ($X$) attracted athletic recruits and school spirit, driving applications ($Y$). The ranking ($Z$) improved due to increased selectivity.
+
+\paragraph{Wise Refusal.}
+``University applications respond to rankings and amenities. If the ranking improvement preceded the application cycle, the stadium may be irrelevant. Please clarify the publication date of the ranking.''
+
+%% ============================================
+%% CASE 5.18
+%% ============================================
+
+\subsection{Case 5.18: The Bullwhip Chip Shortage}
+\label{case:5.18}
+
+\paragraph{Scenario.}
+Automaker A halted production ($Y$). They cited a shortage of microchips ($X$). The automaker had cancelled chip orders ($Z$) at the start of the year.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Chip Shortage (Constraint)
+    \item $Y$ = Production Halt (Outcome)
+    \item $Z$ = Order Cancellation (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.18
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Bullwhip Effect / Self-Inflicted Shortage
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Supply Chain
+    \item \textbf{Causal Structure:} $Z \to X$ (cancellation caused shortage)
+    \item \textbf{Key Insight:} Shortages can be self-inflicted via demand signaling
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the cancellation ($Z$) happen \emph{before} the shortage became global?
+
+\paragraph{Answer if $t_Z < t_X$ (Cancellation caused shortage).}
+The automaker cancelled orders ($Z$) expecting low demand. When demand rebounded, suppliers had allocated capacity elsewhere, creating the shortage ($X$) for this specific automaker. The shortage is self-inflicted.
+
+\paragraph{Answer if $t_X < t_Z$ (Shortage is External).}
+The global shortage ($X$) hit all automakers. The cancellation ($Z$) is unrelated.
+
+\paragraph{Wise Refusal.}
+``Supply chain shortages can be self-inflicted via the Bullwhip Effect. If the automaker cancelled orders before the shortage, they may have caused their own supply problem. Please clarify whether competitors faced the same shortage.''
+
+%% ============================================
+%% CASE 5.19
+%% ============================================
+
+\subsection{Case 5.19: The Capital Control Collapse}
+\label{case:5.19}
+
+\paragraph{Scenario.}
+Country C's currency collapsed ($Y$). The government imposed capital controls ($X$). Foreign reserves fell below critical levels ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Capital Controls (Policy)
+    \item $Y$ = Currency Collapse (Outcome)
+    \item $Z$ = Reserve Depletion (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.19
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Policy as Symptom vs.\ Cause
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} FX
+    \item \textbf{Causal Structure:} $Z \to X \to Y$ or $X \to Z \to Y$
+    \item \textbf{Key Insight:} Capital controls may signal desperation, accelerating flight
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did reserves ($Z$) fall \emph{before} the controls were announced?
+
+\paragraph{Answer if $t_Z < t_X$ (Reserves caused controls).}
+Low reserves ($Z$) signaled weakness, causing capital flight ($Y$). The government imposed controls ($X$) as a desperate reaction, but the collapse was already underway.
+
+\paragraph{Answer if $t_X < t_Z$ (Controls spooked markets).}
+The controls ($X$) signaled government desperation, triggering capital flight ($Y$) and reserve depletion ($Z$). The policy backfired.
+
+\paragraph{Wise Refusal.}
+``Capital controls can be cause or symptom of currency crisis. If reserves were depleted before controls, the collapse was already happening. If controls preceded reserve loss, the policy may have accelerated the crisis. Please clarify the sequence.''
+
+%% ============================================
+%% CASE 5.20
+%% ============================================
+
+\subsection{Case 5.2: The Unicorn Valuation}
+\label{case:5.2}
+
+\paragraph{Scenario.}
+Tech Startup A reached a \$10B valuation ($Y$) shortly after announcing their new Generative AI product suite ($X$). Tier-1 Venture Capital firms poured \$500M into the company ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Product Announcement (Event)
+    \item $Y$ = \$10B Valuation (Outcome)
+    \item $Z$ = VC Investment (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.2
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Funding vs.\ Product Attribution
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Startups
+    \item \textbf{Causal Structure:} $Z \to X, Y$ or $X \to Z \to Y$
+    \item \textbf{Key Insight:} VC investment may precede and enable product launch
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Was the \$500M investment ($Z$) secured \emph{before} or \emph{after} the product announcement?
+
+\paragraph{Answer if $t_Z < t_X$ (VC is Confounder).}
+The VC investment ($Z$) signaled legitimacy, drove the valuation ($Y$), and funded the product launch ($X$). The product is a consequence of funding, not the cause of valuation.
+
+\paragraph{Answer if $t_X < t_Z$ (Product is Cause).}
+The product ($X$) impressed the market, attracting VC ($Z$) and driving valuation ($Y$). The product deserves credit.
+
+\paragraph{Wise Refusal.}
+``Startup valuations reflect investor sentiment as much as product quality. If the VC round closed before the announcement, the valuation reflects investor access, not product merit. Please clarify the funding timeline.''
+
+%% ============================================
+%% CASE 5.3
+%% ============================================
+
+\subsection{Case 5.20: The Privacy Tech Survivor}
+\label{case:5.20}
+
+\paragraph{Scenario.}
+Ad Tech Company G's revenue doubled ($Y$). They launched a new Privacy-First tracking tool ($X$). The dominant mobile OS blocked 3rd-party cookies ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Privacy Tool Launch (Product)
+    \item $Y$ = Revenue Doubling (Outcome)
+    \item $Z$ = OS Cookie Block (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.20
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Survivorship in Industry Disruption
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} AdTech
+    \item \textbf{Causal Structure:} $Z \to$ competitor death $\to Y$ (survivor captures share)
+    \item \textbf{Key Insight:} Revenue growth may reflect competitor destruction
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the OS block ($Z$) go live \emph{before} the revenue spike?
+
+\paragraph{Answer if $t_Z < t_X$ (Survival is Confounder).}
+The OS block ($Z$) destroyed competitors who relied on cookies. Company G survived because it had a compliant tool ($X$). The revenue increase ($Y$) reflects competitor death, not product superiority.
+
+\paragraph{Answer if $t_X < t_Z$ (Product is Cause).}
+Company G's foresight in building the tool ($X$) before the block ($Z$) gave them a first-mover advantage.
+
+\paragraph{Wise Refusal.}
+``Revenue doubling during industry disruption may reflect competitor destruction, not product excellence. If the OS block preceded the revenue spike, Company G may simply be the last survivor. Please compare to industry-wide revenue trends.''
+
+%% ============================================
+%% CASE 5.21
+%% ============================================
+
+\subsection{Case 5.21: The Funded Startup Paradox}
+\label{case:5.41}
+
+\paragraph{Scenario.}
+Among startups that received Series A funding ($Z$), those founded by repeat entrepreneurs ($X$) had lower success rates ($Y$) than first-time founders.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Repeat Entrepreneur (Exposure)
+    \item $Y$ = Success Rate (Outcome)
+    \item $Z$ = Received Series A (Collider)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.41
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} COLLIDER
+    \item \textbf{Trap Subtype:} VC Selection Criteria Bias
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} VC
+    \item \textbf{Causal Structure:} $X \to Z \leftarrow Y$ (reputation vs.\ idea quality)
+    \item \textbf{Key Insight:} VCs fund repeat founders on reputation, first-timers on idea strength
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Are we conditioning on funding ($Z$)?
+
+\paragraph{Correct Answer.}
+VCs fund startups ($Z$) based on either founder track record ($X$) or exceptional idea quality. First-time founders who got funded likely had exceptional ideas (higher bar). Repeat founders get funded partly on reputation, even with weaker ideas. Conditioning on funding creates spurious negative correlation between experience and success.
+
+\paragraph{Wise Refusal.}
+``This analysis conditions on VC funding, which is a collider. Repeat entrepreneurs face lower idea-quality thresholds for funding. Comparing only funded startups biases against experienced founders whose weaker ideas got funded on reputation.''
+
+%% ============================================
+%% CASE 5.22
+%% ============================================
+
+\subsection{Case 5.22: The Profitable Division Paradox}
+\label{case:5.42}
+
+\paragraph{Scenario.}
+Among business units that survived ($Z$) the restructuring, those with high marketing spend ($X$) had lower profit margins ($Y$) than those with low marketing spend.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = High Marketing Spend (Exposure)
+    \item $Y$ = Profit Margin (Outcome)
+    \item $Z$ = Survived Restructuring (Collider)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.42
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} COLLIDER
+    \item \textbf{Trap Subtype:} Survival Selection on Multiple Criteria
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Corporate
+    \item \textbf{Causal Structure:} $X \to Z \leftarrow Y$ (revenue or margin saves unit)
+    \item \textbf{Key Insight:} Marketing may save low-margin units via volume
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Are we only looking at surviving divisions?
+
+\paragraph{Correct Answer.}
+Divisions survived ($Z$) either by having high margins ($Y$) or by having strong revenue (often from marketing $X$). High-marketing divisions with low margins survived due to revenue; low-marketing divisions with low margins were cut. Conditioning on survival creates spurious negative correlation between marketing and margins.
+
+\paragraph{Wise Refusal.}
+``Survival conditions on both margins and revenue. Marketing may save low-margin divisions via volume. The apparent negative relationship between marketing and margins is selection bias among survivors.''
+
+%% ============================================
+%% CASE 5.23
+%% ============================================
+
+\subsection{Case 5.23: The Cited Paper Paradox}
+\label{case:5.43}
+
+\paragraph{Scenario.}
+Among economics papers that received 100+ citations ($Z$), those using novel methodology ($X$) showed weaker empirical results ($Y$) than those using standard methods.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Novel Methodology (Exposure)
+    \item $Y$ = Empirical Result Strength (Outcome)
+    \item $Z$ = High Citations (Collider)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.43
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} COLLIDER
+    \item \textbf{Trap Subtype:} Citation Selection on Multiple Criteria
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Academia
+    \item \textbf{Causal Structure:} $X \to Z \leftarrow Y$ (novelty or results drive citations)
+    \item \textbf{Key Insight:} Novel methods get cited even with weak results
+\end{itemize}
+
+\paragraph{Hidden Structure.}
+Are we conditioning on citation count?
+
+\paragraph{Correct Answer.}
+Papers get cited ($Z$) for either strong findings ($Y$) or methodological novelty ($X$). Papers with novel methods and weak results still get cited for the methods. Papers with standard methods need strong results to get cited. Conditioning on citations creates spurious negative correlation between novelty and result strength.
+
+\paragraph{Wise Refusal.}
+``High-citation papers are selected for either methodological contribution or empirical findings. Novel-method papers can achieve citation thresholds with weaker results. This is collider bias, not evidence that novel methods produce weaker findings.''
+
+%% ============================================
+%% CASE 5.24 (NEW - L3, from Bucket 11.4)
+%% ============================================
+
+\subsection{Case 5.28: The Automation Tax}
+\label{case:5.28}
+
+\paragraph{Scenario.}
+Factories with high robot density ($X$) employ fewer human workers ($Y$). To increase factory employment, the government proposes a tax on robots ($X'$).
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Robot Usage (Intervention)
+    \item $Y$ = Employment (Outcome)
+    \item $Z$ = Labor Costs / Wages (Reverse Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.28
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Cost-Driven Automation
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Labor Economics
+    \item \textbf{Causal Structure:} High wages ($Z$) caused the move to robots ($X$); taxing robots might just close the factory
+    \item \textbf{Key Insight:} Automation is a symptom of high labor costs relative to capital
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Taxing robots ($X$) is unlikely to significantly boost factory employment ($Y$). The correlation is driven by high labor costs ($Z$). Firms automate *because* human labor is expensive. Making robots expensive might make the factory uncompetitive, leading to closure rather than hiring.''
+
+\subsection{Case 5.29: The Open Source Mandate}
+\label{case:5.29}
+
+\paragraph{Scenario.}
+Tech companies that use Open Source software ($X$) have faster development cycles ($Y$). A legacy bank mandates the use of Open Source to speed up its development team.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Open Source Usage (Intervention)
+    \item $Y$ = Dev Speed (Outcome)
+    \item $Z$ = Engineering Culture (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.29
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Cultural Confounding
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Technology Management
+    \item \textbf{Causal Structure:} Modern engineering culture ($Z$) causes both $X$ and $Y$
+    \item \textbf{Key Insight:} Tools don't fix culture
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Mandating Open Source ($X$) will not automatically increase speed ($Y$). High-velocity teams use Open Source because they have a modern engineering culture ($Z$). Forcing these tools on a legacy team without changing the culture/processes will likely cause friction, not speed.''
+
+\subsection{Case 5.3: The Transit-Tech Housing Boom}
+\label{case:5.3}
+
+\paragraph{Scenario.}
+City Metro saw a 15\% increase in property values ($Y$). The city approved a new light-rail transit line ($X$). A major tech giant announced a new HQ in the district ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Transit Line Approval (Policy)
+    \item $Y$ = Property Value Increase (Outcome)
+    \item $Z$ = Tech HQ Announcement (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.3
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Infrastructure vs.\ Employment Attribution
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Real Estate
+    \item \textbf{Causal Structure:} $Z \to X, Y$ or $X \to Z \to Y$
+    \item \textbf{Key Insight:} Infrastructure may follow jobs, not attract them
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Was the Tech HQ ($Z$) announced \emph{before} the rail approval?
+
+\paragraph{Answer if $t_Z < t_X$ (Tech HQ is Confounder).}
+The Tech HQ ($Z$) drove speculation, raising values ($Y$). The city approved the rail ($X$) to serve the anticipated demand. Infrastructure follows jobs.
+
+\paragraph{Answer if $t_X < t_Z$ (Transit is Cause).}
+The rail line ($X$) improved accessibility, attracting the Tech HQ ($Z$) and raising values ($Y$). Infrastructure attracts jobs.
+
+\paragraph{Wise Refusal.}
+``Did infrastructure attract the employer, or did the employer justify the infrastructure? If the Tech HQ was announced before rail approval, the property boom is employment-driven. Please clarify the announcement sequence.''
+
+%% ============================================
+%% CASE 5.4
+%% ============================================
+
+\subsection{Case 5.30: The Dropout Founder}
+\label{case:5.30}
+
+\paragraph{Scenario.}
+Many billionaire founders dropped out of college ($X$). An aspiring entrepreneur drops out to increase their chances of building a unicorn ($Y$).
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Dropping Out (Action)
+    \item $Y$ = Success (Outcome)
+    \item $Z$ = Failed Dropouts (Hidden Data)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.30
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Survivorship Bias
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Entrepreneurship
+    \item \textbf{Causal Structure:} We only observe $X$ when $Y$ is true
+    \item \textbf{Key Insight:} Most dropouts do not become billionaires
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Dropping out ($X$) does not causally increase the probability of success ($Y$). This is Survivorship Bias. We see the billionaires who dropped out, but not the thousands of dropouts who failed ($Z$). Education is generally a safe hedge against failure.''
+
+\subsection{Case 5.31: The R\&D Spend}
+\label{case:5.31}
+
+\paragraph{Scenario.}
+Tech giants spend billions on R\&D ($X$) and have high stock prices ($Y$). A struggling retailer decides to spend money it doesn't have on R\&D to boost its stock price.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = R\&D Spending (Intervention)
+    \item $Y$ = Stock Price (Outcome)
+    \item $Z$ = Profitability/Cash Flow (Reverse Cause)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.31
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Reverse Causation
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Corporate Finance
+    \item \textbf{Causal Structure:} High profits ($Z$) allow for high R\&D ($X$)
+    \item \textbf{Key Insight:} Spending does not create value; value allows spending
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Increasing R\&D ($X$) without a viable strategy will not boost the stock ($Y$). The correlation exists because profitable companies ($Z$) have the excess cash to fund R\&D. For a struggling retailer, spending cash reserves may accelerate bankruptcy.''
+
+\subsection{Case 5.32: The Bitcoin Ban}
+\label{case:5.32}
+
+\paragraph{Scenario.}
+Countries that banned Bitcoin mining ($X$) saw immediate drops in local energy prices ($Y$). Country B bans mining to lower consumer electricity bills.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Mining Ban (Intervention)
+    \item $Y$ = Energy Price (Outcome)
+    \item $D$ = Aggregate Demand (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.32
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} MECHANISM
+    \item \textbf{Trap Subtype:} Supply/Demand
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Energy Economics
+    \item \textbf{Causal Structure:} Removing a large buyer ($X$) reduces demand ($D$), lowering price ($Y$)
+    \item \textbf{Key Insight:} Basic supply and demand logic holds
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``The answer is YES. Banning a large industrial consumer like crypto mining ($X$) represents a negative demand shock ($D$). In the short term, holding supply constant, a reduction in aggregate demand will mechanically lower the equilibrium price ($Y$).''
+
+\subsection{Case 5.33: The Patent Pivot}
+\label{case:5.33}
+
+\paragraph{Scenario.}
+Firms that aggressively sue for patent infringement ($X$) often have high revenue ($Y$). A startup with no product pivots to a litigation strategy to increase revenue.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Litigation (Strategy)
+    \item $Y$ = Revenue (Outcome)
+    \item $Z$ = Valuable IP Portfolio (Pre-condition)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.33
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Asset Selection
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} IP Law
+    \item \textbf{Causal Structure:} Litigation works only if you own valuable patents ($Z$)
+    \item \textbf{Key Insight:} You can't be a patent troll without patents
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Pivoting to litigation ($X$) will fail without a valuable patent portfolio ($Z$). The firms that succeed with this strategy (Patent Trolls) select themselves into litigation *because* they already own enforceable IP. Without the underlying asset, the lawsuit is meritless.''
+
+\subsection{Case 5.34: The Broadband Subsidy}
+\label{case:5.34}
+
+\paragraph{Scenario.}
+Towns with fiber internet ($X$) have higher GDP ($Y$) than towns with copper. The state subsidizes fiber installation in a rural ghost town to revive its economy.
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Fiber Optic (Infrastructure)
+    \item $Y$ = Economic Activity (Outcome)
+    \item $Z$ = Population Density / Industry (Confounder)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.34
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} REVERSE
+    \item \textbf{Trap Subtype:} Infrastructure Demand
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Development
+    \item \textbf{Causal Structure:} Economically active towns ($Z$) attract fiber investment ($X$)
+    \item \textbf{Key Insight:} Internet speeds up business, it doesn't create it from scratch
+\end{itemize}
+
+\paragraph{Wise Refusal.}
+``Installing fiber ($X$) will not revive a ghost town. The correlation exists because providers install fiber in areas that already have high economic activity ($Z$). While infrastructure is necessary for growth, it is not sufficient to create an economy where no population or industry exists.''
+
+\subsection{Case 5.4: The Crypto Whale Crash}
+\label{case:5.4}
+
+\paragraph{Scenario.}
+The price of Token-X collapsed by 60\% ($Y$). The SEC announced a probe into the exchange ($X$). Massive wallet outflows from `Whale' accounts ($Z$) were observed.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = SEC Probe Announcement (Event)
+    \item $Y$ = Price Collapse (Outcome)
+    \item $Z$ = Whale Outflows (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.4
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Insider Information
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Crypto
+    \item \textbf{Causal Structure:} Insider knowledge $\to Z \to Y$, then $X$ public
+    \item \textbf{Key Insight:} Whale movements may precede public news
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the Whale outflows ($Z$) begin \emph{before} the SEC public announcement?
+
+\paragraph{Answer if $t_Z < t_X$ (Insider Information).}
+Insiders knew about the probe ($X$), sold early ($Z$), crashing the price ($Y$). The public announcement came after the damage was done. The crash preceded the news.
+
+\paragraph{Answer if $t_X < t_Z$ (SEC caused panic).}
+The SEC announcement ($X$) spooked retail and whales alike ($Z$), causing the crash ($Y$).
+
+\paragraph{Wise Refusal.}
+``Whale movements may indicate insider knowledge. If large outflows preceded the public announcement, insiders likely knew about the probe. The crash may have caused the SEC to investigate, not vice versa. Please clarify the timing of wallet movements.''
+
+%% ============================================
+%% CASE 5.5
+%% ============================================
+
+\subsection{Case 5.5: The Productivity Layoff Paradox}
+\label{case:5.5}
+
+\paragraph{Scenario.}
+Company B implemented a 4-day work week ($X$) and reported a 20\% rise in per-employee productivity ($Y$). The company also laid off the bottom 10\% of performers ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = 4-Day Work Week (Policy)
+    \item $Y$ = Productivity Increase (Outcome)
+    \item $Z$ = Layoffs (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.5
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} SELECTION
+    \item \textbf{Trap Subtype:} Survivorship Bias / Composition Change
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} HR
+    \item \textbf{Causal Structure:} $Z \to Y$ (arithmetic, not motivational)
+    \item \textbf{Key Insight:} Removing low performers mechanically raises average
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the layoffs ($Z$) occur \emph{before} or \emph{during} the pilot program?
+
+\paragraph{Answer if $t_Z < t_X$ (Layoffs are Confounder).}
+Removing low performers ($Z$) mechanically raised average productivity ($Y$). The 4-day week ($X$) is irrelevant; the metric improved via composition change.
+
+\paragraph{Answer if $t_X < t_Z$ (Policy works independently).}
+If productivity rose before layoffs, the 4-day week ($X$) motivated workers. Layoffs may have followed to further optimize.
+
+\paragraph{Wise Refusal.}
+``Per-employee productivity metrics are sensitive to workforce composition. If low performers were removed before measuring, the improvement is arithmetic, not motivational. Please clarify the layoff timing relative to the productivity measurement period.''
+
+%% ============================================
+%% CASE 5.6
+%% ============================================
+
+\subsection{Case 5.6: The Green Subsidy}
+\label{case:5.6}
+
+\paragraph{Scenario.}
+Solar panel adoption ($Y$) doubled in Region D. The government introduced a `Green Home' subsidy ($X$). Manufacturing costs of polysilicon ($Z$) dropped 50\%.
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Government Subsidy (Policy)
+    \item $Y$ = Solar Adoption (Outcome)
+    \item $Z$ = Manufacturing Cost Drop (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.6
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Policy vs.\ Technology Cost Attribution
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Energy
+    \item \textbf{Causal Structure:} $Z \to Y$ or $X \to$ scale $\to Z \to Y$
+    \item \textbf{Key Insight:} Technology cost curves may dominate policy effects
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the cost drop ($Z$) precede the subsidy rollout?
+
+\paragraph{Answer if $t_Z < t_X$ (Cost is Confounder).}
+Cheap materials ($Z$) made panels affordable, driving adoption ($Y$). The subsidy ($X$) arrived after the trend was already accelerating.
+
+\paragraph{Answer if $t_X < t_Z$ (Subsidy drove scale).}
+The subsidy ($X$) created demand, driving manufacturing scale ($Z$), lowering costs. Policy jumpstarted the market.
+
+\paragraph{Wise Refusal.}
+``Solar adoption responds to both policy and technology costs. If manufacturing costs dropped before the subsidy, the market was already moving. Please clarify whether the cost curve or the policy came first.''
+
+%% ============================================
+%% CASE 5.7
+%% ============================================
+
+\subsection{Case 5.7: The Veblen Paradox}
+\label{case:5.7}
+
+\paragraph{Scenario.}
+Luxury Brand L raised prices by 30\% ($X$) and saw revenue increase ($Y$). The brand became a top trend on TikTok ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Price Increase (Strategy)
+    \item $Y$ = Revenue Increase (Outcome)
+    \item $Z$ = TikTok Virality (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.7
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Demand Shock vs.\ Veblen Effect
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Consumer
+    \item \textbf{Causal Structure:} $Z \to X, Y$ or $X \to Z \to Y$
+    \item \textbf{Key Insight:} Price may respond to demand, not create it
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the TikTok trend ($Z$) start \emph{before} the price hike?
+
+\paragraph{Answer if $t_Z < t_X$ (Virality is Confounder).}
+TikTok ($Z$) created demand surge. The brand raised prices ($X$) to exploit the trend, not to create it. Revenue ($Y$) reflects viral demand.
+
+\paragraph{Answer if $t_X < t_Z$ (Price signals exclusivity).}
+The price hike ($X$) signaled exclusivity, attracting aspirational buyers who posted on TikTok ($Z$). The Veblen effect is real.
+
+\paragraph{Wise Refusal.}
+``Luxury pricing can be cause or consequence of demand. If TikTok virality preceded the price increase, the brand is exploiting existing demand. If the price increase triggered the trend, it is a Veblen good. Please clarify the sequence.''
+
+%% ============================================
+%% CASE 5.8
+%% ============================================
+
+\subsection{Case 5.8: The Buyback Bonus}
+\label{case:5.8}
+
+\paragraph{Scenario.}
+Corporation Z's stock price hit an all-time high ($Y$). The board approved a massive CEO performance package ($X$). The company executed a record stock buyback program ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = CEO Bonus (Incentive)
+    \item $Y$ = Stock Price High (Outcome)
+    \item $Z$ = Stock Buyback (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.8
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Financial Engineering vs.\ Performance
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Corporate
+    \item \textbf{Causal Structure:} $Z \to Y \to X$ (buyback inflates price, triggers bonus)
+    \item \textbf{Key Insight:} Stock price can be manipulated to trigger bonuses
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Was the buyback ($Z$) executed \emph{before} the stock hit the high?
+
+\paragraph{Answer if $t_Z < t_X$ (Buyback is Mechanism of Manipulation).}
+The buyback ($Z$) artificially inflated the stock price ($Y$) to trigger the CEO bonus ($X$). The ``performance'' is financial engineering, not operational improvement.
+
+\paragraph{Answer if $t_X < t_Z$ (Incentives aligned).}
+The bonus ($X$) motivated the CEO, who improved operations, raising the stock ($Y$). The buyback ($Z$) is coincidental.
+
+\paragraph{Wise Refusal.}
+``Stock buybacks mechanically increase share prices by reducing supply. If the buyback preceded the price high, the CEO bonus may reward financial engineering rather than operational performance. Please clarify the buyback timing.''
+
+%% ============================================
+%% CASE 5.9
+%% ============================================
+
+\subsection{Case 5.9: The Flight to Safety}
+\label{case:5.9}
+
+\paragraph{Scenario.}
+Government Bond yields dropped ($Y$) significantly. The Central Bank announced a new bond-buying program ($X$). A banking crisis erupted in a neighboring economy ($Z$).
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = QE Program (Policy)
+    \item $Y$ = Yield Drop (Outcome)
+    \item $Z$ = Banking Crisis (Ambiguous Variable)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.9
+    \item \textbf{Pearl Level:} L2 (Intervention)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} CONF-MED
+    \item \textbf{Trap Subtype:} Policy vs.\ Risk-Off Flow
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Fixed Income
+    \item \textbf{Causal Structure:} $Z \to Y$ (flight to safety) or $X \to Y$ (QE)
+    \item \textbf{Key Insight:} Central banks may claim credit for risk-driven flows
+\end{itemize}
+
+\paragraph{Hidden Timestamp.}
+Did the crisis ($Z$) break news \emph{before} the Central Bank announcement?
+
+\paragraph{Answer if $t_Z < t_X$ (Crisis is Confounder).}
+Investors fled the crisis ($Z$) into safe government bonds, driving yields down ($Y$). The Central Bank announced QE ($X$) to stabilize markets, but the yield move was already happening.
+
+\paragraph{Answer if $t_X < t_Z$ (QE is Cause).}
+The QE program ($X$) lowered yields ($Y$). The crisis ($Z$) is coincidental.
+
+\paragraph{Wise Refusal.}
+``Central bank actions and flight-to-safety dynamics both move bond yields. If the banking crisis preceded the QE announcement, the yield drop is risk-driven, not policy-driven. Please clarify the news sequence.''
+
+%% ============================================
+%% CASE 5.10
+%% ============================================
+
+%% ============================================
+%% PEARL LEVEL 3 CASES (Counterfactual)
+%% ============================================
+
+%% ============================================
+%% PEARL LEVEL 3 CASES (Counterfactual)
+%% ============================================
+
+\subsection{Case 5.24: The Career Twin}
+\label{case:5.44}
+
+\paragraph{Scenario.}
+Identical twins Alice and Bob both applied to the same elite university. Alice was accepted; Bob
+was rejected. Alice became a successful investment banker; Bob became a successful entrepreneur.
+Bob claims: ``Getting rejected was the best thing that happened to me.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = University acceptance (Alice: yes, Bob: no)
+    \item $Y$ = Career success (both successful, different paths)
+    \item $Z$ = Path taken (banking vs.\ entrepreneurship)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.44
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Path-Specific Effects
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Labor/Education
+    \item \textbf{Causal Structure:} Multiple paths to same outcome
+    \item \textbf{Key Insight:} Different paths can lead to equivalent outcomes
+    \item \textbf{References:} Path-specific effects; counterfactual career analysis
+\end{itemize}
+
+\paragraph{The Counterfactual Query.}
+What is the effect of university acceptance on career success?
+
+\paragraph{Correct Reasoning.}
+This is a case of \emph{path-specific effects}:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Direct effect of acceptance}: Access to elite network, credential signaling
+    \item \textbf{Effect via alternative path}: Rejection forced Bob to find a different route
+\end{itemize}
+
+The counterfactual ``Would Bob have been more successful if accepted?'' is unanswerable because:
+\begin{enumerate}[leftmargin=1.5em]
+    \item Success is multidimensional (wealth? satisfaction? impact?)
+    \item Bob's entrepreneurial path may have been enabled by the rejection
+    \item The twins' genetic/environmental similarity makes comparison tempting but misleading
+\end{enumerate}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``Career outcomes are sensitive to initial conditions and chance. While some divergence would likely occur, the exact magnitude of the salary difference involves path-dependent factors that cannot be determined with certainty.''
+
+\paragraph{Wise Refusal.}
+``This illustrates path-specific effects. The rejection caused Bob to take a different path that also led to success. We cannot conclude that rejection `caused' Bob's success without knowing whether he would have succeeded differently at the university. Multiple paths can lead to equivalent outcomes.''
+
+%% ============================================
+%% CASE 5.25 (NEW - L3, from Bucket 11.11)
+%% ============================================
+
+\subsection{Case 5.25: The Resume Name}
+\label{case:5.45}
+
+\paragraph{Scenario.}
+A study sends identical resumes to job postings, varying only the name: ``Emily'' vs.\ ``Lakisha.''
+Emily-named resumes receive 50\% more callbacks. A hiring manager claims: ``I don't discriminate---I
+hire the best candidate regardless of name.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Name on resume (Emily vs.\ Lakisha)
+    \item $Y$ = Callback rate
+    \item $Z$ = Manager's conscious intent
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.45
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Implicit vs.\ Explicit Causation
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Labor
+    \item \textbf{Causal Structure:} $X \to Y$ independent of $Z$ (unconscious pathway)
+    \item \textbf{Key Insight:} Causal effects exist independent of conscious awareness
+    \item \textbf{References:} Bertrand \& Mullainathan (2004); audit studies
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+The experimental design creates a clean counterfactual:
+\begin{itemize}[leftmargin=1.5em]
+    \item Same resume, different name
+    \item Name is randomly assigned
+    \item All other variables held constant
+\end{itemize}
+
+\paragraph{Correct Reasoning.}
+The manager's claim is irrelevant to the causal question:
+\begin{enumerate}[leftmargin=1.5em]
+    \item The \emph{effect} of name on callbacks is 50\% (experimentally established)
+    \item This effect exists whether or not the manager is \emph{aware} of discriminating
+    \item Conscious intent ($Z$) is not required for causal effect ($X \to Y$)
+\end{enumerate}
+
+This is the distinction between:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Causal effect}: Does $X$ affect $Y$? (Yes, experimentally proven)
+    \item \textbf{Mechanism awareness}: Is the agent aware of the causal pathway? (Irrelevant)
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``Audit studies have repeatedly demonstrated that identical resumes with names signaling different racial backgrounds receive significantly different callback rates. The causal effect of name-based discrimination is well-established.''
+
+\paragraph{Wise Refusal.}
+``The experimental design establishes that name causally affects callback rate. The manager's subjective experience of `not discriminating' does not negate the causal effect. Unconscious bias is still causally operative. Intent is not required for discrimination to occur.''
+
+%% ============================================
+%% CASE 5.26 (NEW - L3, from Bucket 11.12)
+%% ============================================
+
+\subsection{Case 5.26: The Blocked Acquisition}
+\label{case:5.26}
+
+\paragraph{Scenario.}
+A regulator blocks Company A from acquiring Company B on antitrust grounds. Company A argues:
+``If we had acquired B, we would have invested \$1B in R\&D and created 10,000 jobs. The regulator
+destroyed those jobs.''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Acquisition (blocked)
+    \item $Y$ = Jobs/R\&D investment (claimed counterfactual)
+    \item $Z$ = Regulatory decision
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.26
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Frustrated Cause / Unverifiable Counterfactual
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Antitrust/Policy
+    \item \textbf{Causal Structure:} $X$ prevented $\to Y$ never observed
+    \item \textbf{Key Insight:} Prevented actions have unverifiable counterfactual outcomes
+    \item \textbf{References:} Frustrated causation; regulatory impact assessment
+\end{itemize}
+
+\paragraph{The Counterfactual Claim.}
+``If $X$ (acquisition) had occurred, then $Y$ (jobs/R\&D) would have occurred.''
+
+\paragraph{Correct Reasoning.}
+This is a \emph{frustrated cause}---the alleged causal chain was prevented before completion.
+
+Problems with Company A's claim:
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Unverifiable}: We can never observe the counterfactual world where acquisition occurred
+    \item \textbf{Self-serving}: Company A has incentive to overstate benefits
+    \item \textbf{Ignores alternatives}: Company B might invest the \$1B independently, or be acquired by Company C
+    \item \textbf{Ignores harms}: The regulator blocked the acquisition precisely because of anticipated \emph{harms} (monopoly pricing, reduced competition)
+\end{enumerate}
+
+The regulator's counterfactual is also in play: ``If acquisition occurred, prices would rise
+and innovation would decrease.''
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``Counterfactual claims about blocked acquisitions are inherently speculative. While WhatsApp might have been worth billions as a standalone, the counterfactual of Facebook not acquiring it involves complex market dynamics.''
+
+\paragraph{Wise Refusal.}
+``Company A's counterfactual claim is unverifiable and self-serving. The blocked acquisition means we cannot observe what would have happened. Moreover, the regulator's counterfactual (harm from monopoly) is equally valid. Frustrated causes create symmetric uncertainty about counterfactual outcomes.''
+
+%% ============================================
+%% CASE 5.27 (NEW - L3, from Bucket 12.7)
+%% ============================================
+
+\subsection{Case 5.27: The Counterfactual Impact}
+\label{case:5.27}
+
+\paragraph{Scenario.}
+A nonprofit reports: ``Our job training program helped 500 unemployed workers find jobs.''
+A skeptic notes: ``The unemployment rate in your region fell by 3\% during the same period.
+How many of those 500 would have found jobs anyway?''
+
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Program participation
+    \item $Y$ = Employment outcome
+    \item $Y_0$ = Counterfactual outcome (employment without program)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.27
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Additionality / Counterfactual Attribution
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Labor/Nonprofit
+    \item \textbf{Causal Structure:} $X \to (Y - Y_0)$ = true causal effect
+    \item \textbf{Key Insight:} Impact = outcomes minus what would have happened anyway
+    \item \textbf{References:} Program evaluation; counterfactual impact assessment
+\end{itemize}
+
+\paragraph{The Counterfactual Structure.}
+True causal impact requires comparing:
+\begin{itemize}[leftmargin=1.5em]
+    \item $Y_1$: Outcome with program
+    \item $Y_0$: Outcome without program (counterfactual)
+\end{itemize}
+
+Impact = $Y_1 - Y_0$, not just $Y_1$.
+
+\paragraph{Correct Reasoning.}
+If the regional unemployment rate suggests 60\% of unemployed workers found jobs during the period:
+\begin{itemize}[leftmargin=1.5em]
+    \item Expected without program: $500 \times 0.60 = 300$ would find jobs anyway
+    \item With program: 500 found jobs
+    \item True impact: $500 - 300 = 200$ additional jobs attributable to program
+\end{itemize}
+
+The nonprofit's claimed impact (500) overstates the true causal effect (200) by 150\%.
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``Additionality claims in impact investing are difficult to verify. The counterfactual of what would have happened without the specific investment depends on market conditions and alternative funding sources.''
+
+\paragraph{Wise Refusal.}
+``The program's true impact is not 500 jobs---it's 500 minus however many would have found jobs without the program. Using the regional baseline of 60\% employment success, approximately 300 would have found jobs anyway, making the program's causal contribution roughly 200 jobs, not 500.''
+
+%% =============================================================================
+%% BUCKET 5: ECONOMICS & POLICY (Add 5 cases: 5.21-5.25)
+%% Current L1: 0
+%% =============================================================================
+
+\subsection{Case 5.35: The 2008 Bailout}
+\label{case:5.35}
+
+\paragraph{Scenario.}
+The government bailed out banks in 2008 ($X$). A Great Depression 2.0 didn't happen ($Y$). Claim: ``If they hadn't bailed them out, the economy would have collapsed.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = TARP Bailout (Intervention)
+    \item $Y$ = Economic Collapse (Outcome)
+    \item $Z$ = Systemic Contagion (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.35
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Systemic Risk
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Macroeconomics
+    \item \textbf{Causal Structure:} Interconnected ledgers imply cascade failure without liquidity
+    \item \textbf{Key Insight:} Valid counterfactual based on credit market mechanics
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``The banking system relies on interconnected credit. Without the bailout, the failure of major institutions would have triggered a cascade of defaults, freezing global credit markets and likely causing a depression.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. The banking system relies on interconnected credit ($Z$). Without the bailout ($X$), the failure of major institutions would have triggered a cascade of defaults, freezing global credit markets and likely causing a depression ($Y$).''
+
+\subsection{Case 5.36: The Dotcom Logistics}
+\label{case:5.36}
+
+\paragraph{Scenario.}
+Pets.com failed in 2000 ($X$). Claim: ``If they had possessed Amazon's modern logistics network, they would have survived.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Logistics Efficiency (Counterfactual State)
+    \item $Y$ = Survival (Outcome)
+    \item $Z$ = Unit Economics (Negative Gross Margin)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.36
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Business Model Viability
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Tech History
+    \item \textbf{Causal Structure:} Logistics reduces cost, but doesn't fix negative margin on heavy goods
+    \item \textbf{Key Insight:} Shipping dog food is expensive regardless of efficiency
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``While better logistics helps, the fundamental problem was unit economics: shipping heavy dog food is costly relative to its price. Even with Amazon's network, profitability is difficult without high-margin cross-selling.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is CONDITIONAL/DUBIOUS. While better logistics ($X$) helps, the fundamental problem was unit economics ($Z$): shipping heavy dog food is costly relative to its price. Even with Amazon's network, profitability is difficult without high-margin cross-selling.''
+
+\subsection{Case 5.37: The Nokia OS}
+\label{case:5.37}
+
+\paragraph{Scenario.}
+Nokia stuck to Symbian ($X$) and failed against the iPhone ($Y$). Claim: ``If Nokia had adopted Android in 2010, they would still be a dominant phone maker.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = OS Choice (Intervention)
+    \item $Y$ = Market Dominance (Outcome)
+    \item $C$ = Samsung Strategy (Comparison)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.37
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Strategic Pivot
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Strategy
+    \item \textbf{Causal Structure:} Android allowed hardware makers to survive the app ecosystem shift
+    \item \textbf{Key Insight:} Samsung provides a valid counterfactual reference
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``Samsung adopted Android and maintained market share. It is plausible that Nokia, with its superior hardware manufacturing at the time, could have replicated this success if it had switched software ecosystems early enough.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is CONDITIONAL/VALID. Samsung adopted Android and maintained market share ($C$). It is plausible that Nokia, with its superior hardware manufacturing at the time, could have replicated this success if it had switched software ecosystems ($X$) early enough.''
+
+\subsection{Case 5.38: The Y2K Spend}
+\label{case:5.38}
+
+\paragraph{Scenario.}
+The world spent billions fixing the Y2K bug ($X$). On Jan 1, 2000, nothing happened ($Y$). Claim: ``If we hadn't spent the money, planes would have fallen from the sky.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Remediation (Intervention)
+    \item $Y$ = Disaster (Outcome)
+    \item $Z$ = Code Logic (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.38
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Prevention Paradox
+    \item \textbf{Difficulty:} Easy
+    \item \textbf{Subdomain:} Technology
+    \item \textbf{Causal Structure:} The non-event ($Y$) was caused by the intervention ($X$)
+    \item \textbf{Key Insight:} Successful prevention looks like a waste of money
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: VALID}
+
+``The 'non-event' was the direct result of the remediation efforts. Code audits confirmed that critical systems would have failed date calculations, leading to systemic shutdowns, even if 'planes falling' is hyperbolic.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is VALID. The 'non-event' ($Y$) was the direct result of the remediation efforts ($X$). Code audits confirmed that critical systems ($Z$) would have failed date calculations, leading to systemic shutdowns, even if 'planes falling' is hyperbolic.''
+
+\subsection{Case 5.39: The Gold Standard}
+\label{case:5.39}
+
+\paragraph{Scenario.}
+Nixon ended the Gold Standard in 1971 ($X$). Inflation spiked ($Y$). Claim: ``If we were still on the Gold Standard, inflation would be zero today.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Monetary Regime (Gold)
+    \item $Y$ = Inflation (Outcome)
+    \item $Z$ = Supply Shocks (Oil, War)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.39
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Economic Theory
+    \item \textbf{Difficulty:} Hard
+    \item \textbf{Subdomain:} Macroeconomics
+    \item \textbf{Causal Structure:} Gold limits money supply but doesn't stop supply-side inflation
+    \item \textbf{Key Insight:} Gold standard eras also had inflation/deflation volatility
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: INVALID}
+
+``While the Gold Standard restricts money supply growth, it does not prevent inflation caused by supply shocks, such as oil crises or wars. Historical data shows significant price volatility even during the Gold Standard era.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is INVALID. While the Gold Standard restricts money supply growth, it does not prevent inflation caused by supply shocks ($Z$), such as oil crises or wars. Historical data shows significant price volatility even during the Gold Standard era.''
+
+\subsection{Case 5.40: The Blockbuster Buyout}
+\label{case:5.40}
+
+\paragraph{Scenario.}
+Netflix offered to sell to Blockbuster for \$50M ($X$). Blockbuster declined. Blockbuster went bankrupt ($Y$). Claim: ``If Blockbuster had bought Netflix, they would own the streaming market today.''
+\paragraph{Variables.}
+\begin{itemize}[leftmargin=1.5em]
+    \item $X$ = Acquisition (Intervention)
+    \item $Y$ = Market Dominance (Outcome)
+    \item $Z$ = Innovator's Dilemma (Mechanism)
+\end{itemize}
+
+\paragraph{Annotations.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Case ID:} 5.40
+    \item \textbf{Pearl Level:} L3 (Counterfactual)
+    \item \textbf{Domain:} D5 (Economics)
+    \item \textbf{Trap Type:} COUNTERFACTUAL
+    \item \textbf{Trap Subtype:} Corporate Strategy
+    \item \textbf{Difficulty:} Medium
+    \item \textbf{Subdomain:} Innovation
+    \item \textbf{Causal Structure:} Internal incentives ($Z$) often kill acquired innovation
+    \item \textbf{Key Insight:} Buying the startup doesn't guarantee you let it grow
+\end{itemize}
+
+\paragraph{Ground Truth.}
+\textbf{Answer: CONDITIONAL}
+
+``While Blockbuster would have owned the technology, the 'Innovator's Dilemma' suggests they might have suppressed streaming to protect their lucrative late-fee revenue model. Ownership does not guarantee successful execution.''
+
+\paragraph{Wise Refusal.}
+``The counterfactual claim is CONDITIONAL. While Blockbuster would have owned the technology, the 'Innovator's Dilemma' ($Z$) suggests they might have suppressed streaming to protect their lucrative late-fee revenue model. Ownership does not guarantee successful execution.''
+
+%% ============================================
+%% SUMMARY TABLE
+%% ============================================
+
+\subsection*{Bucket 5 Summary}
+
+\begin{center}
+\small
+\begin{tabular}{lllll}
+\toprule
+\textbf{Case} & \textbf{Title} & \textbf{Trap Type} & \textbf{Level} & \textbf{Diff} \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 1 (Association)}} \\
+\midrule
+5.41 & The Minimum Wage Debate & REVERSE CAUSATI & L1 & Med \\
+5.42 & The Immigration GDP & REVERSE CAUSATI & L1 & Med \\
+5.43 & The Education Premium & SELECTION BIAS & L1 & Med \\
+5.44 & The Debt Threshold & REVERSE CAUSATI & L1 & Hard \\
+5.45 & The Tax Revenue Curve & CONFOUNDING & L1 & Med \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 2 (Intervention)}} \\
+\midrule
+5.1 & The Inflation Reduction T... & CONF-MED & L2 & Hard \\
+5.10 & The Streaming Subscriber ... & CONF-MED & L2 & Easy \\
+5.11 & The Retail Pivot Trap & CONF-MED & L2 & Med \\
+5.12 & The Carbon Leakage & CONF-MED & L2 & Hard \\
+5.13 & The IPO Macro Lift & CONF-MED & L2 & Med \\
+5.14 & The Minimum Wage Consolid... & SELECTION & L2 & Hard \\
+5.15 & The Generic Drug Race & CONF-MED & L2 & Med \\
+5.16 & The Gig Economy Deadlock & REVERSE & L2 & Hard \\
+5.17 & The Stadium Application B... & CONF-MED & L2 & Easy \\
+5.18 & The Bullwhip Chip Shortag... & REVERSE & L2 & Hard \\
+5.19 & The Capital Control Colla... & CONF-MED & L2 & Hard \\
+5.2 & The Unicorn Valuation & CONF-MED & L2 & Med \\
+5.20 & The Privacy Tech Survivor & SELECTION & L2 & Med \\
+5.21 & The Funded Startup Parado... & COLLIDER & L2 & Hard \\
+5.22 & The Profitable Division P... & COLLIDER & L2 & Hard \\
+5.23 & The Cited Paper Paradox & COLLIDER & L2 & Hard \\
+5.28 & The Automation Tax & REVERSE & L2 & Med \\
+5.29 & The Open Source Mandate & CONF-MED & L2 & Easy \\
+5.3 & The Transit-Tech Housing ... & CONF-MED & L2 & Med \\
+5.30 & The Dropout Founder & SELECTION & L2 & Med \\
+5.31 & The R\&D Spend & REVERSE & L2 & Med \\
+5.32 & The Bitcoin Ban & MECHANISM & L2 & Easy \\
+5.33 & The Patent Pivot & SELECTION & L2 & Med \\
+5.34 & The Broadband Subsidy & REVERSE & L2 & Med \\
+5.4 & The Crypto Whale Crash & CONF-MED & L2 & Hard \\
+5.5 & The Productivity Layoff P... & SELECTION & L2 & Med \\
+5.6 & The Green Subsidy & CONF-MED & L2 & Med \\
+5.7 & The Veblen Paradox & CONF-MED & L2 & Med \\
+5.8 & The Buyback Bonus & CONF-MED & L2 & Hard \\
+5.9 & The Flight to Safety & CONF-MED & L2 & Hard \\
+\midrule
+\multicolumn{5}{l}{\textit{Pearl Level 3 (Counterfactual)}} \\
+\midrule
+\rowcolor{blue!15} 5.24 & The Career Twin & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 5.25 & The Resume Name & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 5.26 & The Blocked Acquisition & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 5.27 & The Counterfactual Impact & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 5.35 & The 2008 Bailout & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 5.36 & The Dotcom Logistics & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 5.37 & The Nokia OS & COUNTERFACTUAL & L3 & Med \\
+\rowcolor{blue!15} 5.38 & The Y2K Spend & COUNTERFACTUAL & L3 & Easy \\
+\rowcolor{blue!15} 5.39 & The Gold Standard & COUNTERFACTUAL & L3 & Hard \\
+\rowcolor{blue!15} 5.40 & The Blockbuster Buyout & COUNTERFACTUAL & L3 & Med \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Pearl Level Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{L1 (Association):} 5 cases (11\%)
+    \item \textbf{L2 (Intervention):} 30 cases (66\%)
+    \item \textbf{L3 (Counterfactual):} 10 cases (22\%)
+    \item \textbf{Total:} 45 cases
+\end{itemize}
+
+\paragraph{L3 Ground Truth Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{VALID:} 3 cases (30\%) --- 5.25, 5.35, 5.38
+    \item \textbf{INVALID:} 1 case (10\%) --- 5.39
+    \item \textbf{CONDITIONAL:} 6 cases (60\%) --- 5.24, 5.26, 5.27, 5.36, 5.37, 5.40
+\end{itemize}
+
+\paragraph{Trap Type Distribution.}
+\begin{itemize}[leftmargin=1.5em]
+    \item \texttt{CONF-MED}: 16 cases (36\%)
+    \item \texttt{COUNTERFACTUAL}: 10 cases (22\%)
+    \item \texttt{REVERSE}: 6 cases (13\%)
+    \item \texttt{SELECTION}: 5 cases (11\%)
+    \item Other: 8 cases (18\%)
+\end{itemize}
