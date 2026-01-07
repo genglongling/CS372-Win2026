@@ -1,0 +1,217 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\geometry{margin=1in}
+
+\title{CS372 Assignment 1: T³ Benchmark Analysis}
+\author{CS372: Artificial General Intelligence for Reasoning, Planning, and Decision Making}
+\date{Winter 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Assignment Overview}
+
+This assignment focuses on analyzing and working with the T³ (T-cubed) Benchmark datasets. The T³ Benchmark is designed to test reasoning capabilities across different domains and Pearl's Causality Hierarchy levels (Association, Intervention, and Counterfactual).
+
+\section{Group Structure}
+
+There will be \textbf{20 groups} for this assignment, with approximately 6 students per group (120 students total). Each of the 10 BenchmarkT3-BucketLarge files will be assigned to \textbf{2 groups} for cross-validation purposes.
+
+\subsection{Group Assignments}
+
+The following table shows the group assignments, benchmark files, their corresponding categories, and dataset information:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cllcc}
+\toprule
+\textbf{Group} & \textbf{Benchmark File} & \textbf{Category/Domain} & \textbf{Example Dataset} & \textbf{Target Dataset} \\
+\midrule
+1, 2 & BenchmarkT3-BucketLarge-1.tex & Daily Life \& Psychology (D1) & 45 & 450 \\
+3, 4 & BenchmarkT3-BucketLarge-2.tex & History \& Geopolitics (D2) & 45 & 450 \\
+5, 6 & BenchmarkT3-BucketLarge-3.tex & Markets \& Weather (D3) & 45 & 450 \\
+7, 8 & BenchmarkT3-BucketLarge-4.tex & Disease \& Recovery / Medicine (D4) & 46 & 450 \\
+9, 10 & BenchmarkT3-BucketLarge-5.tex & Economics \& Technology (D5) & 46 & 450 \\
+11, 12 & BenchmarkT3-BucketLarge-6.tex & Environment \& Climate (D6) & 45 & 450 \\
+13, 14 & BenchmarkT3-BucketLarge-7.tex & Law, Policy \& Ethics (D7) & 46 & 450 \\
+15, 16 & BenchmarkT3-BucketLarge-8.tex & AI Safety \& Alignment (D8) & 45 & 450 \\
+17, 18 & BenchmarkT3-BucketLarge-9.tex & Performance, Evaluation \& Luck (D9) & 46 & 450 \\
+19, 20 & BenchmarkT3-BucketLarge-10.tex & Social Science \& Demographics (D10) & 45 & 450 \\
+\bottomrule
+\end{tabular}
+\caption{Group assignments with benchmark files, categories, and dataset sizes}
+\label{tab:group_assignments}
+\end{table}
+
+Note: Groups listed together (e.g., Groups 1 and 2) are cross-validation pairs that will swap datasets in Assignment 2.
+
+\subsection{Cross-Validation for Assignment 2}
+
+In Assignment 2, groups that worked on the same BenchmarkT3-BucketLarge file in Assignment 1 will \textbf{swap their datasets} for cross-validation:
+\begin{itemize}[leftmargin=1.5em]
+    \item Groups 1 and 2 will exchange their datasets
+    \item Groups 3 and 4 will exchange their datasets
+    \item Groups 5 and 6 will exchange their datasets
+    \item Groups 7 and 8 will exchange their datasets
+    \item Groups 9 and 10 will exchange their datasets
+    \item Groups 11 and 12 will exchange their datasets
+    \item Groups 13 and 14 will exchange their datasets
+    \item Groups 15 and 16 will exchange their datasets
+    \item Groups 17 and 18 will exchange their datasets
+    \item Groups 19 and 20 will exchange their datasets
+\end{itemize}
+
+This cross-validation approach ensures that each group validates the work of another group on the same dataset, providing robust evaluation and learning opportunities.
+
+\subsection{Group Formation}
+
+Students will form groups by selecting their preferred group assignment through a Google Form. The form will allow students to choose which benchmark file and category they would like to work on. Each group will have approximately 6 students.
+
+\textbf{Google Form Link:} \href{https://forms.google.com/your-form-link-here}{Group Selection Form}
+
+Please complete the form by the deadline specified in the course schedule. Group assignments will be finalized based on student preferences and will be announced via the course platform.
+
+\section{Student List}
+
+The following table lists all students enrolled in the course. Student emails are formatted as Login ID + @stanford.edu.
+
+\begin{longtable}{p{3cm}p{3cm}p{5cm}}
+\toprule
+\textbf{First Name} & \textbf{Last Name} & \textbf{Email} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{First Name} & \textbf{Last Name} & \textbf{Email} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+% Student entries from Studentlist.csv will be added here
+% To generate the student list, run: python3 generate_student_list.py
+% Then copy the output into this section
+\midrule
+\endlastfoot
+% Student entries will be added here
+\end{longtable}
+
+\section{Assignment Files}
+
+Each BenchmarkT3-BucketLarge file contains a collection of reasoning cases organized by domain and Pearl's Causality Hierarchy levels. The files are structured as follows:
+
+\subsection{File Structure}
+
+Each \texttt{BenchmarkT3-BucketLarge-*.tex} file contains:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Bucket Overview:} Domain description, core themes, signature trap types, and case distribution
+    \item \textbf{Pearl Level 1 Cases (Association):} Cases focusing on observational relationships
+    \item \textbf{Pearl Level 2 Cases (Intervention):} Cases requiring understanding of interventions and causal effects
+    \item \textbf{Pearl Level 3 Cases (Counterfactual):} Cases involving counterfactual reasoning
+\end{itemize}
+
+\subsection{Case Format}
+
+Each case typically includes:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Scenario:} A description of the situation or problem
+    \item \textbf{Variables:} Key variables involved in the causal reasoning
+    \item \textbf{Annotations:} Additional context or background information
+    \item \textbf{Questions:} Reasoning questions to be answered
+    \item \textbf{Expected Analysis:} The type of reasoning required
+\end{itemize}
+
+\section{Assignment Instructions}
+
+\subsection{Objectives}
+
+\begin{enumerate}[leftmargin=1.5em]
+    \item Analyze the assigned BenchmarkT3-BucketLarge file
+    \item Understand the causal reasoning challenges presented in each case
+    \item Identify the types of reasoning required (Association, Intervention, Counterfactual)
+    \item Apply the T³ architecture principles learned in class
+    \item Document your analysis and findings
+\end{enumerate}
+
+\subsection{Deliverables}
+
+Each group should prepare:
+\begin{itemize}[leftmargin=1.5em]
+    \item A comprehensive analysis of their assigned benchmark file
+    \item Identification and classification of reasoning types in the cases
+    \item Discussion of the causal reasoning challenges
+    \item Application of T³ architecture concepts
+    \item A summary report of findings
+\end{itemize}
+
+\subsection{Key Concepts to Apply}
+
+When working on your assigned file, consider:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Pearl's Causality Hierarchy:} Association $\rightarrow$ Intervention $\rightarrow$ Counterfactual
+    \item \textbf{T³ Architecture:} Sycophancy and Skepticism mechanisms
+    \item \textbf{Causal Reasoning:} Understanding cause-effect relationships
+    \item \textbf{Confounding Variables:} Identifying and handling confounders
+    \item \textbf{Selection Bias:} Recognizing and addressing selection issues
+    \item \textbf{Collider Bias:} Understanding collider structures
+    \item \textbf{Instrumental Variables:} Using instruments for causal inference
+\end{itemize}
+
+\section{Resources}
+
+\subsection{Course Materials}
+
+Refer to the following course materials:
+\begin{itemize}[leftmargin=1.5em]
+    \item Lecture slides on T³ Architecture for Sycophancy and Skepticism
+    \item AGI Book, Volume \#2, Chapters 6 and 7
+    \item Lecture on Pearl's Causality Hierarchy
+    \item Assignment \#1 Specification (from Lecture 3)
+\end{itemize}
+
+\subsection{Additional Reading}
+
+\begin{itemize}[leftmargin=1.5em]
+    \item Multi-LLM Collaborative Intelligence (MACI), The Path to AGI
+    \item Course readings on SocraSynth.com
+\end{itemize}
+
+\section{Submission Guidelines}
+
+\begin{itemize}[leftmargin=1.5em]
+    \item Submit your analysis and report according to the course deadlines
+    \item Follow the formatting guidelines provided by the instructor
+    \item Include proper citations and references
+    \item Ensure all group members contribute to the assignment
+\end{itemize}
+
+\section{Important Dates}
+
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Assignment \#1 Out:} January 7, 2026 (Lecture 2)
+    \item \textbf{Assignment \#1 Specification:} January 12, 2026 (Lecture 3)
+    \item \textbf{Assignment \#1 Due:} January 14, 2026 (Lecture 4)
+\end{itemize}
+
+\section{Contact}
+
+For questions about this assignment, please contact:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Instructor:} Prof. Edward Y. Chang
+    \item \textbf{Course Assistant:} Longling Gloria Geng
+\end{itemize}
+
+\vspace{0.5cm}
+
+\noindent\textit{Good luck with your assignment!}
+
+\end{document}
+
