@@ -8,18 +8,19 @@ This assignment consists of 10 different tasks, each corresponding to one of the
 
 There will be **20 groups** for this assignment. Each of the 10 BenchmarkT3-BucketLarge files will be assigned to **2 groups**:
 
-| Groups | Benchmark File | Category/Domain | Example Dataset | Target Dataset |
-|--------|---------------|-----------------|-----------------|---------------|
-| 1, 2 | BenchmarkT3-BucketLarge-1.tex | Daily Life & Psychology (D1) | 45 | 450 |
-| 3, 4 | BenchmarkT3-BucketLarge-2.tex | History & Geopolitics (D2) | 45 | 450 |
-| 5, 6 | BenchmarkT3-BucketLarge-3.tex | Markets & Weather (D3) | 45 | 450 |
-| 7, 8 | BenchmarkT3-BucketLarge-4.tex | Disease & Recovery / Medicine (D4) | 46 | 460 |
-| 9, 10 | BenchmarkT3-BucketLarge-5.tex | Economics & Technology (D5) | 46 | 460 |
-| 11, 12 | BenchmarkT3-BucketLarge-6.tex | Environment & Climate (D6) | 45 | 450 |
-| 13, 14 | BenchmarkT3-BucketLarge-7.tex | Law, Policy & Ethics (D7) | 46 | 460 |
-| 15, 16 | BenchmarkT3-BucketLarge-8.tex | AI Safety & Alignment (D8) | 45 | 450 |
-| 17, 18 | BenchmarkT3-BucketLarge-9.tex | Performance, Evaluation & Luck (D9) | 46 | 460 |
-| 19, 20 | BenchmarkT3-BucketLarge-10.tex | Social Science & Demographics (D10) | 45 | 450 |
+| Groups | Domain | Signature Trap | Focus | # | Target | Benchmark File |
+|--------|--------|----------------|-------|---|--------|----------------|
+| A1, A2 | Medicine | Indication Bias | Intervention | 46 | 460 | BenchmarkT3-BucketLarge-A.tex |
+| B1, B2 | Economics | Equilibrium Effects | Intervention | 46 | 460 | BenchmarkT3-BucketLarge-B.tex |
+| C1, C2 | Law Ethics | Attr. & Preemption | Counterfactual | 46 | 460 | BenchmarkT3-BucketLarge-C.tex |
+| D1, D2 | Sports | Outcome Bias | Counterfactual | 46 | 460 | BenchmarkT3-BucketLarge-D.tex |
+| E1, E2 | Daily Life | Regression to Mean | Association | 45 | 450 | BenchmarkT3-BucketLarge-E.tex |
+| F1, F2 | History | Survivorship Bias | Association | 45 | 450 | BenchmarkT3-BucketLarge-F.tex |
+| G1, G2 | Markets | Self-Fulfilling | Intervention | 45 | 450 | BenchmarkT3-BucketLarge-G.tex |
+| H1, H2 | Environment | Feedback Loops | Intervention | 45 | 450 | BenchmarkT3-BucketLarge-H.tex |
+| I1, I2 | AI & Tech | Goodhart's Law | Association | 45 | 450 | BenchmarkT3-BucketLarge-I.tex |
+| J1, J2 | Social Sci. | Simpson's Paradox | Association | 45 | 450 | BenchmarkT3-BucketLarge-J.tex |
+| **Total** | | | | **454** | | |
 
 Note: Groups listed together (e.g., Groups 1 and 2) are cross-validation pairs that will swap datasets in Assignment 2.
 

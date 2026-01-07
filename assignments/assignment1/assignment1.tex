@@ -29,46 +29,48 @@ There will be \textbf{20 groups} for this assignment, with approximately 6 stude
 
 \subsection{Group Assignments}
 
-The following table shows the group assignments, benchmark files, their corresponding categories, and dataset information:
+The following table shows the group assignments, domains, signature traps, focus areas, dataset information, and benchmark files:
 
 \begin{table}[h]
 \centering
-\begin{tabular}{cllcc}
+\begin{tabular}{clllccc}
 \toprule
-\textbf{Group} & \textbf{Benchmark File} & \textbf{Category/Domain} & \textbf{Example Dataset} & \textbf{Target Dataset} \\
+\textbf{Group} & \textbf{Domain} & \textbf{Signature Trap} & \textbf{Focus} & \textbf{\#} & \textbf{Target} & \textbf{Benchmark File} \\
 \midrule
-1, 2 & BenchmarkT3-BucketLarge-1.tex & Daily Life \& Psychology (D1) & 45 & 450 \\
-3, 4 & BenchmarkT3-BucketLarge-2.tex & History \& Geopolitics (D2) & 45 & 450 \\
-5, 6 & BenchmarkT3-BucketLarge-3.tex & Markets \& Weather (D3) & 45 & 450 \\
-7, 8 & BenchmarkT3-BucketLarge-4.tex & Disease \& Recovery / Medicine (D4) & 46 & 460 \\
-9, 10 & BenchmarkT3-BucketLarge-5.tex & Economics \& Technology (D5) & 46 & 460 \\
-11, 12 & BenchmarkT3-BucketLarge-6.tex & Environment \& Climate (D6) & 45 & 450 \\
-13, 14 & BenchmarkT3-BucketLarge-7.tex & Law, Policy \& Ethics (D7) & 46 & 460 \\
-15, 16 & BenchmarkT3-BucketLarge-8.tex & AI Safety \& Alignment (D8) & 45 & 450 \\
-17, 18 & BenchmarkT3-BucketLarge-9.tex & Performance, Evaluation \& Luck (D9) & 46 & 460 \\
-19, 20 & BenchmarkT3-BucketLarge-10.tex & Social Science \& Demographics (D10) & 45 & 450 \\
+A1, A2 & Medicine & Indication Bias & Intervention & 46 & 460 & BenchmarkT3-BucketLarge-A.tex \\
+B1, B2 & Economics & Equilibrium Effects & Intervention & 46 & 460 & BenchmarkT3-BucketLarge-B.tex \\
+C1, C2 & Law Ethics & Attr. \& Preemption & Counterfactual & 46 & 460 & BenchmarkT3-BucketLarge-C.tex \\
+D1, D2 & Sports & Outcome Bias & Counterfactual & 46 & 460 & BenchmarkT3-BucketLarge-D.tex \\
+E1, E2 & Daily Life & Regression to Mean & Association & 45 & 450 & BenchmarkT3-BucketLarge-E.tex \\
+F1, F2 & History & Survivorship Bias & Association & 45 & 450 & BenchmarkT3-BucketLarge-F.tex \\
+G1, G2 & Markets & Self-Fulfilling & Intervention & 45 & 450 & BenchmarkT3-BucketLarge-G.tex \\
+H1, H2 & Environment & Feedback Loops & Intervention & 45 & 450 & BenchmarkT3-BucketLarge-H.tex \\
+I1, I2 & AI \& Tech & Goodhart's Law & Association & 45 & 450 & BenchmarkT3-BucketLarge-I.tex \\
+J1, J2 & Social Sci. & Simpson's Paradox & Association & 45 & 450 & BenchmarkT3-BucketLarge-J.tex \\
+\midrule
+\multicolumn{4}{r}{\textbf{Total}} & \textbf{454} & & \\
 \bottomrule
 \end{tabular}
-\caption{Group assignments with benchmark files, categories, and dataset sizes}
+\caption{Group assignments with domains, signature traps, focus areas, dataset sizes, and benchmark files}
 \label{tab:group_assignments}
 \end{table}
 
-Note: Groups listed together (e.g., Groups 1 and 2) are cross-validation pairs that will swap datasets in Assignment 2.
+Note: Groups listed together (e.g., Groups A1 and A2) are cross-validation pairs that will swap datasets in Assignment 2.
 
 \subsection{Cross-Validation for Assignment 2}
 
 In Assignment 2, groups that worked on the same BenchmarkT3-BucketLarge file in Assignment 1 will \textbf{swap their datasets} for cross-validation:
 \begin{itemize}[leftmargin=1.5em]
-    \item Groups 1 and 2 will exchange their datasets
-    \item Groups 3 and 4 will exchange their datasets
-    \item Groups 5 and 6 will exchange their datasets
-    \item Groups 7 and 8 will exchange their datasets
-    \item Groups 9 and 10 will exchange their datasets
-    \item Groups 11 and 12 will exchange their datasets
-    \item Groups 13 and 14 will exchange their datasets
-    \item Groups 15 and 16 will exchange their datasets
-    \item Groups 17 and 18 will exchange their datasets
-    \item Groups 19 and 20 will exchange their datasets
+    \item Groups A1 and A2 will exchange their datasets
+    \item Groups B1 and B2 will exchange their datasets
+    \item Groups C1 and C2 will exchange their datasets
+    \item Groups D1 and D2 will exchange their datasets
+    \item Groups E1 and E2 will exchange their datasets
+    \item Groups F1 and F2 will exchange their datasets
+    \item Groups G1 and G2 will exchange their datasets
+    \item Groups H1 and H2 will exchange their datasets
+    \item Groups I1 and I2 will exchange their datasets
+    \item Groups J1 and J2 will exchange their datasets
 \end{itemize}
 
 This cross-validation approach ensures that each group validates the work of another group on the same dataset, providing robust evaluation and learning opportunities.
