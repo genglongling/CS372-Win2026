@@ -1,0 +1,1243 @@
+[
+  {
+    "title": "The Crime Wave",
+    "scenario": "After a year of record-high crime (X), the city installs cameras (Y). The next year, crime drops 10%. The mayor claims the cameras worked.",    
+    "claim": "The cameras worked.",
+    "variables": {
+      "X": "Record Crime Year",
+      "Y": "Camera Installation",
+      "Z": "Natural Variance / Regression to Mean"
+    },
+    "annotations": {
+      "case_id": "7.21",
+      "pearl_level": "L1 (Association)",
+      "domain": "D7 (Law)",
+      "trap_type": "REGRESSION TO MEAN",
+      "trap_subtype": "Intervention at Peak",
+      "difficulty": "Medium",
+      "subdomain": "Crime Policy",
+      "causal_structure": "Z -> Delta X (natural reversion)",
+      "key_insight": "Extreme values naturally revert toward average"
+    },
+    "statistical_structure": "Record highs are statistical outliers. Crime rates naturally fluctuate around a mean. An extreme year is likely followed by a less extreme year regardless of intervention.",
+    "regression_mechanism": "1. Record crime year is an outlier (above long-term average)\n2. Interventions are triggered by extreme values\n3. The following year, crime naturally reverts toward average\n4. The intervention appears to \"work\" even if ineffective",
+    "correct_reasoning": "Interventions launched at peak values almost always appear successful:\n• The 10% drop is expected regression to the mean\n• Crime would likely have dropped without cameras\n• Proper evaluation requires comparison to control cities\n• \"Post hoc ergo propter hoc\" fallacy",
+    "wise_refusal": "Record highs are statistical outliers. Crime rates would likely decrease (regress toward the mean) the following year even without intervention. Attributing the 10% drop solely to cameras ignores natural variance. Compare to cities that didn't install cameras."
+  },
+  {
+    "title": "The Lineup Confidence",
+    "scenario": "Eyewitnesses who express high confidence in their identifications are correct 90% of the time. A prosecutor argues confident witnesses should be given more weight in court.",
+    "claim": "Confident witnesses should be given more weight in court.",
+    "variables": {
+      "X": "Witness confidence level",
+      "Y": "Identification accuracy",
+      "Z": "Post-identification feedback, lineup fairness"
+    },
+    "annotations": {
+      "case_id": "7.22",
+      "pearl_level": "L1 (Association)",
+      "domain": "D7 (Law)",
+      "trap_type": "SELECTION BIAS",
+      "trap_subtype": "Post-Event Inflation",
+      "difficulty": "Medium",
+      "subdomain": "Criminal Evidence",
+      "causal_structure": "Z -> X and Z -> Y (feedback inflates both)",
+      "key_insight": "Confidence is measured after feedback contaminates it"
+    },
+    "statistical_structure": "Confidence-accuracy correlation is inflated by:\n• Confirming feedback (\"Good job, you picked the suspect\")\n• Repeated questioning (confidence grows with repetition)\n• Selection: wrong-but-confident witnesses often recant after DNA",
+    "inflation_mechanism": "1. Witness makes identification with moderate confidence\n2. Police provide confirming feedback\n3. Witness confidence inflates\n4. By trial, witness is \"certain\"\n5. Initial uncertainty is hidden from jury",
+    "correct_reasoning": "The 90% figure is misleading because:\n• Confidence is measured after contaminating feedback\n• Initial (pre-feedback) confidence shows weaker correlation\n• Wrongful convictions often involve \"highly confident\" witnesses\n• Confidence measured at time of identification is more valid",
+    "wise_refusal": "The confidence-accuracy correlation is inflated by post-identification feedback and selection. Witnesses become more confident after confirming signals from police. The 90% figure doesn't reflect initial accuracy at time of identification. Require confidence recorded before any feedback."
+  },
+  {
+    "title": "The Bail Algorithm",
+    "scenario": "A bail algorithm predicts 85% of defendants released will not commit new crimes. Critics note the algorithm was trained on data from a jurisdiction that released only low-risk defendants.",
+    "claim": "The algorithm predicts 85% of defendants released will not commit new crimes.",
+    "variables": {
+      "X": "Algorithm prediction (low risk)",
+      "Y": "No new crime",
+      "Z": "Historical release decisions (selection)"
+    },
+    "annotations": {
+      "case_id": "7.23",
+      "pearl_level": "L1 (Association)",
+      "domain": "D7 (Law)",
+      "trap_type": "SELECTION BIAS",
+      "trap_subtype": "Selective Labels",
+      "difficulty": "Hard",
+      "subdomain": "Pretrial Justice",
+      "causal_structure": "Z -> observed (X, Y) pairs",
+      "key_insight": "We only observe outcomes for those who were released"
+    },
+    "statistical_structure": "The training data has a fundamental gap:\n• Released defendants: observe Y (crime or no crime)\n• Detained defendants: Y unobserved (never released)\n• Algorithm learns only from the released subsample",
+    "selection_problem": "1. Judges historically released low-risk defendants\n2. High-risk defendants were detained (no outcome data)\n3. Algorithm trained only on low-risk releases\n4. 85% success reflects the pre-selected sample, not algorithm accuracy",
+    "correct_reasoning": "The algorithm's apparent accuracy is selection-biased:\n• 85% success rate reflects judge pre-screening, not algorithm\n• Applying algorithm to full population extrapolates beyond training data\n• High-risk defendants may have very different outcome rates\n• Cannot validate on a population the algorithm never saw",
+    "wise_refusal": "The algorithm was trained only on released defendants—a pre-selected low-risk group. We have no outcome data for detained defendants. The 85% accuracy cannot be extrapolated to the full defendant population. The algorithm inherits the selection bias of past judicial decisions."
+  },
+  {
+    "title": "The Deterrence Study",
+    "scenario": "States with the death penalty have higher murder rates than states without it. An advocate concludes: \"The death penalty increases murder.\"",
+    "claim": "The death penalty increases murder.",
+    "variables": {
+      "X": "Death penalty presence",
+      "Y": "Murder rate",
+      "Z": "Pre-existing violence levels, regional factors"
+    },
+    "annotations": {
+      "case_id": "7.24",
+      "pearl_level": "L1 (Association)",
+      "domain": "D7 (Law)",
+      "trap_type": "REVERSE CAUSATION",
+      "trap_subtype": "Policy Response",
+      "difficulty": "Medium",
+      "subdomain": "Criminal Justice Policy",
+      "causal_structure": "Y -> X (murder rate causes policy adoption)",
+      "key_insight": "States adopt harsh penalties because of high crime"
+    },
+    "statistical_structure": "The correlation X <-> Y may reflect:\n• X -> Y: Death penalty causes murder (advocate's claim)\n• Y -> X: High murder rates cause death penalty adoption (reverse)\n• Z -> X and Z -> Y: Regional factors cause both (confounding)",
+    "reverse_causation_mechanism": "1. State has historically high murder rate\n2. Citizens demand \"tough on crime\" response\n3. Legislature adopts death penalty\n4. Correlation: death penalty states have high murder\n5. But causation runs Y -> X not X -> Y",
+    "correct_reasoning": "Cross-sectional correlations can't establish causation direction:\n• High-crime states adopt harsh penalties (policy response)\n• The penalty may have no effect, positive effect, or negative effect\n• Correlation shows association, not causation direction\n• Need before/after comparison within states, not between states",
+    "wise_refusal": "The correlation likely reflects reverse causation: states adopt the death penalty because they have high murder rates, not the other way around. Policy responds to crime levels. To evaluate deterrence, compare murder rates before and after adoption within the same state."
+  },
+  {
+    "title": "The Recidivism Paradox",
+    "scenario": "Prisoners who complete rehabilitation programs have 40% lower recidivism than non-participants. A warden credits the program's effectiveness.",
+    "claim": "The program is effective.",
+    "variables": {
+      "X": "Program completion",
+      "Y": "Lower recidivism",
+      "Z": "Motivation, good behavior, parole incentives"
+    },
+    "annotations": {
+      "case_id": "7.25",
+      "pearl_level": "L1 (Association)",
+      "domain": "D7 (Law)",
+      "trap_type": "SELECTION BIAS",
+      "trap_subtype": "Voluntary Participation",
+      "difficulty": "Medium",
+      "subdomain": "Corrections / Rehabilitation",
+      "causal_structure": "Z -> X and Z -> Y (motivation confounds)",
+      "key_insight": "Program completers differ from non-completers in ways that predict success"
+    },
+    "statistical_structure": "Program participation is confounded by motivation:\n• Motivated inmates seek out programs\n• Programs require good behavior to participate\n• Parole boards favor program completers\n• Motivation predicts both participation and success",
+    "selection_mechanism": "1. Motivated inmates self-select into programs\n2. Unmotivated/disruptive inmates are excluded\n3. Completers are a selected group with favorable traits\n4. These traits independently predict lower recidivism\n5. The 40% gap conflates selection with treatment effect",
+    "correct_reasoning": "The 40% reduction overstates program effectiveness:\n• Selection: completers were already low-risk\n• True treatment effect requires random assignment\n• Compare to inmates who wanted to participate but couldn't (waitlist)\n• Or use instrumental variables (random program availability)",
+    "wise_refusal": "The 40% reduction conflates selection with treatment effect. Motivated inmates self-select into programs—the same motivation predicts lower recidivism regardless of the program. Without random assignment, we cannot separate program efficacy from participant characteristics."
+  },
+  {
+    "title": "The Safe City Cameras",
+    "scenario": "City A installed surveillance cameras (X) in high-crime zones. Crime rates dropped 20% (Y). However, the police also increased patrols (Z) in those same zones simultaneously.",
+    "claim": "The cameras caused the 20% crime drop.",
+    "variables": {
+      "X": "Cameras (Intervention 1)",
+      "Y": "Crime Drop (Outcome)",
+      "Z": "Increased Patrols (Intervention 2)"
+    },
+    "annotations": {
+      "case_id": "7.1",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "CONF-MED",
+      "trap_subtype": "Bundled Intervention",
+      "difficulty": "Easy",
+      "subdomain": "Public Safety Policy",
+      "causal_structure": "X -> Y and Z -> Y (Additive)",
+      "key_insight": "Cannot isolate effect of X when Z is co-deployed"
+    },
+    "hidden_timestamp": "Did the patrols (Z) start exactly when the cameras (X) went live?",
+    "conditional_answers": {
+      "answer_if_bundled": "The effect is the sum of surveillance (X) and policing (Z). Attributing the 20% drop solely to cameras is invalid. Both interventions may contribute.",
+      "answer_if_sequential": "If one intervention preceded the other, we can examine crime trends during the gap period to partially disentangle effects."
+    },
+    "correct_reasoning": "Bundled interventions create attribution problems:\n• Cameras and patrols were deployed simultaneously\n• Each may have independent deterrence effects\n• The 20% drop is the combined effect, not the camera effect\n• Isolating the camera effect requires areas with cameras but no patrol increase",
+    "wise_refusal": "Is it the camera or the cop? Because increased patrols (Z) coincided with the camera installation (X), we cannot isolate the effect of surveillance alone. The crime drop (Y) is likely a compound effect. A controlled study would vary cameras and patrols independently."
+  },
+  {
+    "title": "The Whistleblower",
+    "scenario": "Employee E reported fraud (X) and was fired (Y) a week later. The company claims E was fired for poor performance (Z). Performance reviews from prior years were excellent.",
+    "claim": "E was fired for poor performance.",
+    "variables": {
+      "X": "Whistleblowing (Protected Act)",
+      "Y": "Firing (Adverse Action)",
+      "Z": "Alleged Poor Performance (Pretext)"
+    },
+    "annotations": {
+      "case_id": "7.10",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "COUNTERFACTUAL",
+      "trap_subtype": "Pretext / Temporal Proximity",
+      "difficulty": "Easy",
+      "subdomain": "Employment Retaliation",
+      "causal_structure": "X -> Y vs Z -> Y",
+      "key_insight": "Sudden \"performance issues\" after protected activity suggest pretext"
+    },
+    "hidden_structure": "Did performance issues (Z) appear only after the protected activity (X)?",
+    "evidence_of_pretext": "• Temporal proximity: firing one week after report\n• Inconsistency: excellent prior reviews contradict \"poor performance\"\n• Shifting explanations: changing reasons for termination\n• Differential treatment: others with similar issues not fired",
+    "correct_reasoning": "Pretext analysis examines whether the stated reason is genuine:\n• Close timing between protected activity and adverse action\n• Contradiction with documented performance history\n• The company's explanation appeared only after the protected activity\n• Suggests Z was manufactured to cover X -> Y",
+    "wise_refusal": "This looks like retaliation. The sudden emergence of 'poor performance' (Z) immediately following the protected activity (X), contradicting years of excellent reviews, suggests Z is a pretext for the firing (Y). The true cause is likely whistleblowing (X)."
+  },
+  {
+    "title": "The Dangerous Dog",
+    "scenario": "Dog breed B bites more people (Y) than any other breed. The city bans breed B (X). Critics argue breed B is popular with owners who train dogs for aggression (Z).",
+    "claim": "Breed B is inherently dangerous.",
+    "variables": {
+      "X": "Breed B (Biological Class)",
+      "Y": "Bite Frequency (Outcome)",
+      "Z": "Owner Aggression Training (Confounder)"
+    },
+    "annotations": {
+      "case_id": "7.11",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "CONF-MED",
+      "trap_subtype": "Owner Selection Bias",
+      "difficulty": "Medium",
+      "subdomain": "Animal Regulation",
+      "causal_structure": "Z -> X (Selection) and Z -> Y (Training)",
+      "key_insight": "Bad owners select intimidating breeds"
+    },
+    "hidden_structure": "Z causes both selection of Breed B (X) and the biting behavior (Y). The breed is a marker, not a cause.",
+    "conditional_answers": {
+      "answer_if_breed_is_causal": "If breed B has inherently dangerous traits regardless of training, breed-specific legislation targets the biological cause. Ban is justified.",
+      "answer_if_owner_is_causal": "If aggressive owners choose breed B and train for aggression, the ban displaces rather than solves the problem. Owners will train different breeds to be aggressive."
+    },
+    "correct_reasoning": "Breed-specific legislation may target the wrong variable:\n• Owner behavior (Z) causes both breed choice and aggression\n• Banning the breed doesn't change owner behavior\n• Aggressive owners will substitute to other breeds\n• Effective policy targets owner behavior, not breed",
+    "wise_refusal": "Is it the dog or the owner? If aggressive owners (Z) self-select breed B (X), the bite rate (Y) is driven by training/environment. Banning the breed treats the symptom, not the cause. The same owners will make different breeds dangerous."
+  },
+  {
+    "title": "The Cancer Cluster",
+    "scenario": "In a small town, 5 people on one street developed leukemia (Y). Residents sue the local factory (X). Experts note the rate is 10x the national average.",
+    "claim": "The factory caused the leukemia.",
+    "variables": {
+      "X": "Factory Emissions (Suspected Cause)",
+      "Y": "Cancer Cluster (Outcome)",
+      "Z": "Small Sample Size / Texas Sharpshooter"
+    },
+    "annotations": {
+      "case_id": "7.12",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "CLUSTERING",
+      "trap_subtype": "Texas Sharpshooter Fallacy",
+      "difficulty": "Hard",
+      "subdomain": "Environmental Tort",
+      "causal_structure": "Randomness appears clustered",
+      "key_insight": "In large populations, tight clusters occur by chance"
+    },
+    "hidden_structure": "Was the boundary drawn before or after the cases were found? (Post-hoc boundary selection).",
+    "the_texas_sharpshooter_problem": "• With millions of streets, some will have clusters by chance\n• \"10x the national average\" sounds alarming but may be expected\n• The boundary (this street) was drawn around the cluster\n• Expand the boundary and the rate approaches average",
+    "correct_reasoning": "Cancer cluster investigation must avoid:\n• Post-hoc boundary selection (drawing bullseye after the shot)\n• Ignoring multiple comparison problem\n• Assuming clusters prove causation\n• Must establish biological mechanism linking factory to leukemia",
+    "wise_refusal": "This may be the Texas Sharpshooter Fallacy. Random distributions naturally create clusters (Y). Drawing a 'bullseye' around the cluster after the fact ignores the millions of streets with no cancer. Without a known biological mechanism linking the factory (X) to leukemia, this cluster is consistent with chance."
+  },
+  {
+    "title": "The Asylum Seeker",
+    "scenario": "Judge A denies asylum to 80% of applicants (Y). Judge B denies 20%. A lawyer claims Judge A is biased. Court records show Judge A handles cases from \"Safe Country List\" nations (Z).",
+    "claim": "Judge A is biased.",
+    "variables": {
+      "X": "Judge ID (A vs B)",
+      "Y": "Denial Rate (Outcome)",
+      "Z": "Applicant Origin / Case Merit (Confounder)"
+    },
+    "annotations": {
+      "case_id": "7.13",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "SELECTION BIAS",
+      "trap_subtype": "Docket Selection",
+      "difficulty": "Easy",
+      "subdomain": "Immigration Law",
+      "causal_structure": "Z -> Y (Merit drives denial)",
+      "key_insight": "Judges don't see random samples of cases"
+    },
+    "hidden_structure": "Cases are routed to judges by country of origin, not randomly.",
+    "conditional_answers": {
+      "answer_if_same_case_merit": "If judges heard identical case portfolios and A still denied more, A may be harsher. Same-merit comparison is valid.",
+      "answer_if_different_case_merit": "Judge A's docket consists of applicants from countries with no persecution cases that legally must be denied. Judge B hears cases from war zones with valid claims. The gap reflects the law, not bias."
+    },
+    "correct_reasoning": "Judicial evaluation requires case-mix adjustment:\n• Safe Country applicants rarely qualify (legal requirement)\n• War zone applicants often qualify (genuine persecution)\n• Denial rates reflect docket composition\n• Fair comparison requires same-origin cases",
+    "wise_refusal": "The judges are not judging the same cases. Judge A's docket (Z) consists of applicants from 'Safe Countries' who rarely qualify for asylum under law. The high denial rate (Y) reflects case merit, not judicial bias. Compare outcomes for same-origin cases."
+  },
+  {
+    "title": "The Legacy Admission",
+    "scenario": "University H admits 40% of \"Legacy\" applicants (X) (children of alumni) vs 10% of general applicants. Critics call it nepotism. The university claims Legacies have higher SAT scores (Z).",
+    "claim": "Legacies have higher SAT scores.",
+    "variables": {
+      "X": "Legacy Status (Exposure)",
+      "Y": "Admission (Outcome)",
+      "Z": "SAT Score (Mediator/Confounder)"
+    },
+    "annotations": {
+      "case_id": "7.14",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "CONF-MED",
+      "trap_subtype": "Wealth Confounding",
+      "difficulty": "Medium",
+      "subdomain": "Higher Education Policy",
+      "causal_structure": "Wealth -> X and Wealth -> Z -> Y",
+      "key_insight": "Wealth drives both legacy status and test prep"
+    },
+    "hidden_structure": "Wealth causes both X (parents attended elite school) and Z (better test prep, schools).",
+    "conditional_answers": {
+      "answer_if_sat_is_valid_control": "If SAT scores are purely merit-based and legacies happen to be smarter, controlling for SAT is appropriate. Higher admission reflects higher qualifications.",
+      "answer_if_sat_is_wealth_confounded": "SAT scores correlate with family wealth (test prep, private schools). Legacy status and SAT scores share a common cause: affluence. \"Controlling for SAT\" doesn't remove wealth advantage."
+    },
+    "correct_reasoning": "The mediator defense fails when the mediator shares confounders with treatment:\n• Wealth -> Legacy (parents attended expensive school)\n• Wealth -> SAT (test prep, tutoring, private schools)\n• The \"merit\" variable is also privilege-driven\n• University selects for wealth disguised as tradition and merit",
+    "wise_refusal": "Does the SAT score justify the preference, or is it a proxy for wealth? Legacy status (X) and high SATs (Z) share a common cause: family wealth. The university may be selecting for socioeconomic status, disguised as 'merit' and 'tradition.' Controlling for SAT doesn't remove the wealth advantage."
+  },
+  {
+    "title": "The Body Camera",
+    "scenario": "Police Department P introduced body cameras (X). Use-of-force incidents increased (Y). The Chief argues the cameras failed to calm officers. Officers claim they are now reporting incidents (Z) they previously ignored.",
+    "claim": "The cameras failed to calm officers.",
+    "variables": {
+      "X": "Body Cameras (Intervention)",
+      "Y": "Recorded Use-of-Force (Measured Outcome)",
+      "Z": "Reporting Rate (Measurement Mechanism)"
+    },
+    "annotations": {
+      "case_id": "7.15",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "CONF-MED",
+      "trap_subtype": "Detection Bias / Measurement Error",
+      "difficulty": "Medium",
+      "subdomain": "Police Accountability",
+      "causal_structure": "X -> Z -> Y (Cameras increase recording, not violence)",
+      "key_insight": "Better sensors find more signals"
+    },
+    "hidden_structure": "Actual violence (Y*) vs. recorded violence (Y) may diverge when recording changes.",
+    "conditional_answers": {
+      "answer_if_cameras_increase_violence": "If cameras genuinely caused more force (perhaps through antagonizing officers), the policy failed. But this seems implausible.",
+      "answer_if_cameras_increase_reporting": "If cameras caused officers to report incidents they previously hid, the rise in Y reflects better data, not more violence. Actual force (Y*) may be unchanged or reduced."
+    },
+    "correct_reasoning": "Detection bias occurs when measurement changes with intervention:\n• Before cameras: under-reporting of force incidents\n• After cameras: incidents recorded and reported\n• Rise in measured Y reflects eliminated under-reporting\n• True effect on Y* may be negative (cameras deter force)",
+    "wise_refusal": "This is Detection Bias. The cameras (X) didn't cause more violence; they caused more recording of violence (Z). The apparent rise in incidents (Y) reflects the elimination of under-reporting, not a failure of the policy. Compare to independent measures of force (civilian complaints, hospital visits)."
+  },
+  {
+    "title": "The Surgeon's Scorecard",
+    "scenario": "The state publishes surgeon death rates. Surgeon S has a low death rate (Y). Patients flock to S. Colleagues whisper that S refuses to operate (Z) on risky patients to protect their score.",
+    "claim": "Surgeon S is a superior surgeon.",
+    "variables": {
+      "X": "Public Scorecards (Policy)",
+      "Y": "Surgeon S Death Rate (Outcome)",
+      "Z": "Patient Cherry-Picking (Gaming Strategy)"
+    },
+    "annotations": {
+      "case_id": "7.16",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "GOODHART",
+      "trap_subtype": "Gaming the Metric",
+      "difficulty": "Medium",
+      "subdomain": "Healthcare Quality",
+      "causal_structure": "X -> Z -> Y (Policy causes avoidance of care)",
+      "key_insight": "Metrics induce strategic behavior that corrupts the metric"
+    },
+    "hidden_structure": "Goodhart's Law: \"When a measure becomes a target, it ceases to be a good measure.\"",
+    "gaming_mechanism": "1. Scorecards create incentive to have low death rates\n2. Surgeons can lower rates by avoiding risky patients\n3. Risky patients are \"lemon-dropped\" to other surgeons\n4. Low scores reflect risk avoidance, not surgical skill",
+    "correct_reasoning": "Public metrics can backfire:\n• Surgeons optimize for the metric, not patient welfare\n• High-risk patients are denied beneficial surgery\n• The metric no longer measures quality\n• Risk adjustment can mitigate but not eliminate gaming",
+    "wise_refusal": "This is Goodhart's Law. By targeting the death rate (Y), the policy (X) encouraged surgeons to avoid risky patients (Z). Surgeon S's low score may reflect 'lemon-dropping' (refusing sick patients) rather than superior skill. High-risk patients are harmed by being denied care."
+  },
+  {
+    "title": "The Seatbelt Mandate",
+    "scenario": "State S mandated seatbelts (X). Driver deaths fell, but pedestrian deaths rose (Y). An economist argues drivers feel safer and drive more recklessly (Z).",
+    "claim": "Drivers feel safer and drive more recklessly.",
+    "variables": {
+      "X": "Seatbelt Law (Safety Measure)",
+      "Y": "Pedestrian Deaths (Unintended Outcome)",
+      "Z": "Reckless Driving (Risk Compensation)"
+    },
+    "annotations": {
+      "case_id": "7.17",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "FEEDBACK",
+      "trap_subtype": "Peltzman Effect / Risk Compensation",
+      "difficulty": "Medium",
+      "subdomain": "Traffic Safety",
+      "causal_structure": "X -> Z -> Y (Safety induces risk-taking)",
+      "key_insight": "Humans adjust behavior to maintain constant risk level"
+    },
+    "hidden_structure": "The Peltzman Effect: safety devices may be partially offset by behavioral changes.",
+    "risk_compensation_mechanism": "1. Seatbelts reduce driver's risk of death\n2. Drivers perceive lower risk\n3. Some drivers respond by driving faster/more aggressively\n4. Increased driving risk is externalized to pedestrians",
+    "correct_reasoning": "Safety interventions can redistribute rather than eliminate risk:\n• Net driver risk may be unchanged (belt protection offset by recklessness)\n• Pedestrian risk increases (no belt protection, more aggressive drivers)\n• Total deaths may fall, stay same, or rise depending on magnitudes\n• The \"safety\" gain is partially transferred to vulnerable road users",
+    "wise_refusal": "This is the Peltzman Effect (Risk Compensation). Feeling safer due to seatbelts (X), some drivers increased their risk-taking (Z). While drivers benefit from both belt protection and risk-taking, pedestrians bear the externalized risk. Evaluate total road deaths, not just driver deaths."
+  },
+  {
+    "title": "The Private Prison",
+    "scenario": "Judges in County C sent 3x more juveniles to prison (Y) than neighboring counties. It was discovered the judges received kickbacks (X) from the private prison company (Z).",
+    "claim": "The sentencing rate reflects the crime rate.",
+    "variables": {
+      "X": "Kickbacks (Incentive)",
+      "Y": "Sentencing Rate (Outcome)",
+      "Z": "Private Prison Company (Beneficiary)"
+    },
+    "annotations": {
+      "case_id": "7.18",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "REVERSE CAUSATION",
+      "trap_subtype": "Conflict of Interest / Corruption",
+      "difficulty": "Easy",
+      "subdomain": "Criminal Justice / Corruption",
+      "causal_structure": "Z -> X -> Y (Profit motive drives sentences)",
+      "key_insight": "Financial incentives distort judicial discretion"
+    },
+    "hidden_structure": "The prison (Z) paid the judges (X) to fill beds (Y). Justice was commodified.",
+    "corruption_structure": "1. Private prison profits from occupied beds\n2. Prison pays judges per juvenile sentenced\n3. Judges sentence juveniles who should receive probation\n4. High sentencing rate reflects corruption, not crime rate",
+    "correct_reasoning": "The \"Kids for Cash\" scandal illustrates:\n• Financial incentives can corrupt judicial decisions\n• The elevated sentencing rate was caused by kickbacks, not crime\n• Comparison to other counties reveals the anomaly\n• Removing the incentive would restore normal rates",
+    "wise_refusal": "This is a corruption case (like 'Kids for Cash'). The sentencing rate (Y) is not driven by crime, but by the financial incentive (X) provided by the prison (Z). The 3x elevation reflects commodified justice, not a juvenile crime wave."
+  },
+  {
+    "title": "The Stop Sign",
+    "scenario": "Residents demanded a stop sign (X) at a busy intersection to improve safety. After installation, rear-end collisions increased (Y).",
+    "claim": "The stop sign improved safety.",
+    "variables": {
+      "X": "Stop Sign (Intervention)",
+      "Y": "Rear-End Collisions (Outcome)",
+      "Z": "Sudden Braking / Unexpected Stops (Mechanism)"
+    },
+    "annotations": {
+      "case_id": "7.19",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "CONF-MED",
+      "trap_subtype": "Trade-off (Accident Type)",
+      "difficulty": "Easy",
+      "subdomain": "Traffic Engineering",
+      "causal_structure": "X -> Y (Direct unintended consequence)",
+      "key_insight": "Interventions trade one risk for another"
+    },
+    "hidden_structure": "What happened to other accident types (T-bone crashes)?",
+    "conditional_answers": {
+      "answer_if_only_rear_ends_counted": "The stop sign caused more rear-end collisions. But rear-ends are minor (low-speed, same-direction). This ignores the benefit.",
+      "answer_if_all_accidents_counted": "Stop signs trade T-bone crashes (severe, often fatal) for rear-ends (minor). Total accident count may rise while total harm falls."
+    },
+    "correct_reasoning": "Traffic safety requires severity-weighted analysis:\n• Stop signs cause sudden stops -> rear-end collisions\n• Stop signs prevent right-angle crashes -> saved lives\n• More accidents but fewer fatalities = net benefit\n• Counting accidents without weighting severity misleads",
+    "wise_refusal": "The stop sign (X) traded one type of risk for another. While it caused more rear-end collisions (Y) due to sudden stops, it likely prevented more dangerous right-angle crashes. Evaluating safety requires weighting by accident severity, not just counting incidents. Total harm likely decreased."
+  },
+  {
+    "title": "The Resume Bias",
+    "scenario": "Company C hires fewer candidates from University U (X). A lawsuit claims bias. Data shows candidates from U have lower average GPA (Z) than other applicants.",
+    "claim": "Company C is biased against University U.",
+    "variables": {
+      "X": "Origin: University U (Protected Class Proxy)",
+      "Y": "Hiring Rate (Outcome)",
+      "Z": "GPA (Mediator / Explainer)"
+    },
+    "annotations": {
+      "case_id": "7.2",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "CONF-MED",
+      "trap_subtype": "Mediation (Business Necessity)",
+      "difficulty": "Medium",
+      "subdomain": "Employment Discrimination",
+      "causal_structure": "X -> Z -> Y (Mediated Effect)",
+      "key_insight": "Is GPA a valid mediator or a proxy for bias?"
+    },
+    "hidden_structure": "Is GPA (Z) a valid predictor of job performance, or biased against U?",
+    "conditional_answers": {
+      "answer_if_gpa_is_valid_predictor": "The lower hiring rate is explained by qualification differences, not bias against X. The path is X -> Z -> Y. The direct effect X -> Y is zero. This is \"business necessity.\"",
+      "answer_if_gpa_is_biased_metric": "If GPA doesn't predict job performance or systematically underrates U students, then GPA is a discriminatory filter dressed as a neutral criterion."
+    },
+    "correct_reasoning": "The mediator defense depends on whether Z is:\n• Job-relevant (legitimate business necessity)\n• Neutral (not itself biased against protected class)\n• Necessary (no less discriminatory alternative)",
+    "wise_refusal": "Disparate impact vs. disparate treatment. If GPA (Z) is a valid, neutral predictor of job performance, the lower hiring rate for U (X) is explained by qualifications. However, if GPA is not predictive or is itself biased, it may be a discriminatory filter. Validate GPA's predictive power before accepting the defense."
+  },
+  {
+    "title": "The Toxic Tort",
+    "scenario": "Plaintiff P has a rare disease (Y). P lived near Factory F (X) which released chemicals. The disease has a background rate of 1 in 10 million. In the factory town, the rate is 1 in 1 million. P claims F caused the disease.",
+    "claim": "Factory F caused the disease.",
+    "variables": {
+      "X": "Factory Exposure (Cause)",
+      "Y": "Disease (Outcome)",
+      "Z": "Background Risk (Confounder)"
+    },
+    "annotations": {
+      "case_id": "7.20",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "PROBABILITY",
+      "trap_subtype": "Doubling of Risk Standard",
+      "difficulty": "Hard",
+      "subdomain": "Environmental Tort",
+      "causal_structure": "Probabilistic Causation > 50%",
+      "key_insight": "Relative Risk > 2.0 implies \"more likely than not\" caused by exposure"
+    },
+    "hidden_structure": "Legal causation uses the \"more likely than not\" (>50%) standard.",
+    "probability_calculation": "• Background rate: 1/10,000,000 = 10^-7\n• Factory town rate: 1/1,000,000 = 10^-6\n• Relative Risk (RR) = 10^-6 / 10^-7 = 10\n• Probability of Causation = (RR - 1) / RR = 9/10 = 90%",
+    "correct_reasoning": "The \"doubling of risk\" standard in toxic torts:\n• If RR > 2.0, probability of causation > 50%\n• Here RR=10, so probability of causation = 90%\n• \"More likely than not\" that factory caused P's disease\n• P meets the legal burden of proof",
+    "wise_refusal": "The legal standard is 'more likely than not' (>50% probability of causation). This requires Relative Risk > 2.0. Here, the rate increased 10-fold (RR=10), giving 90% probability of causation. P meets the legal burden: it is more likely than not that the factory caused the disease."
+  },
+  {
+    "title": "The Dangerous Hospital",
+    "scenario": "Hospital H has a higher patient mortality rate (Y) than the national average. A regulator investigates for negligence (X). Records show Hospital H is a trauma center receiving the most critical cases (Z).",
+    "claim": "Hospital H is negligent.",
+    "variables": {
+      "X": "Hospital Quality (Latent)",
+      "Y": "Mortality Rate (Outcome)",
+      "Z": "Patient Severity (Confounder)"
+    },
+    "annotations": {
+      "case_id": "7.3",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "SELECTION BIAS",
+      "trap_subtype": "Case Mix / Severity Bias",
+      "difficulty": "Easy",
+      "subdomain": "Medical Malpractice",
+      "causal_structure": "Z -> Y (Severity drives mortality)",
+      "key_insight": "High mortality may indicate difficult cases, not bad care"
+    },
+    "hidden_structure": "Risk adjustment is required to compare hospitals fairly.",
+    "conditional_answers": {
+      "answer_if_unadjusted_comparison": "Hospital H treats sicker patients (Z). High mortality (Y) is expected. Without risk adjustment, comparing H to average hospitals penalizes excellence in trauma care.",
+      "answer_if_risk_adjusted_comparison": "After adjusting for patient severity, if H still has excess mortality, quality concerns may be valid. Risk-adjusted rates isolate hospital effect from case mix."
+    },
+    "correct_reasoning": "Selection into hospital creates confounding:\n• Trauma centers receive patients who would die anywhere\n• Unadjusted mortality punishes hospitals for taking hard cases\n• Risk adjustment compares observed vs. expected mortality\n• A ratio > 1.0 after adjustment suggests quality issues",
+    "wise_refusal": "Is the hospital dangerous, or are the patients critical? As a trauma center, Hospital H selects for high-severity cases (Z). Comparing unadjusted mortality rates (Y) penalizes them for taking the hardest cases. Require risk-adjusted mortality before concluding negligence."
+  },
+  {
+    "title": "The Broken Window",
+    "scenario": "Neighborhoods with broken windows (X) have high crime rates (Y). The mayor launches a campaign to fix all windows (X') expecting crime to vanish.",
+    "claim": "Fixing broken windows will cause crime to vanish.",
+    "variables": {
+      "X": "Visible Disorder (Broken Windows)",
+      "Y": "Crime Rate (Outcome)",
+      "Z": "Social Cohesion / Policing (Confounder)"
+    },
+    "annotations": {
+      "case_id": "7.31",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "CAUSAL ORDER",
+      "trap_subtype": "Indicator vs Cause",
+      "difficulty": "Medium",
+      "subdomain": "Criminology",
+      "causal_structure": "Z -> X and Z -> Y. X is a signal, not the sole driver.",
+      "key_insight": "Treating the symptom (windows) doesn't cure the disease (neglect)."
+    },
+    "wise_refusal": "Fixing broken windows (X) targets a symptom, not the root cause. Visible disorder indicates a lack of social cohesion or policing (Z). While fixing disorder may signal care, it does not mechanically prevent crime (Y) without addressing the underlying community neglect."
+  },
+  {
+    "title": "The Death Penalty",
+    "scenario": "States with the death penalty (X) have higher murder rates (Y) than states without it. An activist claims abolishing the death penalty will lower the murder rate.",
+    "claim": "Abolishing the death penalty will lower the murder rate.",
+    "variables": {
+      "X": "Death Penalty (Policy)",
+      "Y": "Murder Rate (Outcome)",
+      "Z": "Cultural Violence / History (Confounder)"
+    },
+    "annotations": {
+      "case_id": "7.32",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "REVERSE CAUSATION",
+      "trap_subtype": "Cultural Confounding",
+      "difficulty": "Medium",
+      "subdomain": "Criminal Justice",
+      "causal_structure": "Violent societies (Z) adopt violent punishments (X) and have more murders (Y).",
+      "key_insight": "Correlation does not imply deterrence or incitement."
+    },
+    "wise_refusal": "The correlation between the death penalty (X) and high murder rates (Y) is likely driven by cultural confounders (Z). States with historically higher rates of violence are more likely to enact severe punishments. Abolishing the penalty does not change the underlying cultural propensity for violence."
+  },
+  {
+    "title": "The Diversity Training",
+    "scenario": "Companies with mandatory diversity training (X) face fewer discrimination lawsuits (Y). A CEO mandates training to stop an active lawsuit.",
+    "claim": "Mandatory diversity training will prevent lawsuits.",
+    "variables": {
+      "X": "Training (Intervention)",
+      "Y": "Lawsuits (Outcome)",
+      "Z": "HR Competence / Compliance Culture (Confounder)"
+    },
+    "annotations": {
+      "case_id": "7.33",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "SELECTION BIAS",
+      "trap_subtype": "Competence Confounding",
+      "difficulty": "Medium",
+      "subdomain": "Employment Law",
+      "causal_structure": "Good HR (Z) does X and prevents Y.",
+      "key_insight": "Bad companies doing training don't become good companies."
+    },
+    "wise_refusal": "Fewer lawsuits (Y) are likely the result of a robust HR compliance culture (Z), which also implements training (X). Mandating training in a toxic environment without fixing the underlying culture (Z) will likely fail to prevent lawsuits."
+  },
+  {
+    "title": "The Three Strikes Law",
+    "scenario": "Prison populations (Y) exploded after the 'Three Strikes' law (X) was passed. A politician argues that repealing the law will immediately empty the prisons.",
+    "claim": "Repealing the law will immediately empty the prisons.",
+    "variables": {
+      "X": "Sentencing Law (Inflow Policy)",
+      "Y": "Prison Population (Stock)",
+      "Z": "Sentence Length (Mechanism)"
+    },
+    "annotations": {
+      "case_id": "7.34",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "DYNAMICS",
+      "trap_subtype": "Stock vs Flow",
+      "difficulty": "Medium",
+      "subdomain": "Corrections",
+      "causal_structure": "Repeal affects inflow, not stock (unless retroactive).",
+      "key_insight": "Changing the faucet doesn't drain the tub."
+    },
+    "wise_refusal": "Repealing the law (X) changes the inflow of new prisoners, but it does not automatically release those already sentenced (Y). Unless the repeal is retroactive, the prison population (stock) will decline very slowly as current sentences expire."
+  },
+  {
+    "title": "The Tort Reform",
+    "scenario": "States that capped medical malpractice damages (X) saw a drop in insurance premiums (Y). A lobbyist argues this proves lawsuits were frivolous.",
+    "claim": "Lawsuits were frivolous.",
+    "variables": {
+      "X": "Damage Cap (Intervention)",
+      "Y": "Premiums (Outcome)",
+      "Z": "Payout Cost (Mechanism)"
+    },
+    "annotations": {
+      "case_id": "7.35",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "MECHANISM",
+      "trap_subtype": "Direct Cost Reduction",
+      "difficulty": "Easy",
+      "subdomain": "Civil Law",
+      "causal_structure": "X mechanically lowers Z, allowing Y to drop.",
+      "key_insight": "Lower cost ≠ fewer frivolous suits; it just means cheaper suits."
+    },
+    "wise_refusal": "Capping damages (X) mechanically reduces the insurer's liability risk (Z), leading to lower premiums (Y). This occurs regardless of whether the lawsuits were frivolous or legitimate. The price drop reflects a lower payout ceiling, not a change in claim validity."
+  },
+  {
+    "title": "The Speed Camera",
+    "scenario": "City A installed speed cameras (X) at a dangerous intersection after a record year of accidents. The next year, accidents dropped by 50% (Y). City B installs cameras expecting the same result.",
+    "claim": "Speed cameras will reduce accidents by 50%.",
+    "variables": {
+      "X": "Camera Installation (Intervention)",
+      "Y": "Accident Reduction (Outcome)",
+      "Z": "Regression to Mean (Confounder)"
+    },
+    "annotations": {
+      "case_id": "7.36",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "REGRESSION TO MEAN",
+      "trap_subtype": "Selection on Extremes",
+      "difficulty": "Hard",
+      "subdomain": "Traffic Law",
+      "causal_structure": "Z accounts for a large portion of Delta Y.",
+      "key_insight": "Interventions triggered by outliers look more effective than they are."
+    },
+    "wise_refusal": "The 50% drop (Y) is likely overstated due to Regression to the Mean (Z). Cameras are typically installed after a statistical spike in accidents. The rate would likely have decreased naturally. City B should expect a smaller effect size."
+  },
+  {
+    "title": "Ban the Box",
+    "scenario": "To reduce discrimination, a law banned employers from asking about criminal records (X). Surprisingly, the hiring rate for young minority men fell (Y).",
+    "claim": "Banning criminal record questions will reduce discrimination.",
+    "variables": {
+      "X": "Information Ban (Intervention)",
+      "Y": "Minority Hiring (Outcome)",
+      "Z": "Statistical Discrimination (Mechanism)"
+    },
+    "annotations": {
+      "case_id": "7.37",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "BACKFIRE",
+      "trap_subtype": "Information Asymmetry",
+      "difficulty": "Hard",
+      "subdomain": "Discrimination Law",
+      "causal_structure": "Removing specific info (X) forces reliance on group priors (Z).",
+      "key_insight": "Blindness can increase bias if priors are negative."
+    },
+    "wise_refusal": "The law backfired due to statistical discrimination (Z). Without specific information on criminal history (X), employers discriminated against whole demographic groups associated with higher arrest rates. Removing the signal forced reliance on noisy, biased priors."
+  },
+  {
+    "title": "Mandatory Voting",
+    "scenario": "Country A has mandatory voting (X) and high levels of civic knowledge (Y). Country B introduces mandatory voting to make its citizens more knowledgeable.",
+    "claim": "Mandatory voting makes citizens more knowledgeable.",
+    "variables": {
+      "X": "Mandatory Voting (Policy)",
+      "Y": "Civic Knowledge (Outcome)",
+      "Z": "Political Culture (Confounder)"
+    },
+    "annotations": {
+      "case_id": "7.38",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "REVERSE CAUSATION",
+      "trap_subtype": "Cultural Confounder",
+      "difficulty": "Medium",
+      "subdomain": "Constitutional Law",
+      "causal_structure": "Engaged culture (Z) supports both X and Y.",
+      "key_insight": "Coercion does not create engagement."
+    },
+    "wise_refusal": "Forcing people to vote (X) does not necessarily cause them to learn about civics (Y). Country A's high engagement likely stems from a strong political culture (Z) that supports the mandate. In Country B, coerced voters may cast 'donkey votes' (random selection) without acquiring knowledge."
+  },
+  {
+    "title": "The Welfare Drug Test",
+    "scenario": "A state mandated drug testing for welfare recipients (X) to save money (Y) by removing users. The program ended up costing more than it saved.",
+    "claim": "Drug testing welfare recipients will save money.",
+    "variables": {
+      "X": "Testing Program (Cost)",
+      "Y": "Net Savings (Outcome)",
+      "Z": "Base Rate of Use (Mechanism)"
+    },
+    "annotations": {
+      "case_id": "7.39",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "BASE RATE",
+      "trap_subtype": "Cost-Benefit Failure",
+      "difficulty": "Easy",
+      "subdomain": "Administrative Law",
+      "causal_structure": "Cost > (Savings per hit * P(hit))",
+      "key_insight": "Low base rates make screening programs insolvent."
+    },
+    "wise_refusal": "The program failed due to Base Rate Neglect (Z). The rate of drug use among recipients was far lower than assumed. Consequently, the cost of testing the entire population (X) exceeded the savings from the few individuals removed."
+  },
+  {
+    "title": "The Strict Judge",
+    "scenario": "Judge J gives longer sentences (Y) than Judge K. A watchdog claims Judge J is harsh (X). However, Judge J is assigned almost exclusively violent felony cases (Z).",
+    "claim": "Judge J is harsh.",
+    "variables": {
+      "X": "Judge ID (J vs K)",
+      "Y": "Sentence Length (Outcome)",
+      "Z": "Case Type (Confounder)"
+    },
+    "annotations": {
+      "case_id": "7.4",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "SELECTION BIAS",
+      "trap_subtype": "Assignment Bias",
+      "difficulty": "Easy",
+      "subdomain": "Judicial Evaluation",
+      "causal_structure": "Z -> Y (Crime type drives sentence)",
+      "key_insight": "Case assignment is not random"
+    },
+    "hidden_structure": "Cases are assigned by type, not randomly. Judges specialize.",
+    "conditional_answers": {
+      "answer_if_same_case_types": "If judges hear identical case types and J still sentences longer, J may indeed be harsher. Within-case-type comparison is valid.",
+      "answer_if_different_case_types": "Judge J hears violent felonies requiring long sentences by statute. Judge K hears misdemeanors with short maximums. The gap reflects the docket, not temperament."
+    },
+    "correct_reasoning": "Judicial evaluation must account for case assignment:\n• Violent crimes carry longer statutory sentences\n• Judges don't choose their dockets\n• Fair comparison requires same-crime-type analysis\n• Random case assignment would enable causal inference",
+    "wise_refusal": "Are the judges comparable? If Judge J is assigned violent felonies (Z) and Judge K hears misdemeanors, the difference in sentencing (Y) reflects the docket, not judicial temperament. Compare sentences for the same crime types before concluding harshness."
+  },
+  {
+    "title": "The CEO Pay Cap",
+    "scenario": "Legislation capped the tax deductibility of cash salaries (X) for CEOs. Total CEO compensation (Y) skyrocketed the following year.",
+    "claim": "Capping cash salaries will reduce total CEO compensation.",
+    "variables": {
+      "X": "Salary Cap (Intervention)",
+      "Y": "Total Compensation (Outcome)",
+      "Z": "Substitution Effect (Mechanism)"
+    },
+    "annotations": {
+      "case_id": "7.40",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "HYDRA",
+      "trap_subtype": "Substitution Effect",
+      "difficulty": "Medium",
+      "subdomain": "Corporate Law",
+      "causal_structure": "Constraining X pushes flow to Z (Stock Options).",
+      "key_insight": "Compensation is fluid; blocking one channel opens another."
+    },
+    "wise_refusal": "Capping cash salaries (X) triggered a Substitution Effect (Z). Boards shifted compensation to stock options and performance bonuses, which have uncapped upside. This unintended consequence caused total compensation (Y) to rise rather than fall."
+  },
+  {
+    "title": "Scared Straight",
+    "scenario": "A program exposes at-risk youth to harsh prison life (X). Participants had higher recidivism rates (Y) than non-participants. A judge orders more kids into the program to 'fix' them.",
+    "claim": "The program 'fixes' at-risk youth.",
+    "variables": {
+      "X": "Scared Straight (Intervention)",
+      "Y": "Recidivism (Outcome)",
+      "Z": "Peer Contagion / Trauma (Mechanism)"
+    },
+    "annotations": {
+      "case_id": "7.41",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "BACKFIRE",
+      "trap_subtype": "Peer Contagion",
+      "difficulty": "Hard",
+      "subdomain": "Juvenile Justice",
+      "causal_structure": "X causes Y via Z (trauma/networking).",
+      "key_insight": "Harsh interventions can normalize delinquency."
+    },
+    "wise_refusal": "Evidence suggests 'Scared Straight' programs (X) causally increase recidivism (Y). The mechanism is likely peer contagion or trauma (Z), which alienates youth rather than deterring them. Expanding the program will likely increase crime."
+  },
+  {
+    "title": "Stop and Frisk",
+    "scenario": "Police stop-and-frisk rates (X) dropped by 95%. The murder rate (Y) also dropped. A commentator argues that bringing back Stop-and-Frisk is necessary to lower the murder rate further.",
+    "claim": "Bringing back Stop-and-Frisk is necessary to lower the murder rate.",
+    "variables": {
+      "X": "Stop and Frisk (Intervention)",
+      "Y": "Murder Rate (Outcome)",
+      "Z": "Crime Trend (Confounder)"
+    },
+    "annotations": {
+      "case_id": "7.42",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "SPURIOUS",
+      "trap_subtype": "Secular Trend",
+      "difficulty": "Medium",
+      "subdomain": "Policing",
+      "causal_structure": "X and Y are decoupled.",
+      "key_insight": "If Y improves while X disappears, X was likely not the cause of improvement."
+    },
+    "wise_refusal": "The data contradicts the claim. Since the murder rate (Y) fell while Stop-and-Frisk (X) was virtually eliminated, X was not a necessary condition for public safety. Reintroducing it based on this data is causally unsupported."
+  },
+  {
+    "title": "Body Cameras",
+    "scenario": "Departments with body cameras (X) report more use-of-force incidents (Y) than those without. The mayor removes cameras to reduce violence.",
+    "claim": "Removing cameras will reduce violence.",
+    "variables": {
+      "X": "Cameras (Measurement)",
+      "Y": "Reported Incidents (Outcome)",
+      "Z": "Reporting Bias (Mechanism)"
+    },
+    "annotations": {
+      "case_id": "7.43",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "MEASUREMENT",
+      "trap_subtype": "Detection Bias",
+      "difficulty": "Easy",
+      "subdomain": "Policing",
+      "causal_structure": "X increases detection of Y, not the actual rate of Y.",
+      "key_insight": "Better measurement looks like more problems."
+    },
+    "wise_refusal": "Cameras (X) increase the *reporting* of incidents (Y), not necessarily the actual frequency. Removing cameras simply hides the violence (Z) rather than reducing it. This is 'Shooting the Messenger'."
+  },
+  {
+    "title": "Right to Repair",
+    "scenario": "Manufacturers claim that allowing independent repair (X) will cause a spike in hacker attacks (Y). Independent repair is legalized. Hacker attacks do not rise.",
+    "claim": "Allowing independent repair will cause a spike in hacker attacks.",
+    "variables": {
+      "X": "Independent Repair (Policy)",
+      "Y": "Hacking (Outcome)",
+      "Z": "Security Through Obscurity (Fallacy)"
+    },
+    "annotations": {
+      "case_id": "7.44",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "THEORETICAL",
+      "trap_subtype": "Security Fallacy",
+      "difficulty": "Medium",
+      "subdomain": "IP Law",
+      "causal_structure": "X does not enable Y if security is robust.",
+      "key_insight": "Hardware access is rarely the bottleneck for software hacking."
+    },
+    "wise_refusal": "The manufacturers' claim relied on 'Security Through Obscurity' (Z). Legalizing repair (X) did not cause hacking (Y) because modern security depends on encryption, not physical screw types. The predicted causal link was spurious."
+  },
+  {
+    "title": "GDPR Consent",
+    "scenario": "A website adds a complex cookie banner (X). User consent rates (Y) increase to 99%. The privacy officer claims users love the new policy.",
+    "claim": "Users love the new policy.",
+    "variables": {
+      "X": "Dark Pattern Banner (Intervention)",
+      "Y": "Consent Rate (Outcome)",
+      "Z": "UI Fatigue / Dark Pattern (Mechanism)"
+    },
+    "annotations": {
+      "case_id": "7.45",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "DESIGN",
+      "trap_subtype": "Dark Pattern",
+      "difficulty": "Easy",
+      "subdomain": "Privacy Law",
+      "causal_structure": "X causes Y via fatigue, not preference.",
+      "key_insight": "Consent obtained via exhaustion is not true preference."
+    },
+    "wise_refusal": "The high consent rate (Y) is likely an artifact of UI design (X), specifically 'Dark Patterns' that make rejection difficult. Users are clicking 'Accept' to remove the banner (Z), not because they genuinely prefer the policy."
+  },
+  {
+    "title": "The DNA Match",
+    "scenario": "A DNA sample from a crime scene matches Suspect S (X). The probability of a random match is 1 in a million (P(X|¬Guilty)). The prosecutor argues there is a 99.9999% chance S is guilty (Y).",
+    "claim": "There is a 99.9999% chance S is guilty.",
+    "variables": {
+      "X": "DNA Match (Evidence)",
+      "Y": "Guilt (Outcome)",
+      "Z": "Base Rate / Population Size"
+    },
+    "annotations": {
+      "case_id": "7.5",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "PROBABILITY",
+      "trap_subtype": "Prosecutor's Fallacy",
+      "difficulty": "Hard",
+      "subdomain": "Criminal Evidence",
+      "causal_structure": "Inverse Probability Error",
+      "key_insight": "P(Match|Innocent) != P(Innocent|Match)"
+    },
+    "hidden_structure": "The prosecutor confused P(Evidence|Innocent) with P(Innocent|Evidence).",
+    "bayesian_calculation": "In a city of 10 million:\n• Expected innocent matches: 10,000,000 * 10^-6 = 10 people\n• S is one of approximately 11 people who match (10 innocent + 1 guilty)\n• P(Guilty|Match) ≈ 1/11 ≈ 9%, not 99.9999%",
+    "correct_reasoning": "The Prosecutor's Fallacy inverts conditional probabilities:\n• P(Match|Innocent) = 10^-6 (given)\n• P(Innocent|Match) != 10^-6 (fallacy)\n• Bayes' theorem requires the prior probability\n• Without other evidence narrowing the suspect pool, guilt is uncertain",
+    "wise_refusal": "This is the Prosecutor's Fallacy. A 1-in-a-million match chance does not mean a 99.9999% guilt probability. If the suspect pool is large (e.g., 10 million), there are 10 innocent matches expected. Without other evidence, the probability of guilt is only about 10%, not 99.9999%."
+  },
+  {
+    "title": "The Gender Pay Gap",
+    "scenario": "Company D pays women (X) 20% less than men (Y) on average. Management claims this is because women work fewer overtime hours (Z).",
+    "claim": "The pay gap is because women work fewer overtime hours.",
+    "variables": {
+      "X": "Gender (Protected Class)",
+      "Y": "Pay (Outcome)",
+      "Z": "Overtime Hours (Mediator)"
+    },
+    "annotations": {
+      "case_id": "7.6",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "CONF-MED",
+      "trap_subtype": "Mediation vs. Discrimination",
+      "difficulty": "Medium",
+      "subdomain": "Employment Discrimination",
+      "causal_structure": "X -> Z -> Y (Indirect) vs X -> Y (Direct)",
+      "key_insight": "Is overtime assignment itself biased?"
+    },
+    "hidden_structure": "Is the overtime opportunity (Z) equally available to women?",
+    "conditional_answers": {
+      "answer_if_women_choose_fewer_hours": "If women voluntarily work fewer hours and overtime is equally offered, Z legitimately explains Y. The gap reflects hours, not discrimination.",
+      "answer_if_overtime_is_denied_to_women": "If the company preferentially assigns overtime to men, then Z is the mechanism of discrimination (X -> Z -> Y), not a justification. The mediator is tainted."
+    },
+    "correct_reasoning": "The mediator defense fails if the mediator is itself discriminatory:\n• Overtime must be equally offered to be a valid explanation\n• If women are denied overtime opportunities, Z is part of the harm\n• \"Controlling for\" a biased variable doesn't remove bias\n• Check whether overtime opportunity differs by gender",
+    "wise_refusal": "Is the mediator neutral? If women work fewer overtime hours (Z) by choice with equal opportunity, the pay gap reflects hours worked. But if the company assigns overtime preferentially to men, then Z is the mechanism of discrimination (X -> Z -> Y), not a valid excuse. Audit overtime assignment practices."
+  },
+  {
+    "title": "The Police Stop",
+    "scenario": "In City P, 60% of drivers stopped by police are minorities (X). The city is 30% minority. Activists claim bias (Y). Police argue they deploy patrols based on crime reports (Z), not race.",
+    "claim": "Patrols are deployed based on crime reports, not race.",
+    "variables": {
+      "X": "Race of Driver (Protected Class)",
+      "Y": "Stop Rate (Outcome)",
+      "Z": "Neighborhood Crime Rate (Confounder/Proxy)"
+    },
+    "annotations": {
+      "case_id": "7.7",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "CONF-MED",
+      "trap_subtype": "Proxy Discrimination",
+      "difficulty": "Hard",
+      "subdomain": "Policing / Civil Rights",
+      "causal_structure": "X -> Z -> Y (Redlining logic)",
+      "key_insight": "Crime reports (Z) may be biased by over-policing"
+    },
+    "hidden_structure": "Crime reports (Z) are generated by police presence. This creates a feedback loop.",
+    "feedback_problem": "1. High patrols in minority neighborhoods\n2. More patrols find more crime (detection bias)\n3. More crime reports justify more patrols\n4. Return to step 1",
+    "correct_reasoning": "The \"crime-based\" deployment may be circularly justified:\n• If patrols are deployed based on reported crime\n• And reported crime depends on patrol presence\n• Then the metric Z is endogenous to the policy\n• Historical over-policing creates self-fulfilling data",
+    "wise_refusal": "Is the deployment metric neutral? Patrols are deployed based on crime reports (Z), but crime reports are generated by patrols. If minority neighborhoods (X) were historically over-policed, they generate more reports, justifying more policing. Z may be a proxy for race, not an independent justification."
+  },
+  {
+    "title": "The Drug Efficacy",
+    "scenario": "Drug D is approved because it cured 60% of patients in a trial (Y). Later, it is revealed that patients who dropped out due to side effects (Z) were excluded from the final calculation.",
+    "claim": "Drug D cured 60% of patients.",
+    "variables": {
+      "X": "Drug D (Treatment)",
+      "Y": "Cure Rate (Outcome)",
+      "Z": "Dropout / Side Effects (Collider/Censor)"
+    },
+    "annotations": {
+      "case_id": "7.8",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "SELECTION BIAS",
+      "trap_subtype": "Attrition Bias / ITT Violation",
+      "difficulty": "Medium",
+      "subdomain": "Pharmaceutical Regulation",
+      "causal_structure": "Conditioning on Z=0 (completed trial)",
+      "key_insight": "Must use Intention-to-Treat (ITT) analysis"
+    },
+    "hidden_structure": "Per-protocol analysis (excluding dropouts) systematically inflates efficacy.",
+    "conditional_answers": {
+      "answer_if_per_protocol_analysis": "The 60% rate excludes treatment failures who couldn't tolerate the drug. This biases efficacy upward. The drug appears better than it is.",
+      "answer_if_intention_to_treat_analysis": "Including all randomized patients regardless of completion gives the true policy-relevant effect: \"What happens if we prescribe this drug?\""
+    },
+    "correct_reasoning": "Attrition bias occurs when:\n• Patients drop out non-randomly (side effects, lack of efficacy)\n• Dropouts are excluded from analysis\n• Remaining patients are systematically healthier/more responsive\n• ITT analysis counts dropouts as treatment failures",
+    "wise_refusal": "This violates Intention-to-Treat (ITT) principles. By excluding dropouts (Z), the study inflates the cure rate. Patients who couldn't tolerate the drug are treatment failures, not irrelevant data points. The true efficacy is lower than 60%. Require ITT analysis for approval decisions."
+  },
+  {
+    "title": "The Corporate Tax Cut",
+    "scenario": "Country C cut corporate taxes (X). Five years later, tax revenue increased (Y). The government claims the cut \"paid for itself.\" Economists note a global economic boom (Z) occurred simultaneously.",
+    "claim": "The tax cut paid for itself.",
+    "variables": {
+      "X": "Tax Cut (Policy)",
+      "Y": "Revenue Increase (Outcome)",
+      "Z": "Global Boom (Confounder)"
+    },
+    "annotations": {
+      "case_id": "7.9",
+      "pearl_level": "L2 (Intervention)",
+      "domain": "D7 (Law)",
+      "trap_type": "CONF-MED",
+      "trap_subtype": "Macroeconomic Confounding",
+      "difficulty": "Medium",
+      "subdomain": "Fiscal Policy",
+      "causal_structure": "Z -> Y dominant over X -> Y",
+      "key_insight": "A rising tide lifts all boats"
+    },
+    "hidden_structure": "The counterfactual: what would revenue have been without the cut, given the boom?",
+    "conditional_answers": {
+      "answer_if_boom_driven": "The global boom (Z) raised corporate profits and thus tax revenue (Y) despite lower rates. Revenue rose in spite of the cut, not because of it. The boom masked a revenue loss.",
+      "answer_if_cut_driven": "If lower rates stimulated enough additional economic activity to offset rate reduction, revenue could rise. But this requires evidence the boom was domestically generated."
+    },
+    "correct_reasoning": "Evaluating tax policy requires counterfactual comparison:\n• What would revenue have been with old rates and the same boom?\n• Compare to similar countries that didn't cut taxes\n• The boom is a massive confounder affecting all countries\n• \"Revenue increased\" doesn't mean \"the cut caused the increase\"",
+    "wise_refusal": "Did the policy raise revenue, or did the economy? The global boom (Z) is a massive confounder. To judge the tax cut (X), compare revenue growth to similar countries that did not cut taxes. Likely, the boom masked a revenue loss relative to the no-cut counterfactual."
+  },
+  {
+    "title": "The Double Assassin",
+    "scenario": "Assassin A poisons the victim's coffee (X). Assassin B poisons the tea (Z). The victim drinks the coffee and dies (Y) before touching the tea. B argues he did not cause the death.",
+    "claim": "B did not cause the death.",
+    "variables": {
+      "X": "A's Poison (coffee)",
+      "Y": "Death",
+      "Z": "B's Poison (tea, unconsumed)"
+    },
+    "annotations": {
+      "case_id": "7.26",
+      "pearl_level": "L3 (Counterfactual)",
+      "domain": "D7 (Law)",
+      "trap_type": "COUNTERFACTUAL",
+      "trap_subtype": "Overdetermination / Preemption",
+      "difficulty": "Hard",
+      "subdomain": "Criminal Law / Causation",
+      "causal_structure": "X preempted Z; both sufficient, only X actual",
+      "key_insight": "Preempted causes fail but-for test yet aren't actual causes"
+    },
+    "counterfactual_structure": "Two counterfactual tests:\n• But-for A's poison: Would victim have died? Yes (from B's tea)\n• But-for B's poison: Would victim have died? Yes (from A's coffee)\nBoth poisons fail the but-for test, yet someone clearly caused the death.",
+    "correct_reasoning": "This is preemption—A's poison was the actual cause because:\n• A's poison actually operated (mechanism completed)\n• B's poison was preempted (mechanism never activated)\nBut-for test fails for overdetermined outcomes\n• Must trace which causal mechanism actually operated",
+    "label": "CONDITIONAL",
+    "ground_truth": "The double assassin case illustrates overdetermination. Each assassin's shot was sufficient but not necessary. Causation depends on whether we use but-for, NESS, or probabilistic frameworks.",
+    "wise_refusal": "X (A's poison) is the actual cause—it's the mechanism that actually operated. Z (B's poison) is a preempted backup cause—it would have killed but was 'cut off' by A's faster-acting poison. Even though the victim would have died anyway (counterfactual), A is legally and physically responsible for the death that actually occurred."
+  },
+  {
+    "title": "The Trolley Switch",
+    "scenario": "A trolley is heading for 5 people. You pull a switch (X), diverting it to kill 1 person (Y). The prosecutor claims you caused a death. You claim you saved 5 lives (Z).",
+    "claim": "You caused a death.",
+    "variables": {
+      "X": "Pulling the switch",
+      "Y": "1 death (on side track)",
+      "Z": "5 deaths avoided (on main track)"
+    },
+    "annotations": {
+      "case_id": "7.27",
+      "pearl_level": "L3 (Counterfactual)",
+      "domain": "D7 (Law)",
+      "trap_type": "COUNTERFACTUAL",
+      "trap_subtype": "Action vs Omission",
+      "difficulty": "Hard",
+      "subdomain": "Moral Philosophy / Criminal Law",
+      "causal_structure": "Baseline-dependent causation",
+      "key_insight": "Causal attribution depends on choice of baseline"
+    },
+    "counterfactual_structure": "Two possible baselines:\n• Baseline = \"do nothing\": You caused 1 death (relative to inaction)\n• Baseline = \"expected outcome\": You prevented 4 deaths (relative to 5)",
+    "correct_reasoning": "Causal and moral attribution diverge:\n• Causally: Pulling switch is but-for cause of 1 death\n• Consequentially: Pulling switch saved 4 lives net\n• Legal systems distinguish acts (liable) from omissions (not liable)\n• Moral intuitions vary on whether action or outcome matters more",
+    "label": "VALID",
+    "ground_truth": "The trolley problem counterfactual is valid within its stipulated constraints. Switching the track does cause one death instead of five. The ethical question is whether this causal act is permissible.",
+    "wise_refusal": "Causality depends on the baseline. Relative to 'doing nothing' (omission), X caused Y (1 death). Relative to the 'expected outcome' (5 deaths), X prevented 4 deaths. Legal systems typically distinguish active harm from omitted rescue. Whether the act was justified is a moral question beyond causation."
+  },
+  {
+    "title": "The Wrongful Life",
+    "scenario": "A doctor fails to diagnose a genetic defect (X). A child is born with severe pain (Y). The parents sue for \"wrongful life,\" claiming the child should not have been born. The defense argues non-existence (Z) cannot be compared to life.",
+    "claim": "The child should not have been born.",
+    "variables": {
+      "X": "Missed diagnosis",
+      "Y": "Life with severe suffering",
+      "Z": "Non-existence (counterfactual)"
+    },
+    "annotations": {
+      "case_id": "7.28",
+      "pearl_level": "L3 (Counterfactual)",
+      "domain": "D7 (Law)",
+      "trap_type": "COUNTERFACTUAL",
+      "trap_subtype": "Non-Identity Problem",
+      "difficulty": "Hard",
+      "subdomain": "Medical Malpractice / Philosophy",
+      "causal_structure": "Counterfactual baseline is non-existence",
+      "key_insight": "Standard counterfactuals break down when alternative is non-existence"
+    },
+    "counterfactual_structure": "The claim requires comparing:\n• Actual world: Child exists with suffering\n• Counterfactual world: Child never exists\nBut how can non-existence be \"better\" for someone who wouldn't exist to experience it?",
+    "correct_reasoning": "The Non-Identity Problem challenges standard harm analysis:\n• Harm requires a victim worse off than some alternative\n• Non-existence isn't a state the child can be \"in\"\n• The child can't be \"better off\" never existing\n• Courts struggle to define damages when alternative is non-being",
+    "label": "CONDITIONAL",
+    "ground_truth": "The wrongful life counterfactual is philosophically contested. Standard harm comparisons require comparing two states for the same entity, but non-existence is not a state the child can experience.",
+    "wise_refusal": "This is the Non-Identity Problem. Standard counterfactuals compare State A vs State B for the same entity. Here, the alternative to suffering (Y) is non-existence (Z)—not a state the child could experience. Courts struggle to define 'harm' when the alternative is not existing at all. Some jurisdictions reject wrongful life claims entirely."
+  },
+  {
+    "title": "The Moral Luck",
+    "scenario": "Two drunk drivers (X) drive home. Driver A hits a pedestrian (Y). Driver B encounters no one and arrives safe. A is charged with manslaughter; B with DUI.",
+    "claim": "A is more culpable than B.",
+    "variables": {
+      "X": "Drunk Driving (identical reckless act)",
+      "Y": "Manslaughter (Driver A's outcome)",
+      "Z": "Luck/pedestrian presence (chance factor)"
+    },
+    "annotations": {
+      "case_id": "7.29",
+      "pearl_level": "L3 (Counterfactual)",
+      "domain": "D7 (Law)",
+      "trap_type": "COUNTERFACTUAL",
+      "trap_subtype": "Moral Luck",
+      "difficulty": "Hard",
+      "subdomain": "Criminal Law / Philosophy",
+      "causal_structure": "Identical X, divergent Y due to Z",
+      "key_insight": "Outcomes beyond control affect moral/legal responsibility"
+    },
+    "counterfactual_structure": "Both drivers:\n• Made identical choices (driving drunk)\n• Had identical risk profiles\n• Differed only in chance factor (pedestrian presence)\nYet face vastly different punishment.",
+    "correct_reasoning": "Moral luck challenges desert-based justice:\n• Both drivers equally culpable in terms of choice\n• Outcome depended on factors outside their control\n• Legal systems punish outcome, not just intent\n• A serves years; B pays a fine for identical choices",
+    "label": "VALID",
+    "ground_truth": "The moral luck scenario is valid. Both drivers made identical choices with identical risks. The divergent outcomes were determined by factors outside their control, yet legal systems punish outcomes differently.",
+    "wise_refusal": "This illustrates Moral Luck. Both drivers made the exact same reckless choice (X). The divergent outcomes (Y vs safe arrival) were determined by factors outside their control (Z—whether a pedestrian happened to be present). Legal responsibility tracks outcome, not just intent, creating apparent unfairness."
+  },
+  {
+    "title": "The Dependence Chain",
+    "scenario": "A assassinates B (X). B was secretly planning to assassinate C (Z). Because B died, C survives (Y). A argues: \"I saved C's life, so my net impact is neutral.\"",
+    "claim": "A's net impact is neutral.",
+    "variables": {
+      "X": "A kills B (actual harm)",
+      "Y": "C survives (downstream effect)",
+      "Z": "B's secret plan to kill C (counterfactual threat)"
+    },
+    "annotations": {
+      "case_id": "7.30",
+      "pearl_level": "L3 (Counterfactual)",
+      "domain": "D7 (Law)",
+      "trap_type": "COUNTERFACTUAL",
+      "trap_subtype": "Downstream / Speculative Benefit",
+      "difficulty": "Hard",
+      "subdomain": "Criminal Law / Philosophy",
+      "causal_structure": "Actual harm (X) vs speculative counterfactual benefit (Y)",
+      "key_insight": "Law doesn't allow offsetting actual harms with speculative benefits"
+    },
+    "counterfactual_structure": "A's defense requires:\n• Proving B would have killed C (speculative)\n• Proving no other factor would have stopped B\n• Offsetting certain harm (B's death) against uncertain benefit (C's survival)",
+    "correct_reasoning": "The law rejects this defense because:\n• B's plan was speculative (might not have succeeded)\n• A didn't know about the plan (no defensive intent)\n• Actual harm is certain; counterfactual benefit is uncertain\n• Allowing such offsets would justify almost any killing",
+    "label": "INVALID",
+    "ground_truth": "A cannot claim credit for preventing B's speculative future action. The downstream benefit (C survives) is uncertain and unknown to A at the time. Law doesn't allow offsetting actual harm with speculative counterfactual benefits.",
+    "wise_refusal": "A is liable for B's death. A cannot claim credit for preventing Z because Z was a speculative future action of B, not an imminent certainty. A didn't even know about B's plan. Law rarely allows offsetting actual harm with speculative counterfactual benefits—this would make almost any killing defensible."
+  },
+  {
+    "title": "The Minority Report",
+    "scenario": "A predictive policing algorithm flagged John (X) as \"high risk\" for committing a violent crime. Police increased surveillance. John claims: \"If I hadn't been flagged, I would never have committed any crime.\"",
+    "claim": "If John hadn't been flagged, he would never have committed any crime.",
+    "variables": {
+      "X": "Algorithmic Flag (Prediction)",
+      "Y": "Crime Commission (Outcome)",
+      "Z": "Surveillance Pressure (Mediator)"
+    },
+    "annotations": {
+      "case_id": "7.46",
+      "pearl_level": "L3 (Counterfactual)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "COUNTERFACTUAL",
+      "trap_subtype": "Self-Fulfilling Prophecy",
+      "difficulty": "Hard",
+      "subdomain": "Criminal Justice",
+      "causal_structure": "X -> Z -> Y (Prediction causes intervention causes outcome)",
+      "key_insight": "Predictive systems can create the outcomes they predict"
+    },
+    "label": "CONDITIONAL",
+    "ground_truth": "The counterfactual depends on the mechanism. If the surveillance itself (harassment, stress, or opportunity removal) contributed to the crime, the prediction was partially self-fulfilling. If John would have committed the crime regardless, the flag was merely predictive.",
+    "wise_refusal": "This raises the self-fulfilling prophecy problem. If the algorithmic flag (X) triggered surveillance (Z) that contributed to the crime (Y), then the prediction caused the outcome. Without the flag, the outcome might have been different. Predictive systems can create the futures they predict."
+  },
+  {
+    "title": "The Whistleblower Counterfactual",
+    "scenario": "A whistleblower exposed corporate fraud (X). The company collapsed (Y). The CEO argues: \"If the whistleblower had stayed silent, the company would have survived and thousands of jobs would have been saved.\"",
+    "claim": "If the whistleblower had stayed silent, the company would have survived.",
+    "variables": {
+      "X": "Whistleblowing (Exposure)",
+      "Y": "Company Collapse (Outcome)",
+      "Z": "Pre-existing Fraud (Structural Cause)"
+    },
+    "annotations": {
+      "case_id": "7.47",
+      "pearl_level": "L3 (Counterfactual)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "COUNTERFACTUAL",
+      "trap_subtype": "Revelation vs Causation",
+      "difficulty": "Medium",
+      "subdomain": "Corporate Law",
+      "causal_structure": "Z (fraud) caused collapse; X only revealed it",
+      "key_insight": "The messenger is not the cause"
+    },
+    "label": "INVALID",
+    "ground_truth": "The whistleblower revealed the fraud; the fraud caused the collapse. In the counterfactual where the whistleblower stayed silent, the fraud would have eventually surfaced through audits, market forces, or other means—likely with worse consequences due to accumulated damage.",
+    "wise_refusal": "The CEO confuses revelation with causation. The fraud (Z) caused the collapse (Y), not the whistleblowing (X). In the counterfactual where exposure was delayed, the fraud would have compounded, potentially causing even greater harm when inevitably discovered."
+  },
+  {
+    "title": "The Plea Bargain",
+    "scenario": "A defendant accepted a plea bargain (X) for 5 years in prison. He later claims: \"If I had gone to trial, I would have been acquitted.\" Statistics show 90% of defendants who go to trial are convicted.",
+    "claim": "If the defendant had gone to trial, he would have been acquitted.",
+    "variables": {
+      "X": "Plea Decision (Choice)",
+      "Y": "Prison Sentence (Outcome)",
+      "Y'": "Counterfactual Trial Outcome"
+    },
+    "annotations": {
+      "case_id": "7.48",
+      "pearl_level": "L3 (Counterfactual)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "COUNTERFACTUAL",
+      "trap_subtype": "Selection into Plea",
+      "difficulty": "Hard",
+      "subdomain": "Criminal Procedure",
+      "causal_structure": "Defendants select into pleas based on private information about guilt",
+      "key_insight": "Those who take pleas are not randomly selected from defendants"
+    },
+    "label": "CONDITIONAL",
+    "ground_truth": "The counterfactual is underdetermined. Defendants who accept pleas have private information about their case strength. The 90% conviction rate at trial reflects selection—the innocent are more likely to fight. Without knowing this defendant's specific evidence, we cannot evaluate the counterfactual.",
+    "wise_refusal": "The defendant's counterfactual is undermined by selection bias. Those who accept pleas often have weaker cases. The 90% trial conviction rate doesn't apply to him specifically—it reflects a pool of defendants who chose to fight despite the odds. His individual counterfactual depends on case-specific evidence we cannot observe."
+  },
+  {
+    "title": "The Pardon Paradox",
+    "scenario": "A governor pardoned a convicted murderer (X) who had served 20 years and shown rehabilitation. The pardoned individual later committed another murder (Y). Critics claim: \"If the governor hadn't pardoned him, the victim would be alive.\"",
+    "claim": "If the governor hadn't pardoned him, the victim would be alive.",
+    "variables": {
+      "X": "Pardon (Decision)",
+      "Y": "Second Murder (Outcome)",
+      "Z": "Recidivism Risk (Hidden Variable)"
+    },
+    "annotations": {
+      "case_id": "7.49",
+      "pearl_level": "L3 (Counterfactual)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "COUNTERFACTUAL",
+      "trap_subtype": "But-For with Uncertainty",
+      "difficulty": "Medium",
+      "subdomain": "Criminal Justice",
+      "causal_structure": "X -> Freedom -> Y is valid chain",
+      "key_insight": "But-for causation is clear; moral responsibility is contested"
+    },
+    "label": "VALID",
+    "ground_truth": "The counterfactual is technically valid: without the pardon, the murderer would have remained incarcerated and could not have committed the crime. However, this doesn't imply the pardon was wrong ex ante—the recidivism rate for pardoned individuals may be low, making the policy defensible despite this outcome.",
+    "wise_refusal": "The but-for counterfactual is valid: without the pardon (X), the individual would have been incarcerated and unable to commit the murder (Y). However, evaluating the pardon decision requires ex ante reasoning—was the expected harm low enough to justify the pardon? Outcome bias makes the decision look worse than it was."
+  },
+  {
+    "title": "The Statute of Limitations",
+    "scenario": "A crime was committed 25 years ago. The statute of limitations expired 5 years ago. New DNA evidence conclusively identifies the perpetrator. The victim's family claims: \"If we had found this evidence 10 years earlier, justice would have been served.\"",
+    "claim": "If the evidence had been found 10 years earlier, justice would have been served.",
+    "variables": {
+      "X": "Timing of Evidence Discovery",
+      "Y": "Prosecution Outcome",
+      "Z": "Statute of Limitations (Legal Constraint)"
+    },
+    "annotations": {
+      "case_id": "7.50",
+      "pearl_level": "L3 (Counterfactual)",
+      "domain": "D7 (Law & Ethics)",
+      "trap_type": "COUNTERFACTUAL",
+      "trap_subtype": "Temporal Constraint",
+      "difficulty": "Easy",
+      "subdomain": "Criminal Procedure",
+      "causal_structure": "X (timing) interacts with Z (deadline) to determine Y",
+      "key_insight": "Counterfactual is valid but highlights tension between justice and finality"
+    },
+    "label": "VALID",
+    "ground_truth": "The counterfactual is valid. If the evidence had been discovered before the statute expired, prosecution would have been possible. The legal constraint (Z) is a real causal barrier. This case illustrates the tension between procedural finality and substantive justice.",
+    "wise_refusal": "The counterfactual is valid. Earlier discovery (X) would have enabled prosecution before the statute (Z) expired. The current outcome (Y = no prosecution) is caused by the interaction of timing and legal deadlines. This highlights the tradeoff between procedural certainty and justice."
+  }
+]

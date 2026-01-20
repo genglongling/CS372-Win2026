@@ -1,0 +1,195 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String             @id @default(cuid())
+  email            String             @unique
+  name             String?
+  password         String
+  role             String             @default("user") // user, admin
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  quizSessions     QuizSession[]
+  corrections      Correction[]       @relation("SubmittedCorrections")
+  reviews          Correction[]       @relation("ReviewedCorrections")
+  generationBatches GenerationBatch[]
+}
+
+model Question {
+  id                String      @id @default(cuid())
+  scenario          String
+  claim             String
+  pearlLevel        String      // L1, L2, L3
+  domain            String      // Markets, Medicine, Law, etc.
+  subdomain         String?     // More specific domain (e.g., "Commodities")
+  trapType          String      // CONFOUNDING, REVERSE, SELECTION, etc.
+  trapSubtype       String      // More specific subtype
+  explanation       String
+  difficulty        String      @default("medium") // easy, medium, hard
+  groundTruth       String      @default("NO") // YES, NO, AMBIGUOUS
+  variables         String?     // JSON string for SQLite: { X, Y, Z[] }
+  causalStructure   String?     // Brief description of causal graph (null for AMBIGUOUS)
+  keyInsight        String?     // One-line takeaway
+  wiseRefusal       String?     // Complete answer with verdict
+
+  // New metadata fields
+  author            String?     // Who made/reviewed the annotation (e.g., "LLM", "admin@example.com")
+  hiddenTimestamp   String?     // For AMBIGUOUS: temporal/causal ordering question. "N/A" for YES/NO.
+  conditionalAnswers String?    // For AMBIGUOUS: JSON with "Answer if..." sections. "N/A" for YES/NO.
+
+  isVerified        Boolean     @default(false)
+  isLLMGenerated    Boolean     @default(false)
+  sourceCase        String?     // e.g., "3.15" from BucketLarge-G
+  generationBatchId String?     // Track which batch this came from
+  reviewNotes       String?     // Admin notes during review
+  dataset           String      @default("default") // Dataset identifier for grouping questions
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+
+  answers           Answer[]
+  corrections       Correction[]
+  generationBatch   GenerationBatch? @relation(fields: [generationBatchId], references: [id])
+  evaluations       CaseEvaluation[]
+}
+
+model QuizSession {
+  id              String      @id @default(cuid())
+  userId          String
+  user            User        @relation(fields: [userId], references: [id])
+  totalQuestions  Int
+  correctAnswers  Int         @default(0)
+  domainsFilter   String?     // JSON array of selected domains
+  levelsFilter    String?     // JSON array of selected levels
+  difficulty      String?     // easy, medium, hard, or null for all
+  startedAt       DateTime    @default(now())
+  completedAt     DateTime?
+  
+  answers         Answer[]
+}
+
+model Answer {
+  id              String      @id @default(cuid())
+  sessionId       String
+  session         QuizSession @relation(fields: [sessionId], references: [id])
+  questionId      String
+  question        Question    @relation(fields: [questionId], references: [id])
+  selectedType    String
+  selectedSubtype String?
+  isCorrect       Boolean
+  isTypeCorrect   Boolean     // Track if just the type was correct
+  timeTakenMs     Int?
+  answeredAt      DateTime    @default(now())
+}
+
+model Correction {
+  id                    String      @id @default(cuid())
+  questionId            String
+  question              Question    @relation(fields: [questionId], references: [id])
+  submittedById         String
+  submittedBy           User        @relation("SubmittedCorrections", fields: [submittedById], references: [id])
+  suggestedType         String?
+  suggestedSubtype      String?
+  suggestedExplanation  String?
+  comment               String?
+  status                String      @default("pending") // pending, approved, rejected
+  reviewedById          String?
+  reviewedBy            User?       @relation("ReviewedCorrections", fields: [reviewedById], references: [id])
+  reviewNote            String?
+  createdAt             DateTime    @default(now())
+  reviewedAt            DateTime?
+}
+
+model GenerationBatch {
+  id              String      @id @default(cuid())
+  pearlLevel      String?     // Target level for this batch (L1, L2, L3, or null for mixed)
+  domain          String?     // Target domain for this batch
+  requestedCount  Int         // How many questions were requested
+  generatedCount  Int         // How many were actually generated
+  approvedCount   Int         @default(0) // How many have been verified
+  promptNotes     String?     // Custom instructions for generation
+  status          String      @default("pending") // pending, running, completed, failed
+  errorMessage    String?     // Error message if failed
+  currentIndex    Int         @default(0) // Current question being generated
+  createdAt       DateTime    @default(now())
+  completedAt     DateTime?   // When generation finished
+  createdById     String?     // Admin user ID (optional)
+  createdBy       User?       @relation(fields: [createdById], references: [id])
+
+  questions       Question[]
+}
+
+// Evaluation Agent observations for proofreading and report aggregation
+model CaseEvaluation {
+  id              String      @id @default(cuid())
+  questionId      String
+  question        Question    @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  evaluationBatchId String?
+  evaluationBatch EvaluationBatch? @relation(fields: [evaluationBatchId], references: [id])
+
+  // Structural Analysis
+  pearlLevelAssessment    String?   // Agent's assessment: CORRECT, INCORRECT, UNCERTAIN
+  suggestedPearlLevel     String?   // If incorrect, what should it be?
+  trapTypeAssessment      String?   // CORRECT, INCORRECT, UNCERTAIN
+  suggestedTrapType       String?   // If incorrect, what should it be?
+  trapSubtypeAssessment   String?   // CORRECT, INCORRECT, UNCERTAIN
+  suggestedTrapSubtype    String?   // If incorrect, what should it be?
+  groundTruthAssessment   String?   // CORRECT, INCORRECT, UNCERTAIN
+  suggestedGroundTruth    String?   // If incorrect, what should it be?
+
+  // Quality Flags
+  hasAmbiguity            Boolean   @default(false) // Is the scenario/claim ambiguous?
+  ambiguityNotes          String?   // Description of ambiguity
+  hasLogicalIssues        Boolean   @default(false) // Logical inconsistencies?
+  logicalIssueNotes       String?   // Description of issues
+  hasDomainErrors         Boolean   @default(false) // Factual/domain errors?
+  domainErrorNotes        String?   // Description of errors
+  clarityScore            Int       @default(3)     // 1-5 clarity rating
+  difficultyAssessment    String?   // Agent's assessment of difficulty
+
+  // Detailed Analysis
+  structuralNotes         String?   // Free-form structural analysis
+  causalGraphNotes        String?   // Notes on causal structure accuracy
+  variableNotes           String?   // Notes on X, Y, Z variable accuracy
+
+  // Model Testing (optional)
+  modelTestResults        String?   // JSON: { model: string, response: string, correct: boolean }[]
+
+  // Recommendations
+  overallVerdict          String    @default("NEEDS_REVIEW") // APPROVED, NEEDS_REVIEW, REJECTED
+  suggestedCorrections    String?   // Markdown summary of recommended fixes
+  priorityLevel           Int       @default(2) // 1=urgent, 2=normal, 3=minor
+
+  // Report Aggregation Tags
+  reportTags              String?   // JSON array of tags for report categorization
+
+  createdAt               DateTime  @default(now())
+  updatedAt               DateTime  @updatedAt
+}
+
+// Batch tracking for evaluation runs
+model EvaluationBatch {
+  id              String      @id @default(cuid())
+  dataset         String?     // Which dataset to evaluate
+  questionFilter  String?     // JSON filter criteria
+  totalCount      Int         // How many questions to evaluate
+  completedCount  Int         @default(0)
+  status          String      @default("pending") // pending, running, completed, failed
+  errorMessage    String?
+
+  // Report generation
+  reportGenerated Boolean     @default(false)
+  reportContent   String?     // Generated markdown report
+
+  createdAt       DateTime    @default(now())
+  completedAt     DateTime?
+
+  evaluations     CaseEvaluation[]
+}
+

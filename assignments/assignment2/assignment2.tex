@@ -1,0 +1,438 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+
+\geometry{margin=1in}
+
+\title{CS372 Assignment 2: T³ Benchmark Expansion}
+\author{CS372: Artificial General Intelligence for Reasoning, Planning, and Decision Making}
+\date{Winter 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Overview}
+
+This assignment builds upon Assignment 1 by expanding the T³ benchmark dataset with additional cases across all three Pearl levels. You will work in the same groups as Assignment 1 to generate cases that meet specific distribution requirements.
+- Each student validates a different student's file
+- Each student's file is validated by at least one other student
+
+\section{Target Distribution}
+
+The overall target distribution for Assignment 2 is:
+\begin{itemize}
+    \item \textbf{L1 (Association)}: 500 cases
+    \item \textbf{L2 (Intervention)}: 3,000 cases
+    \item \textbf{L3 (Counterfactual)}: 1,500 cases
+    \item \textbf{Total}: 5,000 cases
+\end{itemize}
+
+\subsection{Group Assignment Summary}
+
+There are 10 groups (A-J), with each group responsible for generating 500 cases. The distribution across Pearl levels and domains for each group is shown in Table~\ref{tab:group_summary}.
+
+\begin{table}[h]
+\centering
+\small
+\adjustbox{width=\textwidth}{%
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Group} & \textbf{Domain} & \textbf{L1} & \textbf{L2} & \textbf{L3} & \textbf{Total} \\
+\midrule
+A & Medicine & 50 & 300 & 150 & 500 \\
+B & Economics & 50 & 300 & 150 & 500 \\
+C & Law \& Ethics & 50 & 300 & 150 & 500 \\
+D & Sports & 50 & 300 & 150 & 500 \\
+E & Daily Life & 50 & 300 & 150 & 500 \\
+F & History & 50 & 300 & 150 & 500 \\
+G & Markets & 50 & 300 & 150 & 500 \\
+H & Environment & 50 & 300 & 150 & 500 \\
+I & AI \& Tech & 50 & 300 & 150 & 500 \\
+J & Social Science & 50 & 300 & 150 & 500 \\
+\midrule
+\textbf{Total} & & \textbf{500} & \textbf{3,000} & \textbf{1,500} & \textbf{5,000} \\
+\bottomrule
+\end{tabular}%
+}
+\caption{Group Assignment Summary: Cases per Group by Pearl Level and Domain}
+\label{tab:group_summary}
+\end{table}
+
+\textbf{Assignment List:} The complete group assignment list with student information is available at: \href{https://docs.google.com/spreadsheets/d/1YBqMDUv1tbPV8P-zkfxzmsuUCXe9Ga4w96pe4xWY3Xo/edit?usp=sharing}{Assignment Group Formulation (Google Sheets)}
+
+\subsection{Cross-Validation Dataset Assignment}
+
+Each student has been assigned a dataset from another student in their group to validate. Your cross-validation assignment, including the assigned dataset file and target case counts, can be found in the \href{https://docs.google.com/spreadsheets/d/1U5o0ebxHebRkqnVqS7gg8rtLhOmOLHXgwpdoiJQMQyo/edit?usp=sharing}{Cross-Validation Assignment Form (Google Sheets)}.
+
+\textbf{Important:} You must \textbf{ONLY download your own folder} from the assignment repository. Your folder is named \texttt{group\{Letter\}\_\{YourName\}} and contains the dataset file you are assigned to validate.
+
+\subsubsection{Handling Case Count Differences}
+
+The assigned dataset may have a different number of cases than the target requirement. Please follow these guidelines:
+
+\begin{itemize}
+    \item \textbf{If the assigned number is smaller than the target number:}
+    \begin{itemize}
+        \item You must generate additional cases to reach the target number (170 cases total)
+        \item The new cases should follow the same distribution requirements: 17 L1 cases, 102 L2 cases, 51 L3 cases
+        \item All new cases must include proper validation fields: \texttt{initial\_author}, \texttt{validator}, and \texttt{final\_score}
+    \end{itemize}
+    
+    \item \textbf{If the assigned number is larger than the target number:}
+    \begin{itemize}
+        \item You must validate \textbf{all cases} in the assigned dataset
+        \item You do not need to generate additional cases
+        \item Your final submission should include all validated cases from the assigned dataset
+    \end{itemize}
+\end{itemize}
+
+\section{Deliverables}
+
+\subsection{L1: Association Cases (500 cases)}
+
+For L1, you need to generate 500 cases total, distributed as follows:
+\begin{itemize}
+    \item \textbf{Wolf cases}: 250 cases (cases that appear valid but contain causal reasoning traps)
+    \item \textbf{Sheep cases}: 200 cases (cases with strong evidence for valid causal claims)
+    \item \textbf{Ambiguous cases}: 50 cases (cases where the causal relationship is unclear or conditional)
+\end{itemize}
+
+\subsubsection{WOLF Types (Selection Family)}
+
+The WOLF types focus on traps that make invalid causal claims appear valid. Table~\ref{tab:wolf_types} shows the implementability assessment for WOLF types organized by family.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\textbf{Trap Type} & \textbf{Tier} & \textbf{Status} & \textbf{Rationale} \\
+\midrule
+\multicolumn{4}{l}{\textbf{Selection Family (Specific $\rightarrow$ General)}} \\
+W1: Selection Bias & Core & Full & Describe sampling; LLM recognizes non-representative samples \\
+W2: Survivorship Bias & Core & Full & Describe ``only survivors observed'' and missing failures \\
+W3: Healthy User Bias & Core & Full & Describe self-selection into X and correlated lifestyle factors \\
+W4: Regression to Mean & Adv. & Partial & Requires statistical intuition; needs careful phrasing \\
+\midrule
+\multicolumn{4}{l}{\textbf{Ecological Family (General $\rightarrow$ Specific)}} \\
+W5: Ecological Fallacy & Core & Full & Describe aggregate correlation used to claim individual causation \\
+W6: Base Rate Neglect & Adv. & Partial & Must provide base rates and test properties in text \\
+\midrule
+\multicolumn{4}{l}{\textbf{Confounding Family}} \\
+W7: Confounding & Core & Full & Describe Z; LLM recognizes Z causes both X and Y \\
+W8: Simpson's Paradox & Adv. & Partial & Must provide subgroup and aggregate numbers in text \\
+\midrule
+\multicolumn{4}{l}{\textbf{Direction Family}} \\
+W9: Reverse Causation & Core & Full & Describe X and Y with plausible reverse direction \\
+W10: Post Hoc Fallacy & Core & Full & Describe timing-based inference without controls or mechanism \\
+\bottomrule
+\end{tabular}
+\caption{WOLF Types Implementability Assessment (Organized by Family)}
+\label{tab:wolf_types}
+\end{table}
+
+\subsubsection{SHEEP Types}
+
+The SHEEP types focus on evidence that supports valid causal claims. Table~\ref{tab:sheep_types} shows the implementability assessment for SHEEP types.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\textbf{Evidence Type} & \textbf{Tier} & \textbf{Status} & \textbf{Rationale} \\
+\midrule
+S1: RCT & Core & Full & Describe random assignment and control group \\
+S2: Natural Experiment & Core & Full & Describe exogenous event and comparison group \\
+S3: Lottery/Quasi-Random & Core & Full & Describe random allocation among applicants \\
+S4: Controlled Ablation & Core & Full & Describe removal of X while holding other factors constant \\
+S5: Mechanism + Dose & Core & Full & Describe known pathway plus dose-response gradient \\
+S6: Instrumental Variable & Adv. & Partial & Requires IV logic to be described cleanly \\
+S7: Diff-in-Diff & Adv. & Partial & Requires time and control group with parallel pre-trends \\
+S8: Regression Discont. & Adv. & Partial & Requires cutoff assignment and local comparison \\
+\bottomrule
+\end{tabular}
+\caption{SHEEP Types Implementability Assessment}
+\label{tab:sheep_types}
+\end{table}
+
+\subsection{L2: Intervention Cases (3,000 cases)}
+
+For L2, you need to generate 3,000 cases organized by Family Type and Trap Type. The distribution is shown in Table~\ref{tab:l2_distribution}.
+
+\begin{table}[h]
+\centering
+\small
+\adjustbox{width=\textwidth}{%
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Family Type} & \textbf{Easy} & \textbf{Med} & \textbf{Hard} & \textbf{Total} \\
+\midrule
+\multicolumn{5}{l}{\textbf{F1: Selection}} \\
+\quad T1: SELECTION & 55 & 90 & 55 & 200 \\
+\quad T2: SURVIVORSHIP & 50 & 80 & 50 & 180 \\
+\quad T3: COLLIDER & 45 & 70 & 45 & 160 \\
+\quad T4: IMMORTAL TIME & 40 & 60 & 40 & 140 \\
+\quad \textit{Subtotal} & \textit{190} & \textit{300} & \textit{190} & \textit{680} \\
+\midrule
+\multicolumn{5}{l}{\textbf{F2: Statistical}} \\
+\quad T5: REGRESSION & 50 & 80 & 50 & 180 \\
+\quad T6: ECOLOGICAL & 45 & 70 & 45 & 160 \\
+\quad \textit{Subtotal} & \textit{95} & \textit{150} & \textit{95} & \textit{340} \\
+\midrule
+\multicolumn{5}{l}{\textbf{F3: Confounding}} \\
+\quad T7: CONFOUNDER & 60 & 100 & 60 & 220 \\
+\quad T8: SIMPSON'S & 50 & 80 & 50 & 180 \\
+\quad T9: CONF-MED & 55 & 90 & 55 & 200 \\
+\quad \textit{Subtotal} & \textit{165} & \textit{270} & \textit{165} & \textit{600} \\
+\midrule
+\multicolumn{5}{l}{\textbf{F4: Direction}} \\
+\quad T10: REVERSE & 55 & 90 & 55 & 200 \\
+\quad T11: FEEDBACK & 45 & 70 & 45 & 160 \\
+\quad T12: TEMPORAL & 40 & 60 & 40 & 140 \\
+\quad \textit{Subtotal} & \textit{140} & \textit{220} & \textit{140} & \textit{500} \\
+\midrule
+\multicolumn{5}{l}{\textbf{F5: Information}} \\
+\quad T13: MEASUREMENT & 50 & 80 & 50 & 180 \\
+\quad T14: RECALL & 45 & 70 & 45 & 160 \\
+\quad \textit{Subtotal} & \textit{95} & \textit{150} & \textit{95} & \textit{340} \\
+\midrule
+\multicolumn{5}{l}{\textbf{F6: Mechanism}} \\
+\quad T15: MECHANISM & 50 & 80 & 50 & 180 \\
+\quad T16: GOODHART & 50 & 80 & 50 & 180 \\
+\quad T17: BACKFIRE & 50 & 80 & 50 & 180 \\
+\quad \textit{Subtotal} & \textit{150} & \textit{240} & \textit{150} & \textit{540} \\
+\midrule
+\textbf{Total} & \textbf{835} & \textbf{1,330} & \textbf{835} & \textbf{3,000} \\
+\textbf{Percentage} & \textbf{(27.8\%)} & \textbf{(44.3\%)} & \textbf{(27.8\%)} & \textbf{(100\%)} \\
+\bottomrule
+\end{tabular}%
+}
+\caption{L2 Distribution by Family Type and Trap Type}
+\label{tab:l2_distribution}
+\end{table}
+
+\subsection{L3: Counterfactual Cases (1,500 cases)}
+
+For L3, you need to generate 1,500 cases with two distribution requirements:
+
+\subsubsection{By Domain (10 Domains)}
+
+Target: 150 cases per domain ($\pm$10\%). Each trap type should have cases from at least 5 domains.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llc}
+\toprule
+\textbf{Domain} & \textbf{Description} & \textbf{Target} \\
+\midrule
+D1 & Daily Life & 150 \\
+D2 & Health/Medicine & 150 \\
+D3 & Economics & 150 \\
+D4 & Law \& Ethics & 150 \\
+D5 & Sports & 150 \\
+D6 & History & 150 \\
+D7 & Markets & 150 \\
+D8 & Environment & 150 \\
+D9 & AI \& Tech & 150 \\
+D10 & Social Science & 150 \\
+\midrule
+\textbf{Total} & & \textbf{1,500 (150 per domain)} \\
+\bottomrule
+\end{tabular}
+\caption{L3 Distribution by Domain}
+\label{tab:l3_domain}
+\end{table}
+
+\subsubsection{By Family (8 Families)}
+
+The L3 cases are also organized by family type as shown in Table~\ref{tab:l3_family}.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llccc}
+\toprule
+\textbf{Family} & \textbf{Description} & \textbf{Current} & \textbf{Target} & \textbf{Priority} \\
+\midrule
+F1 & Deterministic & 19 & 150 & Normal \\
+F2 & Probabilistic & 5 & 120 & High \\
+F3 & Overdetermination & 6 & 100 & High \\
+F4 & Structural & 9 & 120 & Normal \\
+F5 & Temporal & 8 & 100 & Normal \\
+F6 & Epistemic & 13 & 120 & Normal \\
+F7 & Attribution & 16 & 140 & Normal \\
+F8 & Moral/Legal & 4 & 100 & High \\
+\midrule
+\textit{Subtotal (Theoretical)} & & \textit{80} & \textit{950} & \\
+DomainExt & Domain extensions & 20 & 50 & Low \\
+\midrule
+\textbf{Total} & & \textbf{100} & \textbf{1,000} & \\
+\bottomrule
+\end{tabular}
+\caption{L3 Distribution by Family}
+\label{tab:l3_family}
+\end{table}
+
+\textbf{Note:} The family distribution totals 1,000 cases, with the remaining 500 cases distributed across domains to meet the 1,500 total requirement.
+
+\section{Group Assignments}
+
+You will work in the same groups as Assignment 1. While you are organized into groups for coordination and validation purposes, \textbf{all submissions must be done individually}. Each student is responsible for generating their own cases according to the distribution requirements above, with specific focus on your assigned domain and trap types from Assignment 1.
+
+\section{Submission Guidelines}
+
+\subsection{Submission Requirements}
+
+\textbf{All submissions must be done individually.} Each student must submit their own work.
+
+For individual submission, you are required to generate:
+\begin{itemize}
+    \item \textbf{170 cases total minimum} (more cases will receive bonus points)
+    \item Distribution: 17 L1 cases, 102 L2 cases, 51 L3 cases
+\end{itemize}
+
+
+
+\subsection{What to Submit}
+
+You must submit the following files for Assignment 2:
+
+\subsubsection{Dataset Files}
+
+All dataset files should be named using the format: \texttt{group\{Letter\}\_\{StudentName\}\_\{Type\}.json}, where \texttt{\{Type\}} is one of \texttt{schema}, \texttt{score}, or \texttt{dataset}.
+
+\begin{enumerate}
+    \item \textbf{Schema File:} \texttt{group\{Letter\}\_\{StudentName\}\_schema.json}
+    \begin{itemize}
+        \item A summarized schema of your dataset structure
+        \item Should include field definitions, types, and examples
+        \item Documents the structure of all cases in your dataset
+    \end{itemize}
+    
+    \item \textbf{Score File:} \texttt{group\{Letter\}\_\{StudentName\}\_score.json}
+    \begin{itemize}
+        \item Contains quality scores for the previous dataset (from Assignment 1) that you validated
+        \item Each case should include the following scoring fields:
+        \begin{itemize}
+            \item \textbf{Scenario clarity} (2 points): X, Y, Z clearly defined
+            \item \textbf{Hidden question quality} (2 points): Identifies key ambiguity
+            \item \textbf{Conditional answer A} (1.5 points): Logically follows from condition A
+            \item \textbf{Conditional answer B} (1.5 points): Logically follows from condition B
+            \item \textbf{Wise refusal quality} (2 points): Follows template
+            \item \textbf{Difficulty calibration} (1 point): Label matches complexity
+            \item \textbf{Total} (10 points): $\geq$ 8 accept; 6--7 revise; $<$ 6 reject
+        \end{itemize}
+    \end{itemize}
+    
+    \item \textbf{Final Dataset File:} \texttt{group\{Letter\}\_\{StudentName\}\_dataset.json}
+    \begin{itemize}
+        \item Your final validated dataset with \textbf{170 cases minimum} (more cases will receive bonus points)
+        \item Each case must include the following fields:
+        \begin{itemize}
+            \item \textbf{initial\_author}: The student who originally created the case
+            \item \textbf{validator}: The student who validated this case
+            \item \textbf{final\_score}: The quality score assigned during validation
+        \end{itemize}
+        \item All standard case fields: Scenario, Variables, Annotations, Hidden Timestamp, Conditional Answers, Wise Refusal
+    \end{itemize}
+
+    \item \textbf{Your coding pipeline (if used)}
+\end{enumerate}
+
+\subsubsection{Analysis Report}
+
+Submit a PDF report (maximum 10 pages) that includes the following sections:
+
+\begin{enumerate}
+    \item \textbf{Summary of Unvalidated vs. Validated Dataset}
+    \begin{itemize}
+        \item Comparison of dataset characteristics before and after validation
+        \item Key improvements and changes made during validation
+    \end{itemize}
+    
+    \item \textbf{Pearl Level Distribution}
+    \begin{itemize}
+        \item Distribution of cases across L1 (Association), L2 (Intervention), and L3 (Counterfactual)
+        \item Comparison between unvalidated and validated datasets
+    \end{itemize}
+    
+    \item \textbf{Label Distribution}
+    \begin{itemize}
+        \item \textbf{L1}: Yes/No/Ambiguous label distribution
+        \item \textbf{L2}: All cases should be labeled as ``No'' (invalid causal claims)
+        \item \textbf{L3}: Valid/Invalid/Conditional label distribution
+        \item Comparison between unvalidated and validated datasets
+    \end{itemize}
+    
+    \item \textbf{Trap Type Distribution}
+    \begin{itemize}
+        \item \textbf{L1}: Distribution across 10 wolf cases, 8 sheep cases, and 2 ambiguous cases
+        \item \textbf{L2}: Distribution across 17 trap types (T1--T17)
+        \item \textbf{L3}: Distribution across 8 families (F1--F8) and their subtypes
+        \item Comparison between unvalidated and validated datasets
+    \end{itemize}
+    
+    \item \textbf{Difficulty Level Distribution}
+    \begin{itemize}
+        \item \textbf{L1}: Roughly 1:2:1 ratio (Easy:Medium:Hard)
+        \item \textbf{L2}: Roughly 1:2:1 ratio (Easy:Medium:Hard)
+        \item \textbf{L3}: Roughly 1:2:1 ratio (Easy:Medium:Hard)
+        \item Comparison between unvalidated and validated datasets
+    \end{itemize}
+    
+    \item \textbf{Score Summary}
+    \begin{itemize}
+        \item Summary of quality scores for unvalidated dataset
+        \item Summary of quality scores for validated dataset
+        \item Analysis of score improvements and validation impact
+    \end{itemize}
+    
+    \item \textbf{Prompt Setup}
+    \begin{itemize}
+        \item Description of the prompt engineering approach used
+        \item LLM configuration and parameters
+        \item Generation methodology and quality control measures
+    \end{itemize}
+    
+    \item \textbf{Example Case}
+    \begin{itemize}
+        \item Include at least one complete example case from your validated dataset
+        \item Should demonstrate all required fields and proper structure
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Deadline}
+
+\textbf{Submission Deadline:} January 28, 2026, 11:59 PM PST
+
+All submissions must be uploaded to \href{https://www.gradescope.com}{Gradescope} by the deadline. Late submissions will be subject to the course late policy.
+
+\section{Contact}
+
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Instructor:} Prof. Edward Y. Chang
+    \begin{itemize}[leftmargin=2em]
+        \item Email: \href{mailto:chang@stanford.edu}{chang@stanford.edu}
+    \end{itemize}
+    \item \textbf{Course Assistant:} Longling Gloria Geng
+    \begin{itemize}[leftmargin=2em]
+        \item Email: \href{mailto:gll2027@stanford.edu}{gll2027@stanford.edu}
+    \end{itemize}
+\end{itemize}
+
+Good luck with your assignment2!
+
+\end{document}
+
